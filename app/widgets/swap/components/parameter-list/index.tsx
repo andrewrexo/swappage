@@ -13,7 +13,7 @@ const rateToWidgetDisplayText = (rate: string, pair: string) => {
 
 export function ParameterList({ rate, pair, provider }: ParameterListProps) {
   return (
-    <Flex direction="column" gap="2" className="h-full pt-2">
+    <Flex direction="column" gap="2" className="h-full justify-center">
       <Flex align="center" justify="between">
         <Text size="1">Provider</Text>
         <Code size="1" variant="ghost" className="text-accent">
@@ -30,6 +30,12 @@ export function ParameterList({ rate, pair, provider }: ParameterListProps) {
         <Text size="1">Max slippage</Text>
         <Code size="1" variant="ghost">
           0.5%
+        </Code>
+      </Flex>
+      <Flex align="center" justify="between">
+        <Text size="1">Completion ETA</Text>
+        <Code size="1" variant="ghost">
+          ~18 minutes
         </Code>
       </Flex>
     </Flex>
