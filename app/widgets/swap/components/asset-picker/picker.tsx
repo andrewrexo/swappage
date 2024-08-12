@@ -57,11 +57,7 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
           </TextField.Slot>
           <TextField.Slot className="">
             <AssetDialog>
-              <IconButton
-                size="1"
-                variant="ghost"
-                className="cursor-pointer p-[0.1rem]"
-              >
+              <IconButton size="1" variant="soft" className="cursor-pointer">
                 <ChevronDown strokeWidth={1.5} />
               </IconButton>
             </AssetDialog>

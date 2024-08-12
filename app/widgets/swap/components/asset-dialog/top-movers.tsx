@@ -26,7 +26,7 @@ export function TopMovers() {
               </Text>
             </Flex>
           </RadioCards.Item>
-          <RadioCards.Item value="1" className="w-full">
+          <RadioCards.Item value="2" className="w-full">
             <Flex direction="column" className="w-full">
               <Text weight="bold" className="text-accent">
                 ETH

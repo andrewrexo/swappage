@@ -30,11 +30,7 @@ export function SwapButton({ connected }: { connected: boolean }) {
   };
 
   return (
-    <Button
-      size="4"
-      className="w-full cursor-pointer transition-all duration-200 hover:scale-[1.025]"
-      variant="surface"
-    >
+    <Button size="4" className="cursor-pointer" variant="surface">
       {renderButtonText()}
     </Button>
   );
