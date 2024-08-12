@@ -1,4 +1,3 @@
-'use client';
 import { Box, Flex, Separator, Text } from '@radix-ui/themes';
 import { AssetPicker } from './components/asset-picker/picker';
 import { WidgetHeader } from './components/widget-header';
@@ -57,7 +56,7 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
         <Flex
           justify="end"
           direction="column"
-          className="cursor-move transition-all duration-200 hover:scale-[1.02]"
+          className="transition-all duration-200"
         >
           <SwapButton connected={true} />
         </Flex>
