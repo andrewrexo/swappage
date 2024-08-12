@@ -1,15 +1,8 @@
-import {
-  Box,
-  Card,
-  Flex,
-  Grid,
-  SegmentedControl,
-  Text,
-} from '@radix-ui/themes';
-import { ArrowLeftRightIcon } from 'lucide-react';
+import { Box, Card, Flex, Text } from '@radix-ui/themes';
 import { AssetPicker } from './components/asset-picker/picker';
 import { WidgetHeader } from './components/widget-header';
 import { SwapButton } from './components/swap-button';
+import { ParameterList } from './components/parameter-list';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -30,6 +23,14 @@ export interface SwapWidgetProps {
 export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
   const { width, height } = swapWidgetProps;
 
+  // todo: determine where to store rates and pair. maybe consider using redux?
+  const swapBaseParameters = {
+    rate: '22.227161591',
+    pair: 'BTC_ETH',
+    status: 'online',
+    provider: 'XOSwap',
+  };
+
   return (
     <Box width={width} height={height}>
       <Card className="flex h-full w-full flex-col gap-4 p-4">
@@ -47,6 +48,7 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
           <AssetPicker side="from" />
           <AssetPicker side="to" />
         </Flex>
+        <ParameterList {...swapBaseParameters} />
         <Flex justify="end" className="mt-auto">
           <SwapButton connected={true} />
         </Flex>
