@@ -1,14 +1,8 @@
-import {
-  Box,
-  Button,
-  Card,
-  Flex,
-  Grid,
-  IconButton,
-  Text,
-} from '@radix-ui/themes';
-import { ArrowLeftRightIcon, MenuIcon } from 'lucide-react';
+import { Box, Card, Flex, Grid, Text } from '@radix-ui/themes';
+import { ArrowLeftRightIcon } from 'lucide-react';
 import { AssetPicker } from './components/asset-picker/picker';
+import { WidgetHeader } from './components/widget-header';
+import { SwapButton } from './components/swap-button';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -34,12 +28,10 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
       <Card asChild>
         <Grid columns={{ initial: '1' }} gap="8" width="auto" p="4">
           <Flex justify="between">
-            <Text size="4" weight="bold" className="text-accent">
+            <Text size="5" weight="bold" className="text-accent">
               Swappage
             </Text>
-            <IconButton variant="ghost">
-              <MenuIcon />
-            </IconButton>
+            <WidgetHeader />
           </Flex>
           <Flex justify="between" height="120px" align="center" gap="4">
             <AssetPicker side="from" />
@@ -47,9 +39,7 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
             <AssetPicker side="to" />
           </Flex>
           <Flex justify="end">
-            <Button size="3" className="w-full" variant="soft">
-              Swap now
-            </Button>
+            <SwapButton connected={true} />
           </Flex>
         </Grid>
       </Card>
