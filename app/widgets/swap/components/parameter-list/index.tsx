@@ -1,4 +1,4 @@
-import { Flex, Text } from '@radix-ui/themes';
+import { Code, Flex, Separator, Text } from '@radix-ui/themes';
 
 interface ParameterListProps {
   rate: string;
@@ -13,16 +13,24 @@ const rateToWidgetDisplayText = (rate: string, pair: string) => {
 
 export function ParameterList({ rate, pair, provider }: ParameterListProps) {
   return (
-    <Flex direction="column" gap="2">
-      <Flex align="center" justify="between">
-        <Text size="1">Rate</Text>
-        <Text size="1">{rateToWidgetDisplayText(rate, pair)}</Text>
-      </Flex>
+    <Flex direction="column" gap="2" className="h-full pt-2">
       <Flex align="center" justify="between">
         <Text size="1">Provider</Text>
-        <Text size="1" className="text-accent">
+        <Code size="1" variant="ghost" className="text-accent">
           {provider}
-        </Text>
+        </Code>
+      </Flex>
+      <Flex align="center" justify="between">
+        <Text size="1">Rate</Text>
+        <Code size="1" variant="ghost">
+          {rateToWidgetDisplayText(rate, pair)}
+        </Code>
+      </Flex>
+      <Flex align="center" justify="between">
+        <Text size="1">Max slippage</Text>
+        <Code size="1" variant="ghost">
+          0.5%
+        </Code>
       </Flex>
     </Flex>
   );
