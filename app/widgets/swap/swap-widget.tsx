@@ -1,4 +1,4 @@
-import { Box, Card, Flex, Separator, Text } from '@radix-ui/themes';
+import { Box, Card, Flex, Progress, Separator, Text } from '@radix-ui/themes';
 import { AssetPicker } from './components/asset-picker/picker';
 import { WidgetHeader } from './components/widget-header';
 import { SwapButton } from './components/swap-button';
@@ -32,7 +32,7 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
   };
 
   return (
-    <Box width={width} height={height}>
+    <Box width={width} minHeight={height}>
       <Card className="flex h-full w-full flex-col gap-4 p-4">
         <Flex justify="between">
           <Text
@@ -49,14 +49,8 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
           <AssetPicker side="to" />
         </Flex>
         <ParameterList {...swapBaseParameters} />
-        <Separator size="4" />
-        <Flex
-          justify="end"
-          className="mt-auto"
-          direction="column"
-          align="center"
-          gap="2"
-        >
+        <Separator size="4" className="my-1" />
+        <Flex justify="end" direction="column" align="center">
           <SwapButton connected={true} />
         </Flex>
       </Card>

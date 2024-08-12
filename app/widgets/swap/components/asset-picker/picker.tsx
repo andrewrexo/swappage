@@ -1,8 +1,9 @@
 'use client';
-import { Flex, TextField, Text, Skeleton } from '@radix-ui/themes';
+import { Flex, TextField, Text, Skeleton, IconButton } from '@radix-ui/themes';
 import { AssetName, AssetNameProps } from './asset-name';
 import { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
+import { AssetDialog } from '../asset-dialog';
 
 const demoAssets: AssetNameProps[] = [
   {
@@ -48,14 +49,22 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
         </Flex>
       </Skeleton>
       <Skeleton loading={isLoading}>
-        <TextField.Root size="3">
-          <TextField.Slot className="cursor-pointer text-accent">
-            <Text size="2" weight="medium">
+        <TextField.Root size="3" className="cursor-pointer">
+          <TextField.Slot>
+            <Text size="3" weight="medium" className="text-accent">
               {selectedAsset.assetSymbol}
             </Text>
           </TextField.Slot>
-          <TextField.Slot className="cursor-pointer text-accent">
-            <ChevronDown className="transition-all duration-200 hover:animate-pulse" />
+          <TextField.Slot className="">
+            <AssetDialog>
+              <IconButton
+                size="1"
+                variant="ghost"
+                className="cursor-pointer p-[0.1rem]"
+              >
+                <ChevronDown strokeWidth={1.5} />
+              </IconButton>
+            </AssetDialog>
           </TextField.Slot>
         </TextField.Root>
       </Skeleton>

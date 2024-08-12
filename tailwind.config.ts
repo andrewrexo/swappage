@@ -15,6 +15,7 @@ const config: Config = {
       },
       colors: {
         accent: 'var(--accent-11)',
+        surface: 'var(--color-surface)',
       },
     },
   },
