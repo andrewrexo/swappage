@@ -29,6 +29,7 @@ module.exports = {
     'prefer-const': 'warn',
     'no-var': 'warn',
     'no-unused-vars': 'warn',
+    '@typescript-eslint/no-unused-vars': 'off',
     'object-shorthand': 'warn',
     'quote-props': ['warn', 'as-needed'],
     // TypeScript rules
