@@ -1,4 +1,4 @@
-import { Badge, Button, Flex, Text } from '@radix-ui/themes';
+import { Badge, Flex } from '@radix-ui/themes';
 
 export interface AssetNameProps {
   assetName: string;
