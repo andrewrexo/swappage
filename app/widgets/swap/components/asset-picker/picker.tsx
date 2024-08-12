@@ -1,7 +1,7 @@
 'use client';
 import { Flex, TextField, Text, Skeleton } from '@radix-ui/themes';
 import { AssetNameProps } from './asset-name';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const demoAssets: AssetNameProps[] = [
   {
@@ -22,6 +22,13 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
   );
 
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    setIsLoading(true);
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 500);
+  }, []);
 
   return (
     <Flex direction="column" gap="2">
