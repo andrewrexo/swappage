@@ -28,11 +28,11 @@ export interface SwapWidgetProps {
 }
 
 export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
-  const { width = '30px', height = '400px' } = swapWidgetProps;
+  const { width, height } = swapWidgetProps;
 
   return (
     <Box width={width} height={height}>
-      <Card className="flex flex-col gap-4 p-4">
+      <Card className="flex h-full w-full flex-col gap-4 p-4">
         <Flex justify="between">
           <Text size="5" weight="bold" className="text-accent">
             Swappage
@@ -43,7 +43,7 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
           <AssetPicker side="from" />
           <AssetPicker side="to" />
         </Flex>
-        <Flex justify="end">
+        <Flex justify="end" className="mt-auto">
           <SwapButton connected={true} />
         </Flex>
       </Card>
