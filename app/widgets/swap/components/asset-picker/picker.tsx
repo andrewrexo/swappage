@@ -2,7 +2,7 @@
 import { Flex, TextField, Text, Skeleton } from '@radix-ui/themes';
 import { AssetName, AssetNameProps } from './asset-name';
 import { useEffect, useState } from 'react';
-import { ChevronDown, SidebarOpenIcon } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const demoAssets: AssetNameProps[] = [
   {

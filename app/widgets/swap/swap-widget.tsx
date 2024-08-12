@@ -34,7 +34,11 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
     <Box width={width} height={height}>
       <Card className="flex h-full w-full flex-col gap-4 p-4">
         <Flex justify="between">
-          <Text size="5" weight="bold" className="text-accent">
+          <Text
+            size="5"
+            weight="bold"
+            className="user-select-none pointer-events-none text-accent"
+          >
             Swappage
           </Text>
           <WidgetHeader />
