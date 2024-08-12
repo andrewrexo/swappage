@@ -2,6 +2,7 @@
 import { Flex, TextField, Text, Skeleton } from '@radix-ui/themes';
 import { AssetName, AssetNameProps } from './asset-name';
 import { useEffect, useState } from 'react';
+import { ChevronDown, SidebarOpenIcon } from 'lucide-react';
 
 const demoAssets: AssetNameProps[] = [
   {
@@ -47,8 +48,15 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
         </Flex>
       </Skeleton>
       <Skeleton loading={isLoading}>
-        <TextField.Root size="3" variant="soft">
-          <TextField.Slot>{selectedAsset.assetSymbol}</TextField.Slot>
+        <TextField.Root size="3">
+          <TextField.Slot className="cursor-pointer text-accent">
+            <Text size="2" weight="medium">
+              {selectedAsset.assetSymbol}
+            </Text>
+          </TextField.Slot>
+          <TextField.Slot className="cursor-pointer text-accent">
+            <ChevronDown className="transition-all duration-200 hover:animate-pulse" />
+          </TextField.Slot>
         </TextField.Root>
       </Skeleton>
       <Skeleton loading={isLoading}>

@@ -1,4 +1,11 @@
-import { Box, Card, Flex, Grid, Text } from '@radix-ui/themes';
+import {
+  Box,
+  Card,
+  Flex,
+  Grid,
+  SegmentedControl,
+  Text,
+} from '@radix-ui/themes';
 import { ArrowLeftRightIcon } from 'lucide-react';
 import { AssetPicker } from './components/asset-picker/picker';
 import { WidgetHeader } from './components/widget-header';
@@ -34,7 +41,6 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
         </Flex>
         <Flex direction="column" align="center" gap="3">
           <AssetPicker side="from" />
-          <ArrowLeftRightIcon className="h-6 w-6 text-accent" />
           <AssetPicker side="to" />
         </Flex>
         <Flex justify="end">
