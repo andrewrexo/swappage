@@ -25,23 +25,21 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
 
   return (
     <Box width={width} height={height}>
-      <Card asChild>
-        <Grid columns={{ initial: '1' }} gap="8" width="auto" p="4">
-          <Flex justify="between">
-            <Text size="5" weight="bold" className="text-accent">
-              Swappage
-            </Text>
-            <WidgetHeader />
-          </Flex>
-          <Flex justify="between" height="120px" align="center" gap="4">
-            <AssetPicker side="from" />
-            <ArrowLeftRightIcon className="h-10 w-10 text-accent" />
-            <AssetPicker side="to" />
-          </Flex>
-          <Flex justify="end">
-            <SwapButton connected={true} />
-          </Flex>
-        </Grid>
+      <Card className="flex flex-col gap-4 p-4">
+        <Flex justify="between">
+          <Text size="5" weight="bold" className="text-accent">
+            Swappage
+          </Text>
+          <WidgetHeader />
+        </Flex>
+        <Flex direction="column" align="center" gap="3">
+          <AssetPicker side="from" />
+          <ArrowLeftRightIcon className="h-6 w-6 text-accent" />
+          <AssetPicker side="to" />
+        </Flex>
+        <Flex justify="end">
+          <SwapButton connected={true} />
+        </Flex>
       </Card>
     </Box>
   );
