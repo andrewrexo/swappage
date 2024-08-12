@@ -1,6 +1,6 @@
 'use client';
 import { Flex, TextField, Text, Skeleton } from '@radix-ui/themes';
-import { AssetNameProps } from './asset-name';
+import { AssetName, AssetNameProps } from './asset-name';
 import { useEffect, useState } from 'react';
 
 const demoAssets: AssetNameProps[] = [
@@ -31,13 +31,20 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
   }, []);
 
   return (
-    <Flex direction="column" gap="2">
-      <Skeleton loading={isLoading}>
-        {side === 'from' ? (
-          <Text size="1">bc1q...2761</Text>
-        ) : (
-          <Text size="1">0x07...AmX0</Text>
-        )}
+    <Flex direction="column" gap="2" className="w-full">
+      <Skeleton loading={isLoading} maxWidth="100px">
+        <Flex align="center" gap="2" justify="between">
+          {side === 'from' ? (
+            <Text size="1">bc1q...2761</Text>
+          ) : (
+            <Text size="1">0x07...AmX0</Text>
+          )}
+          <AssetName
+            assetName={selectedAsset.assetName}
+            assetSymbol={selectedAsset.assetSymbol}
+            assetNetwork={selectedAsset.assetNetwork}
+          />
+        </Flex>
       </Skeleton>
       <Skeleton loading={isLoading}>
         <TextField.Root size="3" variant="soft">
