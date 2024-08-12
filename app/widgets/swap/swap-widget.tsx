@@ -7,7 +7,8 @@ import {
   IconButton,
   Text,
 } from '@radix-ui/themes';
-import { MenuIcon } from 'lucide-react';
+import { ArrowLeftRightIcon, MenuIcon } from 'lucide-react';
+import { AssetPicker } from './components/asset-picker/picker';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -26,13 +27,13 @@ export interface SwapWidgetProps {
 }
 
 export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
-  const { width = '250px', height = '400px' } = swapWidgetProps;
+  const { width = '30px', height = '400px' } = swapWidgetProps;
 
   return (
     <Box width={width} height={height}>
       <Card asChild>
-        <Grid columns={{ initial: '1' }} gap="3" width="auto" p="4">
-          <Flex height="64px" justify="between">
+        <Grid columns={{ initial: '1' }} gap="8" width="auto" p="4">
+          <Flex justify="between">
             <Text size="4" weight="bold" className="text-accent">
               Swappage
             </Text>
@@ -40,9 +41,14 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
               <MenuIcon />
             </IconButton>
           </Flex>
+          <Flex justify="between" height="120px" align="center" gap="4">
+            <AssetPicker side="from" />
+            <ArrowLeftRightIcon className="h-10 w-10 text-accent" />
+            <AssetPicker side="to" />
+          </Flex>
           <Flex justify="end">
             <Button size="3" className="w-full" variant="soft">
-              Execute
+              Swap now
             </Button>
           </Flex>
         </Grid>
