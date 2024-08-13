@@ -42,7 +42,7 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
       <Flex
         direction="column"
         className={twMerge(
-          'gap-4 rounded-lg border-[1px] border-accent p-4 shadow-sm outline-yellow-500',
+          'gap-4 rounded-xl border-[1px] border-accent p-4 shadow-sm outline-yellow-500',
           className,
         )}
       >
