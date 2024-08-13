@@ -1,7 +1,5 @@
-'use client';
 import { Flex, TextField, Text, Skeleton, IconButton } from '@radix-ui/themes';
 import { AssetName, AssetNameProps } from './asset-name';
-import { useEffect, useState } from 'react';
 import { ChevronDown } from 'lucide-react';
 import { AssetDialog } from '../asset-dialog';
 
@@ -19,19 +17,8 @@ const demoAssets: AssetNameProps[] = [
 ];
 
 export function AssetPicker({ side }: { side: 'from' | 'to' }) {
-  const [selectedAsset, setSelectedAsset] = useState<AssetNameProps>(
-    side === 'from' ? demoAssets[0] : demoAssets[1],
-  );
-
-  const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    setIsLoading(true);
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 500);
-  }, []);
-
+  const isLoading = false;
+  const selectedAsset = side === 'from' ? demoAssets[0] : demoAssets[1];
   return (
     <Flex direction="column" gap="2" className="w-full">
       <Skeleton loading={isLoading} maxWidth="100px">
