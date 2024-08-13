@@ -19,7 +19,7 @@ export function SwapButton({ connected }: { connected: boolean }) {
     hover: {
       y: [0, -7, 0],
       transition: {
-        duration: 0.4,
+        duration: 0.45,
         times: [0, 0.5, 1],
         ease: 'circInOut',
       },
@@ -97,7 +97,13 @@ export function SwapButton({ connected }: { connected: boolean }) {
         <motion.div
           variants={buttonVariants}
           initial="initial"
-          whileHover="hover"
+          whileTap={{
+            scale: 0.95,
+            transition: {
+              duration: 0.5,
+              ease: 'easeInOut',
+            },
+          }}
           onHoverStart={handleHoverStart}
           onHoverEnd={handleHoverEnd}
         >
