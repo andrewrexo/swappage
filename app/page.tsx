@@ -10,6 +10,7 @@ export default function Home() {
     assetMode: 'input',
     ratesMode: 'fixed',
     assetDiscovery: 'enabled',
+    className: '',
   };
 
   return (

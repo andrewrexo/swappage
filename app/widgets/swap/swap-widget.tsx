@@ -3,6 +3,7 @@ import { AssetPicker } from './components/asset-picker/picker';
 import { WidgetHeader } from './components/widget-header';
 import { SwapButton } from './components/swap-button';
 import { ParameterList } from './components/parameter-list';
+import { twMerge } from 'tailwind-merge';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -18,10 +19,11 @@ export interface SwapWidgetProps {
   assetMode: SwapMode;
   ratesMode: RatesMode;
   assetDiscovery: AssetDiscovery;
+  className: string;
 }
 
 export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
-  const { width, height } = swapWidgetProps;
+  const { width, height, className } = swapWidgetProps;
 
   // todo: determine where to store rates and pair. maybe consider using redux?
   const swapBaseParameters = {
@@ -32,10 +34,13 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
   };
 
   return (
-    <Box width={width} minHeight={height}>
+    <Box width={width} minHeight={height} className={twMerge(className, ``)}>
       <Flex
         direction="column"
-        className="gap-4 rounded-lg border-[1px] border-accent p-4 shadow-sm outline-yellow-500"
+        className={twMerge(
+          'gap-4 rounded-lg border-[1px] border-accent p-4 shadow-sm outline-yellow-500',
+          className,
+        )}
       >
         <Flex justify="between">
           <Text

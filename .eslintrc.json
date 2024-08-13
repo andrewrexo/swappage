@@ -1,46 +1,17 @@
 {
-	"parser": "@typescript-eslint/parser",
-	"parserOptions": {
-		"ecmaVersion": 2021,
-		"sourceType": "module",
-		"ecmaFeatures": {
-			"jsx": true
-		}
-	},
-	"env": {
-		"browser": true,
-		"es2021": true,
-		"node": true
-	},
-	"root": true,
 	"extends": [
 		"next",
 		"eslint:recommended",
 		"prettier",
-		"next/core-web-vitals",
-    "next/typescript"
+		"next/core-web-vitals"
 	],
 	"plugins": ["prettier"],
 	"rules": {
 		"prefer-const": "warn",
 		"no-var": "warn",
 		"no-unused-vars": "warn",
-		"@typescript-eslint/no-unused-vars": "off",
 		"object-shorthand": "warn",
 		"quote-props": ["warn", "as-needed"],
-		"@typescript-eslint/array-type": [
-			"warn",
-			{
-				"default": "array"
-			}
-		],
-		"@typescript-eslint/consistent-type-assertions": [
-			"warn",
-			{
-				"assertionStyle": "as",
-				"objectLiteralTypeAssertions": "never"
-			}
-		],
 		"react/jsx-fragments": ["warn", "syntax"],
 		"react/jsx-filename-extension": [
 			"warn",

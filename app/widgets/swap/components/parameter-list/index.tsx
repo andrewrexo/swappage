@@ -1,4 +1,4 @@
-import { Code, Flex, Separator, Text } from '@radix-ui/themes';
+import { Code, Flex, Text } from '@radix-ui/themes';
 
 interface ParameterListProps {
   rate: string;

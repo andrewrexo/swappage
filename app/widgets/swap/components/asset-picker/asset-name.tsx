@@ -7,8 +7,8 @@ export interface AssetNameProps {
   align?: 'left' | 'right';
 }
 
-export function AssetName({ align, ...assetNameProps }: AssetNameProps) {
-  const { assetName, assetSymbol = '???', assetNetwork } = assetNameProps;
+export function AssetName({ ...assetNameProps }: AssetNameProps) {
+  const { assetName } = assetNameProps;
 
   return (
     <Flex align="center" gap="4" className="pointer-events-none">
