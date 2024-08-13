@@ -1,42 +1,52 @@
 'use client';
 
 import { Button } from '@radix-ui/themes';
-import { AnimatePresence, motion } from 'framer-motion';
-import { Loader2Icon, LucideArrowUpRight, LucideLink } from 'lucide-react';
+import { AnimatePresence, AnimationProps, motion } from 'framer-motion';
+import { Loader2Icon, LucideLink } from 'lucide-react';
 import { useState } from 'react';
+import { ArrowTopRightIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons';
 
 export function SwapButton({ connected }: { connected: boolean }) {
   const [isResponding, setIsResponding] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
 
-  const buttonVariants = {
-    initial: { scale: 1 },
-    hover: { scale: 1.025 },
-  };
-
-  const textVariants = {
+  const textVariants: AnimationProps['variants'] = {
     initial: { y: 0 },
     hover: {
-      y: [0, -7, 0],
+      y: [0, -3, 0],
       transition: {
-        duration: 0.45,
-        times: [0, 0.5, 1],
-        ease: 'circInOut',
+        duration: 0.75,
+        delay: 0.3,
+        ease: 'anticipate',
       },
     },
   };
 
   const iconVariants = {
-    initial: { y: 0, rotate: 0 },
+    initial: {
+      y: 0,
+      opacity: 1,
+    },
     hover: {
-      y: [0, -10, 0],
-      rotate: [0, -45, -45],
+      y: [0, -2, 0],
+      scale: [1, 1.025, 1],
       transition: {
-        duration: 0.5,
-        times: [0, 0.5, 1],
-        ease: 'anticipate',
+        opacity: [1, 1, 1],
+        duration: 1.5,
+        repeat: 2,
+        ease: 'circInOut',
       },
     },
+  };
+
+  const iconTransformVariants = {
+    arrowTopRight: {
+      rotate: 0,
+      scale: 1,
+      opacity: 1,
+      transition: { duration: 0.3, delay: 0.4 },
+    },
+    paperPlane: { scale: 1.1, opacity: 0 },
   };
 
   const handleHoverStart = () => {
@@ -60,9 +70,25 @@ export function SwapButton({ connected }: { connected: boolean }) {
           <motion.div
             variants={iconVariants}
             animate={isHovered ? 'hover' : 'initial'}
-            className="ml-auto"
+            className="relative ml-auto h-6 w-6"
           >
-            <LucideArrowUpRight className="h-6 w-6" />
+            <motion.div
+              className="absolute inset-0"
+              initial="arrowTopRight"
+              animate={isHovered ? 'paperPlane' : 'arrowTopRight'}
+              variants={iconTransformVariants}
+              transition={{ duration: 0.3 }}
+            >
+              <DoubleArrowRightIcon className="h-6 w-6" />
+            </motion.div>
+            <motion.div
+              className="absolute inset-0"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: isHovered ? 1 : 0 }}
+              transition={{ duration: 0.3, delay: 0.2 }}
+            >
+              <ArrowTopRightIcon className="h-6 w-6" />
+            </motion.div>
           </motion.div>
         </>
       );
@@ -95,8 +121,9 @@ export function SwapButton({ connected }: { connected: boolean }) {
     <AnimatePresence>
       <Button size="4" className="overflow-hidden" variant="surface" asChild>
         <motion.div
-          variants={buttonVariants}
           initial="initial"
+          animate={isHovered ? 'hover' : 'initial'}
+          whileHover="hover"
           whileTap={{
             scale: 0.95,
             transition: {
