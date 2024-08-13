@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge';
 import { SwapWidget, SwapWidgetProps } from './widgets/swap/swap-widget';
 
 export default function Home() {
@@ -14,7 +15,12 @@ export default function Home() {
   };
 
   return (
-    <main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main
+      className={twMerge(
+        'flex min-h-screen flex-col items-center justify-between',
+        `p-8 sm:p-24`,
+      )}
+    >
       {/* todo: add root / home page */}
       <SwapWidget {...widgetOpts} />
     </main>

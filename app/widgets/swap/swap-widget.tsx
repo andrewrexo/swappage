@@ -34,7 +34,11 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
   };
 
   return (
-    <Box width={width} minHeight={height} className={twMerge(className, ``)}>
+    <Box
+      width={{ initial: '100%', sm: width }}
+      minHeight={height}
+      className={twMerge(className, ``)}
+    >
       <Flex
         direction="column"
         className={twMerge(
