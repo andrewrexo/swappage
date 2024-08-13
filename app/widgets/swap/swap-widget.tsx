@@ -1,9 +1,12 @@
+'use client';
 import { Box, Flex, Separator, Text } from '@radix-ui/themes';
 import { AssetPicker } from './components/asset-picker/picker';
 import { WidgetHeader } from './components/widget-header';
 import { SwapButton } from './components/swap-button';
 import { ParameterList } from './components/parameter-list';
 import { twMerge } from 'tailwind-merge';
+import { useAppSelector } from './lib/hooks';
+import StoreProvider from '@/app/StoreProvider';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -24,12 +27,12 @@ export interface SwapWidgetProps {
 
 export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
   const { width, height, className } = swapWidgetProps;
+  const { rate, fromAsset, toAsset, fromAmount, toAmount, pair } =
+    useAppSelector((state) => state.swap);
 
-  // todo: determine where to store rates and pair. maybe consider using redux?
   const swapBaseParameters = {
-    rate: '22.227161591',
-    pair: 'BTC_ETH',
-    status: 'online',
+    rate,
+    pair,
     provider: 'XOSwap',
   };
 

@@ -10,8 +10,7 @@ const SUPPORTED_NETWORKS = [
 export type SupportedNetwork = (typeof SUPPORTED_NETWORKS)[number];
 
 export interface ExodusAsset {
-  from: string;
-  to: string;
+  name: string;
   id: string;
   network: string;
   symbol: string;
@@ -59,5 +58,20 @@ const getAvailableAssets = async (networks: SupportedNetwork[]) => {
 
   return assets;
 };
+
+export const demoAssets: ExodusAsset[] = [
+  {
+    id: 'bitcoin',
+    symbol: 'BTC',
+    network: 'BTC',
+    name: 'Bitcoin',
+  },
+  {
+    id: 'ethereum',
+    symbol: 'ETH',
+    network: 'ETH',
+    name: 'Ethereum',
+  },
+];
 
 export default getAvailableAssets;

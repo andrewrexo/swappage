@@ -1,13 +1,9 @@
-'use server';
-
 import { Grid, Text, Box } from '@radix-ui/themes';
 import { TopMovers } from './top-movers';
-import getAvailableAssets, { ExodusAsset } from '../../lib/exodus/asset';
 import { AssetOption } from './asset-option';
+import { ExodusAsset } from '../../lib/exodus/asset';
 
-export default async function AssetList() {
-  const assets = await getAvailableAssets(['solana', 'basemainnet']);
-
+export function AssetList({ assets }: { assets: ExodusAsset[] }) {
   return assets.length > 0 ? (
     <Box>
       <TopMovers />
