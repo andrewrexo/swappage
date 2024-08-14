@@ -118,25 +118,23 @@ export function SwapButton({ connected }: { connected: boolean }) {
   };
 
   return (
-    <AnimatePresence>
-      <Button size="4" className="overflow-hidden" variant="surface" asChild>
-        <motion.div
-          initial="initial"
-          animate={isHovered ? 'hover' : 'initial'}
-          whileHover="hover"
-          whileTap={{
-            scale: 0.95,
-            transition: {
-              duration: 0.5,
-              ease: 'easeInOut',
-            },
-          }}
-          onHoverStart={handleHoverStart}
-          onHoverEnd={handleHoverEnd}
-        >
-          {renderButtonText()}
-        </motion.div>
-      </Button>
-    </AnimatePresence>
+    <Button size="4" className="overflow-hidden" variant="surface" asChild>
+      <motion.div
+        initial="initial"
+        animate={isHovered ? 'hover' : 'initial'}
+        whileHover="hover"
+        whileTap={{
+          scale: 0.95,
+          transition: {
+            duration: 0.5,
+            ease: 'easeInOut',
+          },
+        }}
+        onHoverStart={handleHoverStart}
+        onHoverEnd={handleHoverEnd}
+      >
+        {renderButtonText()}
+      </motion.div>
+    </Button>
   );
 }
