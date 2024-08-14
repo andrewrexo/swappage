@@ -3,7 +3,13 @@ import { ExodusAsset } from '../../lib/exodus/asset';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { setFromAsset, setToAsset } from '../../features/swap/slice';
 
-export function AssetOption({ asset }: { asset: ExodusAsset }) {
+export function AssetOption({
+  asset,
+  setOpen,
+}: {
+  asset: ExodusAsset;
+  setOpen: (open: boolean) => void;
+}) {
   const dispatch = useAppDispatch();
   const { activeDirection } = useAppSelector((state) => state.swap);
 
@@ -13,6 +19,8 @@ export function AssetOption({ asset }: { asset: ExodusAsset }) {
     } else {
       dispatch(setToAsset(asset));
     }
+
+    setOpen(false);
   };
 
   return (

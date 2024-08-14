@@ -3,7 +3,13 @@ import { TopMovers } from './top-movers';
 import { AssetOption } from './asset-option';
 import { ExodusAsset } from '../../lib/exodus/asset';
 
-export function AssetList({ assets }: { assets: ExodusAsset[] }) {
+export function AssetList({
+  assets,
+  setOpen,
+}: {
+  assets: ExodusAsset[];
+  setOpen: (open: boolean) => void;
+}) {
   return assets.length > 0 ? (
     <Box>
       <TopMovers />
@@ -18,8 +24,8 @@ export function AssetList({ assets }: { assets: ExodusAsset[] }) {
         maxHeight="200px"
         justify="between"
       >
-        {assets.slice(0, 10).map((asset: ExodusAsset, index: number) => (
-          <AssetOption key={asset.id + index} asset={asset} />
+        {assets.map((asset: ExodusAsset, index: number) => (
+          <AssetOption key={asset.id + index} asset={asset} setOpen={setOpen} />
         ))}
       </Grid>
     </Box>
