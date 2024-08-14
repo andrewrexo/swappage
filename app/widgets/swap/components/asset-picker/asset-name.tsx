@@ -8,12 +8,12 @@ export interface AssetNameProps {
 }
 
 export function AssetName({ ...assetNameProps }: AssetNameProps) {
-  const { assetName } = assetNameProps;
+  const { assetNetwork } = assetNameProps;
 
   return (
     <Flex align="center" gap="4" className="pointer-events-none">
       <Badge size="1" variant="soft">
-        {assetName.toLocaleLowerCase()}
+        {assetNetwork.toLocaleLowerCase()}
       </Badge>
     </Flex>
   );

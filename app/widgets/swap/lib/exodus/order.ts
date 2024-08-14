@@ -31,12 +31,10 @@ export const createOrder = async ({ ...orderParams }: XOSwapOrderRequest) => {
     throw new Error('Invalid slippage: must be between 0 and 100');
   }
 
-  const orderRequest = authenticatedExodusRequest(
-    'v3/orders',
-    'POST',
-    order,
+  const orderRequest = authenticatedExodusRequest('v3/orders', 'POST', {
+    body: { order },
     ip,
-  );
+  });
 
   const response = await fetch(orderRequest);
 
