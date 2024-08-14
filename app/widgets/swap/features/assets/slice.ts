@@ -1,7 +1,8 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { ExodusAsset, SupportedNetwork } from '../../lib/exodus/asset';
-import { authenticationHeaders, exodusApiUrl } from '../../lib/exodus/config';
-import { authenticatedExodusRequest } from '../../lib/exodus/fetch';
+import getAvailableAssets, {
+  ExodusAsset,
+  SupportedNetwork,
+} from '../../lib/exodus/asset';
 
 interface AssetState {
   assets: ExodusAsset[];
@@ -20,39 +21,15 @@ export const fetchAssets = createAsyncThunk<
   SupportedNetwork[],
   { rejectValue: string }
 >('assets/fetchAssets', async (networks, { rejectWithValue }) => {
-  const SUPPORTED_NETWORKS = ['solana', 'ethereum', 'arbitrum', 'basemainnet'];
-
-  const validatedNetworks = networks.filter((network) =>
-    SUPPORTED_NETWORKS.includes(network),
-  );
-
-  if (validatedNetworks.length === 0) {
+  if (networks.length === 0) {
     return rejectWithValue('No valid networks provided');
   }
 
-  if (validatedNetworks.length !== networks.length) {
-    console.warn(
-      'Some provided networks were invalid and have been filtered out',
-    );
-  }
-
   try {
-    const request = await authenticatedExodusRequest(
-      `v3/assets?networks=${validatedNetworks.join(',')}`,
-      'GET',
-    );
-
-    const response = await fetch(request);
-    if (!response.ok) {
-      throw new Error(
-        `Request to Exodus Exchange rates API failed: ${response.status}`,
-      );
-    }
-
-    const assets = await response.json();
+    const assets = await getAvailableAssets(networks);
 
     if (!Array.isArray(assets)) {
-      throw new Error('Invalid response from Exodus Exchange rates API');
+      throw new Error('Received an invalid list of assets');
     }
 
     return assets;
