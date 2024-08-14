@@ -26,9 +26,9 @@ export default function RootLayout({
           grayColor="mauve"
           radius="large"
           scaling="95%"
+          appearance="dark"
         >
           <StoreProvider>{children}</StoreProvider>
-          <ThemePanel />
         </Theme>
       </body>
     </html>
