@@ -6,7 +6,7 @@ import { SwapButton } from './components/swap-button';
 import { ParameterList } from './components/parameter-list';
 import { twMerge } from 'tailwind-merge';
 import { useAppSelector } from './lib/hooks';
-import StoreProvider from '@/app/StoreProvider';
+import { AnimatePresence, motion } from 'framer-motion';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -25,6 +25,45 @@ export interface SwapWidgetProps {
   className: string;
 }
 
+const swapWidgetVariants = {
+  animate: {
+    height: 'auto',
+    opacity: 1,
+    scale: 1,
+    transition: {
+      height: {
+        duration: 0.5,
+        ease: 'easeInOut',
+      },
+      opacity: {
+        duration: 0.3,
+        delay: 0.2,
+      },
+      scale: {
+        duration: 0.3,
+        delay: 0.2,
+      },
+    },
+  },
+  exit: {
+    height: 0,
+    opacity: 0,
+    scale: 0.8,
+    transition: {
+      height: {
+        duration: 0.5,
+        ease: 'easeInOut',
+      },
+      opacity: {
+        duration: 0.3,
+      },
+      scale: {
+        duration: 0.3,
+      },
+    },
+  },
+};
+
 export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
   const { width, height, className } = swapWidgetProps;
   const { rate, fromAsset, toAsset, fromAmount, toAmount, pair } =
@@ -37,42 +76,55 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
   };
 
   return (
-    <Box
-      width={{ initial: '100%', sm: width }}
-      minHeight={height}
-      className={twMerge(className, ``)}
-    >
-      <Flex
-        direction="column"
-        className={twMerge(
-          'gap-4 rounded-xl border-[1px] border-accent p-4 shadow-sm outline-yellow-500',
-          className,
-        )}
+    <AnimatePresence>
+      <Box
+        width={{ initial: '100%', sm: width }}
+        height={{ initial: '100%', sm: height }}
+        className={twMerge(className, ``)}
       >
-        <Flex justify="between">
-          <Text
-            size="5"
-            weight="bold"
-            className="user-select-none pointer-events-none text-accent"
-          >
-            Swappage
-          </Text>
-          <WidgetHeader />
-        </Flex>
-        <Flex direction="column" align="center" gap="3">
-          <AssetPicker side="from" />
-          <AssetPicker side="to" />
-        </Flex>
-        <ParameterList {...swapBaseParameters} />
-        <Separator size="4" className="my-1" />
-        <Flex
-          justify="end"
-          direction="column"
-          className="transition-all duration-200"
+        <motion.div
+          initial={{
+            height: 0,
+            opacity: 0,
+            scale: 0.8,
+          }}
+          variants={swapWidgetVariants}
+          animate="animate"
+          exit="exit"
         >
-          <SwapButton connected={true} />
-        </Flex>
-      </Flex>
-    </Box>
+          <Flex
+            direction="column"
+            className={twMerge(
+              'gap-4 rounded-xl border-[1px] border-accent p-4 shadow-sm outline-yellow-500',
+              className,
+            )}
+          >
+            <Flex justify="between">
+              <Text
+                size="5"
+                weight="bold"
+                className="user-select-none pointer-events-none text-accent"
+              >
+                Swappage
+              </Text>
+              <WidgetHeader />
+            </Flex>
+            <Flex direction="column" align="center" gap="3">
+              <AssetPicker side="from" />
+              <AssetPicker side="to" />
+            </Flex>
+            <ParameterList {...swapBaseParameters} />
+            <Separator size="4" className="my-1" />
+            <Flex
+              justify="end"
+              direction="column"
+              className="transition-all duration-200"
+            >
+              <SwapButton connected={true} />
+            </Flex>
+          </Flex>
+        </motion.div>
+      </Box>
+    </AnimatePresence>
   );
 }
