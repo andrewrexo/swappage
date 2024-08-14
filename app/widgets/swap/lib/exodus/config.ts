@@ -5,6 +5,6 @@ export const authenticationHeaders = {
 };
 
 export const exodusApiUrl = {
-  staging: 'https://exchange-s.exodus.io/v3/',
-  production: 'https://exchange.exodus.io/v3/',
+  staging: 'https://exchange-s.exodus.io',
+  production: 'https://exchange.exodus.io',
 } as const;
