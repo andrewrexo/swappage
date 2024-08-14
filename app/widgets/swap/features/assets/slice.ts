@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { ExodusAsset, SupportedNetwork } from '../../lib/exodus/asset';
 import { authenticationHeaders, exodusApiUrl } from '../../lib/exodus/config';
+import { authenticatedExodusRequest } from '../../lib/exodus/fetch';
 
 interface AssetState {
   assets: ExodusAsset[];
@@ -36,15 +37,12 @@ export const fetchAssets = createAsyncThunk<
   }
 
   try {
-    const response = await fetch(
-      `${exodusApiUrl.staging}assets?networks=${validatedNetworks.join(',')}`,
-      {
-        headers: {
-          ...authenticationHeaders,
-        },
-      },
+    const request = await authenticatedExodusRequest(
+      `v3/assets?networks=${validatedNetworks.join(',')}`,
+      'GET',
     );
 
+    const response = await fetch(request);
     if (!response.ok) {
       throw new Error(
         `Request to Exodus Exchange rates API failed: ${response.status}`,
