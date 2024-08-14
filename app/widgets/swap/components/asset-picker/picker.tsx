@@ -1,19 +1,42 @@
-import { Flex, TextField, Text, Skeleton, IconButton } from '@radix-ui/themes';
-import { AssetName, AssetNameProps } from './asset-name';
-import { ChevronDown } from 'lucide-react';
-import { AssetDialog } from '../asset-dialog';
-import { setActiveDirection } from '../../features/swap/slice';
+import { Flex, Text, Skeleton } from '@radix-ui/themes';
+import { AssetName } from './asset-name';
+import {
+  setActiveDirection,
+  setFromAmount,
+  setToAmount,
+} from '../../features/swap/slice';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
+import { ChangeEvent, useEffect } from 'react';
+import { InputAmount } from './input-amount';
 
 export function AssetPicker({ side }: { side: 'from' | 'to' }) {
   const dispatch = useAppDispatch();
   const onDialogOpen = () => dispatch(setActiveDirection(side));
-  const { status, assets } = useAppSelector((state) => state.assets);
-  const { fromAsset, toAsset } = useAppSelector((state) => state.swap);
+
+  const { currentRate } = useAppSelector((state) => state.rates);
+  const { status } = useAppSelector((state) => state.assets);
+  const { fromAsset, toAsset, fromAmount } = useAppSelector(
+    (state) => state.swap,
+  );
 
   const selectedAsset = side === 'from' ? fromAsset : toAsset;
   const isLoading =
     status == 'loading' && selectedAsset === null ? true : false;
+
+  useEffect(() => {
+    if (side === 'to' && currentRate) {
+      const calculatedValue = parseFloat(fromAmount) * currentRate.amount.value;
+      dispatch(setToAmount(calculatedValue.toString()));
+    }
+  }, [currentRate, fromAmount, side, dispatch]);
+
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (side === 'from') {
+      dispatch(setFromAmount(e.target.value));
+    } else {
+      dispatch(setToAmount(e.target.value));
+    }
+  };
 
   return (
     <Flex direction="column" gap="2" className="w-full">
@@ -32,20 +55,12 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
         </Flex>
       </Skeleton>
       <Skeleton loading={isLoading}>
-        <TextField.Root size="3" className="cursor-pointer">
-          <TextField.Slot>
-            <Text size="3" weight="medium" className="text-accent">
-              {selectedAsset.symbol}
-            </Text>
-          </TextField.Slot>
-          <TextField.Slot className="">
-            <AssetDialog side={side}>
-              <IconButton size="1" variant="soft" className="cursor-pointer">
-                <ChevronDown strokeWidth={1.5} onClick={onDialogOpen} />
-              </IconButton>
-            </AssetDialog>
-          </TextField.Slot>
-        </TextField.Root>
+        <InputAmount
+          asset={selectedAsset}
+          side={side}
+          onDialogOpen={onDialogOpen}
+          onInputChange={handleInputChange}
+        />
       </Skeleton>
       <Skeleton loading={isLoading}>
         <Text size="1">$0.00</Text>

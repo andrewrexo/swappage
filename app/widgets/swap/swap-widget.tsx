@@ -5,8 +5,10 @@ import { WidgetHeader } from './components/widget-header';
 import { SwapButton } from './components/swap-button';
 import { ParameterList } from './components/parameter-list';
 import { twMerge } from 'tailwind-merge';
-import { useAppSelector } from './lib/hooks';
+import { useAppDispatch, useAppSelector } from './lib/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
+import { useEffect } from 'react';
+import { fetchPairRate } from './features/rates/slice';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -65,15 +67,23 @@ const swapWidgetVariants = {
 };
 
 export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
+  const dispatch = useAppDispatch();
   const { width, height, className } = swapWidgetProps;
-  const { rate, fromAsset, toAsset, fromAmount, toAmount, pair } =
-    useAppSelector((state) => state.swap);
+  const { rate, fromAsset, toAsset, pair } = useAppSelector(
+    (state) => state.swap,
+  );
 
   const swapBaseParameters = {
     rate,
     pair,
     provider: 'XOSwap',
   };
+
+  useEffect(() => {
+    if (pair) {
+      dispatch(fetchPairRate(pair));
+    }
+  }, [dispatch, pair]);
 
   return (
     <AnimatePresence>
