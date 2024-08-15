@@ -1,5 +1,5 @@
 'use client';
-import { Box, Flex, Separator, Text } from '@radix-ui/themes';
+import { Box, Flex, Separator, Spinner, Text } from '@radix-ui/themes';
 import { AssetPicker } from './components/asset-picker/picker';
 import { WidgetHeader } from './components/widget-header';
 import { SwapButton } from './components/swap-button';
@@ -69,6 +69,7 @@ const swapWidgetVariants = {
 export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
   const dispatch = useAppDispatch();
   const { width, height, className } = swapWidgetProps;
+  const { currentRate, status } = useAppSelector((state) => state.rates);
   const { rate, fromAsset, toAsset, pair } = useAppSelector(
     (state) => state.swap,
   );
@@ -83,6 +84,13 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
     if (pair) {
       dispatch(fetchPairRate(pair));
     }
+
+    const intervalId = setInterval(() => {
+      dispatch(fetchPairRate(pair));
+    }, 15000); // 15 seconds
+
+    // Clean up the interval when the component unmounts or when pair changes
+    return () => clearInterval(intervalId);
   }, [dispatch, pair]);
 
   return (
@@ -113,9 +121,9 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
               <Text
                 size="5"
                 weight="bold"
-                className="user-select-none pointer-events-none text-accent"
+                className="user-select-none pointer-events-none flex items-center gap-2 text-accent"
               >
-                Swappage
+                Swappage {status === 'loading' ? <Spinner /> : ''}
               </Text>
               <WidgetHeader />
             </Flex>
@@ -123,14 +131,42 @@ export function SwapWidget({ ...swapWidgetProps }: SwapWidgetProps) {
               <AssetPicker side="from" />
               <AssetPicker side="to" />
             </Flex>
-            <ParameterList {...swapBaseParameters} />
-            <Separator size="4" className="my-1" />
+            {currentRate && (
+              <ParameterList {...swapBaseParameters} rate={currentRate} />
+            )}
+            <Separator size="4" className="my-0" />
             <Flex
               justify="end"
               direction="column"
-              className="transition-all duration-200"
+              className="gap-2 text-center transition-all duration-200"
             >
               <SwapButton connected={true} />
+              {currentRate && (
+                <motion.div
+                  key={currentRate.expiry}
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ duration: 0.5 }}
+                  className="flex items-center justify-center"
+                >
+                  <Text size="1" color="gray">
+                    Rate valid until&nbsp;
+                    {new Date(currentRate.expiry).toLocaleString('en-US', {
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      second: '2-digit',
+                    })}
+                  </Text>
+                  <span
+                    className={twMerge(
+                      'ml-1 inline-block h-1 w-1 rounded-full',
+                      currentRate.expiry > new Date().getTime()
+                        ? 'bg-green-400'
+                        : 'bg-red-400',
+                    )}
+                  ></span>
+                </motion.div>
+              )}
             </Flex>
           </Flex>
         </motion.div>
