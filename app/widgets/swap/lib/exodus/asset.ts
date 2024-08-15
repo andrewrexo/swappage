@@ -1,23 +1,33 @@
-import { authenticationHeaders, exodusApiUrl } from './config';
+import { authenticatedExodusRequest } from './fetch';
 
-const SUPPORTED_NETWORKS = [
+export const SUPPORTED_NETWORKS = [
+  'bitcoin',
+  'monero',
   'solana',
   'ethereum',
-  'arbitrum',
+  'arbitrumone',
   'basemainnet',
 ] as const;
 
 export type SupportedNetwork = (typeof SUPPORTED_NETWORKS)[number];
 
 export interface ExodusAsset {
-  from: string;
-  to: string;
+  name: string;
   id: string;
   network: string;
   symbol: string;
 }
 
-const getAvailableAssets = async (networks: SupportedNetwork[]) => {
+export interface AssetQueryParams {
+  limit?: string | null;
+  page?: string | null;
+  query?: string | null;
+}
+
+const getAvailableAssets = async (
+  networks: SupportedNetwork[],
+  { limit = '100', page = '1', query }: AssetQueryParams = {},
+) => {
   const validatedNetworks = networks.filter(
     (network): network is SupportedNetwork =>
       SUPPORTED_NETWORKS.includes(network as SupportedNetwork),
@@ -29,25 +39,23 @@ const getAvailableAssets = async (networks: SupportedNetwork[]) => {
 
   if (validatedNetworks.length !== networks.length) {
     // handle this case and do more than just log a warning to console
-
     console.warn(
       'Some provided networks were invalid and have been filtered out',
     );
   }
 
-  // TODO: use next env variables to determine if staging or production
-  const response = await fetch(
-    `${exodusApiUrl.staging}assets?networks=${validatedNetworks.join(',')}`,
-    {
-      headers: {
-        ...authenticationHeaders,
-      },
-    },
-  );
+  let endpoint = `v3/assets?networks=${validatedNetworks.join(',')}&limit=${limit}&page=${page}`;
+
+  if (query) {
+    endpoint += `&query=${query}`;
+  }
+
+  const request = await authenticatedExodusRequest(endpoint, 'GET');
+  const response = await fetch(request);
 
   if (!response.ok) {
     throw new Error(
-      `Request to Exodus Exchange rates API failed: ${response.status}`,
+      `Request to Exodus Exchange API failed: ${response.status}`,
     );
   }
 
@@ -59,5 +67,20 @@ const getAvailableAssets = async (networks: SupportedNetwork[]) => {
 
   return assets;
 };
+
+export const demoAssets: ExodusAsset[] = [
+  {
+    id: 'BTC',
+    symbol: 'BTC',
+    network: 'bitcoin',
+    name: 'Bitcoin',
+  },
+  {
+    id: 'ETH',
+    symbol: 'ETH',
+    network: 'ethereum',
+    name: 'Ethereum',
+  },
+];
 
 export default getAvailableAssets;

@@ -4,6 +4,7 @@ import '@radix-ui/themes/styles.css';
 import './globals.css';
 import { Theme, ThemePanel } from '@radix-ui/themes';
 import type { ReactNode } from 'react';
+import StoreProvider from './StoreProvider';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -25,9 +26,9 @@ export default function RootLayout({
           grayColor="mauve"
           radius="large"
           scaling="95%"
+          appearance="dark"
         >
-          {children}
-          <ThemePanel />
+          <StoreProvider>{children}</StoreProvider>
         </Theme>
       </body>
     </html>

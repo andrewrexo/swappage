@@ -1,13 +1,15 @@
-'use server';
-
 import { Grid, Text, Box } from '@radix-ui/themes';
 import { TopMovers } from './top-movers';
-import getAvailableAssets, { ExodusAsset } from '../../lib/exodus/asset';
 import { AssetOption } from './asset-option';
+import { ExodusAsset } from '../../lib/exodus/asset';
 
-export default async function AssetList() {
-  const assets = await getAvailableAssets(['solana', 'basemainnet']);
-
+export function AssetList({
+  assets,
+  setOpen,
+}: {
+  assets: ExodusAsset[];
+  setOpen: (open: boolean) => void;
+}) {
   return assets.length > 0 ? (
     <Box>
       <TopMovers />
@@ -22,8 +24,8 @@ export default async function AssetList() {
         maxHeight="200px"
         justify="between"
       >
-        {assets.slice(0, 10).map((asset: ExodusAsset, index: number) => (
-          <AssetOption key={asset.id + index} asset={asset} />
+        {assets.map((asset: ExodusAsset, index: number) => (
+          <AssetOption key={asset.id + index} asset={asset} setOpen={setOpen} />
         ))}
       </Grid>
     </Box>
