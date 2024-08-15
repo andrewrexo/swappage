@@ -16,7 +16,7 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
 
   const { currentRate } = useAppSelector((state) => state.rates);
   const { status } = useAppSelector((state) => state.assets);
-  const { fromAsset, toAsset, fromAmount } = useAppSelector(
+  const { fromAsset, toAsset, fromAmount, toAmount } = useAppSelector(
     (state) => state.swap,
   );
 
@@ -41,11 +41,6 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
     <Flex direction="column" gap="2" className="w-full">
       <Skeleton loading={status === 'loading'} maxWidth="100px">
         <Flex align="center" gap="2" justify="between">
-          {side === 'from' ? (
-            <Text size="1">$0.00</Text>
-          ) : (
-            <Text size="1">$0.00</Text>
-          )}
           <AssetName
             assetName={selectedAsset.id}
             assetSymbol={selectedAsset.symbol}
@@ -62,9 +57,21 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
         />
       </Skeleton>
       <Skeleton loading={status === 'loading'}>
-        <Text size="1" color="gray">
-          Balance: 0.0000
-        </Text>
+        <Flex justify="between">
+          <Text size="1" color="gray">
+            Balance: 0.0000
+          </Text>
+          {currentRate && (
+            <Text size="1" color="gray" className="text-right">
+              ${' '}
+              {side === 'from'
+                ? (currentRate.fromAssetFiat * parseFloat(fromAmount)).toFixed(
+                    6,
+                  )
+                : (currentRate.toAssetFiat * parseFloat(toAmount)).toFixed(6)}
+            </Text>
+          )}
+        </Flex>
       </Skeleton>
     </Flex>
   );

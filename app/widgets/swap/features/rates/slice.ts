@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import getRateByPairId, { PairRate } from '../../lib/exodus/rate';
+import { swapApiUrl } from '@/lib/util';
 
 interface RateState {
   rates: PairRate[];
@@ -21,13 +22,54 @@ export const fetchPairRate = createAsyncThunk(
   'rates/fetchPairRate',
   async (pairId: string, { rejectWithValue }) => {
     try {
-      const rate = await getRateByPairId(pairId, '');
-      return rate;
+      const [fromAsset, toAsset] = pairId.split('_');
+      const [rate, prices] = await Promise.all([
+        getRateByPairId(pairId, ''),
+        fetchCMCPrice(pairId),
+      ]);
+
+      const fromAssetAmount = prices.find(
+        (price: any) => price.symbol === fromAsset,
+      );
+
+      const toAssetAmount = prices.find(
+        (price: any) => price.symbol === toAsset,
+      );
+
+      if (!fromAssetAmount || !toAssetAmount) {
+        // todo: handle this better
+        console.warn('Failed to fetch pricing data for pair.');
+      }
+
+      return {
+        ...rate,
+        fromAssetFiat: fromAssetAmount ? fromAssetAmount.price : 0,
+        toAssetFiat: toAssetAmount ? toAssetAmount.price : 0,
+      };
     } catch (error) {
       return rejectWithValue('Failed to fetch pair rate');
     }
   },
 );
+
+const fetchCMCPrice = async (pairId: string) => {
+  const [fromAsset, toAsset] = pairId.split('_');
+  const response = await fetch(
+    `${swapApiUrl}/assets/price?slugs=${fromAsset},${toAsset}`,
+  );
+
+  if (!response.ok) {
+    throw new Error('Failed to fetch pricing data');
+  }
+
+  const data = await response.json();
+
+  if (!data || !data.length) {
+    throw new Error('No pricing data found in response');
+  }
+
+  return data;
+};
 
 // Update the slice to handle the new async thunk
 const rateSlice = createSlice({

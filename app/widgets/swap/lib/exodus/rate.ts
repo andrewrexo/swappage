@@ -14,6 +14,8 @@ export interface PairRate {
   pairId: string;
   minerFee: AssetValue;
   features: string[];
+  fromAssetFiat: number;
+  toAssetFiat: number;
 }
 
 const getRateByPairId = async (pairId: string, ip: string) => {
