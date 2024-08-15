@@ -58,11 +58,11 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
       </Skeleton>
       <Skeleton loading={status === 'loading'}>
         <Flex justify="between">
-          <Text size="1" color="gray">
+          <Text size="2" color="gray">
             Balance: 0.0000
           </Text>
           {currentRate && (
-            <Text size="1" color="gray" className="text-right">
+            <Text size="2" color="gray" className="text-right">
               ${' '}
               {side === 'from'
                 ? (currentRate.fromAssetFiat * parseFloat(fromAmount)).toFixed(

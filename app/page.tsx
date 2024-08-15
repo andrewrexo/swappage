@@ -1,5 +1,5 @@
-import { twMerge } from 'tailwind-merge';
 import { SwapWidget, SwapWidgetProps } from './widgets/swap/swap-widget';
+import SwapWidgetHome from './widgets/swap/features/swap/widget';
 
 export default function Home() {
   const widgetOpts: SwapWidgetProps = {
@@ -15,14 +15,8 @@ export default function Home() {
   };
 
   return (
-    <main
-      className={twMerge(
-        'flex min-h-screen flex-col items-center justify-between',
-        `p-8 sm:p-24`,
-      )}
-    >
-      {/* todo: add root / home page */}
-      <SwapWidget {...widgetOpts} />
-    </main>
+    <SwapWidget {...widgetOpts}>
+      <SwapWidgetHome />
+    </SwapWidget>
   );
 }
