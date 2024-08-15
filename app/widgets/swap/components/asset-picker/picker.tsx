@@ -8,6 +8,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { ChangeEvent, useEffect } from 'react';
 import { InputAmount } from './input-amount';
+import { CurrencyIcon } from 'lucide-react';
 
 export function AssetPicker({ side }: { side: 'from' | 'to' }) {
   const dispatch = useAppDispatch();
@@ -20,8 +21,6 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
   );
 
   const selectedAsset = side === 'from' ? fromAsset : toAsset;
-  const isLoading =
-    status == 'loading' && selectedAsset === null ? true : false;
 
   useEffect(() => {
     if (side === 'to' && currentRate) {
@@ -40,12 +39,12 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
 
   return (
     <Flex direction="column" gap="2" className="w-full">
-      <Skeleton loading={isLoading} maxWidth="100px">
+      <Skeleton loading={status === 'loading'} maxWidth="100px">
         <Flex align="center" gap="2" justify="between">
           {side === 'from' ? (
-            <Text size="1">bc1q...2761</Text>
+            <Text size="1">$0.00</Text>
           ) : (
-            <Text size="1">0x07...AmX0</Text>
+            <Text size="1">$0.00</Text>
           )}
           <AssetName
             assetName={selectedAsset.id}
@@ -54,7 +53,7 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
           />
         </Flex>
       </Skeleton>
-      <Skeleton loading={isLoading}>
+      <Skeleton loading={status === 'loading'}>
         <InputAmount
           asset={selectedAsset}
           side={side}
@@ -62,8 +61,10 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
           onInputChange={handleInputChange}
         />
       </Skeleton>
-      <Skeleton loading={isLoading}>
-        <Text size="1">$0.00</Text>
+      <Skeleton loading={status === 'loading'}>
+        <Text size="1" color="gray">
+          Balance: 0.0000
+        </Text>
       </Skeleton>
     </Flex>
   );
