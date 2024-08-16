@@ -39,7 +39,6 @@ export default function RootLayout({
               {children}
             </main>
           </StoreProvider>
-          <ThemePanel />
         </Theme>
       </body>
     </html>
