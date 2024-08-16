@@ -1,5 +1,16 @@
 'use client';
-import { Box, Code, Flex, Grid, Link, Separator, Text } from '@radix-ui/themes';
+import {
+  Badge,
+  Box,
+  Button,
+  Card,
+  Code,
+  Flex,
+  Grid,
+  Link,
+  Separator,
+  Text,
+} from '@radix-ui/themes';
 import { GreenDot } from '../../components/green-dot';
 import { QRCodeSVG } from 'qrcode.react';
 import { motion } from 'framer-motion';
@@ -23,97 +34,119 @@ export function SwapMonitorWidget() {
           <Code>1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP</Code>
         </Text>
       </Flex>
-      <Flex justify="between" align="center" height="100%">
-        <Flex direction="column">
-          <QRCodeSVG
-            className="mx-auto"
-            value="bitcoin:1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP"
-          />
-          <Text as="div" size="2" color="gray" mt="1" mb="2" align="center">
-            Scan QR code to pay
+      <Flex gap="4" justify="between" className="w-full">
+        <Box>
+          <Text as="div" weight="bold" mb="1">
+            Order number
           </Text>
-        </Flex>
-        <Separator
-          size="3"
-          orientation="vertical"
-          className="w-2"
-          style={{
-            height: '140px',
-          }}
-        />
-        <Flex direction="column">
-          <QRCodeSVG
-            className="mx-auto"
-            value="bitcoin:1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP"
-          />
-          <Text as="div" size="2" color="gray" mt="1" mb="2" align="center">
-            Scan QR code to pay
-          </Text>
-        </Flex>
-      </Flex>
-      <Grid columns="2" width="auto">
-        <Flex gap="4" direction="column" pr="0">
-          <Box>
-            <Text as="div" weight="bold" size="2" mb="1">
-              Order number
-            </Text>
-            <Link
-              tabIndex={2}
-              underline="hover"
-              highContrast
-              size="3"
-              href="/order/or9knb1bh38"
-              onClick={(e) => e.preventDefault()}
-            >
-              #94356
-            </Link>
-          </Box>
-          <Box>
-            <Text as="div" weight="bold" size="2" mb="1">
-              Created
-            </Text>
-            <Text as="div" size="3" mb="1">
-              July 1, 2023, 10:28 AM
-            </Text>
-          </Box>
-        </Flex>
-
-        <Box position="relative" pt="1">
-          <Box position="absolute" top="0" bottom="0" width="1px" ml="-0.5px">
-            <Separator
-              size="4"
-              orientation="vertical"
-              mt="2"
-              style={{
-                background:
-                  'linear-gradient(to bottom, var(--teal-9) 90%, transparent)',
-              }}
-            />
-          </Box>
-          <Box pl="6">
-            <Flex direction="column" gap="4">
-              <Box>
-                <GreenDot />
-                <Text as="div" size="1" color="gray" mb="1">
-                  {new Date().toLocaleString()}
-                </Text>
-                <Text as="p" size="2">
-                  Package picked up from the warehouse in Phoenix, TX
-                </Text>
-              </Box>
-              <Box>
-                <GreenDot />
-                <Text as="div" size="1" color="gray" mb="1">
-                  {new Date(new Date().getTime() - 10005676).toLocaleString()}
-                </Text>
-                <Text as="p" size="2">
-                  Departed from Phoenix, TX
-                </Text>
-              </Box>
-            </Flex>
-          </Box>
+          <Link
+            tabIndex={2}
+            underline="hover"
+            highContrast
+            size="3"
+            href="/order/or9knb1bh38"
+            onClick={(e) => e.preventDefault()}
+          >
+            #94356
+          </Link>
         </Box>
+        <Box>
+          <Text as="div" weight="bold" mb="1">
+            Created
+          </Text>
+          <Text as="div" size="3">
+            July 1, 2023, 10:28 AM
+          </Text>
+        </Box>
+      </Flex>
+      <Grid columns="3" pt="4">
+        <Flex direction="column">
+          <QRCodeSVG
+            className="mx-auto"
+            value="bitcoin:1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP"
+          />
+          <Text as="div" size="2" color="gray" mt="2" mb="2" align="center">
+            Use your wallet to scan the QR code
+          </Text>
+        </Flex>
+        <Text
+          as="div"
+          size="2"
+          color="gray"
+          align="center"
+          className="flex h-[80%] items-center justify-center"
+        >
+          or
+        </Text>
+        <Flex direction="column" gap="2">
+          <Button variant="classic">Connect & Pay</Button>
+          <Text as="div" size="2" color="gray" align="center">
+            Connect your wallet to pay
+          </Text>
+          <Separator size="4" className="my-2" />
+          <Button variant="soft">Mark as paid</Button>
+          <Text as="div" size="2" color="gray" align="center">
+            Pay using QR code
+          </Text>
+        </Flex>
       </Grid>
+      <Flex direction="column" gap="4" align="center" mt="2">
+        <Card>
+          <Flex gap="2" align="center" mb="1" justify="between">
+            <Text as="div" size="2" weight="medium" className="text-accent">
+              Swap complete! 🚀
+            </Text>
+            <Text as="div" size="1" color="gray">
+              {new Date(
+                new Date().setHours(
+                  Math.floor(Math.random() * 24),
+                  Math.floor(Math.random() * 60),
+                  Math.floor(Math.random() * 60),
+                ),
+              ).toLocaleString()}
+            </Text>
+          </Flex>
+          <Text as="div" size="2">
+            You&apos;ve sent 0.025 BTC to the deposit address. The swap will
+            complete once the BTC is confirmed.
+          </Text>
+        </Card>
+        <Card>
+          <Flex gap="2" align="center" mb="1" justify="between">
+            <Text as="div" size="2" weight="medium" className="text-accent">
+              Deposit detected
+            </Text>
+            <Text as="div" size="1" color="gray">
+              {new Date(
+                new Date().setHours(
+                  Math.floor(Math.random() * 24),
+                  Math.floor(Math.random() * 60),
+                  Math.floor(Math.random() * 60),
+                ),
+              ).toLocaleString()}
+            </Text>
+          </Flex>
+          <Text as="div" size="2">
+            You&apos;ve sent 0.025 BTC to the deposit address. The swap will
+            complete once the BTC is confirmed.
+          </Text>
+        </Card>
+        <Card>
+          <Flex gap="2" align="center" mb="1" justify="between">
+            <Text as="div" size="2" weight="medium" className="text-accent">
+              Swap created
+            </Text>
+            <Text as="div" size="1" color="gray">
+              {new Date().toLocaleString()}
+            </Text>
+          </Flex>
+          <Text as="div" size="2">
+            Swap successfully created - the page will update once it&apos;s
+            complete. Please notify us when you&apos;ve sent 0.025 BTC to the
+            deposit address.
+          </Text>
+        </Card>
+      </Flex>
     </MotionFlex>
   );
 }

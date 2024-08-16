@@ -129,7 +129,10 @@ export function SwapButton({
   return (
     <Button
       size="4"
-      className={twMerge('overflow-hidden', fullWidth ? 'w-full' : 'w-auto')}
+      className={twMerge(
+        'cursor-pointer overflow-hidden',
+        fullWidth ? 'w-full' : 'w-auto',
+      )}
       variant="surface"
       asChild
       disabled={!connected}
