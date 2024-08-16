@@ -35,15 +35,14 @@ export function InputAmount({
       </TextField.Slot>
       <TextField.Slot className="">
         <AssetDialog side={side}>
-          {rateStatus === 'loading' ? (
-            <IconButton size="1" variant="soft" className="cursor-not-allowed">
-              <Spinner />
-            </IconButton>
-          ) : (
-            <IconButton size="1" variant="soft" className="cursor-pointer">
-              <ChevronDown strokeWidth={1.5} onClick={onDialogOpen} />
-            </IconButton>
-          )}
+          <IconButton
+            size="1"
+            variant="soft"
+            className="cursor-pointer"
+            loading={rateStatus === 'loading'}
+          >
+            <ChevronDown strokeWidth={1.5} onClick={onDialogOpen} />
+          </IconButton>
         </AssetDialog>
       </TextField.Slot>
     </TextField.Root>

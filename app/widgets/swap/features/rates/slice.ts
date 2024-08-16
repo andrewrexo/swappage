@@ -5,7 +5,7 @@ import { swapApiUrl } from '@/lib/util';
 interface RateState {
   rates: PairRate[];
   currentRate: PairRate | null;
-  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  status: string;
   error: string | null;
   lastFetched: number | null;
 }
