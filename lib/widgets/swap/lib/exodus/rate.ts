@@ -24,7 +24,7 @@ interface UserProperties {
   device: string;
 }
 
-const getRateByPairId = async (pairId: string, ip: string) => {
+export const getRateByPairId = async (pairId: string, ip: string) => {
   if (!pairId.includes('_')) {
     throw new Error(
       'Invalid pairId, pairId must be in the format of assetId_assetId',

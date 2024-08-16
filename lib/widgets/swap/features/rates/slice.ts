@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import getRateByPairId, { PairRate } from '../../lib/exodus/rate';
 import { swapApiUrl } from '@/lib/util';
+import { getRateByPairIdSwappage } from '../../lib/rates';
 
 interface RateState {
   rates: PairRate[];
@@ -24,7 +25,7 @@ export const fetchPairRate = createAsyncThunk(
     try {
       const [fromAsset, toAsset] = pairId.split('_');
       const [rate, prices] = await Promise.all([
-        getRateByPairId(pairId, ''),
+        getRateByPairIdSwappage(pairId, ''),
         fetchCMCPrice(pairId),
       ]);
 
