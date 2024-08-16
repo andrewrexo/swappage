@@ -118,7 +118,7 @@ export function SwapMonitorWidget() {
               or
             </Text>
             <Button variant="soft" size="3">
-              Sync wallet
+              Connect wallet
             </Button>
           </Flex>
         )}
