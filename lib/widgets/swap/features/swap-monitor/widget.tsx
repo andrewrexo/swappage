@@ -114,7 +114,7 @@ export function SwapMonitorWidget() {
             <Button variant="soft" size="3">
               Manual payment
             </Button>
-            <Text as="div" size="1" color="gray" align="center">
+            <Text as="div" size="2" color="gray" align="center">
               or
             </Text>
             <Button variant="soft" size="3">
