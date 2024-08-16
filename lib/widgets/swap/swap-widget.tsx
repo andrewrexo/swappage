@@ -64,7 +64,7 @@ const swapWidgetVariants = {
   },
 };
 
-const MotionCard = motion(Card);
+const MotionFlex = motion(Flex);
 
 export function SwapWidget({
   children,
@@ -77,7 +77,7 @@ export function SwapWidget({
     (state) => state.swap,
   );
 
-  const isSmall = useMediaQuery('(max-width: 480px)');
+  const isSmall = useMediaQuery('(max-width: 640px)');
 
   const swapBaseParameters = {
     rate,
@@ -100,14 +100,15 @@ export function SwapWidget({
 
   return (
     <AnimatePresence>
-      <MotionCard
+      <MotionFlex
+        justify="center"
         className={twMerge(
           className,
-          `border-[1px] border-accent`,
-          `w-[${width}] h-[${height}]`,
+          `h-full border-[1px] border-accent transition-transform duration-300`,
         )}
+        width={isSmall ? '100%' : width}
         initial={{
-          height: 'auto',
+          height: '100%',
           opacity: 0,
           scale: 0.9,
         }}
@@ -117,40 +118,12 @@ export function SwapWidget({
           padding: '1rem',
         }}
         variants={swapWidgetVariants}
-        animate={{
-          height: `auto`,
-          opacity: 1,
-          scale: 1,
-          ...(isSmall ? { width: '100%' } : {}),
-          transition: {
-            width: {
-              duration: 0.5,
-              ease: 'anticipate',
-              delay: 0.2,
-            },
-            height: {
-              duration: 0.5,
-              ease: 'anticipate',
-              delay: 2,
-            },
-            opacity: {
-              duration: 0.3,
-              delay: 0.2,
-            },
-            scale: {
-              duration: 0.3,
-              delay: 0.2,
-            },
-          },
-        }}
+        animate="animate"
         exit="exit"
       >
         <Flex
           direction="column"
-          className={twMerge(
-            'gap-4 rounded-xl shadow-sm outline-yellow-500',
-            className,
-          )}
+          className={twMerge('h-full w-full gap-4 rounded-xl', className)}
         >
           <Flex justify="between">
             <Text
@@ -164,7 +137,7 @@ export function SwapWidget({
           </Flex>
           {children}
         </Flex>
-      </MotionCard>
+      </MotionFlex>
     </AnimatePresence>
   );
 }

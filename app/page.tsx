@@ -3,7 +3,7 @@ import SwapWidgetHome from '../lib/widgets/swap/features/swap/widget';
 
 export default function Home() {
   const widgetOpts: SwapWidgetProps = {
-    width: '480px',
+    width: '440px',
     height: '420px',
     theme: 'light',
     backgroundColor: 'white',

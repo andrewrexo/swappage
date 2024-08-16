@@ -1,7 +1,7 @@
 import { SwapWidgetProps } from '@/lib/widgets/swap/swap-widget';
 
 const widgetOpts: SwapWidgetProps = {
-  width: '480px',
+  width: '440px',
   height: '420px',
   theme: 'light',
   backgroundColor: 'white',

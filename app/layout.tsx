@@ -33,7 +33,7 @@ export default function RootLayout({
             <main
               className={twMerge(
                 'flex min-h-screen flex-col items-center justify-between',
-                `p-8 sm:p-24`,
+                `p-8`,
               )}
             >
               {children}
