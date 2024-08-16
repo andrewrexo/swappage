@@ -108,8 +108,11 @@ export function SwapMonitorWidget() {
               value="bitcoin:1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP"
               size={148}
             />
-            <Text as="div" size="3" color="gray" my="2" mb="2" align="center">
-              Pay using <Link>QR code</Link>
+            <Text as="div" size="3" my="2" mb="2" align="center">
+              Pay using{' '}
+              <Link className="pointer-events-none cursor-pointer">
+                QR code
+              </Link>
             </Text>
             <Button variant="soft" size="3">
               Manual payment

@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import getRateByPairId, { PairRate } from '../../lib/exodus/rate';
-import { swapApiUrl } from '@/lib/util';
 import { getRateByPairIdSwappage } from '../../lib/rates';
+import { PairRate } from '../../lib/exodus/rate';
+import { swapApiUrl } from '@/lib/util';
 
 interface RateState {
   rates: PairRate[];

@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { Dialog, TextField, VisuallyHidden } from '@radix-ui/themes';
 import { SearchCheckIcon } from 'lucide-react';
-import type { ReactNode } from 'react';
+import type { ChangeEvent, ReactNode } from 'react';
 import { AssetList } from './asset-list';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
-import { fetchAssets } from '../../features/assets/slice';
+import { fetchAssets, setSearchAssets } from '../../features/assets/slice';
+import { debounce } from 'lodash';
+import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
 
 export function AssetDialog({
   children,
@@ -14,8 +16,12 @@ export function AssetDialog({
   side: 'from' | 'to';
 }) {
   const dispatch = useAppDispatch();
-  const { assets, status, error } = useAppSelector((state) => state.assets);
+  const { assets, searchAssets, status, error } = useAppSelector(
+    (state) => state.assets,
+  );
+
   const [open, setOpen] = useState(false);
+  const [search, setSearch] = useState('');
 
   useEffect(() => {
     if (!assets || assets.length === 0) {
@@ -32,25 +38,53 @@ export function AssetDialog({
     }
   }, [dispatch, status]);
 
+  const debouncedSearch = useCallback(
+    debounce((value: string) => {
+      const filteredAssets = assets.filter((asset) =>
+        asset.name.toLowerCase().includes(value.toLowerCase()),
+      );
+
+      dispatch(setSearchAssets(filteredAssets));
+    }, 300),
+    [dispatch],
+  );
+
+  const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearch(value);
+    debouncedSearch(value);
+  };
+
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.Trigger>{children}</Dialog.Trigger>
-      <Dialog.Content className="flex flex-col gap-1">
+      <Dialog.Content>
         <Dialog.Title className="text-accent">Available assets</Dialog.Title>
         <VisuallyHidden>
           <Dialog.Description>
             Search all available assets...
           </Dialog.Description>
         </VisuallyHidden>
-        <TextField.Root size="3" placeholder="Search all available assets...">
+        <TextField.Root
+          onChange={handleSearch}
+          size="3"
+          placeholder="Search all available assets..."
+        >
           <TextField.Slot>
-            <SearchCheckIcon height="16" width="16" />
+            <MagnifyingGlassIcon
+              height="18"
+              width="18"
+              className="text-accent"
+            />
           </TextField.Slot>
         </TextField.Root>
         {status === 'loading' && <p className="pt-2">Loading assets...</p>}
         {status === 'failed' && <p className="pt-2">Error: {error}</p>}
         {status === 'succeeded' && (
-          <AssetList assets={assets} setOpen={setOpen} />
+          <AssetList
+            assets={searchAssets.length > 0 ? searchAssets : assets}
+            setOpen={setOpen}
+          />
         )}
       </Dialog.Content>
     </Dialog.Root>

@@ -6,12 +6,14 @@ import getAvailableAssets, {
 
 interface AssetState {
   assets: ExodusAsset[];
+  searchAssets: ExodusAsset[];
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 }
 
 const initialState: AssetState = {
   assets: [],
+  searchAssets: [],
   status: 'idle',
   error: null,
 };
@@ -44,7 +46,11 @@ export const fetchAssets = createAsyncThunk<
 const assetSlice = createSlice({
   name: 'assets',
   initialState,
-  reducers: {},
+  reducers: {
+    setSearchAssets: (state, action) => {
+      state.searchAssets = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchAssets.pending, (state) => {
@@ -60,5 +66,7 @@ const assetSlice = createSlice({
       });
   },
 });
+
+export const { setSearchAssets } = assetSlice.actions;
 
 export default assetSlice.reducer;

@@ -11,7 +11,7 @@ export function TopMovers() {
         justify="between"
         gap="4"
         align="center"
-        className="overflow-hidden py-2 pb-0"
+        className="overflow-hidden py-2 pb-2"
       >
         <RadioCards.Root className="flex w-full justify-between">
           <RadioCards.Item value="1" className="w-full">

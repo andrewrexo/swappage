@@ -27,10 +27,14 @@ const rateToWidgetDisplayText = (rate: number, pair: string) => {
   const [from, to] = pair.split('_');
   return (
     <Flex align="center" gap="1">
-      <Code size="2">1 {from}</Code>
+      <Code size="2">
+        <Text size="1">1 </Text>
+        {from}
+      </Code>
       <Text size="2">for</Text>
       <Code size="2">
-        {rate.toFixed(6)} {to}
+        <Text size="1">{rate.toFixed(6)} </Text>
+        {to}
       </Code>
     </Flex>
   );
@@ -79,9 +83,9 @@ export function ParameterList({
           transition={{ duration: 0.5 }}
           className="text-right"
         >
-          <Code size="2" variant="ghost" className="text-accent">
+          <Text size="2" className="text-accent">
             {provider}
-          </Code>
+          </Text>
         </motion.div>
       </Flex>
 

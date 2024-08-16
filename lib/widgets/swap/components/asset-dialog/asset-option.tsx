@@ -1,7 +1,38 @@
-import { Button, Flex, Text, Code } from '@radix-ui/themes';
+import { Button, Flex, Text, Code, Badge } from '@radix-ui/themes';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { setFromAsset, setToAsset } from '../../features/swap/slice';
+
+const networkToColor: Record<
+  string,
+  | 'blue'
+  | 'yellow'
+  | 'orange'
+  | 'purple'
+  | 'red'
+  | 'ruby'
+  | 'crimson'
+  | 'gray'
+  | 'gold'
+  | 'bronze'
+  | 'brown'
+  | 'amber'
+  | 'tomato'
+  | 'pink'
+  | 'plum'
+  | 'violet'
+  | 'iris'
+  | 'indigo'
+> = {
+  ethereum: 'blue',
+  bitcoin: 'yellow',
+  monero: 'orange',
+  solana: 'violet',
+  avalanche: 'ruby',
+  polygon: 'purple',
+  optimism: 'red',
+  arbitrum: 'indigo',
+};
 
 export function AssetOption({
   asset,
@@ -24,24 +55,25 @@ export function AssetOption({
   };
 
   return (
-    <Button
-      size="3"
-      variant="outline"
-      className="flex cursor-pointer flex-col bg-surface p-5"
-      onClick={handleAssetSelect}
-    >
-      <Text className="flex w-full items-center justify-between">
+    <Button size="3" variant="surface" onClick={handleAssetSelect}>
+      <Text as="div" className="flex w-full items-center justify-between">
         <Flex align="center" gap="2">
-          <Text weight="bold" size="2" className="flex items-center">
-            {asset.symbol}&nbsp;
-            <Code size="1" variant="soft">
-              {asset.network}
-            </Code>
+          <Text
+            weight="bold"
+            size={asset.name.length > 10 ? '1' : '2'}
+            className="flex items-center"
+          >
+            {asset.name}
           </Text>
+          <Badge
+            size="1"
+            variant="surface"
+            color={networkToColor[asset.network]}
+          >
+            {asset.network}
+          </Badge>
         </Flex>
-        <Code size="1" variant="ghost">
-          {/*asset.price*/}
-        </Code>
+        <Text size="2">{asset.symbol}&nbsp;</Text>
       </Text>
     </Button>
   );

@@ -1,4 +1,3 @@
-import { swapApiUrl } from '@/lib/util';
 import { authenticatedExodusRequest } from './fetch';
 
 export interface AssetValue {
