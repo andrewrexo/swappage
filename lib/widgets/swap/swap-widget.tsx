@@ -110,7 +110,7 @@ export function SwapWidget({
         initial={{
           height: '100%',
           opacity: 0,
-          scale: 0.9,
+          scale: 1,
         }}
         style={{
           border: '1px solid var(--accent-11)',
