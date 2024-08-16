@@ -13,10 +13,17 @@ import {
 } from '@radix-ui/themes';
 import { QRCodeSVG } from 'qrcode.react';
 import { motion } from 'framer-motion';
+import { useState } from 'react';
 
 const MotionFlex = motion(Flex);
 
 export function SwapMonitorWidget() {
+  const [showQR, setShowQR] = useState(false);
+
+  const handleShowQR = () => {
+    setShowQR(true);
+  };
+
   return (
     <MotionFlex
       gap="2"
@@ -24,15 +31,6 @@ export function SwapMonitorWidget() {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
-      <Flex direction="column">
-        <Text as="div" weight="bold" size="3" mb="1" align="left">
-          Payment
-        </Text>
-        <Text as="div" size="2" mb="2">
-          0.025 <Code variant="soft">BTC</Code> to{' '}
-          <Code>1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP</Code>
-        </Text>
-      </Flex>
       <Flex gap="4" justify="between" className="w-full">
         <Box>
           <Text as="div" weight="bold" mb="1">
@@ -58,38 +56,76 @@ export function SwapMonitorWidget() {
           </Text>
         </Box>
       </Flex>
-      <Grid columns="3" pt="4">
+
+      <Grid columns="1" py="2" className="space-y-4">
         <Flex direction="column">
-          <QRCodeSVG
-            className="mx-auto"
-            value="bitcoin:1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP"
-          />
-          <Text as="div" size="2" color="gray" mt="2" mb="2" align="center">
-            Use your wallet to scan the QR code
+          <Text as="div" weight="bold" size="3" mb="1" align="left">
+            Payment
+          </Text>
+          <Text as="div" size="2" mb="2">
+            0.025 <Code variant="soft">BTC</Code> to{' '}
+            <Code>1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP</Code>
           </Text>
         </Flex>
-        <Text
-          as="div"
-          size="2"
-          color="gray"
-          align="center"
-          className="flex h-[80%] items-center justify-center"
-        >
-          or
-        </Text>
-        <Flex direction="column" gap="2">
-          <Button variant="classic">Connect</Button>
-          <Text as="div" size="2" color="gray" align="center">
-            Connect your wallet to pay
-          </Text>
-          <Separator size="4" className="my-2" />
-          <Button variant="soft">Mark as paid</Button>
-          <Text as="div" size="2" color="gray" align="center">
-            Pay using QR code
-          </Text>
-        </Flex>
+        {showQR ? (
+          <Flex direction="column" justify="center" align="center">
+            <QRCodeSVG
+              className="mx-auto"
+              value="bitcoin:1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP"
+              size={148}
+            />
+            <Text as="div" size="2" color="gray" my="2" mb="4" align="center">
+              Scan QR code
+            </Text>
+            <Button
+              variant="soft"
+              size="3"
+              className="w-full"
+              onClick={() => {
+                setShowQR(false);
+              }}
+            >
+              Mark as Paid
+            </Button>
+            <Text as="div" size="2" color="gray" align="center" mt="3" mb="4">
+              or
+            </Text>
+            <Button
+              variant="classic"
+              size="3"
+              className="w-full"
+              onClick={() => {
+                setShowQR(false);
+              }}
+            >
+              Connect
+            </Button>
+          </Flex>
+        ) : (
+          <Flex direction="column" gap="2">
+            <QRCodeSVG
+              className="mx-auto"
+              value="bitcoin:1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP"
+              size={148}
+            />
+            <Text as="div" size="3" color="gray" my="2" mb="2" align="center">
+              Pay using <Link>QR code</Link>
+            </Text>
+            <Button variant="soft" size="3">
+              Manual payment
+            </Button>
+            <Text as="div" size="1" color="gray" align="center">
+              or
+            </Text>
+            <Button variant="soft" size="3">
+              Sync wallet
+            </Button>
+          </Flex>
+        )}
       </Grid>
-      <Flex direction="column" gap="4" align="center" mt="2">
+      <Separator size="4" className="my-2" />
+
+      <Flex direction="column" gap="4" align="center">
         <Card>
           <Flex gap="2" align="center" mb="1" justify="between">
             <Text as="div" size="2" weight="medium" className="text-accent">

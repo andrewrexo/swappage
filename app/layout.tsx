@@ -27,7 +27,7 @@ export default function RootLayout({
           accentColor="crimson"
           grayColor="mauve"
           radius="large"
-          scaling="100%"
+          scaling="90%"
         >
           <StoreProvider>
             <main
