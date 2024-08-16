@@ -23,8 +23,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Theme
-          appearance="light"
-          accentColor="mint"
+          appearance="dark"
+          accentColor="crimson"
           grayColor="mauve"
           radius="large"
           scaling="100%"
@@ -39,6 +39,7 @@ export default function RootLayout({
               {children}
             </main>
           </StoreProvider>
+          <ThemePanel />
         </Theme>
       </body>
     </html>
