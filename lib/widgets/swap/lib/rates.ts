@@ -1,8 +1,7 @@
 import { swapApiUrl } from '@/lib/util';
 import { PairRate } from './exodus/rate';
 
-export const getRateByPairId = async (pairId: string, ip: string) => {
-  console.log('getRateByPairId', pairId, ip);
+export const getRateByPairIdSwappage = async (pairId: string, ip: string) => {
   if (!pairId.includes('_')) {
     throw new Error(
       'Invalid pairId, pairId must be in the format of assetId_assetId',
