@@ -5,10 +5,19 @@ import { AnimatePresence, AnimationProps, motion } from 'framer-motion';
 import { Loader2Icon, LucideLink } from 'lucide-react';
 import { useState } from 'react';
 import { ArrowTopRightIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons';
+import { useRouter } from 'next/navigation';
+import { twMerge } from 'tailwind-merge';
 
-export function SwapButton({ connected }: { connected: boolean }) {
+export function SwapButton({
+  connected,
+  fullWidth,
+}: {
+  connected: boolean;
+  fullWidth?: boolean;
+}) {
   const [isResponding, setIsResponding] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const router = useRouter();
 
   const textVariants: AnimationProps['variants'] = {
     initial: { y: 0 },
@@ -118,7 +127,21 @@ export function SwapButton({ connected }: { connected: boolean }) {
   };
 
   return (
-    <Button size="4" className="overflow-hidden" variant="surface" asChild>
+    <Button
+      size="4"
+      className={twMerge('overflow-hidden', fullWidth ? 'w-full' : 'w-auto')}
+      variant="surface"
+      asChild
+      disabled={!connected}
+      onClick={() => {
+        if (connected) {
+          router.push('/swap/monitor');
+        } else {
+          // Handle connection logic here
+          console.log('Connecting...');
+        }
+      }}
+    >
       <motion.div
         initial="initial"
         animate={isHovered ? 'hover' : 'initial'}

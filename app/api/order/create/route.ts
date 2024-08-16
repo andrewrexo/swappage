@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createOrder } from '@/app/widgets/swap/lib/exodus/order';
+import { createOrder } from '@/lib/widgets/swap/lib/exodus/order';
 
 export async function POST(request: NextRequest) {
   try {

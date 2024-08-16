@@ -5,6 +5,7 @@ import './globals.css';
 import { Theme, ThemePanel } from '@radix-ui/themes';
 import type { ReactNode } from 'react';
 import StoreProvider from './StoreProvider';
+import { twMerge } from 'tailwind-merge';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -22,13 +23,22 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <Theme
-          accentColor="orange"
+          appearance="light"
+          accentColor="mint"
           grayColor="mauve"
           radius="large"
-          scaling="95%"
-          appearance="dark"
+          scaling="100%"
         >
-          <StoreProvider>{children}</StoreProvider>
+          <StoreProvider>
+            <main
+              className={twMerge(
+                'flex min-h-screen flex-col items-center justify-between',
+                `p-8`,
+              )}
+            >
+              {children}
+            </main>
+          </StoreProvider>
         </Theme>
       </body>
     </html>

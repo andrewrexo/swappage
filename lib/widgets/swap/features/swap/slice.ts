@@ -5,6 +5,7 @@ interface SwapState {
   fromAsset: ExodusAsset;
   toAsset: ExodusAsset;
   pair: string;
+  displayPair: string;
   fromAmount: string;
   toAmount: string;
   rate: string;
@@ -19,6 +20,7 @@ const initialState: SwapState = {
   toAmount: '',
   rate: '',
   pair: `${demoAssets[0].id}_${demoAssets[1].id}`,
+  displayPair: `${demoAssets[0].symbol}_${demoAssets[1].symbol}`,
   activeDirection: 'from',
   assets: null,
 };
@@ -32,6 +34,7 @@ export const swapSlice = createSlice({
 
       if (state.toAsset) {
         state.pair = `${action.payload.id}_${state.toAsset.id}`;
+        state.displayPair = `${action.payload.symbol}/${state.toAsset.symbol}`;
       }
     },
     setToAsset: (state, action: PayloadAction<ExodusAsset>) => {
@@ -39,6 +42,7 @@ export const swapSlice = createSlice({
 
       if (state.fromAsset) {
         state.pair = `${state.fromAsset.id}_${action.payload.id}`;
+        state.displayPair = `${state.fromAsset.symbol}/${action.payload.symbol}`;
       }
     },
     setFromAmount: (state, action: PayloadAction<string>) => {
