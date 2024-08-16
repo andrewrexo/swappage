@@ -11,7 +11,6 @@ import {
   Separator,
   Text,
 } from '@radix-ui/themes';
-import { GreenDot } from '../../components/green-dot';
 import { QRCodeSVG } from 'qrcode.react';
 import { motion } from 'framer-motion';
 
@@ -79,7 +78,7 @@ export function SwapMonitorWidget() {
           or
         </Text>
         <Flex direction="column" gap="2">
-          <Button variant="classic">Connect & Pay</Button>
+          <Button variant="classic">Connect</Button>
           <Text as="div" size="2" color="gray" align="center">
             Connect your wallet to pay
           </Text>
@@ -91,46 +90,6 @@ export function SwapMonitorWidget() {
         </Flex>
       </Grid>
       <Flex direction="column" gap="4" align="center" mt="2">
-        <Card>
-          <Flex gap="2" align="center" mb="1" justify="between">
-            <Text as="div" size="2" weight="medium" className="text-accent">
-              Swap complete! 🚀
-            </Text>
-            <Text as="div" size="1" color="gray">
-              {new Date(
-                new Date().setHours(
-                  Math.floor(Math.random() * 24),
-                  Math.floor(Math.random() * 60),
-                  Math.floor(Math.random() * 60),
-                ),
-              ).toLocaleString()}
-            </Text>
-          </Flex>
-          <Text as="div" size="2">
-            You&apos;ve sent 0.025 BTC to the deposit address. The swap will
-            complete once the BTC is confirmed.
-          </Text>
-        </Card>
-        <Card>
-          <Flex gap="2" align="center" mb="1" justify="between">
-            <Text as="div" size="2" weight="medium" className="text-accent">
-              Deposit detected
-            </Text>
-            <Text as="div" size="1" color="gray">
-              {new Date(
-                new Date().setHours(
-                  Math.floor(Math.random() * 24),
-                  Math.floor(Math.random() * 60),
-                  Math.floor(Math.random() * 60),
-                ),
-              ).toLocaleString()}
-            </Text>
-          </Flex>
-          <Text as="div" size="2">
-            You&apos;ve sent 0.025 BTC to the deposit address. The swap will
-            complete once the BTC is confirmed.
-          </Text>
-        </Card>
         <Card>
           <Flex gap="2" align="center" mb="1" justify="between">
             <Text as="div" size="2" weight="medium" className="text-accent">
