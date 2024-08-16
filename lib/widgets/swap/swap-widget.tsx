@@ -1,11 +1,12 @@
 'use client';
-import { Box, Flex, Spinner, Text } from '@radix-ui/themes';
+import { Card, Flex, Spinner, Text } from '@radix-ui/themes';
 import { WidgetHeader } from './components/widget-header';
 import { twMerge } from 'tailwind-merge';
 import { useAppDispatch, useAppSelector } from './lib/hooks';
 import { AnimatePresence, motion } from 'framer-motion';
 import { type ReactNode, useEffect } from 'react';
 import { fetchPairRate } from './features/rates/slice';
+import { useMediaQuery } from './lib/hooks';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -32,7 +33,7 @@ const swapWidgetVariants = {
     transition: {
       height: {
         duration: 0.5,
-        ease: 'easeInOut',
+        ease: 'anticipate',
       },
       opacity: {
         duration: 0.3,
@@ -63,6 +64,8 @@ const swapWidgetVariants = {
   },
 };
 
+const MotionCard = motion(Card);
+
 export function SwapWidget({
   children,
   ...swapWidgetProps
@@ -73,6 +76,8 @@ export function SwapWidget({
   const { rate, fromAsset, toAsset, pair } = useAppSelector(
     (state) => state.swap,
   );
+
+  const isSmall = useMediaQuery('(max-width: 480px)');
 
   const swapBaseParameters = {
     rate,
@@ -95,42 +100,71 @@ export function SwapWidget({
 
   return (
     <AnimatePresence>
-      <Box
-        width={{ initial: '100%', sm: width }}
-        height={{ initial: '100%', sm: height }}
-        className={twMerge(className, ``)}
+      <MotionCard
+        className={twMerge(
+          className,
+          `border-[1px] border-accent`,
+          `w-[${width}] h-[${height}]`,
+        )}
+        initial={{
+          height: 'auto',
+          opacity: 0,
+          scale: 0.9,
+        }}
+        style={{
+          border: '1px solid var(--accent-11)',
+          borderRadius: '1rem',
+          padding: '1rem',
+        }}
+        variants={swapWidgetVariants}
+        animate={{
+          height: `auto`,
+          opacity: 1,
+          scale: 1,
+          ...(isSmall ? { width: '100%' } : {}),
+          transition: {
+            width: {
+              duration: 0.5,
+              ease: 'anticipate',
+              delay: 0.2,
+            },
+            height: {
+              duration: 0.5,
+              ease: 'anticipate',
+              delay: 2,
+            },
+            opacity: {
+              duration: 0.3,
+              delay: 0.2,
+            },
+            scale: {
+              duration: 0.3,
+              delay: 0.2,
+            },
+          },
+        }}
+        exit="exit"
       >
-        <motion.div
-          initial={{
-            height: 0,
-            opacity: 0,
-            scale: 0.8,
-          }}
-          variants={swapWidgetVariants}
-          animate="animate"
-          exit="exit"
+        <Flex
+          direction="column"
+          className={twMerge(
+            'gap-4 rounded-xl shadow-sm outline-yellow-500',
+            className,
+          )}
         >
-          <Flex
-            direction="column"
-            className={twMerge(
-              'gap-4 rounded-xl border-[1px] border-accent p-4 shadow-sm outline-yellow-500',
-              className,
-            )}
-          >
-            <Flex justify="between">
-              <Text
-                size="5"
-                weight="bold"
-                className="user-select-none pointer-events-none flex items-center gap-2 text-accent"
-              >
-                Swappage {status === 'loading' ? <Spinner /> : ''}
-              </Text>
-              <WidgetHeader />
-            </Flex>
-            {children}
+          <Flex justify="between">
+            <Text
+              size="5"
+              weight="bold"
+              className="user-select-none pointer-events-none flex items-center gap-2 text-accent"
+            >
+              Swappage {status === 'loading' ? <Spinner /> : ''}
+            </Text>
+            <WidgetHeader />
           </Flex>
-        </motion.div>
-      </Box>
+          {children}
+        </Flex>
+      </MotionCard>
     </AnimatePresence>
   );
 }

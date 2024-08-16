@@ -1,4 +1,4 @@
-import { SwapWidgetProps } from '@/app/widgets/swap/swap-widget';
+import { SwapWidgetProps } from '@/lib/widgets/swap/swap-widget';
 
 const widgetOpts: SwapWidgetProps = {
   width: '480px',

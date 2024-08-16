@@ -1,6 +1,6 @@
 import getAvailableAssets, {
   SupportedNetwork,
-} from '@/app/widgets/swap/lib/exodus/asset';
+} from '@/lib/widgets/swap/lib/exodus/asset';
 import type { NextRequest } from 'next/server';
 
 export async function GET(req: NextRequest) {

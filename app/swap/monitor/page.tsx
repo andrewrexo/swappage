@@ -1,4 +1,4 @@
-import { SwapMonitorWidget } from '@/app/widgets/swap/features/swap-monitor/widget';
+import { SwapMonitorWidget } from '@/lib/widgets/swap/features/swap-monitor/widget';
 
 export default function MonitorPage() {
   return <SwapMonitorWidget />;
