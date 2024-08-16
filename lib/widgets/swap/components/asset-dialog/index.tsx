@@ -16,8 +16,9 @@ export function AssetDialog({
   const dispatch = useAppDispatch();
   const { assets, status, error } = useAppSelector((state) => state.assets);
   const [open, setOpen] = useState(false);
+
   useEffect(() => {
-    if (status === 'idle') {
+    if (!assets || assets.length === 0) {
       dispatch(
         fetchAssets([
           'bitcoin',

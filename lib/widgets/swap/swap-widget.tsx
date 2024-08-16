@@ -86,13 +86,13 @@ export function SwapWidget({
   };
 
   useEffect(() => {
-    if (pair) {
+    if (pair && !rate) {
       dispatch(fetchPairRate(pair));
     }
 
     const intervalId = setInterval(() => {
       dispatch(fetchPairRate(pair));
-    }, 100000); // 15 seconds
+    }, 15000); // 15 seconds
 
     // Clean up the interval when the component unmounts or when pair changes
     return () => clearInterval(intervalId);
