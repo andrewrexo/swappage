@@ -1,69 +1,61 @@
 'use client';
 
 import { Button } from '@radix-ui/themes';
-import { AnimatePresence, AnimationProps, motion } from 'framer-motion';
+import { motion, useAnimationControls } from 'framer-motion';
 import { Loader2Icon, LucideLink } from 'lucide-react';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ArrowTopRightIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons';
 import { useRouter } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
+import { variants } from './variants';
 
 export function SwapButton({
   connected,
   fullWidth,
+  isResponding = false,
 }: {
   connected: boolean;
   fullWidth?: boolean;
+  isResponding?: boolean;
 }) {
-  const [isResponding, setIsResponding] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const router = useRouter();
+  const controls = useAnimationControls();
 
-  const textVariants: AnimationProps['variants'] = {
-    initial: { y: 0 },
-    hover: {
-      y: [0, -3, 0],
-      transition: {
-        duration: 0.75,
-        delay: 0.3,
-        ease: 'anticipate',
-      },
-    },
-  };
+  // Play animation every 20 seconds
+  useEffect(() => {
+    const interval = setInterval(() => {
+      if (!isResponding && !isHovered) {
+        controls.start('active').then(() => {
+          controls.start('initial');
+        });
+      }
+    }, 20000);
 
-  const iconVariants = {
-    initial: {
-      y: 0,
-      opacity: 1,
-    },
-    hover: {
-      y: [0, -2, 0],
-      scale: [1, 1.025, 1],
-      transition: {
-        opacity: [1, 1, 1],
-        duration: 1.5,
-        repeat: 2,
-        ease: 'circInOut',
-      },
-    },
-  };
+    return () => clearInterval(interval);
+  }, []);
 
-  const iconTransformVariants = {
-    arrowTopRight: {
-      rotate: 0,
-      scale: 1,
-      opacity: 1,
-      transition: { duration: 0.3, delay: 0.4 },
-    },
-    paperPlane: { scale: 1.1, opacity: 0 },
-  };
-
-  const handleHoverStart = () => {
+  const onHoverStart = () => {
     setIsHovered(true);
+    controls.start('hover');
   };
 
-  const handleHoverEnd = () => {
+  const onHoverEnd = () => {
     setIsHovered(false);
+    controls.start('initial');
+  };
+
+  const onButtonExecute = () => {
+    if (connected) {
+      router.push('/swap/monitor');
+    } else {
+      // Handle connection logic here
+      console.log('Connecting...');
+    }
+  };
+
+  const onClick = () => {
+    controls.start(variants.button.execute).then(onButtonExecute);
   };
 
   const renderButtonText = () => {
@@ -71,21 +63,22 @@ export function SwapButton({
       return (
         <>
           <motion.span
-            variants={textVariants}
-            animate={isHovered ? 'hover' : 'initial'}
+            variants={variants.text}
+            initial="initial"
+            animate={controls}
           >
             Swap now
           </motion.span>
           <motion.div
-            variants={iconVariants}
-            animate={isHovered ? 'hover' : 'initial'}
+            variants={variants.icon}
+            animate={controls}
             className="relative ml-auto h-6 w-6"
           >
             <motion.div
               className="absolute inset-0"
               initial="arrowTopRight"
-              animate={isHovered ? 'paperPlane' : 'arrowTopRight'}
-              variants={iconTransformVariants}
+              animate={controls}
+              variants={variants.transform.doubleArrow}
               transition={{ duration: 0.3 }}
             >
               <DoubleArrowRightIcon className="h-6 w-6" />
@@ -93,7 +86,8 @@ export function SwapButton({
             <motion.div
               className="absolute inset-0"
               initial={{ opacity: 0 }}
-              animate={{ opacity: isHovered ? 1 : 0 }}
+              animate={controls}
+              variants={variants.transform.singleArrow}
               transition={{ duration: 0.3, delay: 0.2 }}
             >
               <ArrowTopRightIcon className="h-6 w-6" />
@@ -105,18 +99,15 @@ export function SwapButton({
 
     return (
       <>
-        <motion.span
-          variants={textVariants}
-          animate={isHovered ? 'hover' : 'initial'}
-        >
+        <motion.span variants={variants.text} animate={controls}>
           Connect
         </motion.span>
         {isResponding ? (
           <Loader2Icon className="ml-auto h-4 w-4 animate-spin transition-all duration-200" />
         ) : (
           <motion.div
-            variants={iconVariants}
-            animate={isHovered ? 'hover' : 'initial'}
+            variants={variants.icon}
+            animate={controls}
             className="ml-auto"
           >
             <LucideLink />
@@ -136,28 +127,14 @@ export function SwapButton({
       variant="surface"
       asChild
       disabled={!connected}
-      onClick={() => {
-        if (connected) {
-          router.push('/swap/monitor');
-        } else {
-          // Handle connection logic here
-          console.log('Connecting...');
-        }
-      }}
     >
       <motion.div
         initial="initial"
-        animate={isHovered ? 'hover' : 'initial'}
-        whileHover="hover"
-        whileTap={{
-          scale: 0.95,
-          transition: {
-            duration: 0.5,
-            ease: 'easeInOut',
-          },
-        }}
-        onHoverStart={handleHoverStart}
-        onHoverEnd={handleHoverEnd}
+        animate={controls}
+        onHoverStart={onHoverStart}
+        onHoverEnd={onHoverEnd}
+        onTap={onClick}
+        whileTap={{ scale: 0.95 }}
       >
         {renderButtonText()}
       </motion.div>
