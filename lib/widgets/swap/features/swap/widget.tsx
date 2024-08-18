@@ -37,6 +37,7 @@ export default function SwapWidgetHome() {
         <AssetPicker side="from" />
         <AssetPicker side="to" />
       </Flex>
+      <Separator size="4" />
       {currentRate && (
         <ParameterList
           {...swapBaseParameters}
@@ -44,7 +45,6 @@ export default function SwapWidgetHome() {
           status={status}
         />
       )}
-      <Separator size="4" className="my-0" />
       <SwapButton connected={true} fullWidth />
     </Flex>
   );

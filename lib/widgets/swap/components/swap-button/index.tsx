@@ -126,6 +126,7 @@ export function SwapButton({
         fullWidth ? 'w-full' : 'w-auto',
       )}
       variant="surface"
+      mt="1"
       asChild
       disabled={!connected}
     >
