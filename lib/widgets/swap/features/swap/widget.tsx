@@ -22,10 +22,6 @@ export default function SwapWidgetHome() {
   };
 
   useEffect(() => {
-    if (pair) {
-      dispatch(fetchPairRate(pair));
-    }
-
     const intervalId = setInterval(() => {
       dispatch(fetchPairRate(pair));
     }, 15000); // 15 seconds
