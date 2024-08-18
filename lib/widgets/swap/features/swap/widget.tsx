@@ -6,9 +6,12 @@ import { ParameterList } from '../../components/parameter-list';
 import { SwapButton } from '../../components/swap-button';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { fetchPairRate } from '../rates/slice';
+import { useRouter } from 'next/navigation';
 
 export default function SwapWidgetHome() {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+
   const { currentRate, status } = useAppSelector((state) => state.rates);
   const { rate, pair } = useAppSelector((state) => state.swap);
 
@@ -31,6 +34,12 @@ export default function SwapWidgetHome() {
     return () => clearInterval(intervalId);
   }, [dispatch, pair]);
 
+  const onExecute = () => {
+    if (currentRate) {
+      router.push('/swap/monitor');
+    }
+  };
+
   return (
     <Flex direction="column" gap="4">
       <Flex direction="column" align="center" gap="6">
@@ -45,7 +54,7 @@ export default function SwapWidgetHome() {
           status={status}
         />
       )}
-      <SwapButton connected={true} fullWidth />
+      <SwapButton connected={true} onExecute={onExecute} fullWidth />
     </Flex>
   );
 }

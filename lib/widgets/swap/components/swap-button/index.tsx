@@ -5,21 +5,21 @@ import { motion, useAnimationControls } from 'framer-motion';
 import { Loader2Icon, LucideLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { ArrowTopRightIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons';
-import { useRouter } from 'next/navigation';
 import { twMerge } from 'tailwind-merge';
 import { variants } from './variants';
 
 export function SwapButton({
   connected,
   fullWidth,
+  onExecute,
   isResponding = false,
 }: {
   connected: boolean;
   fullWidth?: boolean;
+  onExecute: () => void;
   isResponding?: boolean;
 }) {
   const [isHovered, setIsHovered] = useState(false);
-  const router = useRouter();
   const controls = useAnimationControls();
 
   // Play animation every 20 seconds
@@ -46,12 +46,7 @@ export function SwapButton({
   };
 
   const onButtonExecute = () => {
-    if (connected) {
-      router.push('/swap/monitor');
-    } else {
-      // Handle connection logic here
-      console.log('Connecting...');
-    }
+    onExecute();
   };
 
   const onClick = () => {
