@@ -1,9 +1,7 @@
 'use client';
 import {
-  Badge,
   Box,
   Button,
-  Card,
   Code,
   Flex,
   Grid,
@@ -11,18 +9,27 @@ import {
   Separator,
   Text,
 } from '@radix-ui/themes';
-import { QRCodeSVG } from 'qrcode.react';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import QRCode, { QRCodeSVG } from 'qrcode.react';
+import { useEffect, useState } from 'react';
 
 const MotionFlex = motion(Flex);
 
 export function SwapMonitorWidget() {
   const [showQR, setShowQR] = useState(false);
+  const [lastFetched, setLastFetched] = useState(Date.now());
 
   const handleShowQR = () => {
     setShowQR(true);
   };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setLastFetched((prev) => Date.now());
+    }, 10000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <MotionFlex
@@ -52,12 +59,16 @@ export function SwapMonitorWidget() {
             Created
           </Text>
           <Text as="div" size="3">
-            July 1, 2023, 10:28 AM
+            {new Date().toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
           </Text>
         </Box>
       </Flex>
 
-      <Grid columns="1" py="2" className="space-y-4">
+      <Grid columns="1" py="2" className="space-y-4" mb="1">
         <Flex direction="column">
           <Text as="div" weight="bold" size="3" mb="1" align="left">
             Payment
@@ -66,85 +77,59 @@ export function SwapMonitorWidget() {
             0.025 <Code variant="soft">BTC</Code> to{' '}
             <Code>1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP</Code>
           </Text>
+          <Text as="div" size="1" color="gray" align="left">
+            Last update: {new Date(lastFetched).toLocaleTimeString()}
+          </Text>
         </Flex>
+
+        <Separator orientation="horizontal" size="4" />
         {showQR ? (
-          <Flex direction="column" justify="center" align="center">
-            <QRCodeSVG
-              className="mx-auto"
-              value="bitcoin:1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP"
-              size={148}
-            />
-            <Text as="div" size="2" color="gray" my="2" mb="4" align="center">
-              Scan QR code
-            </Text>
+          <Flex direction="column" gap="4">
+            <Flex
+              justify="center"
+              align="center"
+              direction="column"
+              gap="2"
+              className="rounded-lg p-4"
+              style={{ backgroundColor: 'var(--gray-2)' }}
+            >
+              <QRCodeSVG value="https://www.google.com" />
+              <Text as="div" size="2">
+                Scan QR code with your wallet to pay
+              </Text>
+            </Flex>
+            <Button variant="soft" size="4">
+              Mark as paid
+            </Button>
             <Button
               variant="soft"
-              size="3"
-              className="w-full"
+              style={{ backgroundColor: 'transparent' }}
+              size="2"
               onClick={() => {
                 setShowQR(false);
               }}
             >
-              Mark as Paid
-            </Button>
-            <Text as="div" size="2" color="gray" align="center" mt="3" mb="4">
-              or
-            </Text>
-            <Button
-              variant="classic"
-              size="3"
-              className="w-full"
-              onClick={() => {
-                setShowQR(false);
-              }}
-            >
-              Connect
+              Connect wallet
             </Button>
           </Flex>
         ) : (
-          <Flex direction="column" gap="2">
-            <QRCodeSVG
-              className="mx-auto"
-              value="bitcoin:1BaGcUCmXPzqxBAYHmuNU9J68rQA8nZRiP"
-              size={148}
-            />
-            <Text as="div" size="3" my="2" mb="2" align="center">
-              Pay using{' '}
-              <Link className="pointer-events-none cursor-pointer">
-                QR code
-              </Link>
-            </Text>
-            <Button variant="soft" size="3">
-              Manual payment
+          <Flex direction="column" gap="4">
+            <Button variant="soft" size="4">
+              Connect wallet
             </Button>
-            <Text as="div" size="2" color="gray" align="center">
+            <Text as="div" size="1" color="gray" align="center">
               or
             </Text>
-            <Button variant="soft" size="3">
-              Connect wallet
+            <Button variant="soft" size="4" onClick={handleShowQR}>
+              Manual payment
             </Button>
           </Flex>
         )}
       </Grid>
-      <Separator size="4" className="my-2" />
-
-      <Flex direction="column" gap="4" align="center">
-        <Card>
-          <Flex gap="2" align="center" mb="1" justify="between">
-            <Text as="div" size="2" weight="medium" className="text-accent">
-              Swap created
-            </Text>
-            <Text as="div" size="1" color="gray">
-              {new Date().toLocaleString()}
-            </Text>
-          </Flex>
-          <Text as="div" size="2">
-            Swap successfully created - the page will update once it&apos;s
-            complete. Please notify us when you&apos;ve sent 0.025 BTC to the
-            deposit address.
-          </Text>
-        </Card>
-      </Flex>
+      <Text as="div" size="1" color="gray">
+        Deposits must be made within 5 minutes of order creation. Late deposits
+        will be swapped with a newer rate. <Link href="/help">Learn more</Link>
+      </Text>
     </MotionFlex>
   );
 }
