@@ -1,4 +1,4 @@
-import { Flex, Text, Skeleton } from '@radix-ui/themes';
+import { Flex, Text, Skeleton, Button, Badge } from '@radix-ui/themes';
 import { AssetName } from './asset-name';
 import {
   setActiveDirection,
@@ -8,7 +8,7 @@ import {
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { ChangeEvent, useEffect } from 'react';
 import { InputAmount } from './input-amount';
-import { CurrencyIcon } from 'lucide-react';
+import { ButtonGroup } from '../button-group';
 
 export function AssetPicker({ side }: { side: 'from' | 'to' }) {
   const dispatch = useAppDispatch();
@@ -37,6 +37,25 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
     }
   };
 
+  const onMinClick = () => {
+    if (currentRate) {
+      dispatch(setFromAmount(currentRate.min.value.toString()));
+    }
+  };
+
+  const onMaxClick = () => {
+    if (currentRate) {
+      dispatch(setFromAmount(currentRate.max.value.toString()));
+    }
+  };
+
+  const onCustomClick = () => {
+    if (currentRate) {
+      const amountOfAsset = 50 / currentRate.fromAssetFiat;
+      dispatch(setFromAmount(amountOfAsset.toString()));
+    }
+  };
+
   return (
     <Flex direction="column" gap="2" className="w-full">
       <Skeleton loading={status === 'loading'} maxWidth="100px">
@@ -57,11 +76,39 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
         />
       </Skeleton>
       <Skeleton loading={status === 'loading'}>
-        <Flex justify="between">
-          <Text size="2" color="gray">
-            Balance: 0.0000
-          </Text>
-          {currentRate && (
+        {currentRate && (
+          <Flex justify="between">
+            {side === 'from' ? (
+              <ButtonGroup size="2" variant="soft">
+                <Button onClick={onMinClick}>
+                  <Text>Min</Text>
+                </Button>
+                <Button onClick={onMaxClick}>
+                  <Text>Max</Text>
+                </Button>
+                <Button onClick={onCustomClick}>
+                  <Text>$50</Text>
+                </Button>
+              </ButtonGroup>
+            ) : (
+              <Flex align="center" gap="2">
+                <Badge
+                  variant="surface"
+                  style={{
+                    boxShadow: 'none',
+                    background: 'none',
+                    padding: '0',
+                  }}
+                  size="2"
+                  color="gray"
+                >
+                  <Text>
+                    Network cost: ~{currentRate.minerFee.value.toFixed(5)}{' '}
+                    {currentRate.minerFee.assetId}
+                  </Text>
+                </Badge>
+              </Flex>
+            )}
             <Text size="2" color="gray" className="text-right">
               ${' '}
               {side === 'from'
@@ -70,8 +117,8 @@ export function AssetPicker({ side }: { side: 'from' | 'to' }) {
                   )
                 : (currentRate.toAssetFiat * parseFloat(toAmount)).toFixed(6)}
             </Text>
-          )}
-        </Flex>
+          </Flex>
+        )}
       </Skeleton>
     </Flex>
   );
