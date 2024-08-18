@@ -25,7 +25,7 @@ const initialState: SwapState = {
   displayPair: `${demoAssets[0].symbol}_${demoAssets[1].symbol}`,
   activeDirection: 'from',
   assets: null,
-  slippage: 0.01,
+  slippage: 1,
   slippageProtection: true,
 };
 

@@ -32,7 +32,7 @@ export const createOrder = async ({ ...orderParams }: XOSwapOrderRequest) => {
   }
 
   const orderRequest = authenticatedExodusRequest('v3/orders', 'POST', {
-    body: { order },
+    body: { ...order },
     ip,
   });
 

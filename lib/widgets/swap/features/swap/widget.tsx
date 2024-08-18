@@ -1,6 +1,6 @@
 'use client';
 import { Flex, Separator } from '@radix-ui/themes';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { AssetControl } from '../../components/asset-control';
 import { ParameterList } from '../../components/parameter-list';
 import { SwapButton } from '../../components/swap-button';
@@ -8,17 +8,22 @@ import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { fetchPairRate } from '../rates/slice';
 import { useRouter } from 'next/navigation';
 import { fetchAssets } from '../assets/slice';
+import { LazyOrder } from '../../lib/order';
+import { createOrderInternal, generateRandomAddress } from './api';
 
 export default function SwapWidgetHome() {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const { currentRate, status } = useAppSelector((state) => state.rates);
-  const { rate, pair } = useAppSelector((state) => state.swap);
+  const { fromAmount, toAmount, slippage } = useAppSelector(
+    (state) => state.swap,
+  );
+  const { currentRate: rate, status } = useAppSelector((state) => state.rates);
+  const { pair } = useAppSelector((state) => state.swap);
   const { assets } = useAppSelector((state) => state.assets);
+  const [swapComplete, setSwapComplete] = useState(false);
 
   const swapBaseParameters = {
-    rate,
     pair,
     provider: 'XOSwap', // TODO: get from rate
   };
@@ -47,10 +52,41 @@ export default function SwapWidgetHome() {
     return () => clearInterval(intervalId);
   }, [dispatch, pair]);
 
+  const onComplete = ({ orderId }: { orderId: string }) => {
+    router.push(`/swap/${orderId}`);
+  };
+
   const onExecute = () => {
-    if (currentRate) {
-      router.push('/swap/monitor');
-    }
+    const createSwap = async () => {
+      const fromAddress = 'FinVobfi4tbdMdfN9jhzUuDVqGXfcFnRGX57xHcTWLfW';
+      const toAddress = '0x4838b106fce9647bdf1e7877bf73ce8b0bad5f97';
+
+      // Create order object with necessary data
+      const orderData: LazyOrder = {
+        from: pair.split('_')[0],
+        to: pair.split('_')[1],
+        fromAmount: parseFloat(fromAmount),
+        toAmount: parseFloat(toAmount),
+        fromAddress,
+        toAddress,
+        rate: rate?.amount.value,
+        expiry: rate?.expiry,
+        provider: 'XOSwap',
+        slippage,
+        pair,
+      };
+
+      const swap = await createOrderInternal({
+        ...orderData,
+      });
+
+      if (swap.success) {
+        setSwapComplete(true);
+        onComplete({ orderId: swap.orderId });
+      }
+    };
+
+    createSwap();
   };
 
   return (
@@ -60,14 +96,15 @@ export default function SwapWidgetHome() {
         <AssetControl side="to" />
       </Flex>
       <Separator size="4" />
-      {currentRate && (
-        <ParameterList
-          {...swapBaseParameters}
-          rate={currentRate}
-          status={status}
-        />
+      {rate && (
+        <ParameterList {...swapBaseParameters} rate={rate} status={status} />
       )}
-      <SwapButton connected={true} onExecute={onExecute} fullWidth />
+      <SwapButton
+        connected={true}
+        onExecute={onExecute}
+        isComplete={swapComplete}
+        fullWidth
+      />
     </Flex>
   );
 }
