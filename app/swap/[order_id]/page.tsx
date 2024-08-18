@@ -8,14 +8,14 @@ export default async function SwapPage({
   params: { order_id: string };
 }) {
   const { order_id } = params;
-  const supabase = createClient();
 
+  const supabase = createClient();
   const { data: order } = await supabase
     .from('swaps')
     .select('*')
     .eq('order_id', order_id);
 
-  if (!order) {
+  if (!order || order.length === 0) {
     return <div>Order not found</div>;
   }
 

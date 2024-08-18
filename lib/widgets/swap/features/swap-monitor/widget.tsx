@@ -132,14 +132,14 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 transition: { duration: 0.5, ease: 'easeInOut' },
               }}
               transition={{ duration: 0.75, ease: 'easeInOut' }}
-              mt="4"
+              mt="0"
             >
               <Flex
                 justify="center"
                 align="center"
                 direction="column"
-                gap="4"
-                className="rounded-lg pt-0"
+                gap="2"
+                className="rounded-lg pb-2 pt-0"
               >
                 <QRCodeSVG value="https://www.google.com" />
                 <Flex align="center" direction="column">
@@ -197,7 +197,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
       </Grid>
       <Text as="div" size="1" color="gray">
         Deposits must be made within 5 minutes of order creation. Late deposits
-        will be swapped with a newer rate. <Link href="/help">Learn more</Link>
+        will be swapped with a newer rate. <Link href="#">Learn more</Link>
       </Text>
     </MotionFlex>
   );
