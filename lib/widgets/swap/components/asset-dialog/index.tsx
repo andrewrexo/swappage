@@ -16,27 +16,10 @@ export function AssetDialog({
   side: 'from' | 'to';
 }) {
   const dispatch = useAppDispatch();
+  const [open, setOpen] = useState(false);
   const { assets, searchAssets, status, error } = useAppSelector(
     (state) => state.assets,
   );
-
-  const [open, setOpen] = useState(false);
-  const [search, setSearch] = useState('');
-
-  useEffect(() => {
-    if (!assets || assets.length === 0) {
-      dispatch(
-        fetchAssets([
-          'bitcoin',
-          'monero',
-          'solana',
-          'arbitrumone',
-          'basemainnet',
-          'ethereum',
-        ]),
-      );
-    }
-  }, [dispatch, status]);
 
   const debouncedSearch = useCallback(
     debounce((value: string) => {
@@ -51,7 +34,6 @@ export function AssetDialog({
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
-    setSearch(value);
     debouncedSearch(value);
   };
 
@@ -71,11 +53,7 @@ export function AssetDialog({
           placeholder="Search all available assets..."
         >
           <TextField.Slot>
-            <MagnifyingGlassIcon
-              height="18"
-              width="18"
-              className="text-accent"
-            />
+            <MagnifyingGlassIcon height="18" width="18" />
           </TextField.Slot>
         </TextField.Root>
         {status === 'loading' && <p className="pt-2">Loading assets...</p>}

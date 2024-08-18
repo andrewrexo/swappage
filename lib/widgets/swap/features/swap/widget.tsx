@@ -7,6 +7,7 @@ import { SwapButton } from '../../components/swap-button';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { fetchPairRate } from '../rates/slice';
 import { useRouter } from 'next/navigation';
+import { fetchAssets } from '../assets/slice';
 
 export default function SwapWidgetHome() {
   const dispatch = useAppDispatch();
@@ -14,12 +15,28 @@ export default function SwapWidgetHome() {
 
   const { currentRate, status } = useAppSelector((state) => state.rates);
   const { rate, pair } = useAppSelector((state) => state.swap);
+  const { assets } = useAppSelector((state) => state.assets);
 
   const swapBaseParameters = {
     rate,
     pair,
     provider: 'XOSwap', // TODO: get from rate
   };
+
+  useEffect(() => {
+    if (!assets || assets.length === 0) {
+      dispatch(
+        fetchAssets([
+          'bitcoin',
+          'monero',
+          'solana',
+          'arbitrumone',
+          'basemainnet',
+          'ethereum',
+        ]),
+      );
+    }
+  }, [dispatch, pair]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
