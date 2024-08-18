@@ -61,7 +61,7 @@ export function ParameterList({
     <Flex direction="column" gap="4">
       <Flex align="center" justify="between">
         <Flex align="center" gap="2">
-          <Text size="2" color="gray" className="opacity-1 font-medium">
+          <Text size="2" color="gray" className="opacity-1">
             Rate
           </Text>
           <Tooltip content="Refresh rate">
@@ -86,7 +86,7 @@ export function ParameterList({
         </motion.div>
       </Flex>
       <Flex align="center" justify="between">
-        <Text size="2" color="gray" className="opacity-1 font-medium">
+        <Text size="2" color="gray" className="opacity-1">
           Provider
         </Text>
         <motion.div
@@ -102,7 +102,7 @@ export function ParameterList({
         </motion.div>
       </Flex>
       <Flex align="center" justify="between" gap="2">
-        <Text size="2" color="gray" className="opacity-1 font-medium">
+        <Text size="2" color="gray" className="opacity-1">
           Rate valid until
         </Text>
         <MotionText
