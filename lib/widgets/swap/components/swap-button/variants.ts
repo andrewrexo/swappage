@@ -69,7 +69,7 @@ const transform: Record<string, AnimationProps['variants']> = {
   singleArrow: {
     initial: {
       opacity: 0,
-      transition: { duration: 0.3, delay: 0.4 },
+      transition: { duration: 0.5 },
     },
     hover: {
       opacity: 1,
@@ -86,8 +86,8 @@ const button: AnimationProps['variants'] = {
   execute: {
     scale: 0.98,
     x: [-2, 1, 0],
-    y: [-2, 1, 0],
-    rotate: [-2, 1, 0],
+    y: [-2, 2, 0],
+    rotate: [-2, 2, 0],
     filter: [
       'brightness(1) contrast(1)',
       'brightness(1.1) contrast(1.05)',
