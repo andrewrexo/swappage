@@ -11,6 +11,8 @@ interface SwapState {
   rate: string;
   activeDirection: string;
   assets: ExodusAsset[] | null;
+  slippage: number;
+  slippageProtection: boolean;
 }
 
 const initialState: SwapState = {
@@ -23,6 +25,8 @@ const initialState: SwapState = {
   displayPair: `${demoAssets[0].symbol}_${demoAssets[1].symbol}`,
   activeDirection: 'from',
   assets: null,
+  slippage: 0.01,
+  slippageProtection: true,
 };
 
 export const swapSlice = createSlice({
@@ -57,6 +61,12 @@ export const swapSlice = createSlice({
     setActiveDirection: (state, action: PayloadAction<string>) => {
       state.activeDirection = action.payload;
     },
+    setSlippage: (state, action: PayloadAction<number>) => {
+      state.slippage = action.payload;
+    },
+    setSlippageProtection: (state, action: PayloadAction<boolean>) => {
+      state.slippageProtection = action.payload;
+    },
   },
 });
 
@@ -67,6 +77,8 @@ export const {
   setToAmount,
   setRate,
   setActiveDirection,
+  setSlippage,
+  setSlippageProtection,
 } = swapSlice.actions;
 
 export default swapSlice.reducer;
