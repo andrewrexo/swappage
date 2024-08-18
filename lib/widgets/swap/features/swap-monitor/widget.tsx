@@ -83,12 +83,12 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
               </Code>
             </Text>
           </Flex>
-          <Text as="div" size="1" color="gray" align="left" mt="4">
+          <Text as="div" size="1" color="gray" align="left" mt="2">
             Last update: {new Date(order.updated!).toLocaleTimeString()}
           </Text>
           <Separator orientation="horizontal" size="4" className="my-4 mb-2" />
           <Flex align="center" gap="2" key="header">
-            <Text as="div" weight="bold" size="4" align="left">
+            <Text as="div" weight="bold" size="3" align="left">
               Deposit
             </Text>
             {showQR ? (
