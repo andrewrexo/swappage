@@ -12,11 +12,13 @@ export function SwapButton({
   connected,
   fullWidth,
   onExecute,
+  isComplete,
   isResponding = false,
 }: {
   connected: boolean;
   fullWidth?: boolean;
   onExecute: () => void;
+  isComplete: boolean;
   isResponding?: boolean;
 }) {
   const [isHovered, setIsHovered] = useState(false);
@@ -45,13 +47,13 @@ export function SwapButton({
     controls.start('initial');
   };
 
-  const onButtonExecute = () => {
-    onExecute();
-  };
-
   const onClick = () => {
     controls.stop();
-    controls.start(variants.button.execute).then(onButtonExecute);
+    controls.start(variants.button.execute).then(() => {
+      controls.start(variants.button.waiting);
+    });
+
+    onExecute();
   };
 
   const renderButtonText = () => {

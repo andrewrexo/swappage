@@ -98,6 +98,22 @@ const button: AnimationProps['variants'] = {
       ease: 'easeInOut',
     },
   },
+  waiting: {
+    x: [-2, 1, 0],
+    y: [-2, 2, 0],
+    rotate: [-2, 2, 0],
+    filter: [
+      'brightness(1) contrast(1)',
+      'brightness(1.1) contrast(1.05)',
+      'brightness(1) contrast(1)',
+    ],
+    transition: {
+      duration: 0.7,
+      ease: 'easeInOut',
+      repeat: Infinity,
+      repeatType: 'reverse',
+    },
+  },
 };
 
 const variants = {
