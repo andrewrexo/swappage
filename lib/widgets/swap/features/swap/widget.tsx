@@ -32,7 +32,7 @@ export default function SwapWidgetHome() {
   }, [dispatch, pair]);
 
   return (
-    <div className="space-y-4">
+    <Flex direction="column" gap="4">
       <Flex direction="column" align="center" gap="6">
         <AssetPicker side="from" />
         <AssetPicker side="to" />
@@ -46,6 +46,6 @@ export default function SwapWidgetHome() {
       )}
       <Separator size="4" className="my-0" />
       <SwapButton connected={true} fullWidth />
-    </div>
+    </Flex>
   );
 }

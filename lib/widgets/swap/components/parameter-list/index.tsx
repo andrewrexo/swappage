@@ -1,20 +1,10 @@
-import {
-  Badge,
-  Box,
-  Code,
-  Flex,
-  IconButton,
-  Text,
-  ThickCheckIcon,
-  Tooltip,
-} from '@radix-ui/themes';
+import { Code, Flex, IconButton, Text, Tooltip } from '@radix-ui/themes';
 import { PairRate } from '../../lib/exodus/rate';
 import { motion } from 'framer-motion';
-import { CheckIcon, UpdateIcon } from '@radix-ui/react-icons';
+import { UpdateIcon } from '@radix-ui/react-icons';
 import { useAppDispatch } from '../../lib/hooks';
 import { fetchPairRate } from '../../features/rates/slice';
 import { twMerge } from 'tailwind-merge';
-import { CheckCheckIcon, RefreshCcw } from 'lucide-react';
 
 interface ParameterListProps {
   rate: PairRate;
@@ -45,7 +35,6 @@ const etaAsReadableText = (eta: number) => {
   return `~${minutes} minute${minutes !== 1 ? 's' : ''}`;
 };
 
-const MotionCode = motion(Code);
 const MotionText = motion(Text);
 
 export function ParameterList({
@@ -57,8 +46,6 @@ export function ParameterList({
   const dispatch = useAppDispatch();
   const { amount, expiry } = rate;
 
-  // should be saved as a user setting and passed as a prop
-  const slippage = 0.5;
   const eta = 18 * 60 * 1000;
   const etaText = etaAsReadableText(eta);
 
@@ -71,7 +58,31 @@ export function ParameterList({
   };
 
   return (
-    <Flex direction="column" gap="2">
+    <Flex direction="column" gap="4" mb="1">
+      <Flex align="center" justify="between">
+        <Flex align="center" gap="2">
+          <Text size="2">Rate</Text>
+          <Tooltip content="Refresh rate">
+            <IconButton size="1" variant="ghost" onClick={reloadRate}>
+              <UpdateIcon
+                className={twMerge(
+                  status === 'loading' && 'animate-spin transition-all',
+                )}
+                onClick={reloadRate}
+              />
+            </IconButton>
+          </Tooltip>
+        </Flex>
+        <motion.div
+          key={`rate-${rate.expiry}`}
+          initial={{ opacity: 0.5 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5 }}
+          className="text-right"
+        >
+          {amount.value && rateToWidgetDisplayText(amount.value, pair)}
+        </motion.div>
+      </Flex>
       <Flex align="center" justify="between">
         <Text size="2" className="opacity-1">
           Provider
@@ -88,68 +99,24 @@ export function ParameterList({
           </Text>
         </motion.div>
       </Flex>
-
-      <Flex align="center" justify="between">
-        <Flex align="center" gap="2">
-          <Text size="2">Rate</Text>
-          <Tooltip content="Refresh rate">
-            <RefreshCcw
-              size={14}
-              className={twMerge(
-                'mt-[1px] cursor-pointer font-bold text-accent',
-                status === 'loading' && 'animate-spin transition-all',
-              )}
-              onClick={reloadRate}
-            />
-          </Tooltip>
-        </Flex>
-        <motion.div
-          key={`rate-${rate.expiry}`}
-          initial={{ opacity: 0.5 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-right"
-        >
-          {amount.value && rateToWidgetDisplayText(amount.value, pair)}
-        </motion.div>
-      </Flex>
-
       <Flex align="center" justify="between" gap="2">
         <Text size="2" className="opacity-1">
           Rate valid until
         </Text>
-        <Flex align="center" gap="4">
-          <MotionText
-            key={`provider-${provider}`}
-            initial={{ opacity: 0.5 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
-            className="text-right"
-            size="2"
-          >
-            {new Date(expiry).toLocaleString('en-US', {
-              hour: '2-digit',
-              minute: '2-digit',
-              second: '2-digit',
-            })}
-          </MotionText>
-        </Flex>
-      </Flex>
-
-      <Flex align="center" justify="between">
-        <Text size="2">Slippage protection</Text>
-        <motion.div
-          key={`slippage-${slippage}`}
+        <MotionText
+          key={`provider-${provider}`}
           initial={{ opacity: 0.5 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
-          className="mb-1 flex items-center"
+          className="text-right"
+          size="2"
         >
-          <Badge size="2" className="flex items-center justify-between">
-            Enabled
-            <ThickCheckIcon />
-          </Badge>
-        </motion.div>
+          {new Date(expiry).toLocaleString('en-US', {
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+          })}
+        </MotionText>
       </Flex>
     </Flex>
   );
