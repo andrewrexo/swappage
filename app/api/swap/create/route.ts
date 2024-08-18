@@ -89,7 +89,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       success: true,
-      order,
+      order: dbOrder,
     });
   } catch (error: any) {
     console.error('Error creating order:', error);

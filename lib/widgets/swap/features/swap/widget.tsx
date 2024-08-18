@@ -80,9 +80,13 @@ export default function SwapWidgetHome() {
         ...orderData,
       });
 
+      if (!swap || !swap.success) {
+        console.error('Failed to create swap', swap);
+      }
+
       if (swap.success) {
         setSwapComplete(true);
-        onComplete({ orderId: swap.orderId });
+        onComplete({ orderId: swap.order.order_id });
       }
     };
 
