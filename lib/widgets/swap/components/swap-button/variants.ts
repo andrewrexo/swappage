@@ -99,12 +99,12 @@ const button: AnimationProps['variants'] = {
     },
   },
   waiting: {
-    x: [-2, 1, 0],
-    y: [-2, 2, 0],
-    rotate: [-2, 2, 0],
+    x: [-1, 1, 0],
+    y: [-1, 1, 0],
+    rotate: [-1, 1, 0],
     filter: [
       'brightness(1) contrast(1)',
-      'brightness(1.1) contrast(1.05)',
+      'brightness(1.05) contrast(1.025)',
       'brightness(1) contrast(1)',
     ],
     transition: {

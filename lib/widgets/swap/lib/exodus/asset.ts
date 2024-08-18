@@ -70,10 +70,10 @@ const getAvailableAssets = async (
 
 export const demoAssets: ExodusAsset[] = [
   {
-    id: 'BTC',
-    symbol: 'BTC',
-    network: 'bitcoin',
-    name: 'Bitcoin',
+    id: 'SOL',
+    symbol: 'SOL',
+    network: 'solana',
+    name: 'Solana',
   },
   {
     id: 'ETH',
