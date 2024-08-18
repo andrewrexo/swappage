@@ -1,7 +1,7 @@
 'use client';
 import { Flex, Separator } from '@radix-ui/themes';
 import { useEffect } from 'react';
-import { AssetPicker } from '../../components/asset-picker/picker';
+import { AssetControl } from '../../components/asset-control';
 import { ParameterList } from '../../components/parameter-list';
 import { SwapButton } from '../../components/swap-button';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
@@ -34,8 +34,8 @@ export default function SwapWidgetHome() {
   return (
     <Flex direction="column" gap="4">
       <Flex direction="column" align="center" gap="6">
-        <AssetPicker side="from" />
-        <AssetPicker side="to" />
+        <AssetControl side="from" />
+        <AssetControl side="to" />
       </Flex>
       <Separator size="4" />
       {currentRate && (
