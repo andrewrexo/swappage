@@ -15,10 +15,17 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { QRCodeSVG } from 'qrcode.react';
 import { useState } from 'react';
 import type { LazyOrder } from '../../lib/order';
-import { CopyIcon } from '@radix-ui/react-icons';
+import {
+  ArrowLeftIcon,
+  CopyIcon,
+  DoubleArrowLeftIcon,
+  ThickArrowLeftIcon,
+} from '@radix-ui/react-icons';
+import { ArrowBigLeft } from 'lucide-react';
 
 const MotionFlex = motion(Flex);
 const MotionBadge = motion(Badge);
+const MotionIconButton = motion(IconButton);
 
 export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
   const [showQR, setShowQR] = useState(false);
@@ -39,7 +46,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
       animate={{ opacity: 1 }}
     >
       <Flex gap="4" justify="between" className="w-full">
-        <Box>
+        <Box className="max-w-[60%]">
           <Text as="div" weight="bold" mb="1">
             Order number
           </Text>
@@ -47,9 +54,10 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
             tabIndex={2}
             underline="hover"
             highContrast
-            size="3"
+            size="2"
             href={`/order/${order.orderId}`}
             onClick={(e) => e.preventDefault()}
+            style={{ maxWidth: '40%' }}
           >
             {order.orderId}
           </Link>
@@ -86,21 +94,28 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
           <Text as="div" size="1" color="gray" align="left" mt="2">
             Last update: {new Date(order.updated!).toLocaleTimeString()}
           </Text>
-          <Separator orientation="horizontal" size="4" className="my-4 mb-2" />
-          <Flex align="center" gap="2" key="header">
-            <Text as="div" weight="bold" size="3" align="left">
-              Deposit
-            </Text>
-            {showQR ? (
-              <MotionBadge
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.5, ease: 'easeInOut', delay: 1 }}
-              >
-                Manual payment
-              </MotionBadge>
-            ) : null}
+          <Separator orientation="horizontal" size="4" className="my-4 mb-4" />
+          <Flex align="center" gap="2" key="header" mb="2">
+            <Flex justify="between" align="center" gap="2">
+              {showQR && (
+                <MotionIconButton
+                  variant="soft"
+                  size="1"
+                  color="gray"
+                  className="hover:text-primary transition-all hover:scale-110"
+                  onClick={() => setShowQR(false)}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                >
+                  <DoubleArrowLeftIcon />
+                </MotionIconButton>
+              )}
+              <Text as="div" weight="bold" size="3" align="left">
+                Deposit
+              </Text>
+            </Flex>
           </Flex>
         </Flex>
         <AnimatePresence mode="wait">
@@ -123,14 +138,23 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 justify="center"
                 align="center"
                 direction="column"
-                gap="2"
-                className="rounded-lg p-2 pt-0"
+                gap="4"
+                className="rounded-lg pt-0"
               >
                 <QRCodeSVG value="https://www.google.com" />
                 <Flex align="center" direction="column">
-                  <Text style={{ maxWidth: '100%' }} size="1">
-                    Pay to
+                  <Text as="div" style={{ maxWidth: '100%' }} size="1">
+                    Pay{' '}
+                    <Link
+                      underline="always"
+                      style={{ maxWidth: '100%' }}
+                      size="1"
+                    >
+                      {order.fromAmount} {order.from}
+                    </Link>{' '}
+                    to
                   </Text>
+
                   <Link
                     underline="always"
                     style={{ maxWidth: '100%' }}
@@ -140,18 +164,8 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                   </Link>
                 </Flex>
               </Flex>
-              <Button variant="soft" size="4">
+              <Button variant="surface" size="4">
                 Mark as paid
-              </Button>
-              <Button
-                variant="soft"
-                style={{ opacity: 0.5, backgroundColor: 'transparent' }}
-                size="3"
-                onClick={() => {
-                  setShowQR(false);
-                }}
-              >
-                Connect wallet
               </Button>
             </MotionFlex>
           ) : (

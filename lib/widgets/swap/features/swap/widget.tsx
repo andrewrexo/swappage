@@ -9,7 +9,8 @@ import { fetchPairRate } from '../rates/slice';
 import { useRouter } from 'next/navigation';
 import { fetchAssets } from '../assets/slice';
 import { LazyOrder } from '../../lib/order';
-import { createOrderInternal, generateRandomAddress } from './api';
+import toast from 'react-hot-toast';
+import { createOrderInternal } from './api';
 
 export default function SwapWidgetHome() {
   const dispatch = useAppDispatch();
@@ -85,10 +86,34 @@ export default function SwapWidgetHome() {
       }
 
       if (swap.success) {
+        toast.success('Swap created successfully.', {
+          duration: 2500,
+          position: 'bottom-right',
+          style: {
+            borderRadius: '10px',
+            border: '1px solid var(--accent-5)',
+            boxShadow: '2px 4px 20px var(--accent-3)',
+            color: 'var(--gray-14)',
+            background: 'var(--gray-1)',
+          },
+        });
+
         setSwapComplete(true);
         onComplete({ orderId: swap.order.order_id });
       }
     };
+
+    toast.loading('Creating swap...', {
+      duration: 2500,
+      position: 'bottom-right',
+      style: {
+        borderRadius: '10px',
+        border: '1px solid var(--accent-5)',
+        boxShadow: '2px 4px 20px var(--accent-3)',
+        color: 'var(--gray-14)',
+        background: 'var(--gray-1)',
+      },
+    });
 
     createSwap();
   };

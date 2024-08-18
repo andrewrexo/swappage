@@ -7,6 +7,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { type ReactNode, useEffect } from 'react';
 import { fetchPairRate } from './features/rates/slice';
 import { useMediaQuery } from './lib/hooks';
+import { Toaster } from 'react-hot-toast';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -138,6 +139,7 @@ export function SwapWidget({
           {children}
         </Flex>
       </MotionFlex>
+      <Toaster key="toast" />
     </AnimatePresence>
   );
 }
