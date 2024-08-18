@@ -55,6 +55,7 @@ export function SwapButton({
   };
 
   const onClick = () => {
+    controls.stop();
     controls.start(variants.button.execute).then(onButtonExecute);
   };
 
