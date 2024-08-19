@@ -1,5 +1,5 @@
 'use client';
-import { Card, Flex, Spinner, Text } from '@radix-ui/themes';
+import { Card, Flex, IconButton, Spinner, Text } from '@radix-ui/themes';
 import { WidgetHeader } from './components/widget-header';
 import { twMerge } from 'tailwind-merge';
 import { useAppDispatch, useAppSelector } from './lib/hooks';
@@ -8,6 +8,8 @@ import { type ReactNode, useEffect } from 'react';
 import { fetchPairRate } from './features/rates/slice';
 import { useMediaQuery } from './lib/hooks';
 import { Toaster } from 'react-hot-toast';
+import { DoubleArrowLeftIcon } from '@radix-ui/react-icons';
+import { usePathname, useRouter } from 'next/navigation';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -72,6 +74,8 @@ export function SwapWidget({
   ...swapWidgetProps
 }: SwapWidgetProps & { children: ReactNode }) {
   const dispatch = useAppDispatch();
+  const router = useRouter();
+  const pathname = usePathname();
   const { width, className } = swapWidgetProps;
   const { status, currentRate } = useAppSelector((state) => state.rates);
   const { pair } = useAppSelector((state) => state.swap);
@@ -117,14 +121,25 @@ export function SwapWidget({
           direction="column"
           className={twMerge('h-full w-full gap-4 rounded-xl', className)}
         >
-          <Flex justify="between">
-            <Text
-              size="5"
-              weight="bold"
-              className="user-select-none pointer-events-none flex items-center gap-2 text-accent"
-            >
-              Swappage {status === 'loading' ? <Spinner /> : ''}
-            </Text>
+          <Flex justify="between" gap="4">
+            <Flex gap="2" align="center">
+              {pathname !== '/swap' && (
+                <IconButton
+                  size="1"
+                  onClick={() => router.push('/swap/')}
+                  variant="soft"
+                >
+                  <DoubleArrowLeftIcon />
+                </IconButton>
+              )}
+              <Text
+                size="5"
+                weight="bold"
+                className="user-select-none pointer-events-none flex items-center gap-2 text-accent"
+              >
+                Swappage {status === 'loading' ? <Spinner /> : ''}
+              </Text>
+            </Flex>
             <WidgetHeader />
           </Flex>
           {children}

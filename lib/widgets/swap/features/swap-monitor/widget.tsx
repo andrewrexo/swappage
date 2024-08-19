@@ -134,7 +134,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 height: 0,
                 transition: { duration: 0.5, ease: 'easeInOut' },
               }}
-              transition={{ duration: 0.75, ease: 'easeInOut' }}
+              transition={{ duration: 0.5, ease: 'easeInOut' }}
             >
               <Flex
                 justify="center"
@@ -169,7 +169,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 y: -25,
                 transition: { duration: 0.25 },
               }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
+              transition={{ duration: 0.3, ease: 'easeInOut' }}
             >
               <Button
                 variant="surface"

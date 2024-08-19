@@ -11,6 +11,9 @@ import { fetchAssets } from '../assets/slice';
 import { LazyOrder } from '../../lib/order';
 import toast from 'react-hot-toast';
 import { createOrderInternal } from './api';
+import { motion } from 'framer-motion';
+
+const MotionFlex = motion(Flex);
 
 export default function SwapWidgetHome() {
   const dispatch = useAppDispatch();
@@ -118,7 +121,14 @@ export default function SwapWidgetHome() {
   };
 
   return (
-    <Flex direction="column" gap="4">
+    <MotionFlex
+      direction="column"
+      gap="4"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.3 }}
+    >
       <Flex direction="column" align="center" gap="6">
         <AssetControl side="from" />
         <AssetControl side="to" />
@@ -133,6 +143,6 @@ export default function SwapWidgetHome() {
         isComplete={swapComplete}
         fullWidth
       />
-    </Flex>
+    </MotionFlex>
   );
 }
