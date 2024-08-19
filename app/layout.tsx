@@ -1,11 +1,16 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import '@radix-ui/themes/styles.css';
-import './globals.css';
-import { Theme, ThemePanel } from '@radix-ui/themes';
+import { Theme } from '@radix-ui/themes';
 import type { ReactNode } from 'react';
 import StoreProvider from './StoreProvider';
 import { twMerge } from 'tailwind-merge';
+import Web3ModalProvider from '@/lib/context';
+import { headers } from 'next/headers';
+import { cookieToInitialState } from 'wagmi';
+import { config } from '@/lib/config';
+
+import '@radix-ui/themes/styles.css';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -19,6 +24,8 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
+  const initialState = cookieToInitialState(config, headers().get('cookie'));
+
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -27,19 +34,21 @@ export default function RootLayout({
           accentColor="mint"
           grayColor="mauve"
           radius="large"
-          scaling="100%"
+          scaling="95%"
         >
-          <StoreProvider>
-            <main
-              className={twMerge(
-                'flex min-h-screen flex-col items-center justify-between',
-                `sm:p-8`,
-                `p-4`,
-              )}
-            >
-              {children}
-            </main>
-          </StoreProvider>
+          <Web3ModalProvider>
+            <StoreProvider>
+              <main
+                className={twMerge(
+                  'flex min-h-screen flex-col items-center justify-between',
+                  `sm:p-8`,
+                  `p-4`,
+                )}
+              >
+                {children}
+              </main>
+            </StoreProvider>
+          </Web3ModalProvider>
         </Theme>
       </body>
     </html>

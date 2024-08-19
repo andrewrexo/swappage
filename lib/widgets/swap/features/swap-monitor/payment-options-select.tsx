@@ -1,6 +1,7 @@
 import { Link1Icon, ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { Button, Flex, Separator, Text } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
+import { WalletConnectButton } from '../../components/wallet-connect-button';
 
 export function PaymentOptionsSelect({
   handleShowQR,
@@ -9,12 +10,7 @@ export function PaymentOptionsSelect({
 }) {
   return (
     <>
-      <Button variant="surface" size="4" asChild className="cursor-pointer">
-        <motion.div whileHover={{ scale: 1.02 }}>
-          Connect
-          <Link1Icon className="ml-auto h-6 w-6" />
-        </motion.div>
-      </Button>
+      <WalletConnectButton />
       <Flex gap="2" align="center" justify="center">
         <Separator orientation="horizontal" size="4" />
         <Text as="div" size="1" color="gray" align="center">

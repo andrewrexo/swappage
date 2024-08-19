@@ -19,6 +19,8 @@
     "@supabase/ssr": "^0.4.0",
     "@supabase/supabase-js": "^2.45.1",
     "@types/lodash": "^4.17.7",
+    "@web3modal/solana": "^5.1.0",
+    "@web3modal/wagmi": "5.0.11",
     "clsx": "^2.1.1",
     "framer-motion": "^11.3.24",
     "lodash": "^4.17.21",
@@ -30,7 +32,9 @@
     "react-hot-toast": "^2.4.1",
     "react-redux": "^9.1.2",
     "tailwind-merge": "^2.5.2",
-    "uuid": "^10.0.0"
+    "uuid": "^10.0.0",
+    "viem": "^2.19.7",
+    "wagmi": "^2.12.5"
   },
   "devDependencies": {
     "@types/node": "^22.2.0",
