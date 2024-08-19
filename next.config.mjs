@@ -1,5 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/.well-known/walletconnect.txt',
+        destination: '/api/walletconnect',
+      },
+    ];
+  },
   async redirects() {
     return [
       {
