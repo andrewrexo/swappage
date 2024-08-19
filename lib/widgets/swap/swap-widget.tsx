@@ -72,22 +72,14 @@ export function SwapWidget({
   ...swapWidgetProps
 }: SwapWidgetProps & { children: ReactNode }) {
   const dispatch = useAppDispatch();
-  const { width, height, className } = swapWidgetProps;
-  const { currentRate, status } = useAppSelector((state) => state.rates);
-  const { rate, fromAsset, toAsset, pair } = useAppSelector(
-    (state) => state.swap,
-  );
+  const { width, className } = swapWidgetProps;
+  const { status, currentRate } = useAppSelector((state) => state.rates);
+  const { pair } = useAppSelector((state) => state.swap);
 
   const isSmall = useMediaQuery('(max-width: 640px)');
 
-  const swapBaseParameters = {
-    rate,
-    pair,
-    provider: 'XOSwap',
-  };
-
   useEffect(() => {
-    if (pair && !rate) {
+    if (pair && !currentRate) {
       dispatch(fetchPairRate(pair));
     }
 

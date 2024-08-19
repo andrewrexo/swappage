@@ -15,16 +15,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { QRCodeSVG } from 'qrcode.react';
 import { useState } from 'react';
 import type { LazyOrder } from '../../lib/order';
-import {
-  ArrowLeftIcon,
-  CopyIcon,
-  DoubleArrowLeftIcon,
-  ThickArrowLeftIcon,
-} from '@radix-ui/react-icons';
-import { ArrowBigLeft } from 'lucide-react';
+import { CopyIcon, DoubleArrowLeftIcon } from '@radix-ui/react-icons';
+import { CheckCheckIcon } from 'lucide-react';
 
 const MotionFlex = motion(Flex);
-const MotionBadge = motion(Badge);
 const MotionIconButton = motion(IconButton);
 
 export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
@@ -45,6 +39,16 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
     >
+      <Text as="div" style={{ maxWidth: '100%' }} size="1" mt="-2">
+        Pay{' '}
+        <Link underline="always" style={{ maxWidth: '100%' }} size="1">
+          {order.fromAmount} {order.from}
+        </Link>{' '}
+        for{' '}
+        <Link underline="always" style={{ maxWidth: '100%' }} size="1">
+          {order.toAmount} {order.to}
+        </Link>
+      </Text>
       <Flex gap="4" justify="between" className="w-full">
         <Box className="max-w-[60%]">
           <Text as="div" weight="bold" mb="1">
@@ -76,8 +80,8 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
         </Box>
       </Flex>
       <Grid columns="1" className="min-h-[300px]">
-        <Flex direction="column">
-          <Text as="div" weight="bold" size="3" mb="2" align="left">
+        <Flex direction="column" gap="2">
+          <Text as="div" weight="bold" size="3" align="left">
             Payment
           </Text>
           <Flex gap="4">
@@ -91,11 +95,10 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
               </Code>
             </Text>
           </Flex>
-          <Text as="div" size="1" color="gray" align="left" mt="2">
+          <Text size="1" color="gray" align="left" mt="-1" mb="2">
             Last update: {new Date(order.updated!).toLocaleTimeString()}
           </Text>
-          <Separator orientation="horizontal" size="4" className="my-4 mb-4" />
-          <Flex align="center" gap="2" key="header" mb="2">
+          <Flex align="center" key="header">
             <Flex justify="between" align="center" gap="2">
               {showQR && (
                 <MotionIconButton
@@ -113,7 +116,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 </MotionIconButton>
               )}
               <Text as="div" weight="bold" size="3" align="left">
-                Deposit
+                {showQR ? 'Scan QR code' : 'Deposit'}
               </Text>
             </Flex>
           </Flex>
@@ -124,7 +127,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
               direction="column"
               gap="4"
               key="qr"
-              initial={{ opacity: 0, y: 25, height: '0px' }}
+              initial={{ opacity: 0, y: 25, height: 0 }}
               animate={{ opacity: 1, height: 'auto', y: 0 }}
               exit={{
                 opacity: 0,
@@ -132,40 +135,21 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 transition: { duration: 0.5, ease: 'easeInOut' },
               }}
               transition={{ duration: 0.75, ease: 'easeInOut' }}
-              mt="0"
             >
               <Flex
                 justify="center"
                 align="center"
                 direction="column"
-                gap="2"
-                className="rounded-lg pb-2 pt-0"
+                p="2"
+                pt="4"
               >
-                <QRCodeSVG value="https://www.google.com" />
-                <Flex align="center" direction="column">
-                  <Text as="div" style={{ maxWidth: '100%' }} size="1">
-                    Pay{' '}
-                    <Link
-                      underline="always"
-                      style={{ maxWidth: '100%' }}
-                      size="1"
-                    >
-                      {order.fromAmount} {order.from}
-                    </Link>{' '}
-                    to
-                  </Text>
-
-                  <Link
-                    underline="always"
-                    style={{ maxWidth: '100%' }}
-                    size="1"
-                  >
-                    {order.payinAddress}
-                  </Link>
-                </Flex>
+                <QRCodeSVG size={196} value="https://www.google.com" />
               </Flex>
-              <Button variant="surface" size="4">
-                Mark as paid
+              <Button variant="surface" size="4" asChild>
+                <motion.div whileHover={{ scale: 1.02 }}>
+                  <Text>Mark as paid</Text>
+                  <CheckCheckIcon className="ml-auto" />
+                </motion.div>
               </Button>
             </MotionFlex>
           ) : (
@@ -182,13 +166,17 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
               }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
             >
-              <Button variant="soft" size="4" className="mt-2">
+              <Button variant="surface" size="4">
                 Connect wallet
               </Button>
-              <Text as="div" size="1" color="gray" align="center">
-                or
-              </Text>
-              <Button variant="soft" size="4" onClick={handleShowQR}>
+              <Flex gap="2" align="center" justify="center">
+                <Separator orientation="horizontal" size="4" />
+                <Text as="div" size="1" color="gray" align="center">
+                  or
+                </Text>
+                <Separator orientation="horizontal" size="4" />
+              </Flex>
+              <Button variant="surface" size="4" onClick={handleShowQR}>
                 Manual payment
               </Button>
             </MotionFlex>
