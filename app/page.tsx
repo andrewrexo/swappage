@@ -1,5 +1,6 @@
-import { SwapWidget, SwapWidgetProps } from '../lib/widgets/swap/swap-widget';
-import SwapWidgetHome from '../lib/widgets/swap/features/swap/widget';
+import { SwapWidget } from '../lib/widget/swap-widget';
+import SwapWidgetHome from '../lib/widget/features/swap/widget';
+import type { SwapWidgetProps } from '../lib/widget/swap-widget';
 
 export default function Home() {
   const widgetOpts: SwapWidgetProps = {

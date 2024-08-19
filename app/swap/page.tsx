@@ -1,4 +1,4 @@
-import SwapWidgetHome from '../../lib/widgets/swap/features/swap/widget';
+import SwapWidgetHome from '../../lib/widget/features/swap/widget';
 
 export default function SwapPage() {
   return <SwapWidgetHome />;

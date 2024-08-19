@@ -1,4 +1,4 @@
-import getPriceBySlugs from '@/lib/widgets/swap/lib/coinmarketcap/pricing';
+import getPriceBySlugs from '@/lib/widget/lib/coinmarketcap/pricing';
 import type { NextRequest } from 'next/server';
 
 export async function GET(req: NextRequest) {

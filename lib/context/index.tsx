@@ -7,18 +7,14 @@ import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 import { State, WagmiProvider } from 'wagmi';
 
-export const projectId = 'e3a25383716ba18636fd724630e85225';
-
 export const config = getDefaultConfig({
   appName: 'Swappage',
-  projectId,
+  projectId: 'e3a25383716ba18636fd724630e85225',
   chains: [mainnet, polygon, optimism, arbitrum, base],
-  ssr: true, // If your dApp uses server side rendering (SSR)
+  ssr: true,
 });
 
 const queryClient = new QueryClient();
-
-if (!projectId) throw new Error('Project ID is not defined');
 
 export default function Web3Provider({
   children,

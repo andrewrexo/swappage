@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/server';
-import { SwapMonitorWidget } from '@/lib/widgets/swap/features/swap-monitor/widget';
-import { dbOrderToLazyOrder } from '@/lib/widgets/swap/features/swap/api';
+import { SwapMonitorWidget } from '@/lib/widget/features/swap-monitor/widget';
+import { dbOrderToLazyOrder } from '@/lib/widget/features/swap/api';
 
 export default async function SwapPage({
   params,
