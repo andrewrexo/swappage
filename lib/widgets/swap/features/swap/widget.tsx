@@ -16,7 +16,7 @@ export default function SwapWidgetHome() {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
-  const { fromAmount, toAmount, slippage } = useAppSelector(
+  const { fromAmount, toAmount, slippage, fromAsset, toAsset } = useAppSelector(
     (state) => state.swap,
   );
   const { currentRate: rate, status } = useAppSelector((state) => state.rates);
@@ -32,14 +32,7 @@ export default function SwapWidgetHome() {
   useEffect(() => {
     if (!assets || assets.length === 0) {
       dispatch(
-        fetchAssets([
-          'bitcoin',
-          'monero',
-          'solana',
-          'arbitrumone',
-          'basemainnet',
-          'ethereum',
-        ]),
+        fetchAssets(['solana', 'arbitrumone', 'basemainnet', 'ethereum']),
       );
     }
   }, [dispatch, pair]);
@@ -59,13 +52,19 @@ export default function SwapWidgetHome() {
 
   const onExecute = () => {
     const createSwap = async () => {
-      const fromAddress = 'FinVobfi4tbdMdfN9jhzUuDVqGXfcFnRGX57xHcTWLfW';
-      const toAddress = '0x4838b106fce9647bdf1e7877bf73ce8b0bad5f97';
+      const solAddress = 'FinVobfi4tbdMdfN9jhzUuDVqGXfcFnRGX57xHcTWLfW';
+      const ethAddress = '0x4838b106fce9647bdf1e7877bf73ce8b0bad5f97';
 
+      const from = pair.split('_')[0];
+      const to = pair.split('_')[1];
+
+      const fromAddress =
+        fromAsset.network === 'solana' ? solAddress : ethAddress;
+      const toAddress = toAsset.network === 'solana' ? solAddress : ethAddress;
       // Create order object with necessary data
       const orderData: LazyOrder = {
-        from: pair.split('_')[0],
-        to: pair.split('_')[1],
+        from,
+        to,
         fromAmount: parseFloat(fromAmount),
         toAmount: parseFloat(toAmount),
         fromAddress,
