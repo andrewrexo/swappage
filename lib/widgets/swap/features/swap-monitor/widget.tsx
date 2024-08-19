@@ -10,15 +10,18 @@ import {
   Tooltip,
 } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { LazyOrder } from '../../lib/order';
 import { CopyIcon, DoubleArrowLeftIcon } from '@radix-ui/react-icons';
 import { PaymentOptions } from './payment-options';
 import { MotionFlex } from '../../components/ui/radix-motion';
+import { useAccount } from 'wagmi';
 
 const MotionIconButton = motion(IconButton);
 
 export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
+  const { address, isConnecting, isDisconnected } = useAccount();
+
   const [paymentMethod, setPaymentMethod] = useState<'connect' | 'qr' | 'none'>(
     'none',
   );
@@ -30,6 +33,10 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
   const onChoosePayment = (method: 'connect' | 'qr' | 'none') => {
     setPaymentMethod(method);
   };
+
+  useEffect(() => {
+    console.log(address, isConnecting, isDisconnected);
+  }, [address, isConnecting, isDisconnected]);
 
   return (
     <MotionFlex

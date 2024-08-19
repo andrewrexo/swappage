@@ -1,6 +1,4 @@
 import { defaultWagmiConfig } from '@web3modal/wagmi/react/config';
-
-import { cookieStorage, createStorage } from 'wagmi';
 import { mainnet, sepolia } from 'wagmi/chains';
 
 export const projectId = 'e3a25383716ba18636fd724630e85225';
@@ -19,7 +17,4 @@ export const config = defaultWagmiConfig({
   projectId,
   metadata,
   ssr: true,
-  storage: createStorage({
-    storage: cookieStorage,
-  }),
 });
