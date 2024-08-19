@@ -44,7 +44,7 @@ export function PaymentOptions({
             exit={{ opacity: 0, height: '0px' }}
             transition={{ duration: 0.2, ease: 'easeInOut' }}
             key="none"
-            className="flex flex-col justify-center gap-4"
+            className="flex flex-col justify-center gap-2"
           >
             <PaymentOptionsSelect handleShowQR={handleShowQR} />
           </motion.div>
