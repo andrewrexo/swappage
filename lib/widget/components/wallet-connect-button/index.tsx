@@ -1,7 +1,11 @@
 'use client';
 
-import { ArrowTopRightIcon, Link1Icon } from '@radix-ui/react-icons';
-import { Button, Text } from '@radix-ui/themes';
+import {
+  ArrowTopRightIcon,
+  EyeOpenIcon,
+  Link1Icon,
+} from '@radix-ui/react-icons';
+import { Button, ButtonProps, Text } from '@radix-ui/themes';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { motion } from 'framer-motion';
 import { AlertCircleIcon } from 'lucide-react';
@@ -10,17 +14,20 @@ import type { ReactNode } from 'react';
 const ChildButton = ({
   children,
   onClick,
+  accountOnly = false,
+  ...props
 }: {
   children: ReactNode;
   onClick: () => void;
-}) => {
+  accountOnly?: boolean;
+} & ButtonProps) => {
   return (
     <Button
-      variant="surface"
-      size="4"
+      variant={accountOnly ? 'surface' : 'surface'}
       asChild
       className="cursor-pointer"
       onClick={onClick}
+      {...props}
     >
       <motion.div
         initial={{ opacity: 0 }}
@@ -35,7 +42,14 @@ const ChildButton = ({
   );
 };
 
-export function WalletConnectButton() {
+export function WalletConnectButton({
+  accountOnly = false,
+  size = '4',
+  ...props
+}: {
+  accountOnly?: boolean;
+  size?: ButtonProps['size'];
+} & ButtonProps) {
   return (
     <ConnectButton.Custom>
       {({
@@ -52,9 +66,15 @@ export function WalletConnectButton() {
         const ready = mounted;
         const connected = ready && account && chain;
 
+        const iconSize = parseInt(size.toString()) <= 2 ? 4 : 6;
+        const chainIconSize = {
+          w: parseInt(size.toString()) <= 2 ? 16 : 24,
+          h: parseInt(size.toString()) <= 2 ? 16 : 24,
+        };
+
         return (
           <div
-            className="w-full"
+            className="w-full cursor-pointer"
             {...(!ready && {
               'aria-hidden': true,
               style: {
@@ -67,53 +87,73 @@ export function WalletConnectButton() {
             {(() => {
               if (!connected) {
                 return (
-                  <ChildButton onClick={openConnectModal}>
+                  <ChildButton
+                    onClick={openConnectModal}
+                    size={accountOnly ? '2' : size}
+                    accountOnly={accountOnly}
+                  >
                     Connect Wallet
-                    <Link1Icon className="ml-auto h-6 w-6" />
+                    <Link1Icon
+                      className={`ml-auto h-${iconSize} w-${iconSize}`}
+                    />
                   </ChildButton>
                 );
               }
 
               if (chain.unsupported) {
                 return (
-                  <ChildButton onClick={openChainModal}>
+                  <ChildButton
+                    onClick={openChainModal}
+                    size={size}
+                    accountOnly={accountOnly}
+                  >
                     Wrong network
-                    <AlertCircleIcon className="ml-auto h-6 w-6" />
+                    <AlertCircleIcon
+                      className={`ml-auto h-${iconSize} w-${iconSize}`}
+                    />
                   </ChildButton>
                 );
               }
 
               return (
-                <div style={{ display: 'flex', gap: 12 }}>
-                  <ChildButton onClick={openAccountModal}>
-                    <Text as="div" className="flex items-center gap-2">
-                      {chain.hasIcon && (
-                        <div
-                          style={{
-                            background: chain.iconBackground,
-                            width: 24,
-                            height: 24,
-                            borderRadius: 999,
-                            overflow: 'hidden',
-                            marginTop: -2,
-                          }}
-                        >
-                          {chain.iconUrl && (
-                            <img
-                              alt={chain.name ?? 'Chain icon'}
-                              src={chain.iconUrl}
-                              style={{ width: 24, height: 24 }}
-                            />
-                          )}
-                        </div>
-                      )}
-                      Pay with {account.displayName}
-                    </Text>
-                    <div className="ml-auto">
-                      <ArrowTopRightIcon className="h-6 w-6" />
-                    </div>
-                  </ChildButton>
-                </div>
+                <ChildButton
+                  onClick={openAccountModal}
+                  size={size}
+                  className="flex justify-between"
+                  accountOnly={accountOnly}
+                >
+                  <Text as="div" className="flex">
+                    {chain.hasIcon && (
+                      <div
+                        style={{
+                          width: chainIconSize.w,
+                          height: chainIconSize.h,
+                          borderRadius: 999,
+                          overflow: 'hidden',
+                        }}
+                      >
+                        {chain.iconUrl && (
+                          <img
+                            alt={chain.name ?? 'Chain icon'}
+                            src={chain.iconUrl}
+                            style={{
+                              width: chainIconSize.w,
+                              height: chainIconSize.h,
+                            }}
+                          />
+                        )}
+                      </div>
+                    )}
+                  </Text>
+                  {accountOnly ? '' : 'Pay with'} {account.displayName}
+                  <div className="ml-auto">
+                    {!accountOnly && (
+                      <ArrowTopRightIcon
+                        className={`h-${iconSize} w-${iconSize}`}
+                      />
+                    )}
+                  </div>
+                </ChildButton>
               );
             })()}
           </div>

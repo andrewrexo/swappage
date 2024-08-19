@@ -1,12 +1,11 @@
 import { Flex, IconButton } from '@radix-ui/themes';
-import { HistoryIcon, MenuIcon } from 'lucide-react';
+import { MenuIcon } from 'lucide-react';
+import { WalletConnectButton } from '../wallet-connect-button';
 
 export function WidgetHeader() {
   return (
     <Flex justify="between" align="center" gap="2">
-      <IconButton variant="ghost" size="1" className="cursor-pointer">
-        <HistoryIcon />
-      </IconButton>
+      <WalletConnectButton size="2" accountOnly />
       <IconButton variant="ghost" size="1" className="cursor-pointer">
         <MenuIcon />
       </IconButton>
