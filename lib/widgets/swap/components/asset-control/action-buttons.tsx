@@ -1,5 +1,5 @@
 import { Flex, Button, Text, Badge } from '@radix-ui/themes';
-import { ButtonGroup } from '../button-group';
+import { ButtonGroup } from '../ui/button-group';
 import { PairRate } from '../../lib/exodus/rate';
 
 interface ActionButtonsProps {

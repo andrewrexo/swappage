@@ -1,15 +1,16 @@
 'use client';
-import { Card, Flex, IconButton, Spinner, Text } from '@radix-ui/themes';
+import { Flex, IconButton, Spinner, Text } from '@radix-ui/themes';
 import { WidgetHeader } from './components/widget-header';
 import { twMerge } from 'tailwind-merge';
 import { useAppDispatch, useAppSelector } from './lib/hooks';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { type ReactNode, useEffect } from 'react';
 import { fetchPairRate } from './features/rates/slice';
 import { useMediaQuery } from './lib/hooks';
 import { Toaster } from 'react-hot-toast';
 import { DoubleArrowLeftIcon } from '@radix-ui/react-icons';
 import { usePathname, useRouter } from 'next/navigation';
+import { MotionFlex } from './components/ui/radix-motion';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -66,8 +67,6 @@ const swapWidgetVariants = {
     },
   },
 };
-
-const MotionFlex = motion(Flex);
 
 export function SwapWidget({
   children,
