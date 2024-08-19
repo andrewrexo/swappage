@@ -145,7 +145,12 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
               >
                 <QRCodeSVG size={196} value="https://www.google.com" />
               </Flex>
-              <Button variant="surface" size="4" asChild>
+              <Button
+                variant="surface"
+                size="4"
+                asChild
+                className="cursor-pointer"
+              >
                 <motion.div whileHover={{ scale: 1.02 }}>
                   <Text>Mark as paid</Text>
                   <CheckCheckIcon className="ml-auto" />

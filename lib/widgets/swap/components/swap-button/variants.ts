@@ -84,34 +84,33 @@ const transform: Record<string, AnimationProps['variants']> = {
 
 const button: AnimationProps['variants'] = {
   execute: {
-    scale: 0.98,
-    x: [-2, 1, 0],
-    y: [-2, 2, 0],
-    rotate: [-2, 2, 0],
+    scale: 1,
     filter: [
       'brightness(1) contrast(1)',
       'brightness(1.1) contrast(1.05)',
       'brightness(1) contrast(1)',
     ],
     transition: {
-      duration: 0.4,
+      duration: 1.5,
       ease: 'easeInOut',
+      repeat: Infinity,
+      repeatType: 'reverse',
     },
   },
   waiting: {
+    scale: 1,
     x: [-1, 1, 0],
     y: [-1, 1, 0],
-    rotate: [-1, 1, 0],
+    rotate: [0, 0, 0],
     filter: [
       'brightness(1) contrast(1)',
       'brightness(1.05) contrast(1.025)',
       'brightness(1) contrast(1)',
     ],
     transition: {
-      duration: 0.7,
+      duration: 1.0,
       ease: 'easeInOut',
       repeat: Infinity,
-      repeatType: 'reverse',
     },
   },
 };
