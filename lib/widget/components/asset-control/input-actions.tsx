@@ -1,6 +1,6 @@
 import { Flex, Skeleton, Text } from '@radix-ui/themes';
 import { ActionButtons } from './action-buttons';
-import { useAppDispatch, useAppSelector } from '../../lib/hooks';
+import { useAppDispatch } from '../../lib/hooks';
 import { setFromAmount } from '../../features/swap/slice';
 import { PairRate } from '../../lib/exodus/rate';
 

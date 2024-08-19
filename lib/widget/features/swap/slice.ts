@@ -8,8 +8,11 @@ interface SwapState {
   displayPair: string;
   fromAmount: string;
   toAmount: string;
+  activeNetwork: 'solana' | 'ethereum';
   ethereumAddress: string;
   solanaAddress: string;
+  fromNetwork: string;
+  toNetwork: string;
   fromBalance: string;
   toBalance: string;
   rate: string;
@@ -28,6 +31,9 @@ const initialState: SwapState = {
   toBalance: '',
   fromAmount: '1',
   toAmount: '',
+  activeNetwork: 'solana',
+  fromNetwork: 'solana',
+  toNetwork: 'ethereum',
   rate: '',
   pair: `${demoAssets[0].id}_${demoAssets[1].id}`,
   displayPair: `${demoAssets[0].symbol}_${demoAssets[1].symbol}`,
@@ -77,15 +83,28 @@ export const swapSlice = createSlice({
     },
     setEthereumAddress: (state, action: PayloadAction<string>) => {
       state.ethereumAddress = action.payload;
+      state.fromNetwork = 'ethereum';
+      state.activeNetwork = 'ethereum';
     },
     setFromBalance: (state, action: PayloadAction<string>) => {
       state.fromBalance = action.payload;
     },
     setSolanaAddress: (state, action: PayloadAction<string>) => {
       state.solanaAddress = action.payload;
+      state.fromNetwork = 'solana';
+      state.activeNetwork = 'solana';
     },
     setToBalance: (state, action: PayloadAction<string>) => {
       state.toBalance = action.payload;
+    },
+    setFromNetwork: (state, action: PayloadAction<string>) => {
+      state.fromNetwork = action.payload;
+    },
+    setToNetwork: (state, action: PayloadAction<string>) => {
+      state.toNetwork = action.payload;
+    },
+    setActiveNetwork: (state, action: PayloadAction<'solana' | 'ethereum'>) => {
+      state.activeNetwork = action.payload;
     },
   },
 });
@@ -95,6 +114,8 @@ export const {
   setToAsset,
   setFromAmount,
   setToAmount,
+  setFromNetwork,
+  setToNetwork,
   setRate,
   setActiveDirection,
   setSlippage,
@@ -103,6 +124,7 @@ export const {
   setFromBalance,
   setSolanaAddress,
   setToBalance,
+  setActiveNetwork,
 } = swapSlice.actions;
 
 export default swapSlice.reducer;

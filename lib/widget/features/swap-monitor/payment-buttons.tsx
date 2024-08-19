@@ -2,11 +2,13 @@ import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { Button, Flex, Separator, Text } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
 import { WalletConnectButton } from '../../components/wallet-connect-button';
+import { useAppSelector } from '../../lib/hooks';
 
 export function PaymentButtons({ handleShowQR }: { handleShowQR: () => void }) {
+  const { activeNetwork } = useAppSelector((state) => state.swap);
   return (
     <>
-      <WalletConnectButton />
+      <WalletConnectButton walletChain={activeNetwork} accountOnly={false} />
       <Flex gap="2" align="center" justify="center">
         <Separator orientation="horizontal" size="4" />
         <Text as="div" size="1" color="gray" align="center">
