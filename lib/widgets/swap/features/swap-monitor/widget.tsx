@@ -34,10 +34,6 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
     setPaymentMethod(method);
   };
 
-  useEffect(() => {
-    console.log(address, isConnecting, isDisconnected);
-  }, [address, isConnecting, isDisconnected]);
-
   return (
     <MotionFlex
       gap="4"

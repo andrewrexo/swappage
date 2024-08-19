@@ -52,9 +52,6 @@ export function WalletConnectButton() {
         const ready = mounted;
         const connected = ready && account && chain;
 
-        console.log('ready', ready);
-        console.log('connected', connected);
-
         return (
           <div
             className="w-full"
