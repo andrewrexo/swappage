@@ -7,10 +7,11 @@ import { AnimatePresence } from 'framer-motion';
 import { type ReactNode, useEffect } from 'react';
 import { fetchPairRate } from './features/rates/slice';
 import { useMediaQuery } from './lib/hooks';
-import { Toaster } from 'react-hot-toast';
+import toast, { Toaster } from 'react-hot-toast';
 import { DoubleArrowLeftIcon } from '@radix-ui/react-icons';
 import { usePathname, useRouter } from 'next/navigation';
 import { MotionFlex } from './components/ui/radix-motion';
+import { useAccount } from 'wagmi';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -76,10 +77,29 @@ export function SwapWidget({
   const router = useRouter();
   const pathname = usePathname();
   const { width, className } = swapWidgetProps;
-  const { status, currentRate } = useAppSelector((state) => state.rates);
+  const { status } = useAppSelector((state) => state.rates);
   const { pair } = useAppSelector((state) => state.swap);
-
   const isSmall = useMediaQuery('(max-width: 640px)');
+  const account = useAccount();
+
+  useEffect(() => {
+    if (account.address) {
+      toast.success(
+        `Connected to wallet ${account.address.slice(0, 6)}...${account.address.slice(-4)}`,
+        {
+          duration: 2500,
+          position: 'bottom-right',
+          style: {
+            borderRadius: '10px',
+            border: '1px solid var(--accent-5)',
+            boxShadow: '2px 4px 20px var(--accent-3)',
+            color: 'var(--gray-14)',
+            background: 'var(--gray-1)',
+          },
+        },
+      );
+    }
+  }, [account.address, dispatch]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
