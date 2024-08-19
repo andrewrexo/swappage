@@ -1,4 +1,4 @@
-import { Link1Icon, ArrowTopRightIcon } from '@radix-ui/react-icons';
+import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { Button, Flex, Separator, Text } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
 import { WalletConnectButton } from '../../components/wallet-connect-button';

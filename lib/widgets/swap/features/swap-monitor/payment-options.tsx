@@ -1,5 +1,4 @@
 import { MotionFlex } from '../../components/ui/motion-flex';
-import { useState } from 'react';
 import { PaymentOptionsSelect } from './payment-options-select';
 import { PaymentQRCode } from './payment-qrcode';
 import { AnimatePresence, motion } from 'framer-motion';
@@ -17,10 +16,6 @@ export function PaymentOptions({
 }) {
   const handleShowQR = () => {
     onChoosePayment('qr');
-  };
-
-  const handleShowConnect = () => {
-    onChoosePayment('connect');
   };
 
   const renderPaymentMethod = () => {

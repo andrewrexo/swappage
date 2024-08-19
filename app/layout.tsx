@@ -4,11 +4,9 @@ import { Theme } from '@radix-ui/themes';
 import type { ReactNode } from 'react';
 import StoreProvider from './StoreProvider';
 import { twMerge } from 'tailwind-merge';
-import Web3ModalProvider from '@/lib/context';
-import { headers } from 'next/headers';
-import { cookieToInitialState } from 'wagmi';
-import { config } from '@/lib/config';
+import Web3Provider from '@/lib/context';
 
+import '@rainbow-me/rainbowkit/styles.css';
 import '@radix-ui/themes/styles.css';
 import './globals.css';
 
@@ -24,8 +22,6 @@ export default function RootLayout({
 }: Readonly<{
   children: ReactNode;
 }>) {
-  const initialState = cookieToInitialState(config, headers().get('cookie'));
-
   return (
     <html lang="en">
       <body className={inter.className}>
@@ -36,7 +32,7 @@ export default function RootLayout({
           radius="large"
           scaling="95%"
         >
-          <Web3ModalProvider>
+          <Web3Provider>
             <StoreProvider>
               <main
                 className={twMerge(
@@ -48,7 +44,7 @@ export default function RootLayout({
                 {children}
               </main>
             </StoreProvider>
-          </Web3ModalProvider>
+          </Web3Provider>
         </Theme>
       </body>
     </html>

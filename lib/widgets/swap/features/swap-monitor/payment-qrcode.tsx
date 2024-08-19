@@ -1,8 +1,7 @@
-import { Button, Flex, Text, Box } from '@radix-ui/themes';
+import { Button, Text } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
 import { CheckCheckIcon } from 'lucide-react';
 import { QRCodeSVG } from 'qrcode.react';
-import { MotionFlex } from '../../components/ui/motion-flex';
 
 export function PaymentQRCode({ address }: { address: string }) {
   return (

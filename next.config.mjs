@@ -4,14 +4,6 @@ const nextConfig = {
     config.externals.push('pino-pretty', 'lokijs', 'encoding');
     return config;
   },
-  async rewrites() {
-    return [
-      {
-        source: '/.well-known/walletconnect.txt',
-        destination: '/api/walletconnect',
-      },
-    ];
-  },
   async redirects() {
     return [
       {

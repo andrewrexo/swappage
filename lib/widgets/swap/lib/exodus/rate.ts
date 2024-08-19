@@ -66,7 +66,6 @@ export const getRateBulk = async ({
     return [];
   }
 
-  const pairIdsString = pairIds.join(',');
   const { ip = '69.69.69.69' } = userProperties;
 
   const request = await authenticatedExodusRequest(`v3/rates`, 'GET', {

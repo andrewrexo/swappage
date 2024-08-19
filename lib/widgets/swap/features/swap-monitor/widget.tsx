@@ -129,7 +129,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
             Last update: {new Date(order.updated!).toLocaleTimeString()}
           </Text>
           <Flex align="center" key="header">
-            <Flex justify="between" align="center" gap="2" className="mb-2">
+            <Flex justify="between" align="center" gap="2" className="mb-4">
               {paymentMethod === 'qr' && (
                 <MotionIconButton
                   variant="soft"
