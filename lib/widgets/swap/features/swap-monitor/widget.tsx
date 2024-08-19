@@ -99,7 +99,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
             Last update: {new Date(order.updated!).toLocaleTimeString()}
           </Text>
           <Flex align="center" key="header">
-            <Flex justify="between" align="center" gap="2">
+            <Flex justify="between" align="center" gap="2" className="mb-2">
               {showQR && (
                 <MotionIconButton
                   variant="soft"
@@ -116,7 +116,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 </MotionIconButton>
               )}
               <Text as="div" weight="bold" size="3" align="left">
-                {showQR ? 'Scan QR code' : 'Deposit'}
+                {showQR ? 'Scan QR code' : 'Connect wallet'}
               </Text>
             </Flex>
           </Flex>
@@ -188,13 +188,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 </Text>
                 <Separator orientation="horizontal" size="4" />
               </Flex>
-              <Button
-                variant="surface"
-                size="4"
-                onClick={handleShowQR}
-                className="cursor-pointer"
-                asChild
-              >
+              <Button variant="surface" size="4" onClick={handleShowQR} asChild>
                 <motion.div whileHover={{ scale: 1.02 }}>
                   Manual payment
                 </motion.div>
