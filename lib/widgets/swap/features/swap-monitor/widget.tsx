@@ -2,39 +2,33 @@
 import {
   Badge,
   Box,
-  Button,
   Code,
   Flex,
-  Grid,
   IconButton,
   Link,
-  Separator,
   Text,
   Tooltip,
 } from '@radix-ui/themes';
-import { AnimatePresence, motion } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useState } from 'react';
 import type { LazyOrder } from '../../lib/order';
-import {
-  ArrowTopRightIcon,
-  CopyIcon,
-  DoubleArrowLeftIcon,
-  Link1Icon,
-} from '@radix-ui/react-icons';
-import { PaymentQRCode } from './payment-qrcode';
+import { CopyIcon, DoubleArrowLeftIcon } from '@radix-ui/react-icons';
+import { PaymentOptions } from './payment-options';
 import { MotionFlex } from '../../components/ui/radix-motion';
 
 const MotionIconButton = motion(IconButton);
 
 export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
-  const [showQR, setShowQR] = useState(false);
-
-  const handleShowQR = () => {
-    setShowQR(true);
-  };
+  const [paymentMethod, setPaymentMethod] = useState<'connect' | 'qr' | 'none'>(
+    'none',
+  );
 
   const handleCopy = () => {
     navigator.clipboard.writeText(order.payinAddress || '');
+  };
+
+  const onChoosePayment = (method: 'connect' | 'qr' | 'none') => {
+    setPaymentMethod(method);
   };
 
   return (
@@ -43,6 +37,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
       direction="column"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
+      className="min-h-[300px]"
     >
       <Text as="div" style={{ maxWidth: '100%' }} size="1" mt="-2">
         Pay{' '}
@@ -84,7 +79,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
           </Text>
         </Box>
       </Flex>
-      <Grid columns="1" className="min-h-[300px]">
+      <Flex direction="column">
         <Flex direction="column" gap="2">
           <Flex align="center" justify="between" gap="2">
             <Flex align="center" gap="2">
@@ -110,7 +105,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
             <Badge color="gold">Waiting for deposit</Badge>
           </Flex>
           <Flex gap="4" align="center">
-            <Text as="div" size="2" className="flex flex-col">
+            <Text as="div" size="2" className="flex flex-col break-all">
               <Box>
                 {order.fromAmount}{' '}
                 <Code variant="soft" size="2" className="w-fit">
@@ -128,13 +123,13 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
           </Text>
           <Flex align="center" key="header">
             <Flex justify="between" align="center" gap="2" className="mb-2">
-              {showQR && (
+              {paymentMethod === 'qr' && (
                 <MotionIconButton
                   variant="soft"
                   size="1"
                   color="gray"
                   className="hover:text-primary transition-all hover:scale-110"
-                  onClick={() => setShowQR(false)}
+                  onClick={() => setPaymentMethod('none')}
                   initial={{ opacity: 0, scale: 0.5 }}
                   animate={{ opacity: 1, scale: 1 }}
                   exit={{ opacity: 0 }}
@@ -144,57 +139,22 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 </MotionIconButton>
               )}
               <Text as="div" weight="bold" size="3" align="left">
-                {showQR ? 'Scan QR code' : 'Payment options'}
+                {paymentMethod === 'qr'
+                  ? 'Scan QR code'
+                  : paymentMethod === 'connect'
+                    ? 'Connect wallet'
+                    : 'Payment options'}
               </Text>
             </Flex>
           </Flex>
         </Flex>
-        <AnimatePresence mode="wait">
-          {showQR ? (
-            <PaymentQRCode address={order.payinAddress || ''} />
-          ) : (
-            <MotionFlex
-              direction="column"
-              gap="4"
-              key="choose"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{
-                opacity: 0,
-                y: -25,
-                transition: { duration: 0.25 },
-              }}
-              transition={{ duration: 0.3, ease: 'easeInOut' }}
-            >
-              <Button
-                variant="surface"
-                size="4"
-                asChild
-                className="cursor-pointer"
-              >
-                <motion.div whileHover={{ scale: 1.02 }}>
-                  Connect
-                  <Link1Icon className="ml-auto h-6 w-6" />
-                </motion.div>
-              </Button>
-              <Flex gap="2" align="center" justify="center">
-                <Separator orientation="horizontal" size="4" />
-                <Text as="div" size="1" color="gray" align="center">
-                  or
-                </Text>
-                <Separator orientation="horizontal" size="4" />
-              </Flex>
-              <Button variant="surface" size="4" onClick={handleShowQR} asChild>
-                <motion.div whileHover={{ scale: 1.02 }}>
-                  Manual payment
-                  <ArrowTopRightIcon className="ml-auto h-6 w-6" />
-                </motion.div>
-              </Button>
-            </MotionFlex>
-          )}
-        </AnimatePresence>
-      </Grid>
-      <Text as="div" size="1" color="gray">
+        <PaymentOptions
+          address={order.payinAddress || ''}
+          method={paymentMethod}
+          onChoosePayment={onChoosePayment}
+        />
+      </Flex>
+      <Text as="div" size="1" color="gray" className="mt-auto">
         Deposits must be made within 5 minutes of order creation. Late deposits
         will be swapped with a newer rate. <Link href="#">Learn more</Link>
       </Text>
