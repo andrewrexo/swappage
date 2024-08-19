@@ -1,4 +1,4 @@
-import { getRateBulk } from '@/lib/widgets/swap/lib/exodus/rate';
+import { getRateBulk } from '@/lib/widget/lib/exodus/rate';
 import { NextResponse } from 'next/server';
 import { NextRequest } from 'next/server';
 

@@ -12,6 +12,7 @@ import { DoubleArrowLeftIcon } from '@radix-ui/react-icons';
 import { usePathname, useRouter } from 'next/navigation';
 import { MotionFlex } from './components/ui/radix-motion';
 import { useAccount } from 'wagmi';
+import { animVariants } from './config';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -29,45 +30,6 @@ export interface SwapWidgetProps {
   assetDiscovery: AssetDiscovery;
   className: string;
 }
-
-const swapWidgetVariants = {
-  animate: {
-    height: 'auto',
-    opacity: 1,
-    scale: 1,
-    transition: {
-      height: {
-        duration: 0.5,
-        ease: 'anticipate',
-      },
-      opacity: {
-        duration: 0.3,
-        delay: 0.2,
-      },
-      scale: {
-        duration: 0.3,
-        delay: 0.2,
-      },
-    },
-  },
-  exit: {
-    height: 0,
-    opacity: 0,
-    scale: 0.8,
-    transition: {
-      height: {
-        duration: 0.5,
-        ease: 'easeInOut',
-      },
-      opacity: {
-        duration: 0.3,
-      },
-      scale: {
-        duration: 0.3,
-      },
-    },
-  },
-};
 
 export function SwapWidget({
   children,
@@ -132,7 +94,7 @@ export function SwapWidget({
           borderRadius: '1rem',
           padding: '1rem',
         }}
-        variants={swapWidgetVariants}
+        variants={animVariants}
         animate="animate"
         exit="exit"
       >

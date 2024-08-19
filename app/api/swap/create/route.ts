@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { createOrder } from '@/lib/widgets/swap/lib/exodus/order';
+import { createOrder } from '@/lib/widget/lib/exodus/order';
 import { createClient } from '@/lib/supabase/server';
 import { v4 as uuidv4 } from 'uuid';
 

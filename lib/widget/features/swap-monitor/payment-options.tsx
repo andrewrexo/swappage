@@ -1,5 +1,5 @@
 import { MotionFlex } from '../../components/ui/motion-flex';
-import { PaymentOptionsSelect } from './payment-options-select';
+import { PaymentButtons } from './payment-buttons';
 import { PaymentQRCode } from './payment-qrcode';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MotionFlexUnstyled } from '../../components/ui/radix-motion';
@@ -35,7 +35,7 @@ export function PaymentOptions({
       case 'connect':
         return (
           <MotionFlex key="connect" py="4">
-            <PaymentOptionsSelect handleShowQR={handleShowQR} />
+            <PaymentButtons handleShowQR={handleShowQR} />
           </MotionFlex>
         );
       case 'none':
@@ -46,7 +46,7 @@ export function PaymentOptions({
             key="none"
             className="flex flex-col justify-center gap-2"
           >
-            <PaymentOptionsSelect handleShowQR={handleShowQR} />
+            <PaymentButtons handleShowQR={handleShowQR} />
           </motion.div>
         );
       default:

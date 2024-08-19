@@ -8,7 +8,7 @@ export function PaymentQRCode({ address }: { address: string }) {
     <>
       <motion.div
         exit={{ opacity: 0, height: '0px' }}
-        transition={{ duration: 0.5, ease: 'easeInOut' }}
+        transition={{ duration: 0.25, ease: 'easeInOut' }}
         className="flex items-center justify-center rounded-lg bg-[var(--gray-1)] pb-4"
       >
         <QRCodeSVG size={196} value={address} />

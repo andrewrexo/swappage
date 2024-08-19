@@ -1,5 +1,5 @@
-import widgetOpts from '@/lib/widget';
-import { SwapWidget } from '../../lib/widgets/swap/swap-widget';
+import widgetOpts from '@/lib/widget/config';
+import { SwapWidget } from '../../lib/widget/swap-widget';
 import type { ReactNode } from 'react';
 
 export default function SwapLayout({ children }: { children: ReactNode }) {
