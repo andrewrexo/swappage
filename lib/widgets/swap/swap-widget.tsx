@@ -79,16 +79,15 @@ export function SwapWidget({
   const isSmall = useMediaQuery('(max-width: 640px)');
 
   useEffect(() => {
-    if (pair && !currentRate) {
-      dispatch(fetchPairRate(pair));
-    }
-
     const intervalId = setInterval(() => {
       dispatch(fetchPairRate(pair));
     }, 15000); // 15 seconds
 
-    // Clean up the interval when the component unmounts or when pair changes
     return () => clearInterval(intervalId);
+  }, [dispatch, pair]);
+
+  useEffect(() => {
+    dispatch(fetchPairRate(pair));
   }, [dispatch, pair]);
 
   return (
