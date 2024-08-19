@@ -23,8 +23,15 @@ export function PaymentOptions({
       case 'qr':
         return (
           <MotionFlexUnstyled
-            exit={{ opacity: 0, height: '0px', y: -40 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            initial={{ opacity: 0, height: '0px', y: -40 }}
+            animate={{ opacity: 1, height: '100%', y: 0 }}
+            exit={{
+              opacity: 0,
+              height: '0px',
+              y: -40,
+              transition: { duration: 0.4, ease: 'easeInOut' },
+            }}
+            transition={{ duration: 0.4, ease: 'easeInOut' }}
             direction="column"
             justify="center"
             key="qr"

@@ -13,6 +13,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import { MotionFlex } from './components/ui/radix-motion';
 import { useAccount } from 'wagmi';
 import { animVariants } from './config';
+import { setEthereumAddress } from './features/swap/slice';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -46,6 +47,8 @@ export function SwapWidget({
 
   useEffect(() => {
     if (account.address) {
+      dispatch(setEthereumAddress(account.address));
+
       toast.success(
         `Connected to wallet ${account.address.slice(0, 6)}...${account.address.slice(-4)}`,
         {

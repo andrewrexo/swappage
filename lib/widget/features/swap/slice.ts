@@ -8,6 +8,10 @@ interface SwapState {
   displayPair: string;
   fromAmount: string;
   toAmount: string;
+  ethereumAddress: string;
+  solanaAddress: string;
+  fromBalance: string;
+  toBalance: string;
   rate: string;
   activeDirection: string;
   assets: ExodusAsset[] | null;
@@ -18,6 +22,10 @@ interface SwapState {
 const initialState: SwapState = {
   fromAsset: demoAssets[0],
   toAsset: demoAssets[1],
+  ethereumAddress: '',
+  fromBalance: '',
+  solanaAddress: '',
+  toBalance: '',
   fromAmount: '1',
   toAmount: '',
   rate: '',
@@ -67,6 +75,18 @@ export const swapSlice = createSlice({
     setSlippageProtection: (state, action: PayloadAction<boolean>) => {
       state.slippageProtection = action.payload;
     },
+    setEthereumAddress: (state, action: PayloadAction<string>) => {
+      state.ethereumAddress = action.payload;
+    },
+    setFromBalance: (state, action: PayloadAction<string>) => {
+      state.fromBalance = action.payload;
+    },
+    setSolanaAddress: (state, action: PayloadAction<string>) => {
+      state.solanaAddress = action.payload;
+    },
+    setToBalance: (state, action: PayloadAction<string>) => {
+      state.toBalance = action.payload;
+    },
   },
 });
 
@@ -79,6 +99,10 @@ export const {
   setActiveDirection,
   setSlippage,
   setSlippageProtection,
+  setEthereumAddress,
+  setFromBalance,
+  setSolanaAddress,
+  setToBalance,
 } = swapSlice.actions;
 
 export default swapSlice.reducer;

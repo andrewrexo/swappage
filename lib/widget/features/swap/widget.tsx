@@ -5,7 +5,6 @@ import { AssetControl } from '../../components/asset-control';
 import { ParameterList } from '../../components/parameter-list';
 import { SwapButton } from '../../components/swap-button';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
-import { fetchPairRate } from '../rates/slice';
 import { useRouter } from 'next/navigation';
 import { fetchAssets } from '../assets/slice';
 import { LazyOrder } from '../../lib/order';
@@ -38,15 +37,6 @@ export default function SwapWidgetHome() {
         fetchAssets(['solana', 'arbitrumone', 'basemainnet', 'ethereum']),
       );
     }
-  }, [dispatch, pair]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      dispatch(fetchPairRate(pair));
-    }, 15000); // 15 seconds
-
-    // Clean up the interval when the component unmounts or when pair changes
-    return () => clearInterval(intervalId);
   }, [dispatch, pair]);
 
   const onComplete = ({ orderId }: { orderId: string }) => {

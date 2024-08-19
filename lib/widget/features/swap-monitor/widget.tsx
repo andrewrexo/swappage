@@ -6,22 +6,21 @@ import {
   Flex,
   IconButton,
   Link,
+  Separator,
   Text,
   Tooltip,
 } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import type { LazyOrder } from '../../lib/order';
 import { CopyIcon, DoubleArrowLeftIcon } from '@radix-ui/react-icons';
 import { PaymentOptions } from './payment-options';
 import { MotionFlex } from '../../components/ui/radix-motion';
-import { useAccount } from 'wagmi';
 
 const MotionIconButton = motion(IconButton);
+const MotionSeparator = motion(Separator);
 
 export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
-  const { address, isConnecting, isDisconnected } = useAccount();
-
   const [paymentMethod, setPaymentMethod] = useState<'connect' | 'qr' | 'none'>(
     'none',
   );
@@ -36,7 +35,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
 
   return (
     <MotionFlex
-      gap="4"
+      gapY="4"
       direction="column"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
@@ -52,7 +51,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
           {order.toAmount} {order.to}
         </Link>
       </Text>
-      <Flex gap="4" justify="between" className="w-full">
+      <Flex gap="8" justify="between" className="w-full">
         <Box className="max-w-[60%]">
           <Text as="div" weight="bold" mb="1">
             Order number
@@ -82,7 +81,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
           </Text>
         </Box>
       </Flex>
-      <Flex direction="column">
+      <Flex direction="column" gap="2">
         <Flex direction="column" gap="2">
           <Flex align="center" justify="between" gap="2">
             <Flex align="center" gap="2">
@@ -105,7 +104,6 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 </MotionIconButton>
               </Tooltip>
             </Flex>
-            <Badge color="gold">Waiting for deposit</Badge>
           </Flex>
           <Flex gap="4" align="center">
             <Text as="div" size="2" className="flex flex-col break-all">
@@ -121,11 +119,42 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
               </Link>
             </Text>
           </Flex>
-          <Text size="1" color="gray" align="left" mt="-1" mb="2">
+          <Text size="1" color="gray" align="left">
             Last update: {new Date(order.updated!).toLocaleTimeString()}
           </Text>
+          <motion.div
+            initial={{ opacity: 0, minWidth: 0 }}
+            animate={{ opacity: 1, scale: 1, minWidth: '100%' }}
+            exit={{
+              minWidth: '100%',
+              transition: { duration: 1, ease: 'easeInOut' },
+            }}
+            transition={{ duration: 1, ease: 'easeInOut' }}
+            key="separator"
+          >
+            {paymentMethod === 'qr' ? (
+              <MotionSeparator
+                initial={{ width: 0 }}
+                animate={{ width: '100%' }}
+                exit={{ width: 0 }}
+                transition={{ duration: 1, ease: 'easeInOut' }}
+                className="mx-auto my-2"
+                size="4"
+              />
+            ) : (
+              <MotionSeparator
+                initial={{ width: '100%' }}
+                animate={{ width: '0', marginTop: '0' }}
+                exit={{ width: 0 }}
+                transition={{ duration: 1, ease: 'easeInOut' }}
+                className="mx-auto my-2"
+                size="2"
+              />
+            )}
+          </motion.div>
+
           <Flex align="center" key="header">
-            <Flex justify="between" align="center" gap="2" className="mb-4">
+            <Flex justify="between" align="center" gap="2" className="mb-2">
               {paymentMethod === 'qr' && (
                 <MotionIconButton
                   variant="soft"
@@ -141,7 +170,15 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                   <DoubleArrowLeftIcon />
                 </MotionIconButton>
               )}
-              <Text as="div" weight="bold" size="3" align="left">
+              <Text
+                as="div"
+                weight="bold"
+                size="3"
+                align="left"
+                className={
+                  paymentMethod === 'qr' ? 'text-accent' : 'text-primary'
+                }
+              >
                 {paymentMethod === 'qr'
                   ? 'Scan QR code'
                   : paymentMethod === 'connect'

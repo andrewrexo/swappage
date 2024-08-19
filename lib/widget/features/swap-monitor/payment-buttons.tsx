@@ -14,7 +14,13 @@ export function PaymentButtons({ handleShowQR }: { handleShowQR: () => void }) {
         </Text>
         <Separator orientation="horizontal" size="4" />
       </Flex>
-      <Button variant="surface" size="4" onClick={handleShowQR} asChild>
+      <Button
+        variant="surface"
+        size="4"
+        onClick={handleShowQR}
+        asChild
+        className="cursor-pointer"
+      >
         <motion.div whileHover={{ scale: 1.02 }}>
           Manual payment
           <ArrowTopRightIcon className="ml-auto h-6 w-6" />
