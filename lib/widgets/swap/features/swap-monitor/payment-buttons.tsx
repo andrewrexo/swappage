@@ -3,11 +3,7 @@ import { Button, Flex, Separator, Text } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
 import { WalletConnectButton } from '../../components/wallet-connect-button';
 
-export function PaymentOptionsSelect({
-  handleShowQR,
-}: {
-  handleShowQR: () => void;
-}) {
+export function PaymentButtons({ handleShowQR }: { handleShowQR: () => void }) {
   return (
     <>
       <WalletConnectButton />
