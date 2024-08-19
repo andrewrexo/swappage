@@ -10,15 +10,20 @@ import {
   Link,
   Separator,
   Text,
+  Tooltip,
 } from '@radix-ui/themes';
 import { AnimatePresence, motion } from 'framer-motion';
-import { QRCodeSVG } from 'qrcode.react';
 import { useState } from 'react';
 import type { LazyOrder } from '../../lib/order';
-import { CopyIcon, DoubleArrowLeftIcon } from '@radix-ui/react-icons';
-import { CheckCheckIcon } from 'lucide-react';
+import {
+  ArrowTopRightIcon,
+  CopyIcon,
+  DoubleArrowLeftIcon,
+  Link1Icon,
+} from '@radix-ui/react-icons';
+import { PaymentQRCode } from './payment-qrcode';
+import { MotionFlex } from '../../components/ui/radix-motion';
 
-const MotionFlex = motion(Flex);
 const MotionIconButton = motion(IconButton);
 
 export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
@@ -81,18 +86,41 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
       </Flex>
       <Grid columns="1" className="min-h-[300px]">
         <Flex direction="column" gap="2">
-          <Text as="div" weight="bold" size="3" align="left">
-            Payment
-          </Text>
-          <Flex gap="4">
-            <IconButton variant="soft" size="3" onClick={handleCopy}>
-              <CopyIcon />
-            </IconButton>
-            <Text as="div" size="2" mb="2" style={{ maxWidth: '85%' }}>
-              {order.fromAmount} <Code variant="soft">{order.from}</Code> to{' '}
-              <Code variant="soft" style={{ width: '100px' }}>
+          <Flex align="center" justify="between" gap="2">
+            <Flex align="center" gap="2">
+              <Text as="div" weight="bold" size="3" align="left">
+                Payment
+              </Text>
+              <Tooltip content="Copy payment address">
+                <MotionIconButton
+                  variant="soft"
+                  size="1"
+                  color="gray"
+                  className="hover:text-primary transition-all hover:scale-110"
+                  onClick={handleCopy}
+                  initial={{ opacity: 0, scale: 0.5 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.5, ease: 'easeInOut' }}
+                >
+                  <CopyIcon />
+                </MotionIconButton>
+              </Tooltip>
+            </Flex>
+            <Badge color="gold">Waiting for deposit</Badge>
+          </Flex>
+          <Flex gap="4" align="center">
+            <Text as="div" size="2" className="flex flex-col">
+              <Box>
+                {order.fromAmount}{' '}
+                <Code variant="soft" size="2" className="w-fit">
+                  {order.from}
+                </Code>{' '}
+                to{' '}
+              </Box>
+              <Link size="2" className="w-fit break-all">
                 {order.payinAddress}
-              </Code>
+              </Link>
             </Text>
           </Flex>
           <Text size="1" color="gray" align="left" mt="-1" mb="2">
@@ -116,47 +144,14 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 </MotionIconButton>
               )}
               <Text as="div" weight="bold" size="3" align="left">
-                {showQR ? 'Scan QR code' : 'Connect wallet'}
+                {showQR ? 'Scan QR code' : 'Payment options'}
               </Text>
             </Flex>
           </Flex>
         </Flex>
         <AnimatePresence mode="wait">
           {showQR ? (
-            <MotionFlex
-              direction="column"
-              gap="4"
-              key="qr"
-              initial={{ opacity: 0, y: 25, height: 0 }}
-              animate={{ opacity: 1, height: 'auto', y: 0 }}
-              exit={{
-                opacity: 0,
-                height: 0,
-                transition: { duration: 0.5, ease: 'easeInOut' },
-              }}
-              transition={{ duration: 0.5, ease: 'easeInOut' }}
-            >
-              <Flex
-                justify="center"
-                align="center"
-                direction="column"
-                p="2"
-                pt="4"
-              >
-                <QRCodeSVG size={196} value="https://www.google.com" />
-              </Flex>
-              <Button
-                variant="surface"
-                size="4"
-                asChild
-                className="cursor-pointer"
-              >
-                <motion.div whileHover={{ scale: 1.02 }}>
-                  <Text>Mark as paid</Text>
-                  <CheckCheckIcon className="ml-auto" />
-                </motion.div>
-              </Button>
-            </MotionFlex>
+            <PaymentQRCode address={order.payinAddress || ''} />
           ) : (
             <MotionFlex
               direction="column"
@@ -178,7 +173,8 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 className="cursor-pointer"
               >
                 <motion.div whileHover={{ scale: 1.02 }}>
-                  Connect wallet
+                  Connect
+                  <Link1Icon className="ml-auto h-6 w-6" />
                 </motion.div>
               </Button>
               <Flex gap="2" align="center" justify="center">
@@ -191,6 +187,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
               <Button variant="surface" size="4" onClick={handleShowQR} asChild>
                 <motion.div whileHover={{ scale: 1.02 }}>
                   Manual payment
+                  <ArrowTopRightIcon className="ml-auto h-6 w-6" />
                 </motion.div>
               </Button>
             </MotionFlex>
