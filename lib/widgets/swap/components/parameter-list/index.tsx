@@ -58,7 +58,7 @@ export function ParameterList({
   };
 
   return (
-    <Flex direction="column" gap="4">
+    <Flex direction="column" gap="2">
       <Flex align="center" justify="between">
         <Flex align="center" gap="2">
           <Text size="2" color="gray" className="opacity-1">
