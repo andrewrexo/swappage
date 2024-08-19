@@ -160,7 +160,7 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
           ) : (
             <MotionFlex
               direction="column"
-              gap="2"
+              gap="4"
               key="choose"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1, y: 0 }}
@@ -171,8 +171,15 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
               }}
               transition={{ duration: 0.5, ease: 'easeInOut' }}
             >
-              <Button variant="surface" size="4">
-                Connect wallet
+              <Button
+                variant="surface"
+                size="4"
+                asChild
+                className="cursor-pointer"
+              >
+                <motion.div whileHover={{ scale: 1.02 }}>
+                  Connect wallet
+                </motion.div>
               </Button>
               <Flex gap="2" align="center" justify="center">
                 <Separator orientation="horizontal" size="4" />
@@ -181,8 +188,16 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
                 </Text>
                 <Separator orientation="horizontal" size="4" />
               </Flex>
-              <Button variant="surface" size="4" onClick={handleShowQR}>
-                Manual payment
+              <Button
+                variant="surface"
+                size="4"
+                onClick={handleShowQR}
+                className="cursor-pointer"
+                asChild
+              >
+                <motion.div whileHover={{ scale: 1.02 }}>
+                  Manual payment
+                </motion.div>
               </Button>
             </MotionFlex>
           )}
