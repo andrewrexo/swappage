@@ -79,7 +79,6 @@ export function AssetDialog({
       trigger={children}
       setOpen={setOpen}
       open={open}
-      height="80vh"
       title="Available assets"
     >
       {dialogContent}

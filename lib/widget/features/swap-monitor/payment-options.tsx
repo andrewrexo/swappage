@@ -55,7 +55,7 @@ export function PaymentOptions({
             key="none"
             className="flex flex-col justify-center gap-2"
           >
-            <PaymentButtons handleShowQR={handleShowQR} />
+            <PaymentButtons handleShowQR={handleShowQR} network={network} />
           </motion.div>
         );
       default:
