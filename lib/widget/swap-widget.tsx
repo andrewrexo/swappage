@@ -107,13 +107,13 @@ export function SwapWidget({
         >
           <Flex justify="between" gap="4">
             <Flex gap="2" align="center">
-              {pathname !== '/swap' && (
+              {pathname !== '/swap' && !isSmall && (
                 <IconButton
-                  size="1"
+                  size="2"
                   onClick={() => router.push('/swap/')}
                   variant="soft"
                 >
-                  <DoubleArrowLeftIcon />
+                  <DoubleArrowLeftIcon className="h-6 w-6" />
                 </IconButton>
               )}
               <Text
