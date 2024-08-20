@@ -9,7 +9,9 @@ export async function POST(request: NextRequest) {
       from,
       to,
       fromAddress,
+      fromNetwork,
       toAddress,
+      toNetwork,
       fromAmount,
       toAmount,
       slippage = 0.5,
@@ -24,6 +26,8 @@ export async function POST(request: NextRequest) {
       !toAddress ||
       !fromAmount ||
       !toAmount ||
+      !fromNetwork ||
+      !toNetwork ||
       !rate
     ) {
       return NextResponse.json(
@@ -37,7 +41,9 @@ export async function POST(request: NextRequest) {
       from,
       to,
       fromAddress,
+      fromNetwork,
       toAddress,
+      toNetwork,
       fromAmount,
       toAmount,
       slippage,
@@ -64,6 +70,8 @@ export async function POST(request: NextRequest) {
       provider_order_id: order.id,
       from_asset: orderPayload.from,
       to_asset: orderPayload.to,
+      from_network: orderPayload.fromNetwork,
+      to_network: orderPayload.toNetwork,
       amount_sent: orderPayload.fromAmount,
       amount_received: orderPayload.toAmount,
       amount_sent_usd: 0,

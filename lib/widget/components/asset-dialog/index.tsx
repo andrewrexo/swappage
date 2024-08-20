@@ -1,12 +1,14 @@
-import { useCallback, useEffect, useState } from 'react';
-import { Dialog, TextField, VisuallyHidden } from '@radix-ui/themes';
-import { SearchCheckIcon } from 'lucide-react';
+import { useCallback, useState } from 'react';
+import { TextField } from '@radix-ui/themes';
 import type { ChangeEvent, ReactNode } from 'react';
 import { AssetList } from './asset-list';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
-import { fetchAssets, setSearchAssets } from '../../features/assets/slice';
+import { setSearchAssets } from '../../features/assets/slice';
 import { debounce } from 'lodash';
 import { MagnifyingGlassIcon } from '@radix-ui/react-icons';
+import { ResponsiveDialogDrawer } from '../ui/dialog-drawer';
+import { setFromAsset, setToAsset } from '../../features/swap/slice';
+import { ExodusAsset } from '../../lib/exodus/asset';
 
 export function AssetDialog({
   children,
@@ -21,6 +23,18 @@ export function AssetDialog({
     (state) => state.assets,
   );
 
+  const { activeDirection } = useAppSelector((state) => state.swap);
+
+  const handleAssetSelect = (asset: ExodusAsset) => {
+    if (activeDirection === 'from') {
+      dispatch(setFromAsset(asset));
+    } else {
+      dispatch(setToAsset(asset));
+    }
+
+    setOpen(false);
+  };
+
   const debouncedSearch = useCallback(
     debounce((value: string) => {
       const filteredAssets = assets.filter((asset) =>
@@ -29,7 +43,7 @@ export function AssetDialog({
 
       dispatch(setSearchAssets(filteredAssets));
     }, 300),
-    [dispatch],
+    [dispatch, assets],
   );
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -37,34 +51,38 @@ export function AssetDialog({
     debouncedSearch(value);
   };
 
+  const dialogContent = (
+    <>
+      <TextField.Root
+        onChange={handleSearch}
+        size="3"
+        placeholder="Search all available assets..."
+      >
+        <TextField.Slot>
+          <MagnifyingGlassIcon height="18" width="18" />
+        </TextField.Slot>
+      </TextField.Root>
+      {status === 'loading' && <p className="pt-2">Loading assets...</p>}
+      {status === 'failed' && <p className="pt-2">Error: {error}</p>}
+      {status === 'succeeded' && (
+        <AssetList
+          assets={searchAssets.length > 0 ? searchAssets : assets}
+          setOpen={setOpen}
+          handleAssetSelect={handleAssetSelect}
+        />
+      )}
+    </>
+  );
+
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger>{children}</Dialog.Trigger>
-      <Dialog.Content>
-        <Dialog.Title className="text-accent">Available assets</Dialog.Title>
-        <VisuallyHidden>
-          <Dialog.Description>
-            Search all available assets...
-          </Dialog.Description>
-        </VisuallyHidden>
-        <TextField.Root
-          onChange={handleSearch}
-          size="3"
-          placeholder="Search all available assets..."
-        >
-          <TextField.Slot>
-            <MagnifyingGlassIcon height="18" width="18" />
-          </TextField.Slot>
-        </TextField.Root>
-        {status === 'loading' && <p className="pt-2">Loading assets...</p>}
-        {status === 'failed' && <p className="pt-2">Error: {error}</p>}
-        {status === 'succeeded' && (
-          <AssetList
-            assets={searchAssets.length > 0 ? searchAssets : assets}
-            setOpen={setOpen}
-          />
-        )}
-      </Dialog.Content>
-    </Dialog.Root>
+    <ResponsiveDialogDrawer
+      trigger={children}
+      setOpen={setOpen}
+      open={open}
+      height="80%"
+      title="Available assets"
+    >
+      {dialogContent}
+    </ResponsiveDialogDrawer>
   );
 }

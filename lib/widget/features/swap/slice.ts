@@ -32,7 +32,7 @@ const initialState: SwapState = {
   fromAmount: '1',
   toAmount: '',
   activeNetwork: 'solana',
-  fromNetwork: 'solana',
+  fromNetwork: '',
   toNetwork: 'ethereum',
   rate: '',
   pair: `${demoAssets[0].id}_${demoAssets[1].id}`,
@@ -49,6 +49,8 @@ export const swapSlice = createSlice({
   reducers: {
     setFromAsset: (state, action: PayloadAction<ExodusAsset>) => {
       state.fromAsset = action.payload;
+      state.fromNetwork = action.payload.network;
+      state.activeNetwork = action.payload.network as 'solana' | 'ethereum';
 
       if (state.toAsset) {
         state.pair = `${action.payload.id}_${state.toAsset.id}`;
@@ -83,16 +85,12 @@ export const swapSlice = createSlice({
     },
     setEthereumAddress: (state, action: PayloadAction<string>) => {
       state.ethereumAddress = action.payload;
-      state.fromNetwork = 'ethereum';
-      state.activeNetwork = 'ethereum';
     },
     setFromBalance: (state, action: PayloadAction<string>) => {
       state.fromBalance = action.payload;
     },
     setSolanaAddress: (state, action: PayloadAction<string>) => {
       state.solanaAddress = action.payload;
-      state.fromNetwork = 'solana';
-      state.activeNetwork = 'solana';
     },
     setToBalance: (state, action: PayloadAction<string>) => {
       state.toBalance = action.payload;
@@ -105,9 +103,32 @@ export const swapSlice = createSlice({
     },
     setActiveNetwork: (state, action: PayloadAction<'solana' | 'ethereum'>) => {
       state.activeNetwork = action.payload;
+
+      if (!state.fromNetwork) {
+        state.fromNetwork = action.payload;
+      }
+    },
+    reverseAssets: (state) => {
+      const reversed = {
+        fromAsset: state.toAsset,
+        toAsset: state.fromAsset,
+      };
+
+      state.fromAsset = reversed.fromAsset;
+      state.toAsset = reversed.toAsset;
+      state.pair = getPairString(state.fromAsset, state.toAsset);
+      state.displayPair = getDisplayPairString(state.fromAsset, state.toAsset);
     },
   },
 });
+
+const getDisplayPairString = (fromAsset: ExodusAsset, toAsset: ExodusAsset) => {
+  return `${fromAsset.symbol}_${toAsset.symbol}`;
+};
+
+const getPairString = (fromAsset: ExodusAsset, toAsset: ExodusAsset) => {
+  return `${fromAsset.id}_${toAsset.id}`;
+};
 
 export const {
   setFromAsset,
@@ -125,6 +146,7 @@ export const {
   setSolanaAddress,
   setToBalance,
   setActiveNetwork,
+  reverseAssets,
 } = swapSlice.actions;
 
 export default swapSlice.reducer;
