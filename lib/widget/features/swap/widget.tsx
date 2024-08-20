@@ -13,6 +13,7 @@ import { createOrderInternal } from './api';
 import { motion } from 'framer-motion';
 import { SwapInput } from './input';
 import { toastConfig } from '@/lib/util';
+import { setFromNetwork } from './slice';
 
 const MotionFlex = motion(Flex);
 

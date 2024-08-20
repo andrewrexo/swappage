@@ -9,10 +9,12 @@ export function PaymentOptions({
   address,
   method,
   onChoosePayment,
+  network,
 }: {
   address: string;
   method: 'connect' | 'qr' | 'none';
   onChoosePayment: (method: 'connect' | 'qr' | 'none') => void;
+  network: 'solana' | 'ethereum';
 }) {
   const handleShowQR = () => {
     onChoosePayment('qr');
@@ -42,7 +44,7 @@ export function PaymentOptions({
       case 'connect':
         return (
           <MotionFlex key="connect" py="4">
-            <PaymentButtons handleShowQR={handleShowQR} />
+            <PaymentButtons handleShowQR={handleShowQR} network={network} />
           </MotionFlex>
         );
       case 'none':

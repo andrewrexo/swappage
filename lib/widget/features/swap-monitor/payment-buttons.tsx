@@ -4,14 +4,18 @@ import { motion } from 'framer-motion';
 import { WalletConnectButton } from '../../components/wallet-connect-button';
 import { useAppSelector } from '../../lib/hooks';
 
-export function PaymentButtons({ handleShowQR }: { handleShowQR: () => void }) {
-  const { activeNetwork, fromNetwork } = useAppSelector((state) => state.swap);
-
+export function PaymentButtons({
+  handleShowQR,
+  network,
+}: {
+  handleShowQR: () => void;
+  network: 'solana' | 'ethereum';
+}) {
   return (
     <>
       <WalletConnectButton
-        walletChain={activeNetwork}
-        fromNetwork={fromNetwork as 'solana' | 'ethereum'}
+        walletChain={network}
+        fromNetwork={network}
         accountOnly={false}
       />
       <Flex gap="2" align="center" justify="center">
