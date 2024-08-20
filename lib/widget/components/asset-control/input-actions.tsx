@@ -1,6 +1,6 @@
 import { Flex, Skeleton, Text } from '@radix-ui/themes';
 import { ActionButtons } from './action-buttons';
-import { useAppDispatch } from '../../lib/hooks';
+import { useAppDispatch, useMediaQuery } from '../../lib/hooks';
 import { setFromAmount } from '../../features/swap/slice';
 import { PairRate } from '../../lib/exodus/rate';
 
@@ -19,6 +19,7 @@ export function InputActions({
   currentRate,
   loading,
 }: InputActionsProps) {
+  const isMobile = useMediaQuery('(max-width: 768px)');
   const dispatch = useAppDispatch();
 
   const onMinClick = () => {
@@ -50,7 +51,11 @@ export function InputActions({
           onCustomClick={onCustomClick}
           currentRate={currentRate}
         />
-        <Text size="2" color="gray" className="text-right">
+        <Text
+          size={isMobile ? `1` : `2`}
+          color="gray"
+          className="text-right sm:text-[4px]"
+        >
           ${' '}
           {side === 'from'
             ? (currentRate.fromAssetFiat * parseFloat(fromAmount)).toFixed(6)

@@ -1,4 +1,11 @@
-import { Code, Flex, IconButton, Text, Tooltip } from '@radix-ui/themes';
+import {
+  Code,
+  Flex,
+  IconButton,
+  Skeleton,
+  Text,
+  Tooltip,
+} from '@radix-ui/themes';
 import { PairRate } from '../../lib/exodus/rate';
 import { motion } from 'framer-motion';
 import { UpdateIcon } from '@radix-ui/react-icons';
@@ -77,12 +84,18 @@ export function ParameterList({
         </Flex>
         <motion.div
           key={`rate-${rate.expiry}`}
-          initial={{ opacity: 0.5 }}
+          initial={{ opacity: 0.25 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5 }}
+          exit={{ opacity: 0 }}
           className="text-right"
         >
-          {amount.value && rateToWidgetDisplayText(amount.value, pair)}
+          <Skeleton
+            loading={status === 'loading'}
+            className="blur-sm transition-all duration-200"
+          >
+            {amount.value && rateToWidgetDisplayText(amount.value, pair)}
+          </Skeleton>
         </motion.div>
       </Flex>
       <Flex align="center" justify="between">

@@ -23,13 +23,21 @@ export function AssetControl({ side }: { side: 'from' | 'to' }) {
   const selectedAsset = side === 'from' ? fromAsset : toAsset;
 
   useEffect(() => {
+    if (status === 'loading') {
+      return;
+    }
+
     if (side === 'to' && currentRate) {
       const calculatedValue = parseFloat(fromAmount) * currentRate.amount.value;
       dispatch(setToAmount(calculatedValue.toString()));
     }
-  }, [currentRate, fromAmount, side, dispatch]);
+  }, [status, currentRate, fromAmount, side, dispatch]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
+    if (status === 'loading') {
+      return;
+    }
+
     if (side === 'from') {
       dispatch(setFromAmount(e.target.value));
     } else {

@@ -1,9 +1,10 @@
-import { TextField, IconButton, Text, Spinner } from '@radix-ui/themes';
+import { TextField, IconButton, Text } from '@radix-ui/themes';
 import { ChevronDown } from 'lucide-react';
 import { AssetDialog } from '../asset-dialog';
 import { useAppSelector } from '../../lib/hooks';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import { ChangeEvent } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 interface InputAmountProps {
   asset: ExodusAsset;
@@ -11,6 +12,8 @@ interface InputAmountProps {
   onDialogOpen: () => void;
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
+
+const MotionText = motion(Text);
 
 export function InputAmount({
   asset,
@@ -28,11 +31,22 @@ export function InputAmount({
       value={side === 'from' ? fromAmount : toAmount}
       onChange={onInputChange}
     >
-      <TextField.Slot>
-        <Text size="3" weight="medium" className="text-accent">
-          {asset.symbol}
-        </Text>
-      </TextField.Slot>
+      <AnimatePresence mode="wait">
+        <TextField.Slot>
+          <MotionText
+            size="3"
+            weight="medium"
+            className="text-accent"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.5 }}
+            key={asset.id}
+          >
+            {asset.symbol}
+          </MotionText>
+        </TextField.Slot>
+      </AnimatePresence>
       <TextField.Slot className="">
         <AssetDialog side={side}>
           <IconButton
