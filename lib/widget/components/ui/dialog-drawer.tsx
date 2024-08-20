@@ -26,7 +26,7 @@ export function ResponsiveDialogDrawer({
   triggerBlocked,
   description,
   setOpen,
-  height = '90vh',
+  height = '70vh',
 }: ResponsiveDialogDrawerProps) {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -57,6 +57,7 @@ export function ResponsiveDialogDrawer({
             scaling="105%"
           >
             <Drawer.Content
+              autoFocus
               className={twMerge(
                 `h-[${height}]`,
                 `fixed bottom-0 left-0 right-0 flex flex-col rounded-t-md bg-[var(--color-background)]`,
