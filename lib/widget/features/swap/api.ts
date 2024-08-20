@@ -5,6 +5,8 @@ export const dbOrderToLazyOrder = (order: any): LazyOrder => {
     from: order.from_asset,
     to: order.to_asset,
     fromAmount: order.amount_sent,
+    fromNetwork: order.from_network,
+    toNetwork: order.to_network,
     toAmount: order.amount_received,
     created: order.created,
     updated: order.last_update,

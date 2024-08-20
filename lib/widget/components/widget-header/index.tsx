@@ -6,13 +6,7 @@ import { setActiveNetwork } from '../../features/swap/slice';
 
 export function WidgetHeader() {
   const dispatch = useAppDispatch();
-  const { fromAsset, toAsset, activeNetwork } = useAppSelector(
-    (state) => state.swap,
-  );
-
-  const handleMenuClick = () => {
-    console.log('menu clicked');
-  };
+  const { fromNetwork, activeNetwork } = useAppSelector((state) => state.swap);
 
   const handleNetworkChange = (network: 'solana' | 'ethereum') => {
     dispatch(setActiveNetwork(network));
@@ -22,22 +16,13 @@ export function WidgetHeader() {
     <Flex justify="between" align="center" gap="2">
       <WalletConnectButton
         size="2"
-        walletChain={
-          activeNetwork
-            ? activeNetwork
-            : (fromAsset.network as 'ethereum' | 'solana')
-        }
+        walletChain={activeNetwork ?? fromNetwork}
         accountOnly
       />
       <Popover.Root>
         <Popover.Trigger>
-          <IconButton
-            variant="ghost"
-            size="1"
-            className="cursor-pointer"
-            onClick={handleMenuClick}
-          >
-            <MenuIcon className="h-4 w-4" />
+          <IconButton variant="soft" size="2" className="cursor-pointer">
+            <MenuIcon />
           </IconButton>
         </Popover.Trigger>
         <Popover.Content className="flex flex-col gap-2">

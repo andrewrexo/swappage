@@ -31,7 +31,7 @@ const ChildButton = ({
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
         className="w-full"
-        whileHover={{ scale: 1.02 }}
+        {...(!accountOnly ? { whileHover: { scale: 1.02 } } : {})}
       >
         {children}
       </motion.div>
@@ -70,11 +70,8 @@ export function WalletConnectButton({
         openAccountModal,
         openChainModal,
         openConnectModal,
-        authenticationStatus,
         mounted,
       }) => {
-        // Note: If your app doesn't use authentication, you
-        // can remove all 'authenticationStatus' checks
         const ready = mounted;
         const connected = ready && account && chain;
 
@@ -105,7 +102,7 @@ export function WalletConnectButton({
                     size={accountOnly ? '2' : size}
                     accountOnly={accountOnly}
                   >
-                    Connect Wallet
+                    Connect
                     <Link1Icon
                       className={`ml-auto h-${iconSize} w-${iconSize}`}
                     />
@@ -158,7 +155,10 @@ export function WalletConnectButton({
                       </div>
                     )}
                   </Text>
-                  {accountOnly ? '' : 'Pay with'} {account.displayName}
+                  {accountOnly ? '' : 'Pay with'}{' '}
+                  <Text className="max-w-[2rem] truncate text-ellipsis sm:max-w-full">
+                    {account.displayName}
+                  </Text>
                   <div className="ml-auto">
                     {!accountOnly && (
                       <ArrowTopRightIcon
@@ -194,7 +194,7 @@ const ButtonSolana = ({
           width: '100%',
         }}
       >
-        Connect Wallet
+        Connect
         <Link1Icon
           className={`ml-auto ${accountOnly ? 'h-4 w-4' : 'h-6 w-6'}`}
         />
@@ -253,7 +253,7 @@ const ButtonEthereum = ({
                     size={accountOnly ? '2' : size}
                     accountOnly={accountOnly}
                   >
-                    Connect Wallet
+                    Connect
                     <Link1Icon
                       className={`ml-auto h-${iconSize} w-${iconSize}`}
                     />
@@ -306,7 +306,9 @@ const ButtonEthereum = ({
                       </div>
                     )}
                   </Text>
-                  {accountOnly ? '' : 'Pay with'} {account.displayName}
+                  <Text className="truncate text-ellipsis sm:max-w-full">
+                    {accountOnly ? '' : 'Pay with'} {account.displayName}
+                  </Text>
                   <div className="ml-auto">
                     {!accountOnly && (
                       <ArrowTopRightIcon

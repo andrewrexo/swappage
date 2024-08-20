@@ -5,10 +5,15 @@ import { WalletConnectButton } from '../../components/wallet-connect-button';
 import { useAppSelector } from '../../lib/hooks';
 
 export function PaymentButtons({ handleShowQR }: { handleShowQR: () => void }) {
-  const { activeNetwork } = useAppSelector((state) => state.swap);
+  const { activeNetwork, fromNetwork } = useAppSelector((state) => state.swap);
+
   return (
     <>
-      <WalletConnectButton walletChain={activeNetwork} accountOnly={false} />
+      <WalletConnectButton
+        walletChain={activeNetwork}
+        fromNetwork={fromNetwork as 'solana' | 'ethereum'}
+        accountOnly={false}
+      />
       <Flex gap="2" align="center" justify="center">
         <Separator orientation="horizontal" size="4" />
         <Text as="div" size="1" color="gray" align="center">

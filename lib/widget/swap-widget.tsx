@@ -13,7 +13,9 @@ import { usePathname, useRouter } from 'next/navigation';
 import { MotionFlex } from './components/ui/radix-motion';
 import { useAccount } from 'wagmi';
 import { animVariants } from './config';
-import { setEthereumAddress } from './features/swap/slice';
+import { setEthereumAddress, setSolanaAddress } from './features/swap/slice';
+import { toastConfig } from '../util';
+import { useWallet } from '@solana/wallet-adapter-react';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -44,27 +46,30 @@ export function SwapWidget({
   const { pair } = useAppSelector((state) => state.swap);
   const isSmall = useMediaQuery('(max-width: 640px)');
   const account = useAccount();
+  const { publicKey } = useWallet();
 
   useEffect(() => {
     if (account.address) {
       dispatch(setEthereumAddress(account.address));
 
       toast.success(
-        `Connected to wallet ${account.address.slice(0, 6)}...${account.address.slice(-4)}`,
-        {
-          duration: 2500,
-          position: 'bottom-right',
-          style: {
-            borderRadius: '10px',
-            border: '1px solid var(--accent-5)',
-            boxShadow: '2px 4px 20px var(--accent-3)',
-            color: 'var(--gray-14)',
-            background: 'var(--gray-1)',
-          },
-        },
+        `Connected to Ethereum wallet ${account.address.slice(0, 6)}...${account.address.slice(-4)}`,
+        { ...toastConfig },
       );
     }
   }, [account.address, dispatch]);
+
+  useEffect(() => {
+    if (publicKey) {
+      const account = publicKey?.toBase58()!;
+      dispatch(setSolanaAddress(account));
+
+      toast.success(
+        `Connected to Solana wallet ${account.slice(0, 6)}...${account.slice(-4)}`,
+        { ...toastConfig },
+      );
+    }
+  }, [publicKey]);
 
   useEffect(() => {
     const intervalId = setInterval(() => {

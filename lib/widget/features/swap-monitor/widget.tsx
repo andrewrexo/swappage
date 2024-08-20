@@ -10,16 +10,19 @@ import {
   Tooltip,
 } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import type { LazyOrder } from '../../lib/order';
 import { CopyIcon, DoubleArrowLeftIcon } from '@radix-ui/react-icons';
 import { PaymentOptions } from './payment-options';
 import { MotionFlex } from '../../components/ui/radix-motion';
+import { useAppDispatch } from '../../lib/hooks';
+import { setActiveNetwork, setFromNetwork } from '../swap/slice';
 
 const MotionIconButton = motion(IconButton);
 const MotionSeparator = motion(Separator);
 
 export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
+  const dispatch = useAppDispatch();
   const [paymentMethod, setPaymentMethod] = useState<'connect' | 'qr' | 'none'>(
     'none',
   );
@@ -31,6 +34,10 @@ export function SwapMonitorWidget({ order }: { order: LazyOrder }) {
   const onChoosePayment = (method: 'connect' | 'qr' | 'none') => {
     setPaymentMethod(method);
   };
+
+  useEffect(() => {
+    dispatch(setActiveNetwork(order.fromNetwork as 'solana' | 'ethereum'));
+  }, [order.fromNetwork]);
 
   return (
     <MotionFlex

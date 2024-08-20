@@ -3,13 +3,15 @@
 import React, { useMemo } from 'react';
 import {
   ConnectionProvider,
-  useWallet,
   WalletProvider,
 } from '@solana/wallet-adapter-react';
 import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
 import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
 import {
+  LedgerWalletAdapter,
+  TrezorWalletAdapter,
+  SpotWalletAdapter,
   PhantomWalletAdapter,
   SolflareWalletAdapter,
   MathWalletAdapter,
@@ -25,10 +27,7 @@ export default function SolanaProvider({
 }: {
   children: React.ReactNode;
 }) {
-  const network = WalletAdapterNetwork.Devnet;
-
-  //initiate auto connect
-  const { autoConnect } = useWallet();
+  const network = WalletAdapterNetwork.Mainnet;
 
   // You can also provide a custom RPC endpoint.
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
@@ -37,6 +36,9 @@ export default function SolanaProvider({
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
+      new LedgerWalletAdapter(),
+      new TrezorWalletAdapter(),
+      new SpotWalletAdapter(),
       new SolflareWalletAdapter(),
       new MathWalletAdapter(),
       new TrustWalletAdapter(),
