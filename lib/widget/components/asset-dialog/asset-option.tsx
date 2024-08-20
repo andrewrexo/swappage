@@ -1,4 +1,4 @@
-import { Button, Flex, Text, Code, Badge } from '@radix-ui/themes';
+import { Button, Flex, Text, Code, Badge, Link, Box } from '@radix-ui/themes';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { setFromAsset, setToAsset } from '../../features/swap/slice';
@@ -55,26 +55,31 @@ export function AssetOption({
   };
 
   return (
-    <Button size="3" variant="surface" onClick={handleAssetSelect}>
-      <Text as="div" className="flex w-full items-center justify-between">
-        <Flex align="center" gap="2">
-          <Text
-            weight="bold"
-            size={asset.name.length > 10 ? '1' : '2'}
-            className="flex items-center"
-          >
-            {asset.name}
-          </Text>
-          <Badge
-            size="1"
-            variant="surface"
-            color={networkToColor[asset.network]}
-          >
-            {asset.network}
-          </Badge>
-        </Flex>
-        <Text size="2">{asset.symbol}&nbsp;</Text>
-      </Text>
-    </Button>
+    <Box
+      className="bg-surface p-2 transition-all duration-100 hover:brightness-125"
+      onClick={handleAssetSelect}
+    >
+      <Link size="3" onClick={handleAssetSelect}>
+        <Text as="div" className="flex w-full items-center justify-between">
+          <Flex align="center" gap="2">
+            <Text
+              weight="bold"
+              size={asset.name.length > 10 ? '1' : '2'}
+              className="flex items-center"
+            >
+              {asset.name}
+            </Text>
+            <Badge
+              size="1"
+              variant="surface"
+              color={networkToColor[asset.network]}
+            >
+              {asset.network}
+            </Badge>
+          </Flex>
+          <Text size="2">{asset.symbol}&nbsp;</Text>
+        </Text>
+      </Link>
+    </Box>
   );
 }
