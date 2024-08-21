@@ -22,6 +22,7 @@ export function AssetOption({
             weight="bold"
             size={asset.name.length > 10 || small ? '3' : '4'}
             className="flex items-center"
+            color={networkToColor[asset.network]}
           >
             {asset.name}
           </Text>

@@ -36,7 +36,7 @@ export function ResponsiveDialogDrawer({
 
   const dialogContent = (
     <>
-      <Dialog.Title className="pb-2" color="gray">
+      <Dialog.Title className="pb-2" size="7">
         {title}
       </Dialog.Title>
       <VisuallyHidden>
@@ -50,9 +50,15 @@ export function ResponsiveDialogDrawer({
 
   const drawerContent = (
     <>
-      <Box className="mx-auto my-4 min-h-1.5 min-w-12 rounded-full bg-[var(--accent-8)]"></Box>
-      <Dialog.Title className="pt-4" color="gray">
-        <Text size={title.length > 10 ? '8' : '9'}>{title}</Text>
+      <Box className="mx-auto mt-6 min-h-2 min-w-16 rounded-full bg-[var(--accent-8)]"></Box>
+      <Dialog.Title className="pt-8">
+        <Text
+          size={title.length > 10 ? '8' : '9'}
+          weight="bold"
+          className="text-gray-200"
+        >
+          {title}
+        </Text>
       </Dialog.Title>
       <VisuallyHidden>
         {<Dialog.Description>{title}</Dialog.Description>}
@@ -123,11 +129,12 @@ const DialogDrawer = ({
             className={twMerge(
               `focus:outline-none`,
               `fixed inset-x-0 bottom-0`,
-              `px-8 py-2`,
-              `flex h-[100vh] max-h-[100vh] flex-col`,
+              `px-4 py-2`,
+              `flex h-[100dvh] max-h-[100dvh] flex-col`,
             )}
             style={{
               background: 'var(--color-panel-solid)',
+              borderRadius: '2rem',
             }}
           >
             {content}

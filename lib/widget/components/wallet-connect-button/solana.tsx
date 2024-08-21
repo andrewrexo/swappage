@@ -80,11 +80,11 @@ export function WalletConnectSolana({
       setOpen={setOpen}
       open={open}
     >
-      <Box className="space-y-4 p-2">
+      <Box className="space-y-4 p-0">
         {wallets.map((wallet: any) => (
           <Card
             key={wallet.adapter.name}
-            className="flex w-full cursor-pointer p-4 transition-all hover:scale-[1.02] hover:bg-[var(--color-surface)] hover:bg-opacity-10 hover:shadow-[0_0_4px_0_rgba(0,0,0,0.45)]"
+            className="flex w-full cursor-pointer p-2 transition-all hover:scale-95 hover:bg-[var(--color-surface)] hover:bg-opacity-10 hover:shadow-[0_0_4px_0_rgba(0,0,0,0.45)]"
             onClick={() => handleWalletSelect(wallet.adapter.name)}
             size="3"
           >

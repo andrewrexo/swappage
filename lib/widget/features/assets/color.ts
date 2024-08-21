@@ -27,6 +27,7 @@ const networkToColor: Record<
   polygon: 'purple',
   optimism: 'red',
   arbitrum: 'indigo',
+  basemainnet: 'iris',
 };
 
 export default networkToColor;

@@ -48,22 +48,22 @@ export function AssetDialog({
       open={open}
       title="Assets"
     >
-      <Flex direction="column" gap="4" className="h-full p-1">
+      <Flex direction="column" gap="4" className="h-full">
         <TextField.Root
           onChange={handleSearch}
           size="3"
-          radius="large"
           variant="surface"
           style={{
             backgroundColor: 'var(--color-surface)',
             color: 'var(--color-text)',
-            height: '4rem',
+            height: '3.5rem',
             borderRadius: '1rem',
+            margin: '0.1rem',
           }}
           placeholder="Search all available assets..."
         >
           <TextField.Slot>
-            <MagnifyingGlassIcon height="18" width="18" />
+            <MagnifyingGlassIcon height="24" width="24" />
           </TextField.Slot>
         </TextField.Root>
         {status === 'loading' && <p className="pt-2">Loading assets...</p>}
