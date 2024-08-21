@@ -128,13 +128,14 @@ const DialogDrawer = ({
           <Drawer.Content
             className={twMerge(
               `focus:outline-none`,
-              `fixed inset-x-0 bottom-0`,
+              `fixed inset-x-0 bottom-0 top-2`,
               `px-4 py-2`,
               `flex h-[100dvh] max-h-[100dvh] flex-col`,
             )}
             style={{
               background: 'var(--color-panel-solid)',
-              borderRadius: '2rem',
+              borderTopLeftRadius: '2rem',
+              borderTopRightRadius: '2rem',
             }}
           >
             {content}
