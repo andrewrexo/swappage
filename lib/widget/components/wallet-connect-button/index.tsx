@@ -15,7 +15,7 @@ const ChildButton = ({
   ...props
 }: {
   children: ReactNode;
-  onClick: () => void;
+  onClick?: () => void;
   accountOnly?: boolean;
 } & ButtonProps) => {
   return (
@@ -76,9 +76,9 @@ const ButtonSolana = ({
   return (
     <WalletConnectSolana accountOnly={accountOnly}>
       <ChildButton
-        onClick={() => {}}
         size={accountOnly ? '2' : size}
         accountOnly={accountOnly}
+        style={{ width: '100%' }}
       >
         Connect
         <Link1Icon

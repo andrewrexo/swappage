@@ -26,6 +26,9 @@ export function WalletConnectSolana({
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
+    console.log('connection', connection);
+    console.log('publicKey', publicKey);
+
     if (!connection || !publicKey) {
       return;
     }
@@ -37,7 +40,7 @@ export function WalletConnectSolana({
         // set balance in redux state
       }
     });
-  }, [publicKey]);
+  }, [connection, publicKey]);
 
   const handleWalletSelect = async (walletName: any) => {
     if (walletName) {
@@ -54,9 +57,11 @@ export function WalletConnectSolana({
     disconnect();
   };
 
-  const WalletButton = !publicKey
-    ? children
-    : cloneElement(
+  const WalletButton = !publicKey ? (
+    children
+  ) : (
+    <Flex>
+      {cloneElement(
         children as ReactElement,
         {
           onClick: accountOnly
@@ -70,7 +75,9 @@ export function WalletConnectSolana({
           isPayment={!accountOnly}
           address={publicKey.toBase58()}
         />,
-      );
+      )}
+    </Flex>
+  );
 
   return (
     <ResponsiveDialogDrawer
