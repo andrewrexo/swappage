@@ -9,7 +9,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 interface InputAmountProps {
   asset: ExodusAsset;
   side: 'from' | 'to';
-  onDialogOpen: () => void;
+  onDialogOpen: (side: 'from' | 'to') => void;
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
 
@@ -48,16 +48,14 @@ export function InputAmount({
         </TextField.Slot>
       </AnimatePresence>
       <TextField.Slot className="">
-        <AssetDialog side={side}>
-          <IconButton
-            size="1"
-            variant="soft"
-            className="cursor-pointer"
-            loading={rateStatus === 'loading'}
-          >
-            <ChevronDown strokeWidth={1.5} onClick={onDialogOpen} />
-          </IconButton>
-        </AssetDialog>
+        <IconButton
+          size="1"
+          variant="soft"
+          className="cursor-pointer"
+          loading={rateStatus === 'loading'}
+        >
+          <ChevronDown strokeWidth={1.5} onClick={() => onDialogOpen(side)} />
+        </IconButton>
       </TextField.Slot>
     </TextField.Root>
   );

@@ -10,9 +10,19 @@ import { ChangeEvent, useEffect } from 'react';
 import { InputAmount } from './input-amount';
 import { InputActions } from './input-actions';
 
-export function AssetControl({ side }: { side: 'from' | 'to' }) {
+export function AssetControl({
+  side,
+  setOpen,
+}: {
+  side: 'from' | 'to';
+  setOpen: (open: boolean) => void;
+}) {
   const dispatch = useAppDispatch();
-  const onDialogOpen = () => dispatch(setActiveDirection(side));
+
+  const onDialogOpen = (side: 'from' | 'to') => {
+    dispatch(setActiveDirection(side));
+    setOpen(true);
+  };
 
   const { currentRate } = useAppSelector((state) => state.rates);
   const { status } = useAppSelector((state) => state.assets);

@@ -5,16 +5,31 @@ import { MotionIconButton } from '../../components/ui/radix-motion';
 import { motion, useAnimationControls } from 'framer-motion';
 import { useState } from 'react';
 import { useAppDispatch, useAppSelector, useMediaQuery } from '../../lib/hooks';
-import { reverseAssets } from './slice';
+import { reverseAssets, setFromAsset, setToAsset } from './slice';
 import { twMerge } from 'tailwind-merge';
+import { AssetDialog } from '../../components/asset-dialog';
+import type { ExodusAsset } from '../../lib/exodus/asset';
 
 export function SwapInput() {
   const { status, currentRate } = useAppSelector((state) => state.rates);
+  const { activeDirection } = useAppSelector((state) => state.swap);
+
   const dispatch = useAppDispatch();
   const iconControls = useAnimationControls();
 
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
   const [rotate, setRotate] = useState(0);
   const [rotating, setRotating] = useState(false);
+
+  const handleAssetSelect = (asset: ExodusAsset) => {
+    if (activeDirection === 'from') {
+      dispatch(setFromAsset(asset));
+    } else {
+      dispatch(setToAsset(asset));
+    }
+
+    setIsDialogOpen(false);
+  };
 
   const onArrowClick = () => {
     const newRotation = rotate + 180;
@@ -33,6 +48,10 @@ export function SwapInput() {
     dispatch(reverseAssets());
   };
 
+  const handleDialogOpen = (open: boolean) => {
+    setIsDialogOpen(open);
+  };
+
   const isMobile = useMediaQuery('(max-width: 768px)');
 
   return (
@@ -41,7 +60,7 @@ export function SwapInput() {
       align="center"
       gap={currentRate ? (isMobile ? '4' : '2') : '4'}
     >
-      <AssetControl side="from" />
+      <AssetControl side="from" setOpen={handleDialogOpen} />
       {currentRate && (
         <motion.div
           className={twMerge(
@@ -62,7 +81,14 @@ export function SwapInput() {
           </MotionIconButton>
         </motion.div>
       )}
-      <AssetControl side="to" />
+      <AssetControl side="to" setOpen={handleDialogOpen} />
+      <AssetDialog
+        open={isDialogOpen}
+        setOpen={handleDialogOpen}
+        onAssetSelect={handleAssetSelect}
+      >
+        <div></div>
+      </AssetDialog>
     </Flex>
   );
 }

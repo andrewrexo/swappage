@@ -1,10 +1,15 @@
 import { useMediaQuery } from '../../lib/hooks';
-import { Dialog, Flex, Text, Theme, VisuallyHidden } from '@radix-ui/themes';
+import {
+  Box,
+  Dialog,
+  Flex,
+  ScrollArea,
+  Text,
+  Theme,
+  VisuallyHidden,
+} from '@radix-ui/themes';
 import { Drawer } from 'vaul';
 import { ReactNode } from 'react';
-import '@radix-ui/themes/tokens/base.css';
-import '@radix-ui/themes/styles.css';
-import { XIcon } from 'lucide-react';
 import { twMerge } from 'tailwind-merge';
 
 interface ResponsiveDialogDrawerProps {
@@ -34,9 +39,48 @@ export function ResponsiveDialogDrawer({
     return <>{trigger}</>;
   }
 
+  const dialogContent = (
+    <>
+      <Dialog.Title className="pb-2" color="gray">
+        {title}
+      </Dialog.Title>
+      <VisuallyHidden>
+        {<Dialog.Description>{title}</Dialog.Description>}
+      </VisuallyHidden>
+      <Flex direction="column" className="h-full flex-grow overflow-auto">
+        {children}
+      </Flex>
+    </>
+  );
+
+  const drawerContent = (
+    <Flex direction="column" className="h-full">
+      <Box className="mx-auto my-4 min-h-1.5 min-w-12 rounded-full bg-[var(--accent-8)]"></Box>
+      <Drawer.Title>
+        <Text weight="medium" size="8" className="">
+          {title}
+        </Text>
+      </Drawer.Title>
+      {description ? (
+        <Dialog.Description>
+          <Text>{description}</Text>
+        </Dialog.Description>
+      ) : (
+        <VisuallyHidden>
+          {<Dialog.Description>{title}</Dialog.Description>}
+        </VisuallyHidden>
+      )}
+      <ScrollArea className="pt-4">{children}</ScrollArea>
+    </Flex>
+  );
+
   if (isMobile) {
     return (
-      <Drawer.Root open={open} onOpenChange={setOpen}>
+      <Drawer.Root
+        open={open}
+        onOpenChange={setOpen}
+        disablePreventScroll={false}
+      >
         <Drawer.Trigger
           asChild
           onClick={() => {
@@ -48,40 +92,17 @@ export function ResponsiveDialogDrawer({
           {trigger}
         </Drawer.Trigger>
         <Drawer.Portal>
-          <Drawer.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-sm" />
-          <Theme
-            appearance="dark"
-            accentColor="mint"
-            grayColor="mauve"
-            radius="large"
-            scaling="105%"
-          >
+          <Drawer.Overlay className="fixed inset-0 backdrop-blur-sm focus:outline-none" />
+          <Theme>
             <Drawer.Content
-              autoFocus
               className={twMerge(
-                `h-[${height}]`,
-                `fixed bottom-0 left-0 right-0 flex flex-col rounded-t-md bg-[var(--color-background)]`,
+                `focus:outline-none`,
+                `fixed inset-x-0 bottom-0`,
+                `bg-[var(--color-surface)] p-4`,
+                `flex h-[100dvh] max-h-[100dvh] flex-col`,
               )}
             >
-              <Drawer.Close className="absolute right-4 top-4">
-                <XIcon className="h-6 w-6 text-accent" />
-              </Drawer.Close>
-              <div className="flex-1 rounded-t-3xl bg-surface p-6">
-                <div className="mx-auto mb-8 h-1.5 w-12 flex-shrink-0 rounded-full bg-[var(--accent-8)]" />
-                <Drawer.Title>
-                  <Text weight="medium" size="8" className="">
-                    {title}
-                  </Text>
-                </Drawer.Title>
-                {description && (
-                  <Dialog.Description>
-                    <Text>{description}</Text>
-                  </Dialog.Description>
-                )}
-                <Flex direction="column" className="mx-auto" mt="4">
-                  {children}
-                </Flex>
-              </div>
+              {drawerContent}
             </Drawer.Content>
           </Theme>
         </Drawer.Portal>
@@ -90,26 +111,18 @@ export function ResponsiveDialogDrawer({
   }
 
   return (
-    <Dialog.Root open={open} onOpenChange={setOpen}>
-      <Dialog.Trigger>{trigger}</Dialog.Trigger>
-      <Dialog.Content
-        style={{
-          background: 'var(--gray-1)',
-        }}
-        maxHeight="90vh"
-        className="fle rounded-3xl border border-[var(--gray-9)] bg-[var(--gray-1)]"
-      >
-        <Dialog.Close className="absolute right-4 top-4 cursor-pointer">
-          <XIcon className="h-6 w-6 text-accent" />
-        </Dialog.Close>
-        <Dialog.Title className="pb-2" color="gray">
-          {title}
-        </Dialog.Title>
-        <VisuallyHidden>
-          {<Dialog.Description>{title}</Dialog.Description>}
-        </VisuallyHidden>
-        {children}
-      </Dialog.Content>
-    </Dialog.Root>
+    <Box>
+      <Dialog.Root open={open} onOpenChange={setOpen}>
+        <Dialog.Trigger>{trigger}</Dialog.Trigger>
+        <Dialog.Content
+          style={{
+            background: 'var(--color-background)',
+            maxHeight: '80dvh',
+          }}
+        >
+          {dialogContent}
+        </Dialog.Content>
+      </Dialog.Root>
+    </Box>
   );
 }

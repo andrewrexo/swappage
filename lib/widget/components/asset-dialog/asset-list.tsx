@@ -1,39 +1,31 @@
-import { Grid, Text, Box, ScrollArea, Flex } from '@radix-ui/themes';
+import { Grid, Text, ScrollArea } from '@radix-ui/themes';
 import { AssetOption } from './asset-option';
 import { ExodusAsset } from '../../lib/exodus/asset';
+import { useCallback } from 'react';
 
 export function AssetList({
   assets,
-  setOpen,
-  handleAssetSelect,
+  onAssetSelect,
 }: {
   assets: ExodusAsset[];
-  setOpen: (open: boolean) => void;
-  handleAssetSelect: (asset: ExodusAsset) => void;
+  onAssetSelect: (asset: ExodusAsset) => void;
 }) {
+  const trimmedAssets = useCallback(() => {
+    return assets.slice(0, 20);
+  }, [assets]);
+
   return assets.length > 0 ? (
-    <Box my="2">
-      <Text size="2" color="gray" my="2">
-        All assets
-      </Text>
-      <ScrollArea>
-        <Flex
-          gap="2"
-          width="auto"
-          className="my-2 max-h-[400px]"
-          direction="column"
-        >
-          {assets.slice(0, 35).map((asset: ExodusAsset, index: number) => (
-            <AssetOption
-              key={asset.id + index}
-              asset={asset}
-              setOpen={setOpen}
-              handleAssetSelect={handleAssetSelect}
-            />
-          ))}
-        </Flex>
-      </ScrollArea>
-    </Box>
+    <ScrollArea>
+      <Grid columns="1" gap="4" className="sm:max-h-[40dvh]">
+        {trimmedAssets().map((asset: ExodusAsset, index: number) => (
+          <AssetOption
+            key={asset.id + index}
+            asset={asset}
+            onAssetSelect={onAssetSelect}
+          />
+        ))}
+      </Grid>
+    </ScrollArea>
   ) : (
     <Text>No pairs available</Text>
   );
