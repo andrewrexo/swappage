@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react';
 import { setSolanaAddress } from '../../features/swap/slice';
-import { useAppDispatch } from '../../lib/hooks';
+import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { ResponsiveDialogDrawer } from '../ui/dialog-drawer';
 import { WalletPreview } from './wallet-preview';
 import toast from 'react-hot-toast';
@@ -23,12 +23,17 @@ export function WalletConnectSolana({
 }) {
   const dispatch = useAppDispatch();
   const { connection } = useConnection();
+  const { solanaAddress } = useAppSelector((state) => state.swap);
   const { select, wallets, publicKey, disconnect } = useWallet();
 
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
     if (!connection || !publicKey) {
+      return;
+    }
+
+    if (solanaAddress == publicKey?.toBase58()) {
       return;
     }
 

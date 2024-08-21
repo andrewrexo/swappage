@@ -11,11 +11,14 @@ import toast, { Toaster } from 'react-hot-toast';
 import { DoubleArrowLeftIcon } from '@radix-ui/react-icons';
 import { usePathname, useRouter } from 'next/navigation';
 import { MotionFlex } from './components/ui/radix-motion';
-import { useAccount } from 'wagmi';
+import { useAccount, useChains } from 'wagmi';
 import { animVariants } from './config';
 import { setEthereumAddress, setSolanaAddress } from './features/swap/slice';
 import { toastConfig } from '../util';
 import { useWallet } from '@solana/wallet-adapter-react';
+import { CheckCheckIcon } from 'lucide-react';
+import { SolanaLogo } from './components/wallet-connect-button/solana-logo';
+import { TokenETH, TokenSOL } from '@web3icons/react';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -53,8 +56,11 @@ export function SwapWidget({
       dispatch(setEthereumAddress(account.address));
 
       toast.success(
-        `Connected to Ethereum wallet ${account.address.slice(0, 6)}...${account.address.slice(-4)}`,
-        { ...toastConfig },
+        `Connected to wallet ${account.address.slice(0, 6)}...${account.address.slice(-4)}`,
+        {
+          ...toastConfig,
+          icon: <TokenETH size={24} variant="branded" />,
+        },
       );
     }
   }, [account.address, dispatch]);
@@ -65,8 +71,8 @@ export function SwapWidget({
       dispatch(setSolanaAddress(account));
 
       toast.success(
-        `Connected to Solana wallet ${account.slice(0, 6)}...${account.slice(-4)}`,
-        { ...toastConfig },
+        `Connected to wallet: ${account.slice(0, 6)}...${account.slice(-4)}`,
+        { ...toastConfig, icon: <TokenSOL size={24} variant="branded" /> },
       );
     }
   }, [publicKey]);

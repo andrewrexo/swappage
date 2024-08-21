@@ -1,6 +1,7 @@
 import { Flex, Text } from '@radix-ui/themes';
 import { SolanaLogo } from './solana-logo';
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
+import { TokenSOL } from '@web3icons/react';
 
 const getDisplayLabelAddress = (address: string, length: number = 4) => {
   return `${address.slice(0, length)}...${address.slice(-length)}`;
@@ -18,7 +19,7 @@ export function WalletPreview({
   if (isSmall) {
     return (
       <Flex align="center" gap="2" justify="between" width="100%">
-        <SolanaLogo small={isSmall} />
+        <TokenSOL size={16} />
         {getDisplayLabelAddress(address, 4)}
       </Flex>
     );
@@ -26,7 +27,7 @@ export function WalletPreview({
 
   return (
     <Flex gap="1" align="center" justify="between" width="100%">
-      <SolanaLogo small={isSmall} />
+      <TokenSOL size={24} />
       {isPayment && (
         <Text as="div" className="ml-2">
           Pay with

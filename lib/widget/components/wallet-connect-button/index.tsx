@@ -10,6 +10,21 @@ import { WalletConnectSolana } from './solana';
 import { useDisconnect } from 'wagmi';
 import toast from 'react-hot-toast';
 import { toastConfig } from '@/lib/util';
+import {
+  TokenARB,
+  TokenETH,
+  TokenMATIC,
+  TokenBASE,
+  TokenOP,
+} from '@web3icons/react';
+
+const TokenMap = {
+  1: <TokenETH size={24} />,
+  42161: <TokenARB size={24} variant="branded" />,
+  10: <TokenOP size={24} variant="branded" />,
+  137: <TokenMATIC size={24} variant="branded" />,
+  8453: <TokenBASE size={24} variant="branded" />,
+};
 
 const ChildButton = ({
   children,
@@ -183,16 +198,8 @@ const ButtonEthereum = ({
                   accountOnly={accountOnly}
                 >
                   <Text as="div" className="flex">
-                    {chain.hasIcon && chain.iconUrl && (
-                      <img
-                        alt={chain.name ?? 'Chain icon'}
-                        src={chain.iconUrl}
-                        style={{
-                          width: chainIconSize.w,
-                          height: chainIconSize.h,
-                        }}
-                      />
-                    )}
+                    {chain.hasIcon &&
+                      TokenMap[chain.id as keyof typeof TokenMap]}
                   </Text>
                   <Text className="truncate text-ellipsis sm:max-w-full">
                     {accountOnly ? '' : 'Pay with'} {account.displayName}
