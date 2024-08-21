@@ -36,12 +36,13 @@ export function InputAmount({
           <MotionText
             size="3"
             weight="medium"
-            className="text-accent"
+            className="cursor-pointer text-accent"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.5 }}
             key={asset.id}
+            onClick={() => onDialogOpen(side)}
           >
             {asset.symbol}
           </MotionText>
