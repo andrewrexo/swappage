@@ -10,10 +10,13 @@ export const toastConfig: ToastOptions = {
   duration: 2500,
   position: 'bottom-right',
   style: {
-    borderRadius: '10px',
-    border: '1px solid var(--accent-5)',
-    boxShadow: '2px 4px 20px var(--accent-3)',
-    color: 'var(--gray-14)',
-    background: 'var(--gray-1)',
+    width: 'fit-content',
+    color: 'var(--accent-a11)',
+    boxShadow: 'inset 0 0 0 1px var(--accent-a7)',
+    backgroundColor: 'var(--accent-surface)',
+  },
+  iconTheme: {
+    primary: 'var(--accent-a11)',
+    secondary: 'var(--accent-surface)',
   },
 };
