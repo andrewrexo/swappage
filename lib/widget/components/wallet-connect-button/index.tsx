@@ -7,6 +7,9 @@ import { motion } from 'framer-motion';
 import { AlertCircleIcon } from 'lucide-react';
 import type { ReactNode } from 'react';
 import { WalletConnectSolana } from './solana';
+import { useDisconnect } from 'wagmi';
+import toast from 'react-hot-toast';
+import { toastConfig } from '@/lib/util';
 
 const ChildButton = ({
   children,
@@ -96,17 +99,28 @@ const ButtonEthereum = ({
   accountOnly: boolean;
   size: ButtonProps['size'];
 }) => {
+  const { disconnectAsync } = useDisconnect();
+
   return (
     <ConnectButton.Custom>
       {({
         account,
         chain,
+
         openAccountModal,
         openChainModal,
         openConnectModal,
         authenticationStatus,
         mounted,
       }) => {
+        const disconnect = () => {
+          disconnectAsync().then(() => {
+            toast.success('Ethereum wallet disconnected', {
+              icon: '🔌',
+              ...toastConfig,
+            });
+          });
+        };
         // Note: If your app doesn't use authentication, you
         // can remove all 'authenticationStatus' checks
         const ready = mounted;
@@ -163,44 +177,33 @@ const ButtonEthereum = ({
 
               return (
                 <ChildButton
-                  onClick={openAccountModal}
+                  onClick={disconnect}
                   size={size}
                   className="flex w-full justify-between"
                   accountOnly={accountOnly}
                 >
                   <Text as="div" className="flex">
-                    {chain.hasIcon && (
-                      <div
+                    {chain.hasIcon && chain.iconUrl && (
+                      <img
+                        alt={chain.name ?? 'Chain icon'}
+                        src={chain.iconUrl}
                         style={{
                           width: chainIconSize.w,
                           height: chainIconSize.h,
-                          borderRadius: 999,
-                          overflow: 'hidden',
                         }}
-                      >
-                        {chain.iconUrl && (
-                          <img
-                            alt={chain.name ?? 'Chain icon'}
-                            src={chain.iconUrl}
-                            style={{
-                              width: chainIconSize.w,
-                              height: chainIconSize.h,
-                            }}
-                          />
-                        )}
-                      </div>
+                      />
                     )}
                   </Text>
                   <Text className="truncate text-ellipsis sm:max-w-full">
                     {accountOnly ? '' : 'Pay with'} {account.displayName}
                   </Text>
-                  <div className="ml-auto">
-                    {!accountOnly && (
+                  {!accountOnly && (
+                    <div className="ml-auto">
                       <ArrowTopRightIcon
                         className={`h-${iconSize} w-${iconSize}`}
                       />
-                    )}
-                  </div>
+                    </div>
+                  )}
                 </ChildButton>
               );
             })()}

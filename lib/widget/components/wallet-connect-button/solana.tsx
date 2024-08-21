@@ -11,6 +11,8 @@ import { setSolanaAddress } from '../../features/swap/slice';
 import { useAppDispatch } from '../../lib/hooks';
 import { ResponsiveDialogDrawer } from '../ui/dialog-drawer';
 import { WalletPreview } from './wallet-preview';
+import toast from 'react-hot-toast';
+import { toastConfig } from '@/lib/util';
 
 export function WalletConnectSolana({
   children,
@@ -26,9 +28,6 @@ export function WalletConnectSolana({
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    console.log('connection', connection);
-    console.log('publicKey', publicKey);
-
     if (!connection || !publicKey) {
       return;
     }
@@ -55,6 +54,10 @@ export function WalletConnectSolana({
 
   const handleDisconnect = async () => {
     disconnect();
+    toast.success('Solana wallet disconnected', {
+      icon: '🔌',
+      ...toastConfig,
+    });
   };
 
   const WalletButton = !publicKey ? (
