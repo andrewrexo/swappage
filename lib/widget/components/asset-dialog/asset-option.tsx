@@ -15,6 +15,7 @@ export function AssetOption({
     <Card
       className="flex w-full cursor-pointer p-4 transition-all hover:scale-[0.95]"
       onClick={() => onAssetSelect(asset)}
+      data-vaul-no-drag
     >
       <Text as="div" color="gray">
         <Flex align="center" gap="2" pb="1">

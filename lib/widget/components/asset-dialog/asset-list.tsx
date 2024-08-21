@@ -15,7 +15,7 @@ export function AssetList({
   const trimmedAssets = useCallback(() => assets.slice(0, 50), [assets]);
 
   return assets.length > 0 ? (
-    <ScrollArea>
+    <ScrollArea data-vaul-no-drag>
       <Grid columns="1" gap="2" className="m-[0.1rem] sm:max-h-[40dvh]">
         {trimmedAssets().map((asset) => (
           <AssetOption
