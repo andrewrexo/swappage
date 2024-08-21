@@ -53,7 +53,7 @@ export function ResponsiveDialogDrawer({
       <Box className="mx-auto mt-6 min-h-2 min-w-16 rounded-full bg-[var(--accent-8)]"></Box>
       <Dialog.Title className="pt-8">
         <Text
-          size={title.length > 10 ? '8' : '9'}
+          size={title.length > 10 ? '7' : '8'}
           weight="bold"
           className="text-gray-200"
         >
@@ -63,7 +63,10 @@ export function ResponsiveDialogDrawer({
       <VisuallyHidden>
         {<Dialog.Description>{title}</Dialog.Description>}
       </VisuallyHidden>
-      <Flex direction="column" className="h-full flex-grow overflow-auto py-2">
+      <Flex
+        direction="column"
+        className="h-full flex-grow overflow-auto transition-all duration-300"
+      >
         {children}
       </Flex>
     </>
@@ -129,8 +132,9 @@ const DialogDrawer = ({
             className={twMerge(
               `focus:outline-none`,
               `fixed inset-x-0 bottom-0 top-2`,
-              `px-4 py-2`,
+              `px-6 py-2`,
               `flex h-[100dvh] max-h-[100dvh] flex-col`,
+              `transition-all duration-300`,
             )}
             style={{
               background: 'var(--color-panel-solid)',

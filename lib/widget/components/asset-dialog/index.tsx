@@ -57,10 +57,10 @@ export function AssetDialog({
             backgroundColor: 'var(--color-surface)',
             color: 'var(--color-text)',
             height: '3.5rem',
-            borderRadius: '1rem',
-            margin: '0.1rem',
+            marginLeft: '0.05rem',
+            marginRight: '0.05rem',
           }}
-          placeholder="Search all available assets..."
+          placeholder="ShibaNutsackInu"
         >
           <TextField.Slot>
             <MagnifyingGlassIcon height="24" width="24" />

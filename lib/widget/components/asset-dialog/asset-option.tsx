@@ -13,7 +13,7 @@ export function AssetOption({
 }) {
   return (
     <Card
-      className="flex w-full cursor-pointer p-4 transition-all hover:scale-[0.95]"
+      className="flex w-full cursor-pointer shadow-md shadow-[var(--color-overlay)] transition-all hover:scale-[0.95]"
       onClick={() => onAssetSelect(asset)}
       data-vaul-no-drag
     >
@@ -21,7 +21,7 @@ export function AssetOption({
         <Flex align="center" gap="2" pb="1">
           <Text
             weight="bold"
-            size={asset.name.length > 10 || small ? '3' : '4'}
+            size={asset.name.length > 10 || small ? '4' : '5'}
             className="flex items-center"
             color={networkToColor[asset.network]}
           >

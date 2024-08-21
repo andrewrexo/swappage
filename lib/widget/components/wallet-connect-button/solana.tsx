@@ -1,4 +1,4 @@
-import { Badge, Card, Text, Flex, Box } from '@radix-ui/themes';
+import { Badge, Card, Text, Flex, Box, Link } from '@radix-ui/themes';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import {
   cloneElement,
@@ -90,7 +90,7 @@ export function WalletConnectSolana({
       setOpen={setOpen}
       open={open}
     >
-      <Box className="space-y-4 p-0">
+      <Flex direction="column" className="h-full space-y-4 p-0">
         {wallets.map((wallet: any) => (
           <Card
             key={wallet.adapter.name}
@@ -98,29 +98,32 @@ export function WalletConnectSolana({
             onClick={() => handleWalletSelect(wallet.adapter.name)}
             size="3"
           >
-            <Flex gap="2">
-              <img
-                src={wallet.adapter.icon}
-                alt={wallet.adapter.name}
-                height={32}
-                width={32}
-                className="mr-5 rounded-lg"
-              />
-              <Badge key={wallet.adapter.name} variant="soft" size="3">
-                <div className="font-slackey">{wallet.adapter.name}</div>
-              </Badge>
+            <Flex gap="2" justify="between" align="center">
+              <Flex align="center" gap="2">
+                <img
+                  src={wallet.adapter.icon}
+                  alt={wallet.adapter.name}
+                  height={32}
+                  width={32}
+                  className="mr-4 rounded-lg"
+                />
+                <Link key={wallet.adapter.name} size="3" weight="medium">
+                  <div className="text-2xl">{wallet.adapter.name}</div>
+                </Link>
+              </Flex>
+
+              {wallet.adapter.readyState === 'Installed' && (
+                <Badge size="3" variant="surface" color="mint">
+                  Installed
+                </Badge>
+              )}
             </Flex>
           </Card>
         ))}
-        <Text
-          size="1"
-          color="gray"
-          as="div"
-          style={{ whiteSpace: 'pre-wrap', marginBottom: 'auto' }}
-        >
+        <Text size="1" color="gray">
           Not seeing your wallet? Let us know. We&apos;ll add it to the list.
         </Text>
-      </Box>
+      </Flex>
     </ResponsiveDialogDrawer>
   );
 }
