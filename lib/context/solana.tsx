@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useMemo } from 'react';
+import React from 'react';
 import {
   ConnectionProvider,
   WalletProvider,
@@ -10,11 +10,7 @@ import { WalletModalProvider } from '@solana/wallet-adapter-react-ui';
 import { clusterApiUrl } from '@solana/web3.js';
 import {
   LedgerWalletAdapter,
-  TrezorWalletAdapter,
-  SpotWalletAdapter,
   PhantomWalletAdapter,
-  SolflareWalletAdapter,
-  MathWalletAdapter,
   TrustWalletAdapter,
   CoinbaseWalletAdapter,
 } from '@solana/wallet-adapter-wallets';
@@ -27,22 +23,15 @@ export default function SolanaProvider({
   const network = WalletAdapterNetwork.Mainnet;
 
   // You can also provide a custom RPC endpoint.
-  const endpoint = useMemo(() => clusterApiUrl(network), [network]);
+  const endpoint = clusterApiUrl(network);
 
   //wallets
-  const wallets = useMemo(
-    () => [
-      new PhantomWalletAdapter(),
-      new LedgerWalletAdapter(),
-      new TrezorWalletAdapter(),
-      new SpotWalletAdapter(),
-      new SolflareWalletAdapter(),
-      new MathWalletAdapter(),
-      new TrustWalletAdapter(),
-      new CoinbaseWalletAdapter(),
-    ],
-    [network],
-  );
+  const wallets = [
+    new PhantomWalletAdapter(),
+    new LedgerWalletAdapter(),
+    new TrustWalletAdapter(),
+    new CoinbaseWalletAdapter(),
+  ];
 
   return (
     <ConnectionProvider endpoint={endpoint}>

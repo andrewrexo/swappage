@@ -38,6 +38,19 @@ export function SwapInput() {
 
     iconControls.start({
       rotate: newRotation,
+      x: [-1, 1, 0],
+      y: [-1, 1, 0],
+      scaleX: [1, 1.3, 1],
+      scaleY: [1, 1.3, 1],
+      filter: [
+        'brightness(1) contrast(1) blur(0px)',
+        'brightness(1.75) contrast(1.75) blur(2px)',
+        'brightness(1) contrast(1) blur(0px)',
+      ],
+      transition: {
+        duration: 0.5,
+        ease: 'easeInOut',
+      },
     });
 
     swapAssets();
@@ -66,7 +79,7 @@ export function SwapInput() {
           className={twMerge(
             'mt-2',
             'transition-all duration-300',
-            status === 'loading' && !rotating && `pointer-events-none blur-sm`,
+            status === 'loading' && !rotating && `pointer-events-none`,
           )}
         >
           <MotionIconButton

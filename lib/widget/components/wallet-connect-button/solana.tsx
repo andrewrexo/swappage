@@ -5,7 +5,6 @@ import {
   type ReactElement,
   type ReactNode,
   useEffect,
-  useMemo,
   useState,
 } from 'react';
 import { setSolanaAddress } from '../../features/swap/slice';
@@ -55,62 +54,63 @@ export function WalletConnectSolana({
     disconnect();
   };
 
-  const Dialog = useMemo(() => {
-    return (
-      <ResponsiveDialogDrawer
-        triggerBlocked={!!publicKey}
-        trigger={
-          !publicKey
-            ? children
-            : cloneElement(
-                children as ReactElement,
-                {
-                  onClick: accountOnly
-                    ? handleDisconnect
-                    : () => {
-                        alert('yo');
-                      },
-                  className: 'cursor-pointer',
-                },
-                <WalletPreview
-                  isPayment={!accountOnly}
-                  address={publicKey.toBase58()}
-                />,
-              )
-        }
-        title="Connect"
-        description="Select your Solana wallet to continue."
-        setOpen={setOpen}
-        open={open}
-      >
-        <Box className="space-y-4 p-2">
-          {wallets.map((wallet: any) => (
-            <Card
-              key={wallet.adapter.name}
-              className="flex w-full cursor-pointer p-4 transition-all hover:scale-[1.02] hover:bg-[var(--color-surface)] hover:bg-opacity-10 hover:shadow-[0_0_10px_0_rgba(0,0,0,1.0)]"
-              onClick={() => handleWalletSelect(wallet.adapter.name)}
-            >
-              <Flex gap="2">
-                <img
-                  src={wallet.adapter.icon}
-                  alt={wallet.adapter.name}
-                  height={32}
-                  width={32}
-                  className="mr-5 rounded-lg"
-                />
-                <Badge key={wallet.adapter.name} variant="soft" size="3">
-                  <div className="font-slackey">{wallet.adapter.name}</div>
-                </Badge>
-              </Flex>
-            </Card>
-          ))}
-          <Text size="1" color="gray">
-            Not seeing your wallet? Let us know. We&apos;ll add it to the list.
-          </Text>
-        </Box>
-      </ResponsiveDialogDrawer>
-    );
-  }, [open, publicKey, wallets]);
+  const WalletButton = !publicKey
+    ? children
+    : cloneElement(
+        children as ReactElement,
+        {
+          onClick: accountOnly
+            ? handleDisconnect
+            : () => {
+                alert('yo');
+              },
+          className: 'cursor-pointer',
+        },
+        <WalletPreview
+          isPayment={!accountOnly}
+          address={publicKey.toBase58()}
+        />,
+      );
 
-  return Dialog;
+  return (
+    <ResponsiveDialogDrawer
+      triggerBlocked={!!publicKey}
+      trigger={WalletButton}
+      title="Connect"
+      setOpen={setOpen}
+      open={open}
+    >
+      <Box className="space-y-4 p-2">
+        {wallets.map((wallet: any) => (
+          <Card
+            key={wallet.adapter.name}
+            className="flex w-full cursor-pointer p-4 transition-all hover:scale-[1.02] hover:bg-[var(--color-surface)] hover:bg-opacity-10 hover:shadow-[0_0_4px_0_rgba(0,0,0,0.45)]"
+            onClick={() => handleWalletSelect(wallet.adapter.name)}
+            size="3"
+          >
+            <Flex gap="2">
+              <img
+                src={wallet.adapter.icon}
+                alt={wallet.adapter.name}
+                height={32}
+                width={32}
+                className="mr-5 rounded-lg"
+              />
+              <Badge key={wallet.adapter.name} variant="soft" size="3">
+                <div className="font-slackey">{wallet.adapter.name}</div>
+              </Badge>
+            </Flex>
+          </Card>
+        ))}
+        <Text
+          size="1"
+          color="gray"
+          as="div"
+          style={{ whiteSpace: 'pre-wrap', marginBottom: 'auto' }}
+        >
+          Not seeing your wallet? Let us know. We&apos;ll add it to the list.
+        </Text>
+      </Box>
+    </ResponsiveDialogDrawer>
+  );
 }

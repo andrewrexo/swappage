@@ -46,13 +46,20 @@ export function AssetDialog({
       trigger={children}
       setOpen={setOpen}
       open={open}
-      title="Available assets"
+      title="Assets"
     >
-      <Flex direction="column" gap="4" className="h-full">
+      <Flex direction="column" gap="4" className="h-full p-1">
         <TextField.Root
           onChange={handleSearch}
           size="3"
-          variant="classic"
+          radius="large"
+          variant="surface"
+          style={{
+            backgroundColor: 'var(--color-surface)',
+            color: 'var(--color-text)',
+            height: '4rem',
+            borderRadius: '1rem',
+          }}
           placeholder="Search all available assets..."
         >
           <TextField.Slot>

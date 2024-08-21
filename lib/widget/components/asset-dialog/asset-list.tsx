@@ -6,22 +6,23 @@ import { useCallback } from 'react';
 export function AssetList({
   assets,
   onAssetSelect,
+  small = false,
 }: {
   assets: ExodusAsset[];
   onAssetSelect: (asset: ExodusAsset) => void;
+  small?: boolean;
 }) {
-  const trimmedAssets = useCallback(() => {
-    return assets.slice(0, 20);
-  }, [assets]);
+  const trimmedAssets = useCallback(() => assets.slice(0, 50), [assets]);
 
   return assets.length > 0 ? (
     <ScrollArea>
       <Grid columns="1" gap="4" className="sm:max-h-[40dvh]">
-        {trimmedAssets().map((asset: ExodusAsset, index: number) => (
+        {trimmedAssets().map((asset) => (
           <AssetOption
-            key={asset.id + index}
+            key={asset.id}
             asset={asset}
             onAssetSelect={onAssetSelect}
+            small={small}
           />
         ))}
       </Grid>

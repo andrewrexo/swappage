@@ -92,7 +92,7 @@ export function ParameterList({
         >
           <Skeleton
             loading={status === 'loading'}
-            className="blur-sm transition-all duration-200"
+            className="transition-all duration-200"
           >
             {amount.value && rateToWidgetDisplayText(amount.value, pair)}
           </Skeleton>

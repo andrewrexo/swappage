@@ -5,20 +5,22 @@ import networkToColor from '../../features/assets/color';
 export function AssetOption({
   asset,
   onAssetSelect,
+  small,
 }: {
   asset: ExodusAsset;
   onAssetSelect: (asset: ExodusAsset) => void;
+  small?: boolean;
 }) {
   return (
     <Card
-      className="min-h-12 hover:opacity-90"
+      className="flex w-full cursor-pointer p-4 transition-all hover:scale-[0.95]"
       onClick={() => onAssetSelect(asset)}
     >
       <Text as="div" color="gray">
         <Flex align="center" gap="2" pb="1">
           <Text
             weight="bold"
-            size={asset.name.length > 10 ? '1' : '2'}
+            size={asset.name.length > 10 || small ? '3' : '4'}
             className="flex items-center"
           >
             {asset.name}
