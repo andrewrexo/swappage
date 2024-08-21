@@ -1,20 +1,17 @@
-import { ArrowTopRightIcon } from '@radix-ui/react-icons';
-import { Badge, Card, Text, Flex } from '@radix-ui/themes';
+import { Badge, Card, Text, Flex, Box } from '@radix-ui/themes';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import {
   cloneElement,
   type ReactElement,
   type ReactNode,
   useEffect,
+  useMemo,
   useState,
 } from 'react';
-import { motion } from 'framer-motion';
 import { setSolanaAddress } from '../../features/swap/slice';
 import { useAppDispatch } from '../../lib/hooks';
-import { SolanaLogo } from './solana-logo';
 import { ResponsiveDialogDrawer } from '../ui/dialog-drawer';
-
-const MotionCard = motion(Card);
+import { WalletPreview } from './wallet-preview';
 
 export function WalletConnectSolana({
   children,
@@ -25,7 +22,7 @@ export function WalletConnectSolana({
 }) {
   const dispatch = useAppDispatch();
   const { connection } = useConnection();
-  const { select, wallets, publicKey, disconnect, autoConnect } = useWallet();
+  const { select, wallets, publicKey, disconnect } = useWallet();
 
   const [open, setOpen] = useState<boolean>(false);
 
@@ -41,7 +38,7 @@ export function WalletConnectSolana({
         // set balance in redux state
       }
     });
-  }, [publicKey, connection]);
+  }, [publicKey]);
 
   const handleWalletSelect = async (walletName: any) => {
     if (walletName) {
@@ -58,8 +55,8 @@ export function WalletConnectSolana({
     disconnect();
   };
 
-  return (
-    <div className="text-white">
+  const Dialog = useMemo(() => {
+    return (
       <ResponsiveDialogDrawer
         triggerBlocked={!!publicKey}
         trigger={
@@ -74,27 +71,11 @@ export function WalletConnectSolana({
                         alert('yo');
                       },
                   className: 'cursor-pointer',
-                  style: {
-                    display: 'flex',
-                    width: '100%',
-                  },
                 },
-                <>
-                  <Text
-                    as="div"
-                    className="flex cursor-pointer items-center justify-between gap-3"
-                  >
-                    <SolanaLogo small={accountOnly} />
-                    {accountOnly ? '' : 'Pay with'}{' '}
-                    {publicKey?.toBase58().slice(0, 4)}...
-                    {publicKey?.toBase58().slice(-4)}
-                  </Text>
-                  <div className="ml-auto">
-                    {!accountOnly && (
-                      <ArrowTopRightIcon className={`ml-auto h-6 w-6`} />
-                    )}
-                  </div>
-                </>,
+                <WalletPreview
+                  isPayment={!accountOnly}
+                  address={publicKey.toBase58()}
+                />,
               )
         }
         title="Connect"
@@ -102,15 +83,11 @@ export function WalletConnectSolana({
         setOpen={setOpen}
         open={open}
       >
-        <Flex direction="column" gap="4" height="100%" justify="between">
-          {wallets.map((wallet) => (
-            <MotionCard
+        <Box className="space-y-4 p-2">
+          {wallets.map((wallet: any) => (
+            <Card
               key={wallet.adapter.name}
-              whileHover={{
-                scale: 1.025,
-                backgroundColor: 'var(--gray-2)',
-              }}
-              className="flex w-full cursor-pointer p-4 hover:bg-[var(--gray-1)]"
+              className="flex w-full cursor-pointer p-4 transition-all hover:scale-[1.02] hover:bg-[var(--color-surface)] hover:bg-opacity-10 hover:shadow-[0_0_10px_0_rgba(0,0,0,1.0)]"
               onClick={() => handleWalletSelect(wallet.adapter.name)}
             >
               <Flex gap="2">
@@ -125,13 +102,15 @@ export function WalletConnectSolana({
                   <div className="font-slackey">{wallet.adapter.name}</div>
                 </Badge>
               </Flex>
-            </MotionCard>
+            </Card>
           ))}
           <Text size="1" color="gray">
             Not seeing your wallet? Let us know. We&apos;ll add it to the list.
           </Text>
-        </Flex>
+        </Box>
       </ResponsiveDialogDrawer>
-    </div>
-  );
+    );
+  }, [open, publicKey, wallets]);
+
+  return Dialog;
 }

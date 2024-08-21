@@ -30,7 +30,6 @@ const ChildButton = ({
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.2 }}
-        className="w-full"
         {...(!accountOnly ? { whileHover: { scale: 1.02 } } : {})}
       >
         {children}
@@ -51,129 +50,20 @@ export function WalletConnectButton({
   fromNetwork?: 'ethereum' | 'solana';
   size?: ButtonProps['size'];
 } & ButtonProps) {
-  if (!accountOnly) {
-    if (fromNetwork === 'solana') {
-      return <ButtonSolana accountOnly={accountOnly} size={size} />;
+  if (accountOnly) {
+    switch (walletChain) {
+      case 'solana':
+        return <ButtonSolana accountOnly={accountOnly} size={size} />;
+      case 'ethereum':
+        return <ButtonEthereum accountOnly={accountOnly} size={size} />;
     }
-    return <ButtonEthereum accountOnly={accountOnly} size={size} />;
   }
 
-  if (walletChain === 'solana') {
+  if (fromNetwork === 'solana') {
     return <ButtonSolana accountOnly={accountOnly} size={size} />;
   }
 
-  return (
-    <ConnectButton.Custom>
-      {({
-        account,
-        chain,
-        openAccountModal,
-        openChainModal,
-        openConnectModal,
-        mounted,
-      }) => {
-        const ready = mounted;
-        const connected = ready && account && chain;
-
-        const iconSize = parseInt(size.toString()) <= 2 ? 4 : 6;
-        const chainIconSize = {
-          w: parseInt(size.toString()) <= 2 ? 16 : 24,
-          h: parseInt(size.toString()) <= 2 ? 16 : 24,
-        };
-
-        return (
-          <div
-            className="w-full cursor-pointer"
-            {...(!ready && {
-              'aria-hidden': true,
-              style: {
-                opacity: 0,
-                pointerEvents: 'none',
-                userSelect: 'none',
-              },
-            })}
-          >
-            {' '}
-            {(() => {
-              if (!connected) {
-                return (
-                  <ChildButton
-                    onClick={openConnectModal}
-                    size={accountOnly ? '2' : size}
-                    accountOnly={accountOnly}
-                  >
-                    Connect
-                    <Link1Icon
-                      className={`ml-auto h-${iconSize} w-${iconSize}`}
-                    />
-                  </ChildButton>
-                );
-              }
-
-              if (chain.unsupported) {
-                return (
-                  <ChildButton
-                    onClick={openChainModal}
-                    size={size}
-                    accountOnly={accountOnly}
-                  >
-                    Wrong network
-                    <AlertCircleIcon
-                      className={`ml-auto h-${iconSize} w-${iconSize}`}
-                    />
-                  </ChildButton>
-                );
-              }
-
-              return (
-                <ChildButton
-                  onClick={openAccountModal}
-                  size={size}
-                  className="flex justify-between"
-                  accountOnly={accountOnly}
-                >
-                  <Text as="div" className="flex">
-                    {chain.hasIcon && (
-                      <div
-                        style={{
-                          width: chainIconSize.w,
-                          height: chainIconSize.h,
-                          borderRadius: 999,
-                          overflow: 'hidden',
-                        }}
-                      >
-                        {chain.iconUrl && (
-                          <img
-                            alt={chain.name ?? 'Chain icon'}
-                            src={chain.iconUrl}
-                            style={{
-                              width: chainIconSize.w,
-                              height: chainIconSize.h,
-                            }}
-                          />
-                        )}
-                      </div>
-                    )}
-                  </Text>
-                  {accountOnly ? '' : 'Pay with'}{' '}
-                  <Text className="max-w-[2rem] truncate text-ellipsis sm:max-w-full">
-                    {account.displayName}
-                  </Text>
-                  <div className="ml-auto">
-                    {!accountOnly && (
-                      <ArrowTopRightIcon
-                        className={`h-${iconSize} w-${iconSize}`}
-                      />
-                    )}
-                  </div>
-                </ChildButton>
-              );
-            })()}
-          </div>
-        );
-      }}
-    </ConnectButton.Custom>
-  );
+  return <ButtonEthereum accountOnly={accountOnly} size={size} />;
 }
 
 const ButtonSolana = ({
@@ -189,10 +79,6 @@ const ButtonSolana = ({
         onClick={() => {}}
         size={accountOnly ? '2' : size}
         accountOnly={accountOnly}
-        className="flex justify-between"
-        style={{
-          width: '100%',
-        }}
       >
         Connect
         <Link1Icon
@@ -244,7 +130,6 @@ const ButtonEthereum = ({
               },
             })}
           >
-            {' '}
             {(() => {
               if (!connected) {
                 return (
@@ -280,7 +165,7 @@ const ButtonEthereum = ({
                 <ChildButton
                   onClick={openAccountModal}
                   size={size}
-                  className="flex justify-between"
+                  className="flex w-full justify-between"
                   accountOnly={accountOnly}
                 >
                   <Text as="div" className="flex">

@@ -87,10 +87,7 @@ export function SwapWidget({
     <AnimatePresence>
       <MotionFlex
         justify="center"
-        className={twMerge(
-          className,
-          `h-full border-[1px] border-accent transition-transform duration-300`,
-        )}
+        className={twMerge(className, `h-full border-[1px] border-accent`)}
         width={isSmall ? '100%' : width}
         initial={{
           height: '100%',
