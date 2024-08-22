@@ -1,8 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import getAvailableAssets, {
-  ExodusAsset,
-  SupportedNetwork,
-} from '../../lib/exodus/asset';
+import { ExodusAsset, SupportedNetwork } from '../../lib/exodus/asset';
 
 interface AssetState {
   assets: ExodusAsset[];
@@ -28,7 +25,11 @@ export const fetchAssets = createAsyncThunk<
   }
 
   try {
-    const assets = await getAvailableAssets(networks);
+    const res = await fetch(`/api/assets?networks=${networks.join(',')}`, {
+      method: 'GET',
+    });
+
+    const assets = await res.json();
 
     if (!Array.isArray(assets)) {
       throw new Error('Received an invalid list of assets');
