@@ -19,6 +19,7 @@ const networkToColor: Record<
   | 'iris'
   | 'indigo'
   | 'teal'
+  | 'cyan'
 > = {
   ethereum: 'blue',
   bitcoin: 'yellow',
@@ -27,7 +28,7 @@ const networkToColor: Record<
   avalanche: 'ruby',
   polygon: 'purple',
   optimism: 'red',
-  arbitrum: 'indigo',
+  ethereumarbone: 'cyan',
   basemainnet: 'iris',
 };
 

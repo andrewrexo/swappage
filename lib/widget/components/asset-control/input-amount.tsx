@@ -1,13 +1,13 @@
-import { TextField, IconButton, Text, Box } from '@radix-ui/themes';
+import { TextField, IconButton, Text, Box, Flex } from '@radix-ui/themes';
 import { ChevronDown } from 'lucide-react';
 import { useAppSelector } from '../../lib/hooks';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import { ChangeEvent } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { getIconId, networkToIcon } from '../asset-dialog/asset-option';
 import { twMerge } from 'tailwind-merge';
 import networkToColor from '../../features/assets/color';
 import { AssetIcon } from '../asset-icon';
+import { MotionFlexUnstyled } from '../ui/radix-motion';
 
 interface InputAmountProps {
   asset: ExodusAsset;
@@ -15,8 +15,6 @@ interface InputAmountProps {
   onDialogOpen: (side: 'from' | 'to') => void;
   onInputChange: (e: ChangeEvent<HTMLInputElement>) => void;
 }
-
-const MotionText = motion(Text);
 
 export function InputAmount({
   asset,
@@ -30,34 +28,33 @@ export function InputAmount({
   return (
     <TextField.Root
       size="3"
-      className="cursor-pointer"
+      variant="surface"
+      color="gray"
+      className="cursor-pointer overflow-hidden"
       value={side === 'from' ? fromAmount : toAmount}
       onChange={onInputChange}
     >
       <AnimatePresence mode="wait">
-        <TextField.Slot>
-          <MotionText
-            size="3"
-            weight="medium"
-            as="div"
-            className={twMerge(
-              `flex cursor-pointer items-center gap-2`,
-              asset.symbol.length >= 5 && 'max-w-[100px]',
-              asset.symbol.length == 4 && 'max-w-[75px]',
-            )}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.5 }}
-            key={asset.id}
+        <TextField.Slot style={{ padding: '0px', minWidth: '100px' }}>
+          <MotionFlexUnstyled
+            gap="2"
+            align="center"
+            direction="row"
+            {...(asset.symbol.length >= 4 && {
+              justify: 'center',
+            })}
             onClick={() => onDialogOpen(side)}
-            color={networkToColor[asset.network]}
+            className={twMerge('mr-2 px-2', 'h-full w-full', `cursor-pointer`)}
+            initial={{ opacity: 0.5 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.25 }}
+            key={asset.id}
           >
-            <Box maxWidth="24px" maxHeight="24px">
-              <AssetIcon asset={asset} />
-            </Box>
-            {asset.symbol}
-          </MotionText>
+            {asset.symbol.length <= 4 && <AssetIcon asset={asset} />}
+            <Text color={networkToColor[asset.network]} weight="bold">
+              {asset.symbol}
+            </Text>
+          </MotionFlexUnstyled>
         </TextField.Slot>
       </AnimatePresence>
       <TextField.Slot className="">
