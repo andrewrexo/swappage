@@ -16,8 +16,6 @@ import { animVariants } from './config';
 import { setEthereumAddress, setSolanaAddress } from './features/swap/slice';
 import { toastConfig } from '../util';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { CheckCheckIcon } from 'lucide-react';
-import { SolanaLogo } from './components/wallet-connect-button/solana-logo';
 import { TokenETH, TokenSOL } from '@web3icons/react';
 
 type SwapMode = 'input' | 'output' | 'flexible';
