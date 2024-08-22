@@ -103,7 +103,7 @@ export function WalletConnectSolana({
             weight="bold"
             className="text-[var(--accent-12) inline-flex items-center pb-2 pt-2 text-4xl sm:pb-0 sm:text-3xl"
           >
-            <TokenIcon identifier="SOL" size={32} />
+            <TokenIcon identifier="SOL" size={32} className="mr-4" />
             Connect
           </Text>
         </>
