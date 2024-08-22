@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#BZRX__a)" d="M2 6a4 4 0 0 1 4-4h2.25v4.375h1.875V2H18a4 4 0 0 1 4 4v12a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4v-7.875h11.376c.402 0 .499.263.499.664v2.461c0 .402-.224.625-.625.625h-2.524c-.401 0-.601-.316-.601-.717v-1.783H8.25v2.07c0 1.507.972 2.305 2.476 2.305h2.65c1.505 0 2.374-.798 2.374-2.306V10.79c0-1.507-.87-2.539-2.374-2.539H2z"/>
+    <defs>
+        <linearGradient id="BZRX__a" x1="20.7" x2="4.7" y1="20.7" y2="4.7" gradientUnits="userSpaceOnUse">
+            <stop offset=".159" stop-color="#003CDA"/>
+            <stop offset="1" stop-color="#33DFCC"/>
+        </linearGradient>
+    </defs>
+</svg>

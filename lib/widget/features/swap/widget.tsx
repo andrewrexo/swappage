@@ -1,7 +1,6 @@
 'use client';
 import { Flex, Separator } from '@radix-ui/themes';
 import { useEffect, useState } from 'react';
-import { AssetControl } from '../../components/asset-control';
 import { ParameterList } from '../../components/parameter-list';
 import { SwapButton } from '../../components/swap-button';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
@@ -13,7 +12,7 @@ import { createOrderInternal } from './api';
 import { motion } from 'framer-motion';
 import { SwapInput } from './input';
 import { toastConfig } from '@/lib/util';
-import { setActiveNetwork, setFromNetwork } from './slice';
+import { setActiveNetwork } from './slice';
 
 const MotionFlex = motion(Flex);
 
@@ -44,7 +43,7 @@ export default function SwapWidgetHome() {
   useEffect(() => {
     if (!assets || assets.length === 0) {
       dispatch(
-        fetchAssets(['solana', 'arbitrumone', 'basemainnet', 'ethereum']),
+        fetchAssets(['solana', 'ethereumarbone', 'basemainnet', 'ethereum']),
       );
     }
   }, [dispatch, pair]);

@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#DESO__a)" d="M3.667 2v5l12.666 7.307L3.667 22H13.98c3.513 0 6.353-2.467 6.353-5.5V12z"/>
+    <path fill="url(#DESO__b)" d="m3.667 2 16.666 10V7.5c0-3.04-2.846-5.5-6.353-5.5z"/>
+    <path fill="url(#DESO__c)" d="m12.234 11.94-8.567 5.067V22l12.666-7.693z"/>
+    <defs>
+        <linearGradient id="DESO__a" x1="3.667" x2="17.867" y1="5.333" y2="19.793" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3FA3FF"/>
+            <stop offset="1" stop-color="#F0F8FF"/>
+        </linearGradient>
+        <linearGradient id="DESO__b" x1="3.667" x2="23.471" y1="2" y2="7.07" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#84C3FF"/>
+            <stop offset="1" stop-color="#FBFEFF"/>
+        </linearGradient>
+        <linearGradient id="DESO__c" x1="4.333" x2="14.26" y1="19.667" y2="13.88" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#A8D5FF"/>
+            <stop offset="1" stop-color="#F6FBFF"/>
+        </linearGradient>
+    </defs>
+</svg>

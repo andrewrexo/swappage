@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#RFOX__a)" fill-rule="evenodd" d="M3.613 10.2V2l4.064 4.194zm11.381-3.04H9.02l3.044 12.747zm-6.827.04L11.773 22 4.241 11.044zm7.666 0L12.226 22l7.533-10.956zm4.554 3V2l-4.064 4.194z" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="RFOX__a" x1="3.748" x2="20.071" y1="10.632" y2="10.632" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#AF0607"/>
+            <stop offset=".495" stop-color="#ED1C24"/>
+        </linearGradient>
+    </defs>
+</svg>

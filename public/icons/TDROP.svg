@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#TDROP__a)" fill-rule="evenodd" d="M12 22a8.42 8.42 0 0 0 8.421-8.421C20.421 8.926 13.053 2 12.001 2c-1.053 0-8.422 6.926-8.422 11.579A8.42 8.42 0 0 0 12 22M7.79 12v3.684h2.631v2.632h3.158v-2.632h2.632V12z" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="TDROP__a" x1="12" x2="12" y1="2" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#00F2FF"/>
+            <stop offset="1" stop-color="#00BCF3"/>
+        </linearGradient>
+    </defs>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#AQTIS__a)" fill-rule="evenodd" d="M12.147 3.176 22 20.824H2zm-.63 2.23 4.248 5.406-3.624-6.488zm3.06 4.806-3.36-4.277-.329.57 3.682 3.707zm-3.983-3.2-.076.135 1.588 1.382zm3.353 3.865L10.235 7.64l-.282.506 4 2.73zm-5.341-.4-5.63 9.788h2.706zm-2.33 9.788h1.642l1.006-8.883zm3.118-7.994.188 6.94-1.058.742zm2.159 7.994h9.488l-.812-1.447zm8.388-1.97-.823-1.483-8.047 2.958zm-8.335.681 7.235-2.658-.559-1zm6.406-4.147-.335-.6-5.148 3.6zm-7.87 3.994.729-.505-.895-5.706zm-.189-9.988 1.435 9.118 5.883-4.118z" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="AQTIS__a" x1="12" x2="12" y1="3.176" y2="20.823" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#BDDC78"/>
+            <stop offset="1" stop-color="#5AD9E6"/>
+        </linearGradient>
+    </defs>
+</svg>

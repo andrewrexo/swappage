@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <g opacity=".8">
+        <path fill="url(#zilliqa__a)" d="m4.941 3.283 11.171 5.394 2.941-1.294L7.865 2z"/>
+        <path fill="url(#zilliqa__b)" d="M4.941 3.282v2.911l7.777 3.747-7.777 3.806v2.87l11.177 5.383v-2.882l-7.57-3.677 7.57-3.88V8.677L4.94 3.294z"/>
+        <path fill="url(#zilliqa__c)" d="m16.117 8.66 2.941-1.277v2.882l-2.94 1.282zm0 13.317 2.941-1.284v-8.968l-2.94 1.293z"/>
+    </g>
+    <defs>
+        <linearGradient id="zilliqa__a" x1="16.711" x2="2.163" y1="21.382" y2="15.942" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#60AAAC"/>
+            <stop offset="1" stop-color="#347181"/>
+        </linearGradient>
+        <linearGradient id="zilliqa__b" x1="12" x2="12" y1="1.999" y2="21.999" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#5AC1C1"/>
+            <stop offset="1" stop-color="#216B79"/>
+        </linearGradient>
+        <linearGradient id="zilliqa__c" x1="14.352" x2="20.823" y1="19.352" y2="14.059" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#5AC1C1"/>
+            <stop offset="1" stop-color="#216B79"/>
+        </linearGradient>
+    </defs>
+</svg>

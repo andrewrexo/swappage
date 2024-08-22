@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#EML__a)" d="M7 14.278a4.946 4.946 0 0 1-5-4.889A4.945 4.945 0 0 1 7 4.5a4.99 4.99 0 0 1 4.778 3.445c.539 1.705.889 2.1.222 5.033 0 1.306.111 2.5.334 3.261-.667-.65-1.2-2.278-2-2.278-1.128 0-2.223.322-3.334.322z"/>
+    <path fill="url(#EML__b)" d="M15.439 9.961c-.889.084-1.783.073-2.106-.244C12.8 9.195 12 8.195 11.667 7.76c.222.545.666 1.828.666 2.611 0 .312-.1.79-.222 1.34-.706 3.344.367 7.788 4.89 7.788 2.76 0 5-2.189 5-4.889a4.94 4.94 0 0 0-3.105-4.533A4.9 4.9 0 0 0 17 9.722c-.544 0-1.072.084-1.561.24"/>
+    <defs>
+        <linearGradient id="EML__a" x1="5.216" x2="15.779" y1="6.999" y2="18.543" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6DB82B"/>
+            <stop offset="1" stop-color="#C9D808"/>
+        </linearGradient>
+        <linearGradient id="EML__b" x1="12.333" x2="20.522" y1="11.672" y2="18.372" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4683C3"/>
+            <stop offset="1" stop-color="#71C6E3"/>
+        </linearGradient>
+    </defs>
+</svg>

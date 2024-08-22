@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#ZEN__a)" d="M20.137 6.171 18.5 8.706a7.29 7.29 0 0 1-5.33 10.48 7.26 7.26 0 0 1-4.429-.688L6.2 20.133a9.984 9.984 0 0 0 15.765-7.322 10.03 10.03 0 0 0-1.83-6.646h.007z"/>
+    <path fill="url(#ZEN__b)" d="M12.013 17.01a5.02 5.02 0 0 0 4.941-4.117 11.44 11.44 0 0 0-9.106 1.894 5.03 5.03 0 0 0 4.165 2.223"/>
+    <path fill="#fff" d="M14.49 11.722c.859 0 1.706.095 2.547.277a5.027 5.027 0 0 0-8.811-3.31 5.02 5.02 0 0 0-1.19 3.987c-.693.51-1.325 1.1-1.882 1.758A7.29 7.29 0 0 1 11.078 4.8a7.26 7.26 0 0 1 4.188.706l2.53-1.642A9.983 9.983 0 0 0 2.025 11.3a10 10 0 0 0 1.935 6.65 12 12 0 0 1 1.705-2.358 14 14 0 0 1 1.765-1.547 11.95 11.95 0 0 1 7.065-2.322z"/>
+    <defs>
+        <radialGradient id="ZEN__a" cx="0" cy="0" r="1" gradientTransform="matrix(21.2926 0 0 21.2707 19.648 1.993)" gradientUnits="userSpaceOnUse">
+            <stop offset=".1" stop-color="#26DB8D"/>
+            <stop offset=".26" stop-color="#23D29A"/>
+            <stop offset=".56" stop-color="#1ABBBB"/>
+            <stop offset=".89" stop-color="#0E9DE5"/>
+        </radialGradient>
+        <radialGradient id="ZEN__b" cx="0" cy="0" r="1" gradientTransform="matrix(36.9411 0 0 76.9549 29.002 -27.582)" gradientUnits="userSpaceOnUse">
+            <stop offset=".26" stop-color="#23D29A"/>
+            <stop offset=".56" stop-color="#1ABBBB"/>
+            <stop offset=".89" stop-color="#0E9DE5"/>
+        </radialGradient>
+    </defs>
+</svg>

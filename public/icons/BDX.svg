@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="#35AF3B" fill-rule="evenodd" d="M12 21.444a9.444 9.444 0 1 0 0-18.888 9.444 9.444 0 0 0 0 18.888M12 22a9.998 9.998 0 0 0 9.239-13.827A10 10 0 1 0 12 22" clip-rule="evenodd"/>
+    <path fill="url(#BDX__a)" fill-rule="evenodd" d="M17.556 5.056v9.722a1.11 1.11 0 0 1-1.111 1.11h-6.111a1.11 1.11 0 0 1-1.112-1.11V8.667c0-.611.5-1.111 1.112-1.111H16.1zm-6.111 5.277A.555.555 0 0 1 12 9.778h2.778a.556.556 0 0 1 .556.555v2.778a.556.556 0 0 1-.556.556H12a.555.555 0 0 1-.555-.556z" clip-rule="evenodd"/>
+    <path fill="url(#BDX__b)" d="M15.334 13.111a.555.555 0 0 1-.556.556h-3.922c-.522 0-1.156-.04-1.634-.834v1.945c0 .61.5 1.11 1.112 1.11h3.888c.69 0 1.112-.555 1.112-1.11z"/>
+    <path fill="url(#BDX__c)" d="M13.111 7.556h-2.777a1.11 1.11 0 0 0-1.112 1.11v4.167c.478.795 1.112.834 1.634.834H12a.555.555 0 0 1-.555-.556v-2.778A.555.555 0 0 1 12 9.778h1.111z"/>
+    <path fill="url(#BDX__d)" fill-rule="evenodd" d="M5.889 7.833v9.722c0 .612.5 1.112 1.111 1.112h6.111a1.11 1.11 0 0 0 1.111-1.112v-6.11a1.11 1.11 0 0 0-1.11-1.112H7.343zM12 13.111a.556.556 0 0 0-.556-.555H8.667a.556.556 0 0 0-.556.555v2.778a.556.556 0 0 0 .556.556h2.777a.556.556 0 0 0 .556-.556z" clip-rule="evenodd"/>
+    <path fill="url(#BDX__e)" d="M5.889 15.611v1.944c0 .612.5 1.112 1.111 1.112h3.889c.667 0 1.111-.278 1.111-1.112V15.89a.556.556 0 0 1-.556.555H7.278c-.556 0-1.061-.177-1.39-.833"/>
+    <path fill="url(#BDX__f)" d="M10.333 10.333H7.344l-1.455-2.5v7.778c.328.656.833.834 1.389.834h1.389a.556.556 0 0 1-.556-.556V13.11a.556.556 0 0 1 .556-.555h1.666z"/>
+    <defs>
+        <linearGradient id="BDX__a" x1="18.667" x2="18.667" y1="3.539" y2="19.436" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#72A8CF"/>
+            <stop offset="1" stop-color="#1071AB"/>
+        </linearGradient>
+        <linearGradient id="BDX__b" x1="22" x2="4.727" y1="14.727" y2="14.727" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0F6192"/>
+            <stop offset="1" stop-color="#1473AD"/>
+        </linearGradient>
+        <linearGradient id="BDX__c" x1="7.714" x2="7.135" y1="-.727" y2="22.022" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#72A8CF"/>
+            <stop offset="1" stop-color="#116394"/>
+        </linearGradient>
+        <linearGradient id="BDX__d" x1="12" x2="12" y1="2" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#36DD21"/>
+            <stop offset="1" stop-color="#34B238"/>
+        </linearGradient>
+        <linearGradient id="BDX__e" x1="22" x2="2" y1="12.909" y2="12.909" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#34A93A"/>
+            <stop offset="1" stop-color="#34B537"/>
+        </linearGradient>
+        <linearGradient id="BDX__f" x1="6.444" x2="6.444" y1="9.5" y2="16.445" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#35E11D"/>
+            <stop offset="1" stop-color="#31A137"/>
+        </linearGradient>
+    </defs>
+</svg>

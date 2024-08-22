@@ -1,8 +1,8 @@
-import { Flex, Text, Badge } from '@radix-ui/themes';
+import { Flex, Text, Badge, Box } from '@radix-ui/themes';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import networkToColor from '../../features/assets/color';
 import { twMerge } from 'tailwind-merge';
-import { NetworkIcon, TokenIcon } from '@web3icons/react';
+import { AssetIcon } from '../asset-icon';
 
 export const getIconId = (assetSymbol: string): string => {
   const symbolLower = assetSymbol.toLowerCase();
@@ -21,7 +21,7 @@ export const getIconId = (assetSymbol: string): string => {
 };
 export const networkToIcon = {
   ethereum: 'ethereum',
-  arbitrumone: 'arbitrum-one',
+  ethereumarbone: 'arbitrum-one',
   basemainnet: 'base',
   solana: 'solana',
 };
@@ -33,8 +33,6 @@ export function AssetOption({
   asset: ExodusAsset;
   onAssetSelect: (asset: ExodusAsset) => void;
 }) {
-  const iconId = getIconId(asset.symbol);
-
   return (
     <Flex
       className={twMerge(
@@ -46,33 +44,33 @@ export function AssetOption({
       onClick={() => onAssetSelect(asset)}
       data-vaul-no-drag
     >
-      <Text as="div" color="gray" className="w-full">
+      <Text as="div" className="w-full">
         <Flex align="center" gap="2" width="100%">
-          <TokenIcon
-            symbol={iconId}
-            size={32}
-            variant="branded"
-            fallback={
-              <NetworkIcon
-                network={
-                  networkToIcon[asset.network as keyof typeof networkToIcon]
-                }
-                variant="branded"
-                size={32}
-              />
-            }
-          />
-          <Text
-            weight="bold"
+          <Box
             className={twMerge(
-              'flex items-center text-xl',
-              asset.name.length > 14 ? 'text-xs' : '',
+              'flex items-center justify-center rounded-lg p-1',
+              'bg-gradient-to-r',
+              asset.network === 'ethereum' &&
+                'from-[var(--blue-3)] to-[var(--blue-2)]',
+              asset.network === 'ethereumarbone' &&
+                'from-[var(--cyan-3)] to-[var(--cyan-2)]',
+              asset.network === 'basemainnet' &&
+                'from-[var(--indigo-3)] to-[var(--indigo-2)]',
+              asset.network === 'solana' &&
+                'from-[var(--teal-3)] to-[var(--teal-2)]',
             )}
+          >
+            <AssetIcon asset={asset} />
+          </Box>
+          <Text
+            weight="medium"
+            color={networkToColor[asset.network]}
+            className={twMerge('... flex items-center truncate text-lg')}
           >
             {asset.name}
           </Text>
           <Badge size="1" color={networkToColor[asset.network]}>
-            {asset.symbol}&nbsp;
+            {asset.symbol}
           </Badge>
           <Badge
             size="2"

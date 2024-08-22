@@ -1,13 +1,13 @@
-import { TokenSOL, TokenETH } from '@web3icons/react';
+import { TokenIcon } from '../../components/ui/token-icon';
 
 const networks = {
   solana: {
-    icon: (size: number) => <TokenSOL size={size} variant="branded" />,
+    icon: (size: number) => <TokenIcon identifier="SOL" size={size} />,
     label: 'Solana',
     symbol: 'SOL',
   },
   ethereum: {
-    icon: (size: number) => <TokenETH size={size} variant="branded" />,
+    icon: (size: number) => <TokenIcon identifier="ETH" size={size} />,
     label: 'Ethereum',
     symbol: 'ETH',
   },

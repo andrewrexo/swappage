@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#DEC__a)" d="M17 3.177H7l5 8.826z"/>
+    <path fill="url(#DEC__b)" d="m17 3.177-5 8.826 5 8.82 5-8.82z"/>
+    <path fill="url(#DEC__c)" d="m7 3.177-5 8.826 5 8.82 5-8.82z"/>
+    <path fill="#74C5EE" d="m12 12.003-5 8.82h10z"/>
+    <defs>
+        <linearGradient id="DEC__a" x1="12.001" x2="12.001" y1="21.094" y2="2.363" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#74C5EE"/>
+            <stop offset=".32" stop-color="#73C2EF"/>
+            <stop offset=".53" stop-color="#6EB9F1"/>
+            <stop offset=".72" stop-color="#66AAF5"/>
+            <stop offset=".88" stop-color="#5A95FA"/>
+            <stop offset="1" stop-color="#4F80FF"/>
+        </linearGradient>
+        <linearGradient id="DEC__b" x1="1.979" x2="22.266" y1="12.003" y2="12.003" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#96D4C8"/>
+            <stop offset="1" stop-color="#42C0C6"/>
+        </linearGradient>
+        <linearGradient id="DEC__c" x1="2" x2="22" y1="12.003" y2="12.003" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4F80FF"/>
+            <stop offset=".28" stop-color="#4E7FFC"/>
+            <stop offset=".48" stop-color="#4A7CF3"/>
+            <stop offset=".64" stop-color="#4477E4"/>
+            <stop offset=".79" stop-color="#3C6FCE"/>
+            <stop offset=".93" stop-color="#3166B3"/>
+            <stop offset="1" stop-color="#2B60A3"/>
+        </linearGradient>
+    </defs>
+</svg>

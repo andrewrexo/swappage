@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#MEX__a)" d="m5.02 7.9 1.001-.649.941.649-.94.571zm-1.7.942-1.001.649 1.001.57.941-.57zM2 9.749v4.687l4 2.313v-4.626zm4.021-.907L5.02 9.49l1.001.57.941-.57zm-1.001 2.24 1.001-.65.941.649-.94.571zm-.365-1.44-1.001.649 1.001.572.941-.572zm1.701.649 1.002-.648.94.648-.94.572zm2.366-1.45-1.001.65 1.001.57.941-.57z"/>
+    <path fill="url(#MEX__b)" d="M10 14.749v-5h1l1.5 3.318L14 9.749h3.5v1h-2.51v1h2.51v1h-2.51v1h2.51v.686l1.558-2.286-1.555-2.4h1.217l.958 1.493.913-1.493H21.9l-1.578 2.4 1.68 2.6h-1.263l-1.06-1.682-1.048 1.682H14v-2.6l-1 2.6h-1l-1-2.6v2.6z"/>
+    <defs>
+        <linearGradient id="MEX__a" x1="5.832" x2="5.832" y1="7.251" y2="16.749" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#213973"/>
+            <stop offset="1" stop-color="#02094B"/>
+        </linearGradient>
+        <linearGradient id="MEX__b" x1="16" x2="16" y1="9.749" y2="14.749" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#213973"/>
+            <stop offset="1" stop-color="#02094B"/>
+        </linearGradient>
+    </defs>
+</svg>

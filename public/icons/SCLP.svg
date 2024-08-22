@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#SCLP__a)" d="m16.082 3.195-4.764 4.9a.3.3 0 0 0-.047.04l-3.459 3.46a.855.855 0 0 0 0 1.21l3.276 3.277-4.034 4.235a12 12 0 0 1-1.812-1.524C1.013 14.576.866 9.353 5.125 5.09 8.5 1.713 12.482 1.143 16.082 3.195"/>
+    <path fill="url(#SCLP__b)" d="M18.916 18.876c-3.364 3.358-7.322 3.964-10.898 2.029l1.423-1.482 3.258-3.37 3.24-3.241a.866.866 0 0 0 0-1.212l-3.251-3.252 3.993-4.176.353-.365c.588.412 1.176.912 1.735 1.47 4.194 4.182 4.37 9.37.147 13.599"/>
+    <defs>
+        <linearGradient id="SCLP__a" x1="18.409" x2="-5.887" y1="-5.339" y2="63.719" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#00DECA"/>
+            <stop offset=".38" stop-color="#3A8AFA"/>
+            <stop offset="1" stop-color="#1A6AF4"/>
+        </linearGradient>
+        <linearGradient id="SCLP__b" x1="19.493" x2="-7.239" y1="-2.869" y2="55.499" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#00DECA"/>
+            <stop offset=".38" stop-color="#3A8AFA"/>
+            <stop offset="1" stop-color="#1A6AF4"/>
+        </linearGradient>
+    </defs>
+</svg>

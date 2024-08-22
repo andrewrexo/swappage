@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#HGPT__a)" d="M12.033 21.94a9.967 9.967 0 1 0 0-19.934 9.967 9.967 0 0 0 0 19.934"/>
+    <path fill="url(#HGPT__b)" d="M18.207 19.8A9.966 9.966 0 1 1 5.913 4.11c1.377 1.812 2.128 4.163 1.67 6.778-.082.469-.011.897.17 1.29.282.621.85 1.16 1.595 1.665.381.264.821.516 1.273.762.527.287 1.078.569 1.653.856.586.293 1.19.592 1.776.915q.92.502 1.789 1.084c.469.317.908.663 1.295 1.038.41.388.77.825 1.073 1.302" style="mix-blend-mode:multiply"/>
+    <path fill="url(#HGPT__c)" fill-rule="evenodd" d="M17.72 9.627H6.353a1.993 1.993 0 0 0-1.94 2.052c0 1.777 1.371 3.225 3.048 3.225h9.14c1.683 0 3.055-1.448 3.055-3.225a2 2 0 0 0-1.934-2.052m-7.446 2.955c0 .205-.07.393-.175.563h-2.58a1.06 1.06 0 0 1-.176-.563c0-.663.657-1.196 1.466-1.196s1.465.533 1.465 1.196m7.036 0c0 .205-.07.393-.176.563h-2.58a1.06 1.06 0 0 1-.175-.563c0-.663.656-1.196 1.465-1.196.81 0 1.466.533 1.466 1.196" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="HGPT__a" x1="20.364" x2="11.98" y1="8.806" y2="14.834" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6767D9"/>
+            <stop offset="1" stop-color="#9578EF"/>
+        </linearGradient>
+        <linearGradient id="HGPT__b" x1="2.066" x2="10.193" y1="15.607" y2="9.305" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#AA80F9"/>
+            <stop offset="1" stop-color="#675ADD"/>
+        </linearGradient>
+        <linearGradient id="HGPT__c" x1="4.411" x2="19.655" y1="12.265" y2="12.265" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#444B8C"/>
+            <stop offset="1" stop-color="#26264F"/>
+        </linearGradient>
+    </defs>
+</svg>

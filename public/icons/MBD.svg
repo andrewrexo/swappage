@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#MBD__a)" d="M12.002 17.554c3.067 0 5.554-2.362 5.554-5.276C17.556 9.363 15.07 7 12.002 7s-5.555 2.362-5.555 5.277 2.487 5.276 5.555 5.276"/>
+    <path fill="#114ED2" fill-rule="evenodd" d="M12.135 21.998c5.444 0 9.865-4.427 9.865-9.887s-4.416-9.887-9.865-9.887a9.876 9.876 0 0 0-9.87 9.887c0 5.46 4.416 9.887 9.87 9.887m0-.278c5.294 0 9.587-4.304 9.587-9.609s-4.293-9.61-9.587-9.61a9.6 9.6 0 0 0-9.592 9.61c0 5.305 4.293 9.61 9.592 9.61" clip-rule="evenodd"/>
+    <path fill="#7954F7" d="M21.283 14.083a9.4 9.4 0 0 1-5.404 6.61l.189.433a9.99 9.99 0 0 0 5.665-6.943l-.444-.1z"/>
+    <path fill="#4351BF" d="m3.77 7.834-.7-.35a10.03 10.03 0 0 0-.027 8.96l.622-.311a9.35 9.35 0 0 1 .11-8.288z"/>
+    <path fill="#09A6F6" d="M16.984 3.324a9.95 9.95 0 0 0-4.372-1.322l-.044.722a9.36 9.36 0 0 1 7.27 4.044l.473-.317a10 10 0 0 0-3.327-3.127"/>
+    <path fill="url(#MBD__b)" fill-rule="evenodd" d="M11.99 18.87a6.76 6.76 0 1 0-.01-13.52 6.76 6.76 0 0 0 .01 13.52m0-.721a6.037 6.037 0 1 0-.01-12.076 6.038 6.038 0 0 0 .01 12.07z" clip-rule="evenodd"/>
+    <path fill="url(#MBD__c)" fill-rule="evenodd" d="M12.001 17.554a5.61 5.61 0 0 0 5.223-3.41A5.6 5.6 0 0 0 17.672 12c0-3.066-2.538-5.554-5.67-5.554A5.61 5.61 0 0 0 6.33 12c0 3.066 2.538 5.554 5.671 5.554m0-.594c2.794 0 5.066-2.222 5.066-4.96A5.01 5.01 0 0 0 12 7.04c-2.794 0-5.065 2.222-5.065 4.96A5.01 5.01 0 0 0 12 16.96" clip-rule="evenodd"/>
+    <path fill="#208CFC" fill-rule="evenodd" d="M11.991 20.332c4.544 0 8.22-3.688 8.22-8.237 0-4.55-3.676-8.238-8.22-8.238-4.538 0-8.22 3.688-8.22 8.238 0 4.554 3.682 8.237 8.22 8.237m0-.584c4.221 0 7.643-3.427 7.643-7.654a7.646 7.646 0 0 0-7.64-8.005 7.65 7.65 0 0 0-7.64 8.006c0 4.226 3.421 7.653 7.637 7.653" clip-rule="evenodd"/>
+    <path fill="#185DCE" fill-rule="evenodd" d="M11.99 19.499c4.055 0 7.343-3.3 7.343-7.36 0-4.066-3.288-7.36-7.343-7.36s-7.343 3.294-7.343 7.36c0 4.06 3.288 7.36 7.343 7.36m0-.256c3.916 0 7.093-3.183 7.093-7.11 0-3.921-3.177-7.104-7.093-7.104a7.1 7.1 0 0 0-7.093 7.11c0 3.921 3.177 7.11 7.093 7.11z" clip-rule="evenodd"/>
+    <path fill="url(#MBD__d)" fill-rule="evenodd" d="M11.99 16.371a4.24 4.24 0 1 0-.005-8.48 4.24 4.24 0 0 0 .006 8.48m0-1.877a2.422 2.422 0 1 0 0-4.843 2.422 2.422 0 0 0 0 4.843" clip-rule="evenodd"/>
+    <path fill="#D9D9D9" d="m4.56 10.423-1.123-.234a8.78 8.78 0 0 0 1.817 7.377l.777-.65a7.75 7.75 0 0 1-1.472-6.493"/>
+    <path fill="url(#MBD__e)" d="M11.985 3.446a9.2 9.2 0 0 0-5.61 1.922l.583.7a8.23 8.23 0 0 1 5.077-1.728c1.889 0 3.627.623 4.999 1.672l.578-.688a9.2 9.2 0 0 0-5.627-1.878"/>
+    <path fill="#46A5FB" d="M11.307 18.454a6.426 6.426 0 0 1-5.599-5.815l-.889.083a7.315 7.315 0 0 0 6.377 6.599z"/>
+    <path fill="#75CEFE" d="M14.446 19.532A7.777 7.777 0 0 0 18.745 8.04l.75-.456a8.654 8.654 0 0 1-4.8 12.764l-.255-.816z"/>
+    <path fill="#FCB5FD" d="M19.078 14.433a7.56 7.56 0 0 1-2.355 3.377l.789.972a8.76 8.76 0 0 0 2.744-3.944z"/>
+    <path fill="#262675" d="M8.669 10.334v3.888h.555v-2.916l.345 2.916h.422l.344-2.916v2.916h.556v-3.888h-.878l-.233 2.05-.233-2.05z"/>
+    <path fill="#262675" fill-rule="evenodd" d="M12.301 10.334c.256-.006.755.133.755.772v.61c-.016.123-.11.39-.388.417.178.034.444.228.444.639v.961c-.011.167-.111.489-.444.489h-1.222v-3.888zm-.3.555V12h.3a.24.24 0 0 0 .15-.222V11.1c-.011-.072-.056-.21-.194-.21zm0 2.777v-1.11h.261c.14 0 .19.172.195.26v.578c0 .161-.1.25-.145.272zm2.833-3.332h-1.166v3.888h1.166a.51.51 0 0 0 .5-.522v-2.844a.51.51 0 0 0-.5-.522m-.228.555h-.383v2.777h.383c.056 0 .095-.155.095-.35V11.24c0-.194-.04-.35-.095-.35" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="MBD__a" x1="17.88" x2="6.331" y1="3.044" y2="20.295" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3F52B8"/>
+            <stop offset=".73" stop-color="#FB8FCE"/>
+            <stop offset="1" stop-color="#407ADE"/>
+        </linearGradient>
+        <linearGradient id="MBD__b" x1="19.017" x2="4.057" y1="4.557" y2="19.43" gradientUnits="userSpaceOnUse">
+            <stop offset=".07" stop-color="#2688EE"/>
+            <stop offset=".25" stop-color="#9AFEFF"/>
+            <stop offset=".41" stop-color="#AC66F7"/>
+            <stop offset=".62" stop-color="#F4FFFB"/>
+            <stop offset=".87" stop-color="#80FEFE"/>
+        </linearGradient>
+        <linearGradient id="MBD__c" x1="22.273" x2="1.461" y1="11.69" y2="11.69" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#D9D9D9"/>
+            <stop offset=".16" stop-color="#3D80F9"/>
+            <stop offset=".26" stop-color="#88E4FF"/>
+            <stop offset=".5" stop-color="#556AD5"/>
+            <stop offset=".64" stop-color="#FFF3FF"/>
+            <stop offset=".8" stop-color="#FEE0FB"/>
+        </linearGradient>
+        <linearGradient id="MBD__d" x1="21.162" x2="2.026" y1="11.993" y2="11.993" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7791FF"/>
+            <stop offset=".16" stop-color="#7498F9"/>
+            <stop offset=".34" stop-color="#8189F6"/>
+            <stop offset=".53" stop-color="#FDF7FB"/>
+            <stop offset=".7" stop-color="#F0AEF1"/>
+            <stop offset="1" stop-color="#EFB1F0"/>
+        </linearGradient>
+        <linearGradient id="MBD__e" x1="22.524" x2="1.975" y1="15.008" y2="15.179" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#22E2FD"/>
+            <stop offset="1" stop-color="#5B96E5"/>
+        </linearGradient>
+    </defs>
+</svg>

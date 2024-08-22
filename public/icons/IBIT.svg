@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="#4A9EDC" d="M6 7.428A1.714 1.714 0 1 0 6 4a1.714 1.714 0 0 0 0 3.428"/>
+    <path fill="#3C7DC8" d="M6 6.588A.874.874 0 1 0 6 4.84a.874.874 0 0 0 0 1.748"/>
+    <path fill="#E93536" d="M20.284 14.285a1.143 1.143 0 1 0 0-2.286 1.143 1.143 0 0 0 0 2.286"/>
+    <path fill="#DC1755" d="M20.284 13.725a.583.583 0 1 0 0-1.166.583.583 0 0 0 0 1.166"/>
+    <path fill="url(#IBIT__a)" d="M5.315 7.897c-4.777.965-3.36 6.039-2.057 8.456-.412-3.217.828-5.525 2.61-5.69 1.79-.16 3.058.913 6.389 4.227 3.33 3.314 5.222 3.965 7.004 3.903 1.789-.063 2.474-.743 2.343-1.92-.114-.937-1.817-.737-2.651-.514.388 0 1.211.165 1.371.84.171.68-.64.845-1.063.845-2.502-.389-4.668-3.12-8.136-6.925C8.348 8.074 6.417 7.68 5.32 7.897z"/>
+    <path fill="url(#IBIT__b)" d="M20.376 18.638c-2.572-.171-3.949-1.2-5.223-2.154-.223-.171-.44-.331-.662-.485-.435-.309-1.034-.966-1.754-1.754-1.977-2.16-4.846-5.291-7.485-4.72-2.663.572-2.743 3.983-2.4 6l.16.342.012-.023.165-.325c-.114-2.777 1.051-4.708 2.686-4.857 1.782-.16 3.05.914 6.382 4.228 3.33 3.314 5.222 3.965 7.004 3.903a5 5 0 0 0 1.114-.155"/>
+    <path fill="url(#IBIT__c)" d="M7.76 19.998c-3.52-.057-3.571-3.102-3.16-4.622.446 2.245.994 3.222 3.16 3.382 1.73.132 4.862-1.177 6.216-1.85l1.474 1.142c-1.44.485-3.297 2.01-7.69 1.942z"/>
+    <path fill="url(#IBIT__d)" d="M4.423 16.747c.011 1.497.708 3.211 3.337 3.251 3.37.046 5.256-.84 6.593-1.48.406-.188.766-.36 1.097-.474l-.874-.669c-1.577.783-4.554 2-6.782 2-2.011 0-2.994-1.474-3.371-2.628"/>
+    <path fill="url(#IBIT__e)" d="M19.878 14.885c-1.314-.115-3.028.685-3.713 1.09l1.342 1.19c.252-.19 1.029-.572 2.114-.584 1.097-.017 1.577.972 1.68 1.474 1.577-1.44.211-3.028-1.428-3.17z"/>
+    <path fill="url(#IBIT__f)" d="M16.742 16.484c.81-.303 2.28-.754 3.194-.685 1.12.08 1.542.988 1.474 2.154 1.405-1.412.062-2.926-1.532-3.068-1.314-.115-3.028.685-3.713 1.09l.57.51z"/>
+    <defs>
+        <linearGradient id="IBIT__a" x1="2.251" x2="22.494" y1="8.99" y2="15.22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4EA8E2"/>
+            <stop offset=".27" stop-color="#3A6EBF"/>
+            <stop offset=".66" stop-color="#563499"/>
+            <stop offset="1" stop-color="#E21068"/>
+        </linearGradient>
+        <linearGradient id="IBIT__b" x1="2.778" x2="22.417" y1="8.385" y2="14.855" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#81D5DF"/>
+            <stop offset=".55" stop-color="#7E88C5"/>
+            <stop offset="1" stop-color="#D32B9E"/>
+        </linearGradient>
+        <linearGradient id="IBIT__c" x1="1.996" x2="19.588" y1="9.478" y2="10.442" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F4F35A"/>
+            <stop offset=".43" stop-color="#EF2D8E"/>
+            <stop offset="1" stop-color="#B039A3"/>
+        </linearGradient>
+        <linearGradient id="IBIT__d" x1="2.29" x2="20.626" y1="8.806" y2="9.074" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F68F2D"/>
+            <stop offset=".22" stop-color="#F24F25"/>
+            <stop offset=".46" stop-color="#C61367"/>
+            <stop offset="1" stop-color="#8A1A8E"/>
+        </linearGradient>
+        <linearGradient id="IBIT__e" x1="4.585" x2="19.191" y1="13.306" y2="15.113" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8A1A8E"/>
+            <stop offset=".54" stop-color="#EA3734"/>
+            <stop offset="1" stop-color="#E11169"/>
+        </linearGradient>
+        <linearGradient id="IBIT__f" x1="16.668" x2="21.975" y1="16.085" y2="17.176" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#AE3AA3"/>
+            <stop offset=".44" stop-color="#EE2494"/>
+            <stop offset="1" stop-color="#F9E449"/>
+        </linearGradient>
+    </defs>
+</svg>

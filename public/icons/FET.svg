@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#FET__a)" d="M2 2h2.5v2.5H2zm6.25 0h2.5v2.5h-2.5zm0 6.25h2.5v2.5h-2.5zM14.5 2H17v2.5h-2.5zm6.25.625H22v1.25h-1.25zm0 6.25H22v1.25h-1.25zm-5.625 0h1.25v1.25h-1.25zm0 6.25h1.25v1.25h-1.25zm-6.25 0h1.25v1.25h-1.25zm-6.25 5.625h1.25V22h-1.25zm6.25 0h1.25V22h-1.25zm6.25 0h1.25V22h-1.25zm5.625 0H22V22h-1.25zm0-5.625H22v1.25h-1.25zM2 8.25h2.5v2.5H2zm0 6.25h2.5V17H2z"/>
+    <defs>
+        <linearGradient id="FET__a" x1="5.721" x2="26.339" y1="5.468" y2="29.15" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1A1E21"/>
+            <stop offset="1" stop-color="#06060A"/>
+        </linearGradient>
+    </defs>
+</svg>

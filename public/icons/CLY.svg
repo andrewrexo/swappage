@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#CLY__a)" d="M12 2.216a9.763 9.763 0 1 0 0 19.52 9.77 9.77 0 0 0 9.234-5.97A9.762 9.762 0 0 0 12 2.216m0 14.966c-2.878 0-5.18-2.256-5.18-5.18C6.82 9.123 9.063 6.82 12 6.82c2.878 0 5.18 2.256 5.18 5.18A5.16 5.16 0 0 1 12 17.183"/>
+    <path fill="url(#CLY__b)" d="M21.787 11.979v-.15A9.7 9.7 0 0 0 19.5 5.733a9.56 9.56 0 0 0-2.285 6.246 9.56 9.56 0 0 0 2.285 6.24 9.8 9.8 0 0 0 2.285-6.09z"/>
+    <path fill="url(#CLY__c)" d="M4.5 5.733a9.7 9.7 0 0 0-2.286 6.096v.3a9.7 9.7 0 0 0 2.285 6.09 9.56 9.56 0 0 0 2.285-6.24c0-2.378-.892-4.56-2.285-6.246"/>
+    <path fill="url(#CLY__d)" d="M18.258 4.495a9.75 9.75 0 0 0-6.107-2.28h-.3a9.75 9.75 0 0 0-6.107 2.28A9.6 9.6 0 0 0 12 6.775a10.16 10.16 0 0 0 6.257-2.28"/>
+    <path fill="url(#CLY__e)" d="M5.744 19.508A9.88 9.88 0 0 0 12 21.788c2.383 0 4.57-.841 6.257-2.28A9.88 9.88 0 0 0 12 17.228c-2.383 0-4.57.84-6.257 2.28"/>
+    <path fill="url(#CLY__f)" d="M12.001 14.304a2.303 2.303 0 1 0 0-4.605 2.303 2.303 0 0 0 0 4.605"/>
+    <defs>
+        <linearGradient id="CLY__a" x1="7.556" x2="16.168" y1="-3.869" y2="26.997" gradientUnits="userSpaceOnUse">
+            <stop offset=".14" stop-color="#FF78F1"/>
+            <stop offset=".3" stop-color="#C199F2"/>
+            <stop offset=".49" stop-color="#7DBDF4"/>
+            <stop offset=".66" stop-color="#47D9F5"/>
+            <stop offset=".81" stop-color="#20EEF6"/>
+        </linearGradient>
+        <linearGradient id="CLY__b" x1="19.518" x2="19.518" y1="5.692" y2="18.241" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8172E8"/>
+            <stop offset="1" stop-color="#00C4EF"/>
+        </linearGradient>
+        <linearGradient id="CLY__c" x1="4.488" x2="4.488" y1="5.756" y2="17.7" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8172E8"/>
+            <stop offset="1" stop-color="#00C4EF"/>
+        </linearGradient>
+        <linearGradient id="CLY__d" x1="18.016" x2="8.38" y1="4.484" y2="4.484" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#008DEB"/>
+            <stop offset="1" stop-color="#956DE7"/>
+        </linearGradient>
+        <linearGradient id="CLY__e" x1="5.744" x2="18.258" y1="19.485" y2="19.485" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#009BEC"/>
+            <stop offset="1" stop-color="#00CAEF"/>
+        </linearGradient>
+        <linearGradient id="CLY__f" x1="12.001" x2="12.001" y1="17.113" y2="10.556" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FF78F1"/>
+            <stop offset="1" stop-color="#00FFF7"/>
+        </linearGradient>
+    </defs>
+</svg>

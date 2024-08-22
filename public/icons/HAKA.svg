@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#HAKA__a)" d="M11.412 6.12H4.355v4.117h3.529v3.599l1.176 2.281V9.061H5.53V7.296h4.705v11.762l1.176 2.258zm8.233 2.94v1.177h-2.94v3.499l-.047.023.047.006-2.94 5.293-1.177 2.352V6.12h7.057v1.176h-5.88V16.9l1.763-3.281V9.06z"/>
+    <path fill="url(#HAKA__b)" d="M12.606 21.98a9.997 9.997 0 0 0 7.627-15.654v1.558h-1.1q.166.29.306.588h.794v3.529a8.23 8.23 0 0 1-6.516 8.056zm-.312.012v-1.764a8 8 0 0 1-.588 0v1.764q.294.009.588 0m-.9-.012A9.997 9.997 0 0 1 3.767 6.326v5.675a8.23 8.23 0 0 0 6.516 8.056zm8.233-16.448A10 10 0 0 0 12 2.004a9.97 9.97 0 0 0-7.621 3.528h2.528A8.2 8.2 0 0 1 12 3.768c1.923 0 3.693.659 5.093 1.764z"/>
+    <path fill="url(#HAKA__c)" d="M14.346 21.722a10 10 0 0 0 7.586-8.586c-.611.182-1.246.34-1.858.476a8.24 8.24 0 0 1-5.722 6.28v1.824z"/>
+    <defs>
+        <linearGradient id="HAKA__a" x1="21.1" x2="2.285" y1="4.511" y2="4.511" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4FB585"/>
+            <stop offset=".47" stop-color="#D41B81"/>
+            <stop offset="1" stop-color="#7826F4"/>
+        </linearGradient>
+        <linearGradient id="HAKA__b" x1="21.409" x2="3.297" y1="10.101" y2="10.895" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#17B372"/>
+            <stop offset=".51" stop-color="#402284"/>
+            <stop offset="1" stop-color="#1CADDB"/>
+        </linearGradient>
+        <linearGradient id="HAKA__c" x1="13.976" x2="21.35" y1="21.721" y2="13.694" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3A3781"/>
+            <stop offset=".46" stop-color="#C03281"/>
+            <stop offset="1" stop-color="#17B372"/>
+        </linearGradient>
+    </defs>
+</svg>

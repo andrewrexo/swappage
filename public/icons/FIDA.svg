@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="#5F60C7" d="M11.753 2.347h.51v4.58h-.51zM7.337 14.332l.268.436-3.868 2.316-.263-.431zm9.4.079-.263.436L20.4 17.2l.263-.432z"/>
+    <path fill="url(#FIDA__a)" fill-rule="evenodd" d="M7.263 9.384 12 6.737l4.737 2.647v5.237L12 17.263l-4.737-2.642zm.526.232L12 7.263l4.211 2.353v4.653l-4.205 2.468-4.216-2.468z" clip-rule="evenodd"/>
+    <path fill="#8081EE" d="M11.742 11.847h.51v10h-.51z"/>
+    <path fill="#8081EE" d="m12.316 11.847-.264.432-8.689-4.974.263-.431z"/>
+    <path fill="#8081EE" d="m11.737 11.847.263.432 8.684-4.974-.263-.431z"/>
+    <path fill="#8081EE" fill-rule="evenodd" d="M3.053 7.026 12 2l8.948 5.026v9.953L12 22l-8.947-5.021zm.526.237L12 2.526l8.421 4.737v9.474l-8.42 4.737-8.422-4.737z" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="FIDA__a" x1="14.286" x2="4.939" y1=".06" y2="21.27" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#86E0E9"/>
+            <stop offset="1" stop-color="#259AC1"/>
+        </linearGradient>
+    </defs>
+</svg>

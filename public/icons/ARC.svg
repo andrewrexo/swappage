@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="#fff" d="M13.274 4.383A.91.91 0 0 0 12.532 4a.92.92 0 0 0-.743.371L4.286 14.857a14 14 0 0 1 3.457-1.805l4.771-6.67 4.555 6.584a14 14 0 0 1 3.217 1.56z"/>
+    <path fill="url(#ARC__a)" fill-opacity=".6" d="M2.571 19.56 2 20c.109-.137.303-.286.571-.44 2.309-1.697 6.966-4.457 10.99-4.668 5.485-.286 8.954 1.137 8.377 2.84-.578 1.702-4.623-.572-8.378-.572-3.297 0-9.046 1.314-10.989 2.4"/>
+    <path fill="url(#ARC__b)" fill-opacity=".6" d="M14.234 16.537c-4.754 0-9.937 2.309-11.931 3.463L2 19.543C4.034 18.366 9.326 16 14.234 16c4.36 0 6.418.817 7.035 1.109.143.063.2.228.131.36a.297.297 0 0 1-.388.114c-.532-.246-2.503-1.046-6.778-1.046"/>
+    <defs>
+        <linearGradient id="ARC__a" x1="21.36" x2="2.151" y1="12.057" y2="12.629" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#197EAF"/>
+            <stop offset="1" stop-color="#041C28" stop-opacity=".1"/>
+        </linearGradient>
+        <linearGradient id="ARC__b" x1="20.532" x2="2.577" y1="18.034" y2="20.349" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#fff"/>
+            <stop offset=".54" stop-color="#AEAEAE"/>
+            <stop offset="1" stop-color="#1E1E1E"/>
+        </linearGradient>
+    </defs>
+</svg>

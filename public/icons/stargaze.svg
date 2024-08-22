@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="#E2BB5E" d="M8.201 9.762a.3.3 0 0 0-.324-.394l-5.616.8a.3.3 0 0 0-.177.506l4 4.128a.296.296 0 0 0 .42.015.3.3 0 0 0 .08-.132z"/>
+    <path fill="url(#stargaze__a)" d="M6.16 21.325a.294.294 0 0 0 .418.353l5.252-2.494a.3.3 0 0 1 .247 0l5.487 2.488a.3.3 0 0 0 .406-.37c-1.035-3.118-1.97-6.2-2.97-9.311a.295.295 0 0 0-.53-.059l-2.216 3.976a.3.3 0 0 1-.265.153h-.094a.3.3 0 0 1-.259-.159l-2.153-3.958a.3.3 0 0 0-.258-.159h-.03a.296.296 0 0 0-.288.212 271 271 0 0 0-2.747 9.328"/>
+    <path fill="#DBA527" d="M17.376 14.597a.295.295 0 0 0 .494.117l4.04-4.04a.302.302 0 0 0-.17-.512l-5.587-.782a.3.3 0 0 0-.33.388z"/>
+    <path fill="url(#stargaze__b)" d="M14.247 9.28a.35.35 0 0 0 0-.277l-.03-.07-1.98-6.423a.294.294 0 0 0-.57 0L9.723 8.933l-.029.094a.32.32 0 0 0 .012.223l1.923 4.435a.31.31 0 0 0 .27.176h.071a.3.3 0 0 0 .27-.176l2-4.405z"/>
+    <defs>
+        <linearGradient id="stargaze__a" x1="-4.997" x2="28.778" y1=".32" y2=".32" gradientUnits="userSpaceOnUse">
+            <stop offset=".49" stop-color="#E2BB5E"/>
+            <stop offset=".5" stop-color="#DBA527"/>
+        </linearGradient>
+        <linearGradient id="stargaze__b" x1="2.003" x2="22" y1="10.779" y2="10.779" gradientUnits="userSpaceOnUse">
+            <stop offset=".49" stop-color="#E2BB5E"/>
+            <stop offset=".5" stop-color="#DBA527"/>
+        </linearGradient>
+    </defs>
+</svg>

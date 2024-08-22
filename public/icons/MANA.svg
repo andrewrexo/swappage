@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#MANA__a)" d="M8.896 6.292v8.562h7.374z"/>
+    <path fill="#fff" d="M2 14.854h6.895V6.292z"/>
+    <path fill="#FF2D55" d="M5.613 19.848c1.906 1.344 4.28 2.14 6.85 2.14 2.568 0 4.942-.796 6.849-2.14z"/>
+    <path fill="#FFBC5B" d="M2 14.854c.356.764.802 1.483 1.33 2.14h13.037v-2.14z"/>
+    <path fill="url(#MANA__b)" d="M16.766 12v6.422H22z"/>
+    <path fill="#fff" d="M11.538 18.422h5.228V12z"/>
+    <path fill="#FFC95B" d="M16.767 9.432a2.854 2.854 0 1 0 0-5.708 2.854 2.854 0 0 0 0 5.708M8.896 4.865a1.427 1.427 0 1 0 0-2.853 1.427 1.427 0 0 0 0 2.853"/>
+    <defs>
+        <linearGradient id="MANA__a" x1="12.318" x2="12.318" y1="2.011" y2="21.989" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#A524B3"/>
+            <stop offset="1" stop-color="#FF2D55"/>
+        </linearGradient>
+        <linearGradient id="MANA__b" x1="11.994" x2="11.994" y1="2.011" y2="21.989" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#A524B3"/>
+            <stop offset="1" stop-color="#FF2D55"/>
+        </linearGradient>
+    </defs>
+</svg>

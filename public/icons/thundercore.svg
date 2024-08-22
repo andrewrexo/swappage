@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#thundercore__a)" d="M6.179 11.392a.444.444 0 0 0 .375.68h5.066a.213.213 0 0 1 .181.325L6.83 20.36a.18.18 0 0 1-.25.056A10.011 10.011 0 0 1 11.68 2a.176.176 0 0 1 .153.269zm11.425-7.68a.175.175 0 0 0-.25.053l-4.896 7.844a.213.213 0 0 0 .18.325h5.066a.443.443 0 0 1 .375.68l-5.728 9.172a.14.14 0 0 0 .052.197.14.14 0 0 0 .073.017 10.01 10.01 0 0 0 5.125-18.29z"/>
+    <defs>
+        <linearGradient id="thundercore__a" x1="10.636" x2="14.152" y1="6.127" y2="21.235" gradientUnits="userSpaceOnUse">
+            <stop offset=".18" stop-color="#00FFD5"/>
+            <stop offset=".23" stop-color="#00F8D5"/>
+            <stop offset=".31" stop-color="#00E4D5"/>
+            <stop offset=".4" stop-color="#00C3D5"/>
+            <stop offset=".51" stop-color="#0096D5"/>
+            <stop offset=".62" stop-color="#005CD5"/>
+            <stop offset=".74" stop-color="#0016D5"/>
+            <stop offset=".78" stop-color="#0000D5"/>
+        </linearGradient>
+    </defs>
+</svg>

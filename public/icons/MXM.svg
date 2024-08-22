@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#MXM__a)" d="M13.784 3.25h-3.649L2 17.506l1.838 3.244H20.08L22 17.506zM3.719 17l7.09-12.5h1.562L6.134 15.75h7.169l.83 1.25zm4.568-2.5 5.19-9.348 7.073 12.27-.788 1.455L13.477 8.04 9.94 14.5zm3.088 0L12 13.25l.625 1.25zm2.121-3.998 5.209 8.995H4.539l-.768-1.247h12.646l-3.65-6.42z"/>
+    <defs>
+        <linearGradient id="MXM__a" x1="6.867" x2="13.878" y1="4.4" y2="19.989" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#18DBEB"/>
+            <stop offset="1" stop-color="#4AF2CF"/>
+        </linearGradient>
+    </defs>
+</svg>

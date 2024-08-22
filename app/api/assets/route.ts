@@ -1,4 +1,5 @@
 import getAvailableAssets, {
+  ExodusAsset,
   SupportedNetwork,
 } from '@/lib/widget/lib/exodus/asset';
 import type { NextRequest } from 'next/server';
@@ -13,6 +14,17 @@ export async function GET(req: NextRequest) {
     return Response.json({ error: 'No networks provided' }, { status: 400 });
   }
 
+  const hiddenAssets = ['(wormhole)', '2.0'];
+
+  const filterAssets = (assets: ExodusAsset[]) => {
+    return assets.filter(
+      (asset) =>
+        !hiddenAssets.some((hiddenAsset) =>
+          asset.name.toLowerCase().includes(hiddenAsset),
+        ),
+    );
+  };
+
   try {
     const assets = await getAvailableAssets(
       networks.split(',') as SupportedNetwork[],
@@ -23,7 +35,7 @@ export async function GET(req: NextRequest) {
       },
     );
 
-    if (assets) return Response.json(assets);
+    if (assets) return Response.json(filterAssets(assets));
   } catch (error) {
     return Response.json(
       { error: 'Failed to fetch available assets' },

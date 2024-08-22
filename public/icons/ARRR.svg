@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#ARRR__a)" d="M2.357 6.286A4.286 4.286 0 0 1 6.643 2h10.714c1.015 0 1.943.357 2.679.943L14.929 5.57H8.07A1.43 1.43 0 0 0 6.643 7v2.843l-4.286 2.214zm0 10.093V22h2.5a1.786 1.786 0 0 0 1.786-1.786V17h10.714a4.286 4.286 0 0 0 4.286-4.286V6.436L17.357 8.65V12a1.43 1.43 0 0 1-1.428 1.428h-7.85z"/>
+    <defs>
+        <linearGradient id="ARRR__a" x1="3.735" x2="20.392" y1="3.607" y2="21.397" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#BF9B41"/>
+            <stop offset="1" stop-color="#E2C97E"/>
+        </linearGradient>
+    </defs>
+</svg>

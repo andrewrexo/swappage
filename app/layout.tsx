@@ -27,8 +27,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <Theme
           appearance="dark"
-          accentColor="mint"
-          grayColor="mauve"
+          accentColor="jade"
+          grayColor="sage"
           radius="large"
           scaling="105%"
         >

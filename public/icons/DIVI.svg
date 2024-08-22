@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#DIVI__a)" d="M12.953 2H2c1.393 3.233 3.213 4.667 5.473 4.667h5.22c2.087 0 4.434 2.64 4.434 5.333s-2.347 5.333-4.434 5.333H8.667v-5.96H3.873V22h9.08C17.387 22 22 18.74 22 12S17.387 2 12.953 2"/>
+    <defs>
+        <linearGradient id="DIVI__a" x1="20.668" x2="4.186" y1="5.393" y2="19.053" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#EC1F55"/>
+            <stop offset="1" stop-color="#EC2928"/>
+        </linearGradient>
+    </defs>
+</svg>

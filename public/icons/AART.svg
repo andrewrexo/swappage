@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#AART__a)" d="M15.412 2.938H8.587L2 21.063h6.044l.831-2.313a3.75 3.75 0 0 1 2-5.637L12 9.937l1.125 3.176a3.75 3.75 0 0 1 2.006 5.637l.825 2.313H22z"/>
+    <path fill="url(#AART__b)" d="M12 19.188a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5"/>
+    <defs>
+        <linearGradient id="AART__a" x1="6.464" x2="15.068" y1="4.232" y2="20.506" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#51A7DC"/>
+            <stop offset=".19" stop-color="#3B578E"/>
+            <stop offset=".45" stop-color="#67BBCE"/>
+            <stop offset=".69" stop-color="#382F4A"/>
+            <stop offset=".79" stop-color="#A22B2C"/>
+            <stop offset=".9" stop-color="#E08C94"/>
+            <stop offset="1" stop-color="#CE7782"/>
+        </linearGradient>
+        <linearGradient id="AART__b" x1="6.464" x2="15.068" y1="4.232" y2="20.506" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#51A7DC"/>
+            <stop offset=".19" stop-color="#3B578E"/>
+            <stop offset=".45" stop-color="#67BBCE"/>
+            <stop offset=".69" stop-color="#382F4A"/>
+            <stop offset=".79" stop-color="#A22B2C"/>
+            <stop offset=".9" stop-color="#E08C94"/>
+            <stop offset="1" stop-color="#CE7782"/>
+        </linearGradient>
+    </defs>
+</svg>

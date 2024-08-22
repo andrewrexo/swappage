@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#TELOS__a)" fill-rule="evenodd" d="M12 18.667a6.667 6.667 0 1 0 0-13.334 6.667 6.667 0 0 0 0 13.334M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10" clip-rule="evenodd"/>
+    <defs>
+        <radialGradient id="TELOS__a" cx="0" cy="0" r="1" gradientTransform="rotate(90 0 12)scale(10)" gradientUnits="userSpaceOnUse">
+            <stop offset=".152" stop-color="#42A0B9"/>
+            <stop offset=".247" stop-color="#70C38D"/>
+            <stop offset=".344" stop-color="#6FC68F"/>
+            <stop offset=".488" stop-color="#3B74CE"/>
+            <stop offset=".66" stop-color="#954494"/>
+            <stop offset=".76" stop-color="#9A4290"/>
+            <stop offset=".871" stop-color="#7256AB"/>
+            <stop offset="1" stop-color="#3D7DC7"/>
+        </radialGradient>
+    </defs>
+</svg>

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#MVD__a)" d="m2 7 10 10v5L2 12z"/>
+    <path fill="url(#MVD__b)" d="m2 12 5-5V2L2 7z"/>
+    <path fill="#C58F3C" d="M4.5 9.5 2 12V7z"/>
+    <path fill="#FFAA27" d="M12 12 7 7V2l5 5.088z"/>
+    <path fill="url(#MVD__c)" d="M22 7 12 17v5l10-10z"/>
+    <path fill="url(#MVD__d)" d="m22 12-5-5V2l5 5z"/>
+    <path fill="#D79B3F" d="M19.5 9.5 22 12V7z"/>
+    <path fill="#D28A1C" d="m12 12 5-5V2l-5 5.088z"/>
+    <defs>
+        <linearGradient id="MVD__a" x1="2" x2="13.088" y1="4.108" y2="26.427" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#955A00"/>
+            <stop offset=".79" stop-color="#F29F20"/>
+        </linearGradient>
+        <linearGradient id="MVD__b" x1="5.925" x2="13.629" y1="14.45" y2="-1.487" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#9E877A"/>
+            <stop offset="1" stop-color="#fff"/>
+        </linearGradient>
+        <linearGradient id="MVD__c" x1="8.837" x2="12.668" y1="10.425" y2="15.995" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#B06E07"/>
+            <stop offset="1" stop-color="#C77E0C"/>
+        </linearGradient>
+        <linearGradient id="MVD__d" x1="18.075" x2="10.371" y1="14.45" y2="-1.487" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#9E877A"/>
+            <stop offset="1" stop-color="#fff"/>
+        </linearGradient>
+    </defs>
+</svg>

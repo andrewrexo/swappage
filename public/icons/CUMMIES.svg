@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#CUMMIES__a)" d="M14.113 6.375H10.75l.863-2.5H10.03l-4.594 11.25H7.07l1.181-2.5h3.412l-1.15 2.669L8.106 17H2.92L2 15.294 6.562 3.706 8.875 2h5.238l1.012 1.706z"/>
+    <path fill="url(#CUMMIES__b)" fill-rule="evenodd" d="m18.694 17.906-1.8.913.912 1.375L17.02 22h-3.256l1.05-2.5h-1.626L12.182 22H8.875L14.55 8.25h6.262L22 10.056zm-4.144-1.5c-.025-.143-.05-.256-.044-.319.025-.193.044-.237.375-.4-.287-.124-.231-.48-.162-.637-.181.044-.594.175-.838.356-.081-.737.531-1.087.85-1.175-.075-.118-.094-.675.431-1.968.525-1.288 1.894-1.963 2.513-2.138.337.594.881 2.1.356 3.387-.525 1.294-.937 1.663-1.075 1.688.175.3.381 1.006-.2 1.45a3 3 0 0 0-.375-.875c-.062.156-.268.444-.575.312.132.363.119.407 0 .563-.043.05-.137.106-.262.188-.263.156-.644.387-.919.787a3.1 3.1 0 0 0-.075-1.219" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="CUMMIES__a" x1="6.643" x2="17.178" y1="3.786" y2="19.857" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F000E1"/>
+            <stop offset=".38" stop-color="#FD00B3"/>
+            <stop offset=".74" stop-color="#F0A"/>
+            <stop offset="1" stop-color="#D517D1"/>
+        </linearGradient>
+        <linearGradient id="CUMMIES__b" x1="6.643" x2="17.178" y1="3.786" y2="19.857" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F000E1"/>
+            <stop offset=".38" stop-color="#FD00B3"/>
+            <stop offset=".74" stop-color="#F0A"/>
+            <stop offset="1" stop-color="#D517D1"/>
+        </linearGradient>
+    </defs>
+</svg>

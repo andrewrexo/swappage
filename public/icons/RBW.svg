@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#RBW__a)" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10"/>
+    <path fill="#F6F7F3" fill-rule="evenodd" d="M6.865 17.176c.876 1.1 2.835 3.336 8.07 2.118-.923-.794-2.776-2.882-2.84-4.865-.913-.129-2.66-.782-2.33-2.37.07.565.623 1.764 2.235 2.03.241.017.841.017 1.312-.113.317-.088.506-.04.741.012.194.047.418.1.788.1.818 0 1.86-1.041 2.236-1.441L15.77 11.4a2.28 2.28 0 0 0 .723-1.888l3.153-2.706-3.882 1.376a4.25 4.25 0 0 0-2.453-.8c-1.47 0-5.859 1.365-6.447 6.206zM14.44 9.3c-.282.524-.77 1.63-.43 1.876.348.248 1-.405 1.295-.764-.294-.189-.865-.689-.865-1.112" clip-rule="evenodd"/>
+    <path fill="url(#RBW__b)" d="M9.559 8.07c-3.353 2.236-3.653 6.9-3.383 8.954-.682-.96-1.823-2.853-1.823-4.871 0-1.618.647-3.118.964-3.665l.753-.412h2.412l-1.63-.994h-.587c1.258-1.647 3.647-2.506 4.688-2.73l1.488 1.89V4.693l-.13-.341c3.154.118 4.783 1.765 5.206 2.565l-2.223.488c-2.1-1.188-4.7-.053-5.735.665"/>
+    <path fill="url(#RBW__c)" d="M20.824 12a8.824 8.824 0 1 1-1.806-5.353l-.6.188a8.235 8.235 0 1 0 .588.824l.47-.335A8.8 8.8 0 0 1 20.825 12"/>
+    <defs>
+        <linearGradient id="RBW__a" x1="23.565" x2="12" y1="7.012" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0D183A"/>
+            <stop offset=".22" stop-color="#112A73"/>
+            <stop offset=".29" stop-color="#13224E"/>
+            <stop offset=".46" stop-color="#18417B"/>
+            <stop offset=".73" stop-color="#0F2771"/>
+            <stop offset="1" stop-color="#0D1839"/>
+        </linearGradient>
+        <linearGradient id="RBW__b" x1="20.043" x2="7.101" y1="6.271" y2="23.526" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8EF6EE"/>
+            <stop offset=".3" stop-color="#5C71D9"/>
+            <stop offset=".67" stop-color="#D73960"/>
+            <stop offset="1" stop-color="#F8CF44"/>
+        </linearGradient>
+        <linearGradient id="RBW__c" x1="2.907" x2="21.748" y1="11" y2="16.43" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1774C8"/>
+            <stop offset="1" stop-color="#17458A"/>
+        </linearGradient>
+    </defs>
+</svg>

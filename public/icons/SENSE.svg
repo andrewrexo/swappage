@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <mask id="SENSE__a" width="12" height="20" x="6" y="2" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+        <path fill="#fff" d="M17.79 2H6.21v20h11.58z"/>
+    </mask>
+    <g mask="url(#SENSE__a)">
+        <path fill="#A367FF" d="M11.15 15.333 9.63 22l3.948-3.333z"/>
+        <path fill="#8766F0" d="m13.579 18.667 4.21-3.612-6.64.278z"/>
+        <path fill="#53539A" d="m17.79 15.056-4.737-6.39-1.903 6.667z"/>
+        <path fill="#6487E7" d="m6.21 9.222 4.94 6.111 1.903-6.666z"/>
+        <path fill="#45C8FE" d="M13.053 8.667 14.63 2l-4.21 3.611z"/>
+        <path fill="#5DA9FF" d="m6.21 9.222 6.843-.555L10.42 5.61z"/>
+    </g>
+</svg>

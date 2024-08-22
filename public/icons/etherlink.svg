@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#etherlink__a)" d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2m0 18.23a8.23 8.23 0 1 1 0-16.46 8.23 8.23 0 0 1 0 16.46"/>
+    <path fill="url(#etherlink__b)" d="M11.945 6.501c-3.025.03-5.478 2.537-5.444 5.563.009.774.177 1.509.475 2.174.044.1.176.122.252.044L8.44 13.03a.34.34 0 0 0 .089-.309 3.545 3.545 0 0 1 4.06-4.219.4.4 0 0 0 .348-.112l1.206-1.244a.144.144 0 0 0-.048-.233 5.5 5.5 0 0 0-2.15-.413"/>
+    <path fill="url(#etherlink__c)" d="M12.055 17.505c3.025-.03 5.477-2.536 5.444-5.562a5.5 5.5 0 0 0-.475-2.175.155.155 0 0 0-.252-.043l-1.212 1.251a.34.34 0 0 0-.089.309q.072.35.073.721a3.545 3.545 0 0 1-4.132 3.497.4.4 0 0 0-.35.113L9.858 16.86a.144.144 0 0 0 .048.233 5.5 5.5 0 0 0 2.15.412"/>
+    <path fill="url(#etherlink__d)" d="m9.167 13.088-2.31 2.31a1.2 1.2 0 1 0 1.697 1.696l2.31-2.31a1.2 1.2 0 1 0-1.697-1.696"/>
+    <path fill="url(#etherlink__e)" d="m15.394 6.873-2.31 2.31a1.2 1.2 0 1 0 1.698 1.697l2.31-2.31a1.2 1.2 0 1 0-1.698-1.697"/>
+    <defs>
+        <linearGradient id="etherlink__a" x1="2" x2="29.918" y1="12" y2="12" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#38FF9C"/>
+            <stop offset="1" stop-color="#171717"/>
+        </linearGradient>
+        <linearGradient id="etherlink__b" x1="6.501" x2="17.004" y1="10.415" y2="10.415" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#38FF9C"/>
+            <stop offset="1" stop-color="#171717"/>
+        </linearGradient>
+        <linearGradient id="etherlink__c" x1="9.816" x2="20.262" y1="13.592" y2="13.592" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#38FF9C"/>
+            <stop offset="1" stop-color="#171717"/>
+        </linearGradient>
+        <linearGradient id="etherlink__d" x1="6.506" x2="14.427" y1="15.091" y2="15.091" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#38FF9C"/>
+            <stop offset="1" stop-color="#171717"/>
+        </linearGradient>
+        <linearGradient id="etherlink__e" x1="12.733" x2="20.042" y1="8.877" y2="8.877" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#38FF9C"/>
+            <stop offset="1" stop-color="#171717"/>
+        </linearGradient>
+    </defs>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#RISE__a)" d="M14.737 21.994a10.17 10.17 0 0 0 7.26-9.803C21.997 6.567 17.523 2 12 2S2.003 6.561 2.003 12.19c0 4.662 3.068 8.592 7.26 9.81l2.112-12.502-5.31 3.967-.313-.318L12 4.499l6.248 8.648-.313.312-5.31-3.961z"/>
+    <defs>
+        <linearGradient id="RISE__a" x1="2.003" x2="22.003" y1="10.279" y2="12.122" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#CC1A3C"/>
+            <stop offset="1" stop-color="#FF9A2E"/>
+        </linearGradient>
+    </defs>
+</svg>
