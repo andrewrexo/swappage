@@ -31,7 +31,7 @@ export default function SwapWidgetHome() {
   } = useAppSelector((state) => state.swap);
 
   const { currentRate: rate, status } = useAppSelector((state) => state.rates);
-  const { pair } = useAppSelector((state) => state.swap);
+  const { displayPair: pair } = useAppSelector((state) => state.swap);
   const { assets } = useAppSelector((state) => state.assets);
   const [swapComplete, setSwapComplete] = useState(false);
 
