@@ -63,8 +63,6 @@ const getAvailableAssets = async (
 
   const assets = await response.json();
 
-  console.log('assets', assets);
-
   if (!Array.isArray(assets)) {
     throw new Error('Invalid response from Exodus Exchange rates API');
   }
