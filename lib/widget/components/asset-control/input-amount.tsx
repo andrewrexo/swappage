@@ -7,6 +7,7 @@ import { ChangeEvent } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { NetworkIcon, TokenIcon } from '@web3icons/react';
 import { getIconId, networkToIcon } from '../asset-dialog/asset-option';
+import { twMerge } from 'tailwind-merge';
 
 interface InputAmountProps {
   asset: ExodusAsset;
@@ -39,7 +40,11 @@ export function InputAmount({
             size="3"
             weight="medium"
             as="div"
-            className="flex cursor-pointer items-center gap-2 text-accent"
+            className={twMerge(
+              `flex cursor-pointer items-center gap-2 text-accent`,
+              asset.symbol.length >= 5 && 'max-w-[100px]',
+              asset.symbol.length == 4 && 'max-w-[75px]',
+            )}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -52,13 +57,14 @@ export function InputAmount({
                 symbol={getIconId(asset.symbol)}
                 size={24}
                 variant="branded"
+                className="max-h-6 max-w-6"
                 fallback={
                   <NetworkIcon
                     network={
                       networkToIcon[asset.network as keyof typeof networkToIcon]
                     }
                     variant="branded"
-                    size={32}
+                    size={24}
                   />
                 }
               />
