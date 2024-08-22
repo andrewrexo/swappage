@@ -43,7 +43,10 @@ export default function SwapWidgetHome() {
   useEffect(() => {
     if (!assets || assets.length === 0) {
       dispatch(
-        fetchAssets(['solana', 'ethereumarbone', 'basemainnet', 'ethereum']),
+        fetchAssets({
+          networks: ['solana', 'ethereumarbone', 'basemainnet', 'ethereum'],
+          page: 1,
+        }),
       );
     }
   }, [dispatch, pair]);

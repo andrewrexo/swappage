@@ -22,6 +22,9 @@ const networkToColor: Record<
   | 'cyan'
 > = {
   ethereum: 'blue',
+  ETH: 'blue',
+  'arbitrum-one': 'cyan',
+  base: 'iris',
   bitcoin: 'yellow',
   monero: 'orange',
   solana: 'teal',

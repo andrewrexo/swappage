@@ -14,7 +14,7 @@ import { twMerge } from 'tailwind-merge';
 interface ResponsiveDialogDrawerProps {
   children: ReactNode;
   trigger: ReactNode;
-  title: ReactNode;
+  title: ReactNode | string;
   open?: boolean;
   triggerBlocked?: boolean;
   setOpen?: (open: boolean) => void;
@@ -85,7 +85,6 @@ export function ResponsiveDialogDrawer({
         <Dialog.Trigger>{trigger}</Dialog.Trigger>
         <Dialog.Content
           style={{
-            background: 'var(--color-background)',
             maxHeight: '80dvh',
           }}
         >
