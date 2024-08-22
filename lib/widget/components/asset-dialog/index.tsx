@@ -48,9 +48,9 @@ export function AssetDialog({
       open={open}
       title="Assets"
     >
-      <Flex direction="column" gap="4" className="h-full">
+      <Flex direction="column" gap="2" className="h-full">
         <TextField.Root
-          className="h-16 px-2 sm:h-12 sm:bg-inherit"
+          className="h-18 px-2 sm:h-12 sm:bg-inherit"
           onChange={handleSearch}
           size="3"
           variant="surface"

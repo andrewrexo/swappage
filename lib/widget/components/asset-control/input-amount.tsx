@@ -1,4 +1,4 @@
-import { TextField, IconButton, Text } from '@radix-ui/themes';
+import { TextField, IconButton, Text, Box } from '@radix-ui/themes';
 import { ChevronDown } from 'lucide-react';
 import { AssetDialog } from '../asset-dialog';
 import { useAppSelector } from '../../lib/hooks';
@@ -47,20 +47,22 @@ export function InputAmount({
             key={asset.id}
             onClick={() => onDialogOpen(side)}
           >
-            <TokenIcon
-              symbol={getIconId(asset.symbol)}
-              size={24}
-              variant="branded"
-              fallback={
-                <NetworkIcon
-                  network={
-                    networkToIcon[asset.network as keyof typeof networkToIcon]
-                  }
-                  variant="branded"
-                  size={32}
-                />
-              }
-            />
+            <Box maxWidth="24px" maxHeight="24px">
+              <TokenIcon
+                symbol={getIconId(asset.symbol)}
+                size={24}
+                variant="branded"
+                fallback={
+                  <NetworkIcon
+                    network={
+                      networkToIcon[asset.network as keyof typeof networkToIcon]
+                    }
+                    variant="branded"
+                    size={32}
+                  />
+                }
+              />
+            </Box>
             {asset.symbol}
           </MotionText>
         </TextField.Slot>
