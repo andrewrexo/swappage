@@ -28,7 +28,7 @@ export function SwapButton({
   // Play animation every 20 seconds
   useEffect(() => {
     const interval = setInterval(() => {
-      if (!isResponding && !isHovered) {
+      if (!isResponding && !isHovered && !isExecuting) {
         controls.start('active').then(() => {
           controls.start('initial');
         });
