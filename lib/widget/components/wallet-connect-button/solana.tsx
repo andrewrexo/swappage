@@ -14,6 +14,8 @@ import { WalletPreview } from './wallet-preview';
 import toast from 'react-hot-toast';
 import { toastConfig } from '@/lib/util';
 import networks from '../../features/assets/network';
+import { twMerge } from 'tailwind-merge';
+import { TokenSOL } from '@web3icons/react';
 
 export function WalletConnectSolana({
   children,
@@ -93,19 +95,35 @@ export function WalletConnectSolana({
     <ResponsiveDialogDrawer
       triggerBlocked={!!publicKey}
       trigger={WalletButton}
-      title="Connect"
+      title={
+        <>
+          <Text
+            size="7"
+            weight="bold"
+            className="text-[var(--accent-12) inline-flex items-center pb-2 pt-2 text-4xl sm:pb-0 sm:text-3xl"
+          >
+            <TokenSOL size="32" className="mr-4" variant="branded" />
+            Connect
+          </Text>
+        </>
+      }
       setOpen={setOpen}
       open={open}
     >
-      <Flex direction="column" className="h-full space-y-4 p-0">
+      <Flex direction="column" className="h-full p-0" gap="2">
         {wallets.map((wallet: any) => (
-          <Card
+          <Flex
             key={wallet.adapter.name}
-            className="flex w-full cursor-pointer p-2 transition-all hover:scale-95 hover:bg-[var(--color-surface)] hover:bg-opacity-10 hover:shadow-[0_0_4px_0_rgba(0,0,0,0.45)]"
+            justify="between"
+            width="100%"
+            className={twMerge(
+              'flex w-full cursor-pointer rounded-lg',
+              'bg-gradient-to-r from-[var(--gray-2)] to-[var(--gray-4)]',
+              'px-6 py-6',
+            )}
             onClick={() => handleWalletSelect(wallet.adapter.name)}
-            size="3"
           >
-            <Flex gap="2" justify="between" align="center">
+            <Flex gap="2" justify="between" align="center" flexGrow="1">
               <Flex align="center" gap="2">
                 <img
                   src={wallet.adapter.icon}
@@ -125,7 +143,7 @@ export function WalletConnectSolana({
                 </Badge>
               )}
             </Flex>
-          </Card>
+          </Flex>
         ))}
         <Text size="1" color="gray">
           Not seeing your wallet? Let us know. We&apos;ll add it to the list.

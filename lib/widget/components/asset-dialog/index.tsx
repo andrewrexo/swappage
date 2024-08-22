@@ -50,20 +50,23 @@ export function AssetDialog({
     >
       <Flex direction="column" gap="4" className="h-full">
         <TextField.Root
+          className="h-16 sm:h-12 sm:bg-inherit"
           onChange={handleSearch}
           size="3"
           variant="surface"
           style={{
-            backgroundColor: 'var(--color-surface)',
-            color: 'var(--color-text)',
-            height: '3.5rem',
-            marginLeft: '0.05rem',
-            marginRight: '0.05rem',
+            marginLeft: '1px',
+            marginRight: '1px',
+            marginTop: '1px',
           }}
           placeholder="ShibaNutsackInu"
         >
           <TextField.Slot>
-            <MagnifyingGlassIcon height="24" width="24" />
+            <MagnifyingGlassIcon
+              className="text-[var(--gray-9)]"
+              height="24"
+              width="24"
+            />
           </TextField.Slot>
         </TextField.Root>
         {status === 'loading' && <p className="pt-2">Loading assets...</p>}

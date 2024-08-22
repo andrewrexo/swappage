@@ -23,7 +23,7 @@ export const ButtonSolana = ({
           network="solana"
           isPayment={!accountOnly}
           address={address ?? ''}
-          connected={false}
+          connected={address ? true : false}
         />
       </DefaultButton>
     </WalletConnectSolana>

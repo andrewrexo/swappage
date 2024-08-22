@@ -10,11 +10,12 @@ import {
 import { Drawer } from 'vaul';
 import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
+import { TokenSOL } from '@web3icons/react';
 
 interface ResponsiveDialogDrawerProps {
   children: ReactNode;
   trigger: ReactNode;
-  title: string;
+  title: ReactNode;
   open?: boolean;
   triggerBlocked?: boolean;
   setOpen?: (open: boolean) => void;
@@ -36,7 +37,7 @@ export function ResponsiveDialogDrawer({
 
   const dialogContent = (
     <>
-      <Dialog.Title className="pb-2" size="7">
+      <Dialog.Title className="text-[var(--accent-11)]" size="7">
         {title}
       </Dialog.Title>
       <VisuallyHidden>
@@ -51,12 +52,8 @@ export function ResponsiveDialogDrawer({
   const drawerContent = (
     <>
       <Box className="mx-auto mt-6 min-h-2 min-w-16 rounded-full bg-[var(--accent-8)]"></Box>
-      <Dialog.Title className="pt-8">
-        <Text
-          size={title.length > 10 ? '7' : '8'}
-          weight="bold"
-          className="text-gray-200"
-        >
+      <Dialog.Title className="pt-4">
+        <Text size="8" weight="bold" className="text-[var(--accent-11)]">
           {title}
         </Text>
       </Dialog.Title>
