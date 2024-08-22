@@ -31,7 +31,7 @@ export default function SwapWidgetHome() {
   } = useAppSelector((state) => state.swap);
 
   const { currentRate: rate, status } = useAppSelector((state) => state.rates);
-  const { pair } = useAppSelector((state) => state.swap);
+  const { displayPair: pair } = useAppSelector((state) => state.swap);
   const { assets } = useAppSelector((state) => state.assets);
   const [swapComplete, setSwapComplete] = useState(false);
 
@@ -43,7 +43,10 @@ export default function SwapWidgetHome() {
   useEffect(() => {
     if (!assets || assets.length === 0) {
       dispatch(
-        fetchAssets(['solana', 'ethereumarbone', 'basemainnet', 'ethereum']),
+        fetchAssets({
+          networks: ['solana', 'ethereumarbone', 'basemainnet', 'ethereum'],
+          page: 1,
+        }),
       );
     }
   }, [dispatch, pair]);

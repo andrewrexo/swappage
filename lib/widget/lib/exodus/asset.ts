@@ -1,8 +1,6 @@
 import { authenticatedExodusRequest } from './fetch';
 
 export const SUPPORTED_NETWORKS = [
-  'bitcoin',
-  'monero',
   'solana',
   'ethereum',
   'ethereumarbone',
@@ -26,7 +24,7 @@ export interface AssetQueryParams {
 
 const getAvailableAssets = async (
   networks: SupportedNetwork[],
-  { limit = '100', page = '1', query }: AssetQueryParams = {},
+  { limit = '100', page = '1', query = '' }: AssetQueryParams = {},
 ) => {
   const validatedNetworks = networks.filter(
     (network): network is SupportedNetwork =>
@@ -44,10 +42,14 @@ const getAvailableAssets = async (
     );
   }
 
-  let endpoint = `v3/assets?networks=${validatedNetworks.join(',')}&limit=${limit}&page=${page}`;
+  let endpoint = `v3/assets?networks=${validatedNetworks.join(',')}&limit=${limit}`;
 
   if (query) {
     endpoint += `&query=${query}`;
+  }
+
+  if (page) {
+    endpoint += `&page=${page}`;
   }
 
   const request = await authenticatedExodusRequest(endpoint, 'GET');
