@@ -19,7 +19,7 @@ export function WalletPreview({
   if (isSmall) {
     return (
       <Flex align="center" gap="2" justify="between" width="100%">
-        <TokenSOL size={16} />
+        <TokenSOL size={16} variant="branded" />
         {getDisplayLabelAddress(address, 4)}
       </Flex>
     );
@@ -27,7 +27,7 @@ export function WalletPreview({
 
   return (
     <Flex gap="1" align="center" justify="between" width="100%">
-      <TokenSOL size={24} />
+      <TokenSOL size={24} variant="branded" />
       {isPayment && (
         <Text as="div" className="ml-2">
           Pay with

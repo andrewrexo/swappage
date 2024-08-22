@@ -19,7 +19,7 @@ import {
 } from '@web3icons/react';
 
 const TokenMap = {
-  1: <TokenETH size={24} />,
+  1: <TokenETH size={24} variant="branded" />,
   42161: <TokenARB size={24} variant="branded" />,
   10: <TokenOP size={24} variant="branded" />,
   137: <TokenMATIC size={24} variant="branded" />,
