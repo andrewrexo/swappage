@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#LBR__a)" d="M2.667 18.667H9.78L5.02 13.3 12 4.653l7.087 8.647-4.92 5.367h7.166v-2h-2.86l2.86-3.367L12 2 2.667 13.3l2.96 3.367h-2.96zM21.333 20H2.667v2h18.666z"/>
+    <defs>
+        <linearGradient id="LBR__a" x1="12" x2="12" y1="2" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FB9C96"/>
+            <stop offset="1" stop-color="#5C9DED"/>
+        </linearGradient>
+    </defs>
+</svg>

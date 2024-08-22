@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#COS__a)" d="M13.159 2c3.981 0 6.737 2.431 7.687 3.738-.768 1.068-2.862 1.443-4.506.568a6.9 6.9 0 0 0-3.181-.837c-3.475 0-5.463 2.644-6.025 4.031H3.509C4.903 5 8.565 2 13.159 2"/>
+    <path fill="url(#COS__b)" d="M13.185 22c3.981 0 6.737-2.431 7.687-3.738-.768-1.075-2.868-1.443-4.512-.568a6.9 6.9 0 0 1-3.175.837c-3.475 0-5.463-2.643-6.025-4.031H3.535C4.922 19 8.59 22 13.185 22"/>
+    <path fill="url(#COS__c)" d="M7.24 18.4a5.54 5.54 0 0 1-3.738-3.9h3.644a6.68 6.68 0 0 0 5.982 4.031c-.938.25-3.4.613-5.888-.131"/>
+    <path fill="url(#COS__d)" d="M7.216 5.6a5.54 5.54 0 0 0-3.732 3.9h3.644c1.5-3.294 4.625-4.075 6-4.031-.937-.25-3.419-.613-5.912.131"/>
+    <path fill="url(#COS__e)" d="M5.627 13.875a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75"/>
+    <path fill="url(#COS__f)" d="M5.003 13.875a1.875 1.875 0 1 0 0-3.75 1.875 1.875 0 0 0 0 3.75"/>
+    <defs>
+        <linearGradient id="COS__a" x1="14.002" x2="12.635" y1="2" y2="11.703" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0DC4FA"/>
+            <stop offset="1" stop-color="#2797FD"/>
+        </linearGradient>
+        <linearGradient id="COS__b" x1="12.896" x2="12.896" y1="22" y2="12.133" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0DC4FA"/>
+            <stop offset="1" stop-color="#2797FD"/>
+        </linearGradient>
+        <linearGradient id="COS__c" x1="17.726" x2="2.534" y1="22.061" y2="17.571" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6619D1"/>
+            <stop offset="1" stop-color="#2A71F6"/>
+        </linearGradient>
+        <linearGradient id="COS__d" x1="18.952" x2="2.874" y1="1.939" y2="6.15" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6619D1"/>
+            <stop offset="1" stop-color="#2A71F6" stop-opacity="0"/>
+        </linearGradient>
+        <linearGradient id="COS__e" x1="17.943" x2="9.266" y1="5.433" y2="21.178" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#F7D037"/>
+            <stop offset="1" stop-color="#F36F43"/>
+        </linearGradient>
+        <linearGradient id="COS__f" x1="6.372" x2="3.709" y1="10.719" y2="13.169" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#5F24D6"/>
+            <stop offset="1" stop-color="#3069F4"/>
+        </linearGradient>
+    </defs>
+</svg>

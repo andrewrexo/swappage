@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="#2891F9" d="M15.75 15.35v-2.1l2.5-1.25.063 4.65z"/>
+    <path fill="#2B6DEF" d="m10.569 12.025 5.844-3.4.343-3.469L7.581 9.22v2.806zm7.7 9.975 2.481-1.563-12.525-7.225-2.781 1.438z"/>
+    <path fill="#2891F9" d="M3.25 3.169 5.75 2v17.275l-2.5 1.169zm12.5.362L18.25 2v6.606l-2.5 1.206z"/>
+    <path fill="#2BBDF7" d="M20.75 3.469 18.25 2v6.562l2.5 1.25zm-12.5-.3L5.75 2v17.275l2.5 1.169z"/>
+    <path fill="#2B6DEF" d="m5.75 18.875-2.5 1.562L5.744 22l2.506-1.563zM18.25 8.25l-2.5 1.562 2.5 1.563 2.5-1.563z"/>
+    <path fill="#2891F9" d="M5.75 9.162 18.25 2v3.081L5.75 12z"/>
+    <path fill="url(#KOM__a)" d="m5.75 12 15 8.438V13.25L18.25 12v4.375L8.23 10.606z"/>
+    <defs>
+        <linearGradient id="KOM__a" x1="7.306" x2="20.943" y1="13.762" y2="13.762" gradientUnits="userSpaceOnUse">
+            <stop offset=".35" stop-color="#2B6DEF"/>
+            <stop offset=".76" stop-color="#2BBCF7"/>
+        </linearGradient>
+    </defs>
+</svg>

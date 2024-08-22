@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#TRVL__a)" d="M22 12c0 .625-.313 3.137-3.756 3.137-2.444 0-4.35-1.5-5.406-2.356a.05.05 0 0 0-.063 0 .05.05 0 0 0-.02.032.05.05 0 0 0 .007.037c.863 1.062 2.363 2.944 2.363 5.4C15.125 20.03 12.75 22 12 22V12z"/>
+    <path fill="url(#TRVL__b)" d="M5.75 8.875c2.444 0 4.344 1.494 5.406 2.356a.05.05 0 0 0 .058.013l.017-.013a.05.05 0 0 0 0-.069C10.368 10.1 8.869 8.2 8.869 5.75 8.869 2 11.687 2 11.999 2v10H2c0-.312 0-3.125 3.75-3.125"/>
+    <defs>
+        <linearGradient id="TRVL__a" x1="20" x2="2.013" y1="2.525" y2="20.012" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8FA3A4"/>
+            <stop offset="1" stop-color="#C1D0D1"/>
+        </linearGradient>
+        <linearGradient id="TRVL__b" x1="12.006" x2="4.756" y1="2" y2="12.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#C7D5D6"/>
+            <stop offset="1" stop-color="#5A6966"/>
+        </linearGradient>
+    </defs>
+</svg>

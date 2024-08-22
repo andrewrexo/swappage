@@ -2,7 +2,7 @@ import { Flex, Text, Badge } from '@radix-ui/themes';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import networkToColor from '../../features/assets/color';
 import { twMerge } from 'tailwind-merge';
-import { NetworkIcon, TokenIcon } from '@web3icons/react';
+import { AssetIcon } from '../asset-icon';
 
 export const getIconId = (assetSymbol: string): string => {
   const symbolLower = assetSymbol.toLowerCase();
@@ -21,7 +21,7 @@ export const getIconId = (assetSymbol: string): string => {
 };
 export const networkToIcon = {
   ethereum: 'ethereum',
-  arbitrumone: 'arbitrum-one',
+  ethereumarbone: 'arbitrum-one',
   basemainnet: 'base',
   solana: 'solana',
 };
@@ -48,20 +48,7 @@ export function AssetOption({
     >
       <Text as="div" color="gray" className="w-full">
         <Flex align="center" gap="2" width="100%">
-          <TokenIcon
-            symbol={iconId}
-            size={32}
-            variant="branded"
-            fallback={
-              <NetworkIcon
-                network={
-                  networkToIcon[asset.network as keyof typeof networkToIcon]
-                }
-                variant="branded"
-                size={32}
-              />
-            }
-          />
+          <AssetIcon asset={asset} />
           <Text
             weight="bold"
             className={twMerge(

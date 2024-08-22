@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#PLASTIK__a)" d="M22 12.003a10 10 0 1 1-3.031-7.175l-1.344 1.319a8.125 8.125 0 1 0 2.313 4.162l-4.75 4.688-.25.237v.013a4.376 4.376 0 1 1 .018-6.469l-1.344 1.319a2.5 2.5 0 1 0 .025 3.794l.22-.22.105-.124 2.338-2.313v.025l2.956-2.906v-.006l1.388-1.375A9.96 9.96 0 0 1 22 12.003"/>
+    <defs>
+        <linearGradient id="PLASTIK__a" x1="12" x2="12" y1="2.003" y2="22.003" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0440A8"/>
+            <stop offset=".59" stop-color="#00B4B0"/>
+            <stop offset="1" stop-color="#02BFA1"/>
+        </linearGradient>
+    </defs>
+</svg>

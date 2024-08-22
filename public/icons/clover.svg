@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#clover__a)" d="M17.2 2H6.8A4.8 4.8 0 0 0 2 6.8v10.4A4.8 4.8 0 0 0 6.8 22h10.4a4.8 4.8 0 0 0 4.8-4.8V6.8A4.8 4.8 0 0 0 17.2 2"/>
+    <path fill="#0C0B0B" fill-rule="evenodd" d="M12 18.4a6.4 6.4 0 1 0 0-12.8 6.4 6.4 0 0 0 0 12.8m-1.13-9.455c0-.184.15-.333.333-.333h1.593c.184 0 .333.149.333.333v1.95h-2.258v2.21h2.258v1.95c0 .184-.15.333-.333.333h-1.593a.333.333 0 0 1-.333-.333v-1.878H8.945a.333.333 0 0 1-.333-.334v-1.616c0-.184.149-.333.333-.333h1.925zm2.259 1.95h1.926c.184 0 .333.148.333.332v1.616a.334.334 0 0 1-.333.334H13.13z" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="clover__a" x1="3.665" x2="21.146" y1="20.333" y2="3.25" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#BDFDE2"/>
+            <stop offset="1" stop-color="#9BDAF6"/>
+        </linearGradient>
+    </defs>
+</svg>

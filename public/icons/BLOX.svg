@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#BLOX__a)" d="M11.375 11.331 2 7.331v10L11.375 22z"/>
+    <path fill="url(#BLOX__b)" d="M12 2 2.669 6 12 10l9.331-4z"/>
+    <path fill="url(#BLOX__c)" d="m22 7-9.375 4.331V22L22 17.33z"/>
+    <defs>
+        <linearGradient id="BLOX__a" x1="23.333" x2="23.333" y1="-5.269" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#84F9C8"/>
+            <stop offset="1" stop-color="#7FB7F6"/>
+        </linearGradient>
+        <linearGradient id="BLOX__b" x1="12" x2="12" y1="2" y2="51.999" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#84F9C8"/>
+            <stop offset="1" stop-color="#7FB7F6"/>
+        </linearGradient>
+        <linearGradient id="BLOX__c" x1="12" x2="12" y1="2" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#84F9C8"/>
+            <stop offset="1" stop-color="#7FB7F6"/>
+        </linearGradient>
+    </defs>
+</svg>

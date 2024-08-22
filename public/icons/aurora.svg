@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#AURORA__a)" d="M14.09 4.974a2.334 2.334 0 0 0-4.187 0l-6.32 11.98a2.334 2.334 0 0 0 2.093 3.38h12.64a2.337 2.337 0 0 0 2.34-2.229 2.33 2.33 0 0 0-.246-1.151zm-5.38-.6a3.667 3.667 0 0 1 6.573 0l6.327 11.98a3.665 3.665 0 0 1-3.294 5.314H5.676a3.68 3.68 0 0 1-3.294-5.314L8.71 4.38z"/>
+    <defs>
+        <linearGradient id="AURORA__a" x1="18.211" x2="6.366" y1="4.439" y2="20.171" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#95E141"/>
+            <stop offset=".59" stop-color="#63B836"/>
+            <stop offset="1" stop-color="#409C2D"/>
+        </linearGradient>
+    </defs>
+</svg>

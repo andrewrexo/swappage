@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#VOXEL__a)" d="m10.472 16.194.611-8.083c-1.833 0-4.26 1.684-5.194 2.528v4.167C6.5 18.333 10.222 21.072 12 22v-2.905c-.511-.3-1.528-2.145-1.528-2.9"/>
+    <path fill="url(#VOXEL__b)" d="m13.528 16.194-.611-8.083c1.833 0 4.26 1.684 5.194 2.528v4.167C17.5 18.333 13.778 21.072 12 22v-2.905c.511-.3 1.528-2.145 1.528-2.9"/>
+    <path fill="#F5C700" d="M12 6.2 8.666 7.556 8.111 7c.65-.333 2.088-.978 2.672-1.172.583-.2.66-1.7.66-2.44-.194-.2-.277-.432-.277-.555 0-.594.589-.833.833-.833z"/>
+    <path fill="#EFBB1E" d="m12 6.2 3.333 1.356.556-.556a30 30 0 0 0-2.672-1.172c-.584-.2-.662-1.7-.662-2.44.195-.2.278-.432.278-.555C12.833 2.24 12.244 2 12 2z"/>
+    <defs>
+        <linearGradient id="VOXEL__a" x1="12" x2="12" y1="8.111" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0E2C5E"/>
+            <stop offset="1" stop-color="#16448F"/>
+        </linearGradient>
+        <linearGradient id="VOXEL__b" x1="12" x2="12" y1="8.111" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#0E2C5E"/>
+            <stop offset="1" stop-color="#16448F"/>
+        </linearGradient>
+    </defs>
+</svg>

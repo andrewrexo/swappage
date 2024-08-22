@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#POLYPAD__a)" d="M20.823 16.994v-10L12 2 3.176 6.994v10l2.941 1.653V8.665L12 5.312l5.882 3.353v6.67L12 18.677V22z"/>
+    <path fill="url(#POLYPAD__b)" d="M16.118 9.688 12 7.376 7.882 9.688v10l2.353 1.27v-9.981L12 9.947l1.765 1.03v2.047L12 14.053v2.559l4.118-2.3z"/>
+    <path fill="#fff" d="M20.823 6.994 12 2 3.176 6.994l2.93 1.67L12 5.313l5.894 3.353z"/>
+    <path fill="#fff" d="M12 7.376 7.916 9.688l2.27 1.288L12 9.942l1.812 1.03 2.306-1.283z"/>
+    <defs>
+        <linearGradient id="POLYPAD__a" x1="16.412" x2="7.835" y1="4.5" y2="19.635" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4E4AFF"/>
+            <stop offset="1" stop-color="#A873FF"/>
+        </linearGradient>
+        <linearGradient id="POLYPAD__b" x1="16.361" x2="9.09" y1="3.706" y2="22.386" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4E4AFF"/>
+            <stop offset="1" stop-color="#A873FF"/>
+        </linearGradient>
+    </defs>
+</svg>

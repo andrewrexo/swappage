@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#FOUR__a)" d="m9.333 12 2.666-.666V8l-.667.333-2 3z"/>
+    <path fill="url(#FOUR__b)" fill-rule="evenodd" d="M2 4.94 22 2v18.233L2 22zM14 11V6h-2.667l-4.666 6v2L12 13.335v4.667l2-.667V13l2.667-.667v-2z" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="FOUR__a" x1="21.313" x2="6.066" y1="2.587" y2="24.1" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#92988A"/>
+            <stop offset="1" stop-color="#3C554F"/>
+        </linearGradient>
+        <linearGradient id="FOUR__b" x1="21.313" x2="6.067" y1="2.587" y2="24.1" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#92988A"/>
+            <stop offset="1" stop-color="#3C554F"/>
+        </linearGradient>
+    </defs>
+</svg>

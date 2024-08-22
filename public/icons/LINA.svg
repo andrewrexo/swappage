@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#LINA__a)" d="M3.82 14.83a2.47 2.47 0 0 1 0-3.464L13.087 2l.432.437a2.47 2.47 0 0 1 0 3.464l-9.266 9.366z"/>
+    <path fill="url(#LINA__b)" d="M7.15 18.197a2.47 2.47 0 0 1 0-3.465l9.266-9.365.431.436a2.47 2.47 0 0 1 0 3.465l-9.265 9.365z"/>
+    <path fill="url(#LINA__c)" d="M10.482 18.099a2.47 2.47 0 0 0 0 3.464l.432.437 9.265-9.365a2.47 2.47 0 0 0 0-3.465l-.431-.437z"/>
+    <defs>
+        <linearGradient id="LINA__a" x1="10.284" x2="23.689" y1="10.365" y2="24.432" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6BB7FF"/>
+            <stop offset="1" stop-color="#053BF7"/>
+        </linearGradient>
+        <linearGradient id="LINA__b" x1="4.957" x2="18.362" y1="5.29" y2="19.357" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6BB7FF"/>
+            <stop offset="1" stop-color="#053BF7"/>
+        </linearGradient>
+        <linearGradient id="LINA__c" x1="7.598" x2="16.499" y1="7.549" y2="16.355" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6BB7FF"/>
+            <stop offset="1" stop-color="#053BF7"/>
+        </linearGradient>
+    </defs>
+</svg>

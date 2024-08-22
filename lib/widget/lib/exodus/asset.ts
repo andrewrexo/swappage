@@ -5,7 +5,7 @@ export const SUPPORTED_NETWORKS = [
   'monero',
   'solana',
   'ethereum',
-  'arbitrumone',
+  'ethereumarbone',
   'basemainnet',
 ] as const;
 

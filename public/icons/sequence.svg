@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#sequence__a)" d="M2 7.4v9.2A3.4 3.4 0 0 0 5.4 20h13.2a3.4 3.4 0 0 0 3.4-3.4V7.4A3.4 3.4 0 0 0 18.6 4H5.4A3.4 3.4 0 0 0 2 7.4"/>
+    <path fill="url(#sequence__b)" d="M7 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0"/>
+    <path fill="url(#sequence__c)" d="M7 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0"/>
+    <path fill="url(#sequence__d)" d="M7 8a1 1 0 1 0-2 0 1 1 0 0 0 2 0"/>
+    <path fill="url(#sequence__e)" d="M7 15.994a1 1 0 1 0-2 0 1 1 0 0 0 2 0"/>
+    <path fill="url(#sequence__f)" d="M19 12a1 1 0 1 0-2 0 1 1 0 0 0 2 0"/>
+    <path fill="url(#sequence__g)" d="M19 12a1 1 0 1 0-2 0 1 1 0 0 0 2 0"/>
+    <path fill="url(#sequence__h)" d="M18 7h-8a1 1 0 0 0 0 2h8a1 1 0 1 0 0-2"/>
+    <path fill="url(#sequence__i)" d="M18 14.994h-8a1 1 0 1 0 0 2h8a1 1 0 0 0 0-2"/>
+    <path fill="url(#sequence__j)" d="M14 11H6a1 1 0 1 0 0 2h8a1 1 0 1 0 0-2"/>
+    <defs>
+        <linearGradient id="sequence__a" x1="12" x2="12" y1="4" y2="20.017" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1D273D"/>
+            <stop offset="1" stop-color="#0D0F13"/>
+        </linearGradient>
+        <linearGradient id="sequence__b" x1="5.308" x2="6.667" y1="8.986" y2="7.17" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4462FE"/>
+            <stop offset="1" stop-color="#7D69FA"/>
+        </linearGradient>
+        <linearGradient id="sequence__c" x1="5.176" x2="6.855" y1="9.001" y2="8.915" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3757FD"/>
+            <stop offset="1" stop-color="#6980FA"/>
+        </linearGradient>
+        <linearGradient id="sequence__d" x1="5.176" x2="6.855" y1="9.001" y2="8.915" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2447FF"/>
+            <stop offset="1" stop-color="#6980FA"/>
+        </linearGradient>
+        <linearGradient id="sequence__e" x1="5.283" x2="6.617" y1="16.667" y2="15.253" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#BC3EE6"/>
+            <stop offset="1" stop-color="#D972F1"/>
+        </linearGradient>
+        <linearGradient id="sequence__f" x1="17.404" x2="18.638" y1="12.663" y2="11.35" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#29BDFF"/>
+            <stop offset="1" stop-color="#96E7FB"/>
+        </linearGradient>
+        <linearGradient id="sequence__g" x1="17.161" x2="18.897" y1="12.986" y2="12.903" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#23BBFF"/>
+            <stop offset="1" stop-color="#85E7FF"/>
+        </linearGradient>
+        <linearGradient id="sequence__h" x1="9.803" x2="18.033" y1="8.986" y2="7.012" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#23BBFF"/>
+            <stop offset="1" stop-color="#85E7FF"/>
+        </linearGradient>
+        <linearGradient id="sequence__i" x1="9.879" x2="17.78" y1="16.995" y2="14.97" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2447FF"/>
+            <stop offset="1" stop-color="#6980FA"/>
+        </linearGradient>
+        <linearGradient id="sequence__j" x1="6.343" x2="13.891" y1="13.016" y2="10.991" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6634FF"/>
+            <stop offset="1" stop-color="#9C6DFF"/>
+        </linearGradient>
+    </defs>
+</svg>

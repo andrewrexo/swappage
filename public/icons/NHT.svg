@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#NHT__a)" d="M17 4.512c-.044 3.988-3.338 5-5 4.988l.006 4.294H22V4.5z"/>
+    <path fill="url(#NHT__b)" d="M17.325 19.5H12v-5h5v-10h.444A4.544 4.544 0 0 1 22 8.98v5.794a4.77 4.77 0 0 1-4.675 4.725"/>
+    <path fill="url(#NHT__c)" d="M7 14.5h10c-4.05 0-4.994 3.169-5 4.875-.062-3.838-3.131-4.837-4.812-4.875z"/>
+    <path fill="url(#NHT__d)" d="M12.025 9.262v.563H6.862V4.537H7.3a4.725 4.725 0 0 1 4.725 4.725"/>
+    <path fill="url(#NHT__e)" d="M2.119 19.5H2V9a4.5 4.5 0 0 1 4.5-4.5H7c0 3.875 3.031 4.981 4.5 5h.881a4.54 4.54 0 0 1 4.62 4.525v.475H7v.013A4.907 4.907 0 0 1 2.118 19.5"/>
+    <defs>
+        <linearGradient id="NHT__a" x1="22" x2="12.011" y1="5.277" y2="16.811" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#2F1E58"/>
+            <stop offset="1" stop-color="#4C318D"/>
+        </linearGradient>
+        <linearGradient id="NHT__b" x1="12.05" x2="9.435" y1="4.5" y2="21.752" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#7B42A1"/>
+            <stop offset=".54" stop-color="#C75693"/>
+            <stop offset="1" stop-color="#A1467A"/>
+        </linearGradient>
+        <linearGradient id="NHT__c" x1="5.05" x2="15.087" y1="5.134" y2="8.62" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#84354C"/>
+            <stop offset="1" stop-color="#B64A69"/>
+        </linearGradient>
+        <linearGradient id="NHT__d" x1="4.494" x2="9.87" y1="5.564" y2="20.83" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8454F4"/>
+            <stop offset="1" stop-color="#5D3BAC"/>
+        </linearGradient>
+        <linearGradient id="NHT__e" x1="5.063" x2="7.038" y1="5.087" y2="19.919" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#8453EE"/>
+            <stop offset=".68" stop-color="#B456B2"/>
+            <stop offset=".98" stop-color="#201128"/>
+        </linearGradient>
+    </defs>
+</svg>

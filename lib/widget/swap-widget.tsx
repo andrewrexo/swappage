@@ -11,12 +11,12 @@ import toast, { Toaster } from 'react-hot-toast';
 import { DoubleArrowLeftIcon } from '@radix-ui/react-icons';
 import { usePathname, useRouter } from 'next/navigation';
 import { MotionFlex } from './components/ui/radix-motion';
-import { useAccount, useChains } from 'wagmi';
+import { useAccount } from 'wagmi';
 import { animVariants } from './config';
 import { setEthereumAddress, setSolanaAddress } from './features/swap/slice';
 import { toastConfig } from '../util';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { TokenETH, TokenSOL } from '@web3icons/react';
+import { TokenIcon } from './components/ui/token-icon';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -57,7 +57,7 @@ export function SwapWidget({
         `Connected to wallet ${account.address.slice(0, 6)}...${account.address.slice(-4)}`,
         {
           ...toastConfig,
-          icon: <TokenETH size={24} variant="branded" />,
+          icon: <TokenIcon identifier="ETH" size={24} />,
         },
       );
     }
@@ -70,7 +70,7 @@ export function SwapWidget({
 
       toast.success(
         `Connected to wallet: ${account.slice(0, 6)}...${account.slice(-4)}`,
-        { ...toastConfig, icon: <TokenSOL size={24} variant="branded" /> },
+        { ...toastConfig, icon: <TokenIcon identifier="SOL" size={24} /> },
       );
     }
   }, [publicKey]);

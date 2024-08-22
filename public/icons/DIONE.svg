@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="#30128D" d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10"/>
+    <path fill="#7D1FA9" d="M12 20.233a8.233 8.233 0 1 0 0-16.467 8.233 8.233 0 0 0 0 16.467"/>
+    <path fill="#FB88F3" d="M12 18.228a6.228 6.228 0 1 0 0-12.456 6.228 6.228 0 0 0 0 12.456"/>
+    <path fill="#E7B2F8" d="M12 17.733a5.733 5.733 0 1 0 0-11.467 5.733 5.733 0 0 0 0 11.467"/>
+    <path fill="url(#DIONE__a)" d="M17.067 12.189c0 2.889-1.933 4.166-4.772 4.894-1.261.328-2.317.184-3.239 0-1.478-.294-2.272-1.333-2.706-2.777a3.7 3.7 0 0 1-.116-1.1c0-2.095 2.733-6.234 5.61-6.234a5.22 5.22 0 0 1 5.223 5.222z"/>
+    <defs>
+        <linearGradient id="DIONE__a" x1="15.312" x2="6.906" y1="8.822" y2="15.539" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#6DDFF4"/>
+            <stop offset=".42" stop-color="#10FDF7"/>
+            <stop offset=".65" stop-color="#20DFFB"/>
+            <stop offset="1" stop-color="#688FEB"/>
+        </linearGradient>
+    </defs>
+</svg>

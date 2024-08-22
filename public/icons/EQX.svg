@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#EQX__a)" d="M2 22V2h20v2.857H4.857v14.286h11.429V22zM19.143 9.857H7V7h15v15h-2.857v-6.428H7v-2.858h12.143z"/>
+    <defs>
+        <linearGradient id="EQX__a" x1="3.786" x2="18.607" y1="5.571" y2="19.143" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#112650"/>
+            <stop offset="1" stop-color="#38A28B"/>
+        </linearGradient>
+    </defs>
+</svg>

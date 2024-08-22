@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#WAGMI__a)" d="M2.129 3.429H2v6.821l10 8.586 10-9.05V3.47L12 11.8zm15.328 0L12 8.143 6.543 3.429zM22 14.086l-7.714 6.485H22zM9.786 20.57 2 13.857v6.714z"/>
+    <defs>
+        <linearGradient id="WAGMI__a" x1="2" x2="21.068" y1="10.653" y2="10.653" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#DCC093"/>
+            <stop offset="1" stop-color="#C4A878"/>
+        </linearGradient>
+    </defs>
+</svg>

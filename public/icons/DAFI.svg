@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="#33363C" fill-rule="evenodd" d="M17.456 2a1.21 1.21 0 0 0-1.213 1.212V7.48a7.88 7.88 0 1 0 3.637 6.643V3.213A1.21 1.21 0 0 0 18.668 2zm-1.213 12.123a4.243 4.243 0 1 0-8.486 0 4.243 4.243 0 0 0 8.486 0" clip-rule="evenodd"/>
+    <path fill="url(#DAFI__a)" d="M12 6.243c1.564 0 3.019.455 4.243 1.237v6.037h-.042a4.244 4.244 0 0 0-8.402 0H4.144A7.88 7.88 0 0 1 12 6.243"/>
+    <defs>
+        <linearGradient id="DAFI__a" x1="16.849" x2="7.454" y1="8.668" y2="8.668" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#222529"/>
+            <stop offset="1" stop-color="#131519" stop-opacity="0"/>
+        </linearGradient>
+    </defs>
+</svg>

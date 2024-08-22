@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#PARA__a)" d="m3.026 9.633 8.885 4.799a1.49 1.49 0 0 0 1.412 0l7.654-4.143a1.886 1.886 0 0 0 0-3.355l-8.748-4.711a1.82 1.82 0 0 0-1.736 0L3.02 6.284a1.887 1.887 0 0 0 0 3.349z"/>
+    <path fill="url(#PARA__b)" d="M4.913 12.645 12 16.394c.468.25 1.043.25 1.499-.02l5.455-3.142 2.018 1.087a1.887 1.887 0 0 1 0 3.355l-7.648 4.143a1.47 1.47 0 0 1-1.412 0l-8.885-4.792a1.886 1.886 0 0 1-.006-3.356z"/>
+    <defs>
+        <linearGradient id="PARA__a" x1="1.998" x2="19.834" y1="12.182" y2="12.103" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#02DAFF"/>
+            <stop offset="1" stop-color="#5414F1"/>
+        </linearGradient>
+        <linearGradient id="PARA__b" x1="2.002" x2="19.834" y1="15.806" y2="15.687" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FECF7B"/>
+            <stop offset="1" stop-color="#EF26A8"/>
+        </linearGradient>
+    </defs>
+</svg>

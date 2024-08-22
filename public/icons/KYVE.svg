@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#KYVE__a)" d="M3.071 22 7.3 2h3.828l-1.757 8.279h.693L16.436 2h4.492v.386l-7.657 9.428v.443l4.907 9.457V22h-4.27l-4.18-8.278H8.636L6.87 22z"/>
+    <defs>
+        <linearGradient id="KYVE__a" x1="12" x2="12" y1="2" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#151E1D"/>
+            <stop offset="1" stop-color="#23584E"/>
+        </linearGradient>
+    </defs>
+</svg>

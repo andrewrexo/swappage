@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#KROM__a)" d="m20.194 20.286-8.154-6.94-8.373 7.08C3.02 20.972 2 20.532 2 19.699v-15.4c0-.834 1.02-1.267 1.667-.727l8.373 7.113 8.227-7.02a1.067 1.067 0 0 1 1.467.08.976.976 0 0 1-.087 1.42l-8.027 6.814 7.967 6.8a.98.98 0 0 1 .1 1.413 1.08 1.08 0 0 1-1.493.093M4 6.424v11.087l6.46-5.507z"/>
+    <defs>
+        <linearGradient id="KROM__a" x1="2" x2="22.001" y1="11.998" y2="11.998" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#9EEBFD"/>
+            <stop offset=".23" stop-color="#AAC5F9"/>
+            <stop offset=".52" stop-color="#A5BCF8"/>
+            <stop offset=".74" stop-color="#B6B5F7"/>
+            <stop offset=".9" stop-color="#EBB0F2"/>
+            <stop offset="1" stop-color="#AEA0F4"/>
+        </linearGradient>
+    </defs>
+</svg>

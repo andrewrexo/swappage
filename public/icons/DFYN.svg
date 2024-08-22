@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#DFYN__a)" d="M10.389 13.429H4.57L7.428 2h4.606c2.309 0 3.846 2.091 4.029 4.023.143 1.543-.6 3.697-.989 4.549h4.355L8.269 22z"/>
+    <defs>
+        <linearGradient id="DFYN__a" x1="17.784" x2="3.949" y1="6.143" y2="14.178" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#B8566F"/>
+            <stop offset="1" stop-color="#60B9E2"/>
+        </linearGradient>
+    </defs>
+</svg>

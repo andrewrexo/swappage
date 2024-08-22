@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <mask id="TRIAS__a" width="20" height="20" x="2" y="2" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+        <path fill="#fff" d="M22 2H2v20h20z"/>
+    </mask>
+    <g mask="url(#TRIAS__a)">
+        <mask id="TRIAS__b" width="20" height="20" x="2" y="2" maskUnits="userSpaceOnUse" style="mask-type:luminance">
+            <path fill="#fff" d="M2 2h20v20H2z"/>
+        </mask>
+        <g mask="url(#TRIAS__b)">
+            <path fill="url(#TRIAS__c)" fill-rule="evenodd" d="M12.528 6.34a.265.265 0 0 0-.357.033l-5.83 6.742a.222.222 0 0 0 .048.335l6.252 4.22a.27.27 0 0 0 .315-.015l3.96-3.278a.22.22 0 0 0 .074-.237l-1.703-5.668zm-5.682 6.812 6.124.555.44-3.977-1.162-2.824zm6.08.94L7.3 13.584l5.289 3.57zm.418.039 2.92.264-3.248 2.69zm3.177-.103-3.134-.284.428-3.863 1.166-.98zm-1.766-5.46-1.021.857-.996-2.417z" clip-rule="evenodd"/>
+        </g>
+    </g>
+    <defs>
+        <linearGradient id="TRIAS__c" x1="7.6" x2="14.483" y1="7.2" y2="14.761" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#79DCE5"/>
+            <stop offset=".807" stop-color="#12ABA9"/>
+        </linearGradient>
+    </defs>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#DAD__a)" d="M12.791 2H2.667v4h8.705c1.682.045 5.295 2.003 5.295 5.747 0 4.486-3.448 6.253-5.295 6.253H6.667v4h6.124c2.869 0 8.672-2.86 8.54-10.253C21.201 4.355 15.494 2 12.791 2m-4.124 8h2a2 2 0 1 1 0 4h-2zm-6 2a2 2 0 0 1 2-2v4a2 2 0 0 1-2-2"/>
+    <defs>
+        <linearGradient id="DAD__a" x1="6.724" x2="18.793" y1="4.514" y2="18.344" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#00EDEF"/>
+            <stop offset="1" stop-color="#0094FF"/>
+        </linearGradient>
+    </defs>
+</svg>

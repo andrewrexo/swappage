@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="#00EADB" d="M12 21.987c5.517 0 9.99-4.472 9.99-9.99s-4.473-9.99-9.99-9.99-9.99 4.473-9.99 9.99 4.473 9.99 9.99 9.99"/>
+    <path fill="#E756CB" d="M2.03 12.622a9.99 9.99 0 0 0 19.941 0z"/>
+    <path fill="url(#AURY__a)" d="M20.267 6.384c.374.562.705 1.162.967 1.792-.874.175-1.81.469-2.266 1.15-.05.074.006.174.1.174.593 0 1.654.012 2.635.112.187.768.287 1.561.287 2.385h-5.45l2.559-5.656a4 4 0 0 1 1.168.043"/>
+    <path fill="url(#AURY__b)" d="M18.075 4.068a9.95 9.95 0 0 0-9.846-1.324c2.379.469 3.671.93 4.102 1.137.056.025.044.1-.019.106-1.704.412-4.233.5-6.275.28l1.205 2.68a.34.34 0 0 1 .169.074c.325.281.912.537 1.748.543.013 0 .031.02.031.038 0 .012-.012.025-.025.031-.424.1-1.286.181-1.536.181l.2.437h8.367l.362-.812a7 7 0 0 1-1.361.188c-.013 0-.019-.019 0-.025a9.5 9.5 0 0 0 1.654-.818z"/>
+    <path fill="url(#AURY__c)" d="M4.495 5.404q-.411.468-.768.993c.331.312.812.55 1.48.6z"/>
+    <path fill="url(#AURY__d)" d="m14.485 11.997.85-1.873H8.671l.843 1.873z"/>
+    <path fill="url(#AURY__e)" d="M9.802 12.622h4.396L12 17.46z"/>
+    <path fill="url(#AURY__f)" d="M7.46 11.997 5.757 8.251h.02l-.038-.087.018.087a6.1 6.1 0 0 0-3.696 2.722q-.05.51-.05 1.024z"/>
+    <path fill="url(#AURY__g)" d="M7.742 12.622 12 21.987a9.99 9.99 0 0 1-9.97-9.365z"/>
+    <path fill="url(#AURY__h)" d="M16.258 12.622h5.713A9.99 9.99 0 0 1 12 21.987z"/>
+    <defs>
+        <linearGradient id="AURY__a" x1="-14.628" x2="-14.628" y1="-13.168" y2="57.168" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E756CC"/>
+            <stop offset=".47" stop-color="#8F79D4"/>
+            <stop offset=".6" stop-color="#668AD7"/>
+        </linearGradient>
+        <linearGradient id="AURY__b" x1="11.907" x2="11.907" y1="2.024" y2="65.947" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E756CC"/>
+            <stop offset=".47" stop-color="#8F79D4"/>
+        </linearGradient>
+        <linearGradient id="AURY__c" x1="113.711" x2="113.711" y1="-40.667" y2="210.314" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E756CC"/>
+            <stop offset=".47" stop-color="#8F79D4"/>
+        </linearGradient>
+        <linearGradient id="AURY__d" x1="11.991" x2="11.991" y1="-84.667" y2="128.667" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E756CC"/>
+            <stop offset=".47" stop-color="#8F79D4"/>
+            <stop offset=".6" stop-color="#668AD7"/>
+        </linearGradient>
+        <linearGradient id="AURY__e" x1="12" x2="12" y1="-41.871" y2="40.71" gradientUnits="userSpaceOnUse">
+            <stop offset=".47" stop-color="#8F79D4"/>
+            <stop offset=".6" stop-color="#668AD7"/>
+            <stop offset="1" stop-color="#01E9C9"/>
+        </linearGradient>
+        <linearGradient id="AURY__f" x1="38.628" x2="38.628" y1="-30.117" y2="74.117" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#E756CC"/>
+            <stop offset=".47" stop-color="#8F79D4"/>
+            <stop offset=".6" stop-color="#668AD7"/>
+        </linearGradient>
+        <linearGradient id="AURY__g" x1="21.99" x2="21.99" y1="-20.667" y2="22" gradientUnits="userSpaceOnUse">
+            <stop offset=".47" stop-color="#8F79D4"/>
+            <stop offset=".6" stop-color="#668AD7"/>
+            <stop offset="1" stop-color="#01E9C9"/>
+        </linearGradient>
+        <linearGradient id="AURY__h" x1="12" x2="12" y1="2.007" y2="21.987" gradientUnits="userSpaceOnUse">
+            <stop offset=".47" stop-color="#8F79D4"/>
+            <stop offset=".6" stop-color="#668AD7"/>
+            <stop offset="1" stop-color="#01E9C9"/>
+        </linearGradient>
+    </defs>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#GNS__a)" d="M16.065 6.888c.4.236.641.653.641 1.112v8c0 .718-.447 1.294-1.176 1.294-.73 0-1.177-.576-1.177-1.294v-4.982c0-.395-.706-.642-1.059-.46l-4.647 2.454a1.33 1.33 0 0 1-1.782-.53 1.276 1.276 0 0 1 .535-1.747l7.37-3.876c.407-.212.9-.2 1.295.03"/>
+    <path fill="url(#GNS__b)" d="M8.47 10.147c1.06-.312 1.824-.341 2.677-.341 1.253 0 2.176.317 2.512.706.223.058.694.253.694.506V16c0 .718.447 1.294 1.176 1.294.73 0 1.177-.576 1.177-1.294V8c0-.459-.247-.882-.647-1.112a1.35 1.35 0 0 0-1.3-.03z"/>
+    <path fill="url(#GNS__c)" d="M12.641 7.965c.665.176 1.712.64 1.712 1.682v1.335c0 .012 0-.011 0 0v4.988c0 .706.447 1.324 1.176 1.324.73 0 1.177-.576 1.177-1.294V8c0-.459-.247-.882-.647-1.112a1.35 1.35 0 0 0-1.3-.03z"/>
+    <path fill="url(#GNS__d)" d="m10.647 14.618-1.47.858c-.212.124-.312.377-.183.589.17.282.459.64.87.906.424.276.877.335 1.206.323.224-.018.342-.212.342-.435v-1.8a.5.5 0 0 0-.765-.435z"/>
+    <path fill="url(#GNS__e)" fill-rule="evenodd" d="M12 20.824a8.824 8.824 0 1 0 0-17.649 8.824 8.824 0 0 0 0 17.649M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="GNS__a" x1="20.424" x2="5.662" y1="1.997" y2="15.793" gradientUnits="userSpaceOnUse">
+            <stop offset=".45" stop-color="#266E84"/>
+            <stop offset="1" stop-color="#56DBAE"/>
+        </linearGradient>
+        <linearGradient id="GNS__b" x1="13.757" x2="12.483" y1="2.487" y2="22.065" gradientUnits="userSpaceOnUse">
+            <stop offset=".18" stop-color="#2F778D"/>
+            <stop offset=".27" stop-color="#43B39C"/>
+        </linearGradient>
+        <linearGradient id="GNS__c" x1="11.754" x2="11.754" y1="1.998" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4CFB8F"/>
+            <stop offset="1" stop-color="#1FC3F1"/>
+        </linearGradient>
+        <linearGradient id="GNS__d" x1="11.639" x2="18.519" y1="6.582" y2="22.217" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#34D6C1"/>
+            <stop offset="1" stop-color="#38BFD2"/>
+        </linearGradient>
+        <linearGradient id="GNS__e" x1="6.706" x2="17.882" y1="4.353" y2="20.529" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4CFB8F"/>
+            <stop offset="1" stop-color="#28CEDD"/>
+        </linearGradient>
+    </defs>
+</svg>

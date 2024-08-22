@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#DEXTF__a)" d="M2 19.64V4.36C2 3.053 3.067 2 4.4 2h7.447C17.447 2 22 6.48 22 12s-4.547 10-10.153 10H4.393A2.373 2.373 0 0 1 2 19.64m1.693-6.18 3.254.707L14 8.387v9.1l2.667 2.28V5.733l-1.794-.98-11.18 8.7z"/>
+    <defs>
+        <linearGradient id="DEXTF__a" x1="12" x2="12" y1="2" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#72F64B"/>
+            <stop offset=".83" stop-color="#2D6A1C"/>
+        </linearGradient>
+    </defs>
+</svg>

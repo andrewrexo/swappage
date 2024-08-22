@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#LUNR__a)" d="M21.012 17.293a.17.17 0 0 1-.134-.066.17.17 0 0 1-.03-.146c.176-.683.27-1.4.27-2.141 0-4.871-4.083-8.824-9.118-8.824s-9.118 3.953-9.118 8.824c0 .74.094 1.458.27 2.14a.17.17 0 0 1-.164.213.17.17 0 0 1-.147-.1 10 10 0 1 1 18.318 0 .17.17 0 0 1-.147.1M12 20.822a5.294 5.294 0 1 0 0-10.588 5.294 5.294 0 0 0 0 10.588"/>
+    <defs>
+        <linearGradient id="LUNR__a" x1="9.082" x2="9.082" y1="3.175" y2="8.745" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#07EDFD"/>
+            <stop offset="1" stop-color="#21FA90"/>
+        </linearGradient>
+    </defs>
+</svg>

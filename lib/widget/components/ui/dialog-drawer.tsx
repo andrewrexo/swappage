@@ -10,7 +10,6 @@ import {
 import { Drawer } from 'vaul';
 import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { TokenSOL } from '@web3icons/react';
 
 interface ResponsiveDialogDrawerProps {
   children: ReactNode;

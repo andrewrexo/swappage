@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#VET__a)" d="M22 2.938h-1.788c-.437 0-.83.25-1.024.643L14.5 13.294l-.006-.006-1.25 2.587v.012l-1.25 2.588L5.75 5.531h1.781c.438 0 .838.25 1.025.644l4.082 8.394 1.25-2.588L10.593 5.2A4.01 4.01 0 0 0 6.98 2.938H2L3.25 5.53l7.5 15.532h2.5z"/>
+    <defs>
+        <linearGradient id="VET__a" x1="2" x2="20.942" y1="21.548" y2="-.062" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#582974"/>
+            <stop offset=".15" stop-color="#4163AD"/>
+            <stop offset=".47" stop-color="#22B2F9"/>
+            <stop offset=".74" stop-color="#54B1B6"/>
+            <stop offset="1" stop-color="#86E931"/>
+        </linearGradient>
+    </defs>
+</svg>

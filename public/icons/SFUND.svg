@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#SFUND__a)" d="m8.773 5.763 3.473-3.71.143 2.342c-.516.537-2.185 2.105-4.1 4.62-1.706 2.238-.069 5.09 1.179 6.117v2.078c-.816-.442-2.3-1.036-3.39-3.726-1.347-3.316 1.063-5.831 2.695-7.72"/>
+    <path fill="url(#SFUND__b)" d="M15.315 18.063 11.83 21.78l-.137-2.342c.516-.542 2.052-2.221 4.105-4.621 1.684-1.98 0-5.184-1.179-5.853V6.905c.81.442 2.18.863 3.274 3.553 1.342 3.316-.79 6.095-2.58 7.605"/>
+    <path fill="url(#SFUND__c)" d="M11.73 22c-1.63-1.505-4.089-5.6-.894-9.958l1.221-1.605c.68-.916 1.527-3.448.027-5.521-.185-.253-1.416-1.11-2.327-.21l-.116.13.116-.125L12.215 2c1.668 1.484 4.253 5.463 1.248 9.51l-1.58 2.043c-.573.815-1.384 3.105 0 5.768.322.484 1.58.747 2.627-.42z"/>
+    <defs>
+        <linearGradient id="SFUND__a" x1="11.989" x2="11.989" y1="2" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#986EF8"/>
+            <stop offset="1" stop-color="#4592E6"/>
+        </linearGradient>
+        <linearGradient id="SFUND__b" x1="11.999" x2="11.999" y1="22" y2="2" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#3CD7FE"/>
+            <stop offset="1" stop-color="#8651E7"/>
+        </linearGradient>
+        <linearGradient id="SFUND__c" x1="12.062" x2="12.062" y1="2" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#45CFFB"/>
+            <stop offset="1" stop-color="#9E68FC"/>
+        </linearGradient>
+    </defs>
+</svg>

@@ -1,13 +1,13 @@
 import { TextField, IconButton, Text, Box } from '@radix-ui/themes';
 import { ChevronDown } from 'lucide-react';
-import { AssetDialog } from '../asset-dialog';
 import { useAppSelector } from '../../lib/hooks';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import { ChangeEvent } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { NetworkIcon, TokenIcon } from '@web3icons/react';
 import { getIconId, networkToIcon } from '../asset-dialog/asset-option';
 import { twMerge } from 'tailwind-merge';
+import networkToColor from '../../features/assets/color';
+import { AssetIcon } from '../asset-icon';
 
 interface InputAmountProps {
   asset: ExodusAsset;
@@ -41,7 +41,7 @@ export function InputAmount({
             weight="medium"
             as="div"
             className={twMerge(
-              `flex cursor-pointer items-center gap-2 text-accent`,
+              `flex cursor-pointer items-center gap-2`,
               asset.symbol.length >= 5 && 'max-w-[100px]',
               asset.symbol.length == 4 && 'max-w-[75px]',
             )}
@@ -51,23 +51,10 @@ export function InputAmount({
             transition={{ duration: 0.5 }}
             key={asset.id}
             onClick={() => onDialogOpen(side)}
+            color={networkToColor[asset.network]}
           >
             <Box maxWidth="24px" maxHeight="24px">
-              <TokenIcon
-                symbol={getIconId(asset.symbol)}
-                size={24}
-                variant="branded"
-                className="max-h-6 max-w-6"
-                fallback={
-                  <NetworkIcon
-                    network={
-                      networkToIcon[asset.network as keyof typeof networkToIcon]
-                    }
-                    variant="branded"
-                    size={24}
-                  />
-                }
-              />
+              <AssetIcon asset={asset} />
             </Box>
             {asset.symbol}
           </MotionText>

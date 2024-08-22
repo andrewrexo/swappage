@@ -1,12 +1,12 @@
 import { toastConfig } from '@/lib/util';
 import type { ButtonProps } from '@radix-ui/themes';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { TokenETH } from '@web3icons/react';
 import { AlertCircleIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useDisconnect } from 'wagmi';
 import { WalletPreview } from '../wallet-preview';
 import { DefaultButton } from './default';
+import { TokenIcon } from '../../ui/token-icon';
 
 export const ButtonEthereum = ({
   accountOnly,
@@ -23,7 +23,7 @@ export const ButtonEthereum = ({
         const disconnect = () => {
           disconnectAsync().then(() => {
             toast.success('Ethereum wallet disconnected', {
-              icon: <TokenETH size={16} variant="branded" />,
+              icon: <TokenIcon identifier="ETH" size={16} />,
               ...toastConfig,
             });
           });

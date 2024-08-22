@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#LDO__a)" d="m11.997 14.365-5.673-3.332-.161.244a7.02 7.02 0 0 0 .941 8.684 6.89 6.89 0 0 0 9.786 0 6.996 6.996 0 0 0 .941-8.684l-.16-.244z"/>
+    <path fill="url(#LDO__b)" d="m17.643 11.044-5.629 3.31-5.668-3.31 5.668-2.989z"/>
+    <path fill="url(#LDO__c)" d="m12.002 2 4.893 7.721-4.893 2.873z"/>
+    <path fill="url(#LDO__d)" d="M12.003 2v10.594L7.11 9.716z"/>
+    <defs>
+        <linearGradient id="LDO__a" x1="11.997" x2="11.997" y1="2" y2="22.007" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#498BE9"/>
+            <stop offset="1" stop-color="#56F2FF"/>
+        </linearGradient>
+        <linearGradient id="LDO__b" x1="11.997" x2="11.997" y1="2.017" y2="22" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#4A8CEA"/>
+            <stop offset=".7" stop-color="#5ABEF4"/>
+        </linearGradient>
+        <linearGradient id="LDO__c" x1="13.472" x2="10.749" y1="13.118" y2="22.81" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FB8174"/>
+            <stop offset=".56" stop-color="#568FDD"/>
+        </linearGradient>
+        <linearGradient id="LDO__d" x1="8.145" x2="9.031" y1="7.297" y2="11.576" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#FFE235"/>
+            <stop offset=".61" stop-color="#5DCBA2"/>
+        </linearGradient>
+    </defs>
+</svg>

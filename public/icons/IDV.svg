@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+    <path fill="url(#IDV__a)" d="M9.274 7.682h-.909v2.59a3.636 3.636 0 1 0 .091 4.7l-.486-.876a2.728 2.728 0 1 1 .359-1.869h.945z"/>
+    <path fill="url(#IDV__b)" d="M18.365 16.318a3.637 3.637 0 1 0-2.795-5.964l.513.832a2.728 2.728 0 1 1-.445 1.405l-.728-1.046c-.12.367-.182.75-.181 1.137v3.636h.909v-1.227a3.63 3.63 0 0 0 2.727 1.227"/>
+    <path fill="#14B4FE" d="M2.028 12.227a3.636 3.636 0 0 0 6.428 2.75l-.487-.882a2.727 2.727 0 0 1-5.022-1.868z"/>
+    <path fill="#1EBCFF" fill-rule="evenodd" d="M12.001 16.318a3.636 3.636 0 1 0 0-7.272 3.636 3.636 0 0 0 0 7.272m0-.909a2.727 2.727 0 1 0 0-5.455 2.727 2.727 0 0 0 0 5.455" clip-rule="evenodd"/>
+    <defs>
+        <linearGradient id="IDV__a" x1="16.376" x2="17.096" y1="9.729" y2="13.401" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#14B4FE"/>
+            <stop offset=".66" stop-color="#1A2C58"/>
+        </linearGradient>
+        <linearGradient id="IDV__b" x1="-1.126" x2="2.764" y1="15.239" y2="8.481" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#122543"/>
+            <stop offset=".45" stop-color="#173C66"/>
+            <stop offset="1" stop-color="#5FC0F0"/>
+        </linearGradient>
+    </defs>
+</svg>
