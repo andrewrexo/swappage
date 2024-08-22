@@ -13,7 +13,7 @@ import { createOrderInternal } from './api';
 import { motion } from 'framer-motion';
 import { SwapInput } from './input';
 import { toastConfig } from '@/lib/util';
-import { setFromNetwork } from './slice';
+import { setActiveNetwork, setFromNetwork } from './slice';
 
 const MotionFlex = motion(Flex);
 
@@ -48,6 +48,18 @@ export default function SwapWidgetHome() {
       );
     }
   }, [dispatch, pair]);
+
+  useEffect(() => {
+    if (solanaAddress) {
+      dispatch(setActiveNetwork('solana'));
+    }
+  }, [solanaAddress, dispatch]);
+
+  useEffect(() => {
+    if (ethereumAddress) {
+      dispatch(setActiveNetwork('ethereum'));
+    }
+  }, [ethereumAddress, dispatch]);
 
   const onComplete = ({ orderId }: { orderId: string }) => {
     router.push(`/swap/${orderId}`);

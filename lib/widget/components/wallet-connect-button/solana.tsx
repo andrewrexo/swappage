@@ -13,6 +13,7 @@ import { ResponsiveDialogDrawer } from '../ui/dialog-drawer';
 import { WalletPreview } from './wallet-preview';
 import toast from 'react-hot-toast';
 import { toastConfig } from '@/lib/util';
+import networks from '../../features/assets/network';
 
 export function WalletConnectSolana({
   children,
@@ -38,7 +39,6 @@ export function WalletConnectSolana({
     }
 
     connection.getAccountInfo(publicKey).then((info) => {
-      console.log('info', info);
       if (info) {
         dispatch(setSolanaAddress(publicKey?.toBase58()!));
         // set balance in redux state
@@ -60,7 +60,7 @@ export function WalletConnectSolana({
   const handleDisconnect = async () => {
     disconnect();
     toast.success('Solana wallet disconnected', {
-      icon: '🔌',
+      icon: networks.solana.icon(16),
       ...toastConfig,
     });
   };
@@ -80,6 +80,8 @@ export function WalletConnectSolana({
           className: 'cursor-pointer',
         },
         <WalletPreview
+          connected={!!publicKey}
+          network="solana"
           isPayment={!accountOnly}
           address={publicKey.toBase58()}
         />,
