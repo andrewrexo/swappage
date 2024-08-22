@@ -5,6 +5,8 @@ import { useAppSelector } from '../../lib/hooks';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import { ChangeEvent } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
+import { NetworkIcon, TokenIcon } from '@web3icons/react';
+import { getIconId, networkToIcon } from '../asset-dialog/asset-option';
 
 interface InputAmountProps {
   asset: ExodusAsset;
@@ -36,7 +38,8 @@ export function InputAmount({
           <MotionText
             size="3"
             weight="medium"
-            className="cursor-pointer text-accent"
+            as="div"
+            className="flex cursor-pointer items-center gap-2 text-accent"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -44,6 +47,20 @@ export function InputAmount({
             key={asset.id}
             onClick={() => onDialogOpen(side)}
           >
+            <TokenIcon
+              symbol={getIconId(asset.symbol)}
+              size={24}
+              variant="branded"
+              fallback={
+                <NetworkIcon
+                  network={
+                    networkToIcon[asset.network as keyof typeof networkToIcon]
+                  }
+                  variant="branded"
+                  size={32}
+                />
+              }
+            />
             {asset.symbol}
           </MotionText>
         </TextField.Slot>

@@ -4,7 +4,22 @@ import networkToColor from '../../features/assets/color';
 import { twMerge } from 'tailwind-merge';
 import { NetworkIcon, TokenIcon } from '@web3icons/react';
 
-const networkToIcon = {
+export const getIconId = (assetSymbol: string): string => {
+  const symbolLower = assetSymbol.toLowerCase();
+  const knownTokens = {
+    usdt: 'USDT',
+    usdc: 'USDC',
+  };
+
+  for (const [token, id] of Object.entries(knownTokens)) {
+    if (symbolLower.includes(token)) {
+      return id;
+    }
+  }
+
+  return assetSymbol;
+};
+export const networkToIcon = {
   ethereum: 'ethereum',
   arbitrumone: 'arbitrum-one',
   basemainnet: 'base',
@@ -18,21 +33,7 @@ export function AssetOption({
   asset: ExodusAsset;
   onAssetSelect: (asset: ExodusAsset) => void;
 }) {
-  const iconId = (() => {
-    const symbolLower = asset.symbol.toLowerCase();
-    const knownTokens = {
-      usdt: 'USDT',
-      usdc: 'USDC',
-    };
-
-    for (const [token, id] of Object.entries(knownTokens)) {
-      if (symbolLower.includes(token)) {
-        return id;
-      }
-    }
-
-    return asset.symbol;
-  })();
+  const iconId = getIconId(asset.symbol);
 
   return (
     <Flex
