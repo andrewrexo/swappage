@@ -45,8 +45,8 @@ export function AssetOption({
       onClick={() => onAssetSelect(asset)}
       data-vaul-no-drag
     >
-      <Text as="div" color="gray">
-        <Flex align="center" gap="2">
+      <Text as="div" color="gray" className="w-full">
+        <Flex align="center" gap="2" width="100%">
           <TokenIcon
             symbol={iconId}
             size={32}
@@ -63,21 +63,21 @@ export function AssetOption({
           />
           <Text
             weight="bold"
-            size="4"
             className={twMerge(
               'flex items-center text-xl',
-              asset.name.length > 14 ? 'text-sm' : '',
+              asset.name.length > 14 ? 'text-xs' : '',
             )}
           >
             {asset.name}
           </Text>
-          <Badge size="2" color={networkToColor[asset.network]}>
+          <Badge size="1" color={networkToColor[asset.network]}>
             {asset.symbol}&nbsp;
           </Badge>
           <Badge
             size="2"
             variant="surface"
             color={networkToColor[asset.network]}
+            style={{ marginLeft: 'auto' }}
           >
             {asset.network}
           </Badge>

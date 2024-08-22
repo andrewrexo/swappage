@@ -18,11 +18,12 @@ const networkToColor: Record<
   | 'violet'
   | 'iris'
   | 'indigo'
+  | 'teal'
 > = {
   ethereum: 'blue',
   bitcoin: 'yellow',
   monero: 'orange',
-  solana: 'violet',
+  solana: 'teal',
   avalanche: 'ruby',
   polygon: 'purple',
   optimism: 'red',

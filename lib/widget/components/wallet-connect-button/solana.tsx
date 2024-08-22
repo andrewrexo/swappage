@@ -132,14 +132,14 @@ export function WalletConnectSolana({
                   width={32}
                   className="mr-4 rounded-lg"
                 />
-                <Link key={wallet.adapter.name} size="3" weight="medium">
-                  <div className="text-2xl">{wallet.adapter.name}</div>
-                </Link>
+                <Text weight="bold" className="text-2xl">
+                  {wallet.adapter.name}
+                </Text>
               </Flex>
 
               {wallet.adapter.readyState === 'Installed' && (
                 <Badge size="3" variant="surface" color="mint">
-                  Installed
+                  Detected
                 </Badge>
               )}
             </Flex>

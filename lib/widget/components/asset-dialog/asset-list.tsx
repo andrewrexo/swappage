@@ -14,7 +14,7 @@ export function AssetList({
 
   return assets.length > 0 ? (
     <ScrollArea data-vaul-no-drag>
-      <Grid columns="1" gap="1" className="mt-[-10px] sm:max-h-[50dvh]">
+      <Grid columns="1" gap="1" className="sm:max-h-[50dvh]">
         {trimmedAssets().map((asset) => (
           <AssetOption
             key={asset.id}

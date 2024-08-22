@@ -51,8 +51,8 @@ export function ResponsiveDialogDrawer({
 
   const drawerContent = (
     <>
-      <Box className="mx-auto mt-6 min-h-2 min-w-16 rounded-full bg-[var(--accent-8)]"></Box>
-      <Dialog.Title className="pt-4">
+      <Box className="mx-auto mt-6 min-h-2 min-w-16 rounded-full bg-[var(--accent-10)]"></Box>
+      <Dialog.Title className="px-2 pt-4">
         <Text size="8" weight="bold" className="text-[var(--accent-11)]">
           {title}
         </Text>
