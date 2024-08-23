@@ -4,7 +4,7 @@ import { AssetControl } from '../../components/asset-control';
 import { MotionIconButton } from '../../components/ui/radix-motion';
 import { motion, useAnimationControls } from 'framer-motion';
 import { useState } from 'react';
-import { useAppDispatch, useAppSelector, useMediaQuery } from '../../lib/hooks';
+import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { reverseAssets, setFromAsset, setToAsset } from './slice';
 import { twMerge } from 'tailwind-merge';
 import type { ExodusAsset } from '../../lib/exodus/asset';
@@ -72,14 +72,8 @@ export function SwapInput() {
     setIsDialogOpen(open);
   };
 
-  const isMobile = useMediaQuery('(max-width: 768px)');
-
   return (
-    <Flex
-      direction="column"
-      align="center"
-      gap={currentRate ? (isMobile ? '4' : '2') : '4'}
-    >
+    <Flex direction="column" align="center" className="gap-4 sm:gap-2">
       <AssetControl side="from" setOpen={handleDialogOpen} />
       {currentRate && (
         <motion.div

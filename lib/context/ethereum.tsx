@@ -2,7 +2,7 @@
 
 import { getDefaultConfig, RainbowKitProvider } from '@rainbow-me/rainbowkit';
 import React, { ReactNode } from 'react';
-import { mainnet, polygon, optimism, arbitrum, base } from 'viem/chains';
+import { mainnet, polygon, arbitrum, base } from 'viem/chains';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import {
   metaMaskWallet,
@@ -11,7 +11,6 @@ import {
   walletConnectWallet,
   injectedWallet,
   phantomWallet,
-  magicEdenWallet,
   rainbowWallet,
   safeWallet,
 } from '@rainbow-me/rainbowkit/wallets';
@@ -20,7 +19,7 @@ import { State, WagmiProvider } from 'wagmi';
 export const config = getDefaultConfig({
   appName: 'Swappage',
   projectId: 'e3a25383716ba18636fd724630e85225',
-  chains: [mainnet, polygon, optimism, arbitrum, base],
+  chains: [mainnet, polygon, arbitrum, base],
   ssr: true,
   wallets: [
     {
@@ -33,7 +32,6 @@ export const config = getDefaultConfig({
         coinbaseWallet,
         injectedWallet,
         phantomWallet,
-        magicEdenWallet,
         safeWallet,
       ],
     },

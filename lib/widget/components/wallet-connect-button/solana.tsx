@@ -15,7 +15,6 @@ import toast from 'react-hot-toast';
 import { toastConfig } from '@/lib/util';
 import networks from '../../features/assets/network';
 import { twMerge } from 'tailwind-merge';
-import { AssetIcon } from '../asset-icon';
 import { TokenIcon } from '../ui/token-icon';
 
 export function WalletConnectSolana({

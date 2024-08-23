@@ -1,12 +1,13 @@
 import { toastConfig } from '@/lib/util';
 import type { ButtonProps } from '@radix-ui/themes';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { AlertCircleIcon } from 'lucide-react';
 import toast from 'react-hot-toast';
 import { useDisconnect } from 'wagmi';
 import { WalletPreview } from '../wallet-preview';
 import { DefaultButton } from './default';
 import { TokenIcon } from '../../ui/token-icon';
+import '@rainbow-me/rainbowkit/styles.css';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 export const ButtonEthereum = ({
   accountOnly,
