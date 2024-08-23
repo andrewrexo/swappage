@@ -10,6 +10,7 @@ interface AssetState {
   searchAssets: ExodusAsset[];
   page: number;
   searchQuery: string;
+  loaded: boolean;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
   networks: SupportedNetwork[];
@@ -21,17 +22,26 @@ const initialState: AssetState = {
   searchQuery: '',
   page: 1,
   status: 'idle',
+  loaded: false,
   error: null,
   networks: [...SUPPORTED_NETWORKS] as SupportedNetwork[],
 };
 
 export const fetchAssets = createAsyncThunk<
   { assets: ExodusAsset[]; networks: SupportedNetwork[] },
-  { networks: SupportedNetwork[]; page: number; query?: string },
+  {
+    networks: SupportedNetwork[];
+    page: number;
+    query?: string;
+    search?: boolean;
+  },
   { rejectValue: string }
 >(
   'assets/fetchAssets',
-  async ({ networks, page = 1, query = '' }, { rejectWithValue }) => {
+  async (
+    { networks, page = 1, query = '', search = false },
+    { rejectWithValue },
+  ) => {
     if (networks.length === 0) {
       return rejectWithValue('No valid networks provided');
     }
@@ -58,7 +68,7 @@ export const fetchAssets = createAsyncThunk<
         throw new Error('Received an invalid list of assets');
       }
 
-      return { assets, networks };
+      return { assets, networks, search: search ?? false };
     } catch (error) {
       if (error instanceof Error) {
         return rejectWithValue(error.message);
@@ -88,6 +98,10 @@ const assetSlice = createSlice({
         state.status = 'loading';
       })
       .addCase(fetchAssets.fulfilled, (state, action) => {
+        if (!state.loaded) {
+          state.loaded = true;
+        }
+
         state.status = 'succeeded';
         state.assets = action.payload.assets;
         state.networks = action.payload.networks;

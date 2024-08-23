@@ -1,5 +1,5 @@
-import { useCallback, useMemo, useState } from 'react';
-import { Flex, Progress, TextField } from '@radix-ui/themes';
+import { useCallback } from 'react';
+import { Flex, IconButton, Progress, TextField } from '@radix-ui/themes';
 import type { ChangeEvent, ReactNode } from 'react';
 import { AssetList } from './asset-list';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
@@ -21,9 +21,10 @@ import { motion } from 'framer-motion';
 
 const MotionProgress = motion(Progress);
 
-const supportedNetworks = ['ETH', 'solana', 'arbitrum-one', 'base'];
+const supportedNetworks = ['ETH', 'solana', 'base', 'matic'];
 const supportedNetworksToStandard = {
   ETH: 'ethereum',
+  matic: 'matic',
   solana: 'solana',
   'arbitrum-one': 'ethereumarbone',
   base: 'basemainnet',
@@ -37,44 +38,61 @@ const AssetSearchHeader = ({
   handleNetworkBadgeClick: (network?: string) => void;
 }) => {
   return (
-    <Flex direction="column" gap="2" className="h-full pt-4">
+    <Flex direction="column" gap="2" className="h-full pt-4" width="100%">
       <Flex className="w-full" justify="between" align="center">
         Assets
         <Flex gap="3" align="center">
-          <ReloadIcon
-            width="24"
-            height="24"
-            className="flex cursor-pointer transition-all duration-300"
-            onClick={() => {
-              handleNetworkBadgeClick();
-            }}
-          />
           <HoverEffect
             networks={supportedNetworks}
             onNetworkBadgeClick={handleNetworkBadgeClick}
           />
         </Flex>
       </Flex>
-      <TextField.Root
-        className="h-18 px-2 sm:h-12 sm:bg-inherit"
-        onChange={handleSearch}
-        size="3"
-        variant="surface"
-        style={{
-          marginLeft: '1px',
-          marginRight: '1px',
-          marginTop: '1px',
-        }}
-        placeholder="ShibaNutsackInu"
-      >
-        <TextField.Slot>
-          <MagnifyingGlassIcon
-            className="text-[var(--gray-9)]"
-            height="24"
-            width="24"
-          />
-        </TextField.Slot>
-      </TextField.Root>
+      <Flex gap="2" align="center" width="100%">
+        <TextField.Root
+          className="h-18 px-2 sm:h-12 sm:bg-inherit"
+          onChange={handleSearch}
+          size="3"
+          type="text"
+          variant="surface"
+          style={{
+            marginLeft: '1px',
+            marginRight: '1px',
+            marginTop: '1px',
+            width: '100%',
+          }}
+          placeholder="Search..."
+        >
+          <TextField.Slot>
+            <MagnifyingGlassIcon
+              className="text-[var(--gray-9)]"
+              height="24"
+              width="24"
+            />
+          </TextField.Slot>
+          <TextField.Slot>
+            <IconButton size="1" variant="soft">
+              <ReloadIcon
+                width="16"
+                height="16"
+                className="flex cursor-pointer transition-all duration-300"
+                onClick={() => {
+                  handleNetworkBadgeClick();
+                  const input = document.querySelector(
+                    'input[type="text"]',
+                  ) as HTMLInputElement;
+                  if (input) {
+                    input.value = '';
+                    handleSearch({
+                      target: { value: '' },
+                    } as ChangeEvent<HTMLInputElement>);
+                  }
+                }}
+              />
+            </IconButton>
+          </TextField.Slot>
+        </TextField.Root>
+      </Flex>
     </Flex>
   );
 };
@@ -96,16 +114,20 @@ export function AssetDialog({
 
   const handleLoadMore = () => {
     dispatch(paginateAssets());
-    dispatch(fetchAssets({ networks, page: page + 1 }));
+    dispatch(fetchAssets({ networks, page: page + 1, search: true }));
   };
 
   const debouncedSearch = useCallback(
     debounce((value: string) => {
+      if (value === '' && searchQuery == '') {
+        return;
+      }
+
       dispatch(setSearchQuery(value));
-      dispatch(fetchAssets({ networks, page: 1, query: value }));
+      dispatch(fetchAssets({ networks, page: 1, query: value, search: true }));
     }, 300),
 
-    [dispatch, assets],
+    [dispatch, assets, networks, searchQuery],
   );
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
@@ -115,12 +137,10 @@ export function AssetDialog({
 
   const handleNetworkBadgeClick = (network?: string) => {
     if (!network) {
-      dispatch(setSearchQuery(''));
       dispatch(
         fetchAssets({
           networks: [...SUPPORTED_NETWORKS] as SupportedNetwork[],
           page: 1,
-          ...(searchQuery && { query: searchQuery }),
         }),
       );
       return;

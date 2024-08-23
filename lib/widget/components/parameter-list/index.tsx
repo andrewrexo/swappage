@@ -21,7 +21,7 @@ interface ParameterListProps {
 }
 
 const rateToWidgetDisplayText = (rate: number, pair: string) => {
-  const [from, to] = pair.includes('/') ? pair.split('/') : pair.split('_');
+  const [from, to] = pair.split('_');
   return (
     <Flex align="center" gap="1">
       <Code size="2">
