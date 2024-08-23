@@ -22,11 +22,9 @@ export const TokenIcon: FC<TokenIconProps> = ({
       try {
         // Dynamically import the SVG
         const iconModule = await import(`/public/icons/${identifier}.svg`);
-
         setIconSrc(iconModule.default);
       } catch (error) {
         const iconModule = await import(`/public/icons/${fallback}.svg`);
-
         setIconSrc(iconModule.default);
       }
     };
@@ -35,7 +33,7 @@ export const TokenIcon: FC<TokenIconProps> = ({
   }, [identifier]);
 
   if (!iconSrc) {
-    return <div style={{ width: size, height: size }}></div>;
+    return <>{fallback}</>;
   }
 
   return (
