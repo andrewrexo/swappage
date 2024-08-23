@@ -69,6 +69,12 @@ export default function SwapWidgetHome({
     }
   }, [ethereumAddress, dispatch]);
 
+  useEffect(() => {
+    if (freshRate && !rate) {
+      dispatch(setCurrentRate(freshRate));
+    }
+  }, [freshRate, dispatch]);
+
   const onComplete = ({ orderId }: { orderId: string }) => {
     router.push(`/swap/${orderId}`);
   };

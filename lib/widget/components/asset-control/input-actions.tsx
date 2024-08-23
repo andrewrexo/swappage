@@ -51,12 +51,14 @@ export function InputActions({
           onCustomClick={onCustomClick}
           currentRate={currentRate}
         />
-        <Text size={isMobile ? `1` : `2`} color="gray" className="text-right">
-          $
-          {side === 'from'
-            ? (currentRate.fromAssetFiat * parseFloat(fromAmount)).toFixed(4)
-            : (currentRate.toAssetFiat * parseFloat(toAmount)).toFixed(4)}
-        </Text>
+        {currentRate && currentRate.fromAssetFiat && (
+          <Text size={isMobile ? `1` : `2`} color="gray" className="text-right">
+            $
+            {side === 'from'
+              ? (currentRate.fromAssetFiat * parseFloat(fromAmount)).toFixed(4)
+              : (currentRate.toAssetFiat * parseFloat(toAmount)).toFixed(4)}
+          </Text>
+        )}
       </Flex>
     </Skeleton>
   );

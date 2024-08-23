@@ -9,11 +9,14 @@ import getAvailableAssets, {
 import { getRateByPairIdSwappage } from '@/lib/widget/lib/rates';
 
 export default async function Home() {
-  const assets = await getAvailableAssets([
-    ...SUPPORTED_NETWORKS,
-  ] as SupportedNetwork[]);
-
-  const rate = await getRateByPairIdSwappage('SOL_ETH', '');
+  const [assets, rate] = await Promise.all([
+    getAvailableAssets([...SUPPORTED_NETWORKS] as SupportedNetwork[], {
+      limit: '25',
+      page: '1',
+      query: '',
+    }),
+    getRateByPairIdSwappage('SOL_ETH', ''),
+  ]);
 
   const widgetOpts: SwapWidgetProps = {
     width: '440px',
