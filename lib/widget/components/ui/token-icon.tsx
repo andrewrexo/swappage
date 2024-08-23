@@ -1,6 +1,7 @@
-import { useState, useEffect, FC, ReactNode } from 'react';
+import { useState, useEffect, FC } from 'react';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
+import { Box } from '@radix-ui/themes';
 
 interface TokenIconProps {
   identifier: string;
@@ -33,7 +34,13 @@ export const TokenIcon: FC<TokenIconProps> = ({
   }, [identifier]);
 
   if (!iconSrc) {
-    return <>{fallback}</>;
+    return (
+      <Box
+        width={`${size}px`}
+        height={`${size}px`}
+        className={twMerge(`rounded-full`, className)}
+      />
+    );
   }
 
   return (

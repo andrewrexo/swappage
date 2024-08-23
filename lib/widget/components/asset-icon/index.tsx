@@ -2,11 +2,8 @@ import { getIconId, networkToIcon } from '../asset-dialog/asset-option';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import dynamic from 'next/dynamic';
 
-const DynamicTokenIcon = dynamic(
-  () => import('../ui/token-icon').then((mod) => mod.TokenIcon),
-  {
-    ssr: false,
-  },
+const DynamicTokenIcon = dynamic(() =>
+  import('../ui/token-icon').then((mod) => mod.TokenIcon),
 );
 
 export const AssetIcon = ({ asset }: { asset: Partial<ExodusAsset> }) => {
