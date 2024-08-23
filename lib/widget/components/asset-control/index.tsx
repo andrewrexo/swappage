@@ -25,7 +25,7 @@ export function AssetControl({
   };
 
   const { currentRate } = useAppSelector((state) => state.rates);
-  const { status } = useAppSelector((state) => state.assets);
+  const { loaded } = useAppSelector((state) => state.assets);
   const { fromAsset, toAsset, fromAmount, toAmount } = useAppSelector(
     (state) => state.swap,
   );
@@ -33,7 +33,7 @@ export function AssetControl({
   const selectedAsset = side === 'from' ? fromAsset : toAsset;
 
   useEffect(() => {
-    if (status === 'loading') {
+    if (!loaded) {
       return;
     }
 
@@ -41,10 +41,10 @@ export function AssetControl({
       const calculatedValue = parseFloat(fromAmount) * currentRate.amount.value;
       dispatch(setToAmount(calculatedValue.toString()));
     }
-  }, [status, currentRate, fromAmount, side, dispatch]);
+  }, [currentRate, fromAmount, side, dispatch]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (status === 'loading') {
+    if (!loaded) {
       return;
     }
 
@@ -57,7 +57,7 @@ export function AssetControl({
 
   return (
     <Flex direction="column" gap="2" className="w-full">
-      <Skeleton loading={status === 'loading'} maxWidth="100px">
+      <Skeleton loading={!loaded} maxWidth="100px">
         <Flex align="center" gap="2" justify="between">
           <AssetName
             assetName={selectedAsset.id}
@@ -66,7 +66,7 @@ export function AssetControl({
           />
         </Flex>
       </Skeleton>
-      <Skeleton loading={status === 'loading'}>
+      <Skeleton loading={!loaded}>
         <InputAmount
           asset={selectedAsset}
           side={side}
@@ -80,7 +80,7 @@ export function AssetControl({
           fromAmount={fromAmount}
           toAmount={toAmount}
           currentRate={currentRate}
-          loading={status === 'loading'}
+          loading={!loaded}
         />
       )}
     </Flex>
