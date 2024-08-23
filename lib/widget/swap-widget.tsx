@@ -1,5 +1,5 @@
 'use client';
-import { Flex, IconButton, Spinner, Text } from '@radix-ui/themes';
+import { Flex, Spinner, Text } from '@radix-ui/themes';
 import { WidgetHeader } from './components/widget-header';
 import { twMerge } from 'tailwind-merge';
 import { useAppDispatch, useAppSelector } from './lib/hooks';
@@ -7,8 +7,6 @@ import { AnimatePresence } from 'framer-motion';
 import { type ReactNode, useEffect } from 'react';
 import { useMediaQuery } from './lib/hooks';
 import toast, { Toaster } from 'react-hot-toast';
-import { DoubleArrowLeftIcon } from '@radix-ui/react-icons';
-import { usePathname, useRouter } from 'next/navigation';
 import { MotionFlex } from './components/ui/radix-motion';
 import { useAccount } from 'wagmi';
 import { animVariants } from './config';
@@ -42,8 +40,6 @@ export function SwapWidget({
   const { width, className } = swapWidgetProps;
 
   const dispatch = useAppDispatch();
-  const router = useRouter();
-  const pathname = usePathname();
   const isSmall = useMediaQuery('(max-width: 640px)');
 
   const account = useAccount();
@@ -100,23 +96,10 @@ export function SwapWidget({
         >
           <Flex justify="between" gap="4">
             <Flex gap="2" align="center">
-              {pathname !== '/swap' && !isSmall && (
-                <IconButton
-                  name="back-history"
-                  size="2"
-                  onClick={() => router.push('/swap/')}
-                  variant="soft"
-                >
-                  <DoubleArrowLeftIcon className="h-6 w-6" />
-                </IconButton>
-              )}
-              <Text
-                size="5"
-                weight="bold"
-                className="user-select-none pointer-events-none flex items-center gap-2 text-accent"
-              >
-                Swappage {status === 'loading' ? <Spinner /> : ''}
+              <Text size="6" weight="bold">
+                Swappage
               </Text>
+              {status === 'loading' ? <Spinner /> : ''}
             </Flex>
             <WidgetHeader />
           </Flex>
