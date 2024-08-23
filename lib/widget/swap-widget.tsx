@@ -102,6 +102,7 @@ export function SwapWidget({
             <Flex gap="2" align="center">
               {pathname !== '/swap' && !isSmall && (
                 <IconButton
+                  name="back-history"
                   size="2"
                   onClick={() => router.push('/swap/')}
                   variant="soft"

@@ -9,6 +9,7 @@ const DynamicTokenIcon = dynamic(() =>
 export const AssetIcon = ({ asset }: { asset: Partial<ExodusAsset> }) => {
   return (
     <DynamicTokenIcon
+      key={`asset-icon-${asset.id}`}
       identifier={getIconId(asset.symbol ?? '')}
       size={24}
       className="max-h-6 max-w-6"

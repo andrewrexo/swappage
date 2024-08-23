@@ -27,6 +27,8 @@ export function InputAmount({
 
   return (
     <TextField.Root
+      aria-label={`${side}-amount-input`}
+      key={`${side}-amount-input-root`}
       size="3"
       variant="surface"
       color="gray"
@@ -35,7 +37,10 @@ export function InputAmount({
       onChange={onInputChange}
     >
       <AnimatePresence mode="wait">
-        <TextField.Slot style={{ padding: '0px', minWidth: '100px' }}>
+        <TextField.Slot
+          style={{ padding: '0px', minWidth: '100px' }}
+          key={`${side}-amount-input-slot`}
+        >
           <MotionFlexUnstyled
             gap="2"
             align="center"
@@ -48,10 +53,16 @@ export function InputAmount({
             initial={{ opacity: 0.5 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.25 }}
-            key={asset.id}
+            key={`${side}-amount-input-${asset.id}`}
           >
-            {asset.symbol.length <= 4 && <AssetIcon asset={asset} />}
-            <Text color={networkToColor[asset.network]} weight="bold">
+            {asset.symbol.length <= 4 && (
+              <AssetIcon key={`asset-icon-${asset.id}`} asset={asset} />
+            )}
+            <Text
+              key={`asset-symbol-${asset.id}`}
+              color={networkToColor[asset.network]}
+              weight="bold"
+            >
               {asset.symbol}
             </Text>
           </MotionFlexUnstyled>
@@ -60,6 +71,7 @@ export function InputAmount({
       <TextField.Slot className="">
         <IconButton
           size="1"
+          name="select-asset"
           variant="soft"
           className="cursor-pointer"
           loading={rateStatus === 'loading'}

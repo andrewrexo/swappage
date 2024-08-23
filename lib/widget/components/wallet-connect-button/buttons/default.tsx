@@ -1,6 +1,8 @@
 import { type ButtonProps, Button } from '@radix-ui/themes';
-import { motion } from 'framer-motion';
+import { motion, type MotionProps } from 'framer-motion';
 import type { ReactNode } from 'react';
+
+const MotionButton = motion(Button);
 
 export const DefaultButton = ({
   children,
@@ -11,23 +13,22 @@ export const DefaultButton = ({
   children: ReactNode;
   onClick?: () => void;
   accountOnly?: boolean;
-} & ButtonProps) => {
+} & ButtonProps &
+  MotionProps) => {
   return (
-    <Button
+    <MotionButton
       variant={accountOnly ? 'surface' : 'surface'}
       asChild
       className="flex cursor-pointer"
       onClick={onClick}
+      name="connect-wallet"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.2 }}
+      {...(!accountOnly ? { whileHover: { scale: 1.02 } } : {})}
       {...props}
     >
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.2 }}
-        {...(!accountOnly ? { whileHover: { scale: 1.02 } } : {})}
-      >
-        {children}
-      </motion.div>
-    </Button>
+      <motion.button>{children}</motion.button>
+    </MotionButton>
   );
 };

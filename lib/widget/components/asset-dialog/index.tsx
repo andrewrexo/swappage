@@ -71,7 +71,7 @@ const AssetSearchHeader = ({
             />
           </TextField.Slot>
           <TextField.Slot>
-            <IconButton size="1" variant="soft">
+            <IconButton size="1" variant="soft" name="clear-search">
               <ReloadIcon
                 width="16"
                 height="16"

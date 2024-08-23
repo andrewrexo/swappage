@@ -137,6 +137,7 @@ export function SwapButton({
         'cursor-pointer overflow-hidden',
         fullWidth ? 'w-full' : 'w-auto',
       )}
+      name="execute-swap"
       variant="surface"
       mt="1"
       asChild

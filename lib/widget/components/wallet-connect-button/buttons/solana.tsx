@@ -17,6 +17,7 @@ export const ButtonSolana = ({
       <DefaultButton
         size={accountOnly ? '2' : size}
         accountOnly={accountOnly}
+        name="connect-solana-wallet"
         style={{ width: '100%' }}
       >
         <WalletPreview

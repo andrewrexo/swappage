@@ -72,7 +72,12 @@ export function ParameterList({
             Rate
           </Text>
           <Tooltip content="Refresh rate">
-            <IconButton size="1" variant="ghost" onClick={reloadRate}>
+            <IconButton
+              size="1"
+              variant="ghost"
+              onClick={reloadRate}
+              name="refresh-rate"
+            >
               <UpdateIcon
                 className={twMerge(
                   status === 'loading' && 'animate-spin transition-all',

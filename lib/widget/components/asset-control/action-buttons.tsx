@@ -19,13 +19,13 @@ export function ActionButtons({
 }: ActionButtonsProps) {
   return side === 'from' ? (
     <ButtonGroup size="2" variant="soft">
-      <Button onClick={onMinClick}>
+      <Button onClick={onMinClick} name="min-amount">
         <Text>Min</Text>
       </Button>
-      <Button onClick={onMaxClick}>
+      <Button onClick={onMaxClick} name="max-amount">
         <Text>Max</Text>
       </Button>
-      <Button onClick={onCustomClick}>
+      <Button onClick={onCustomClick} name="custom-amount">
         <Text>$50</Text>
       </Button>
     </ButtonGroup>

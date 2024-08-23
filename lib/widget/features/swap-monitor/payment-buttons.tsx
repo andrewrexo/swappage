@@ -31,6 +31,7 @@ export function PaymentButtons({
         onClick={handleShowQR}
         asChild
         className="cursor-pointer"
+        name="manual-payment-button"
       >
         <motion.div whileHover={{ scale: 1.02 }}>
           Manual payment

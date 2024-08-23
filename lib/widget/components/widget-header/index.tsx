@@ -29,7 +29,12 @@ export function WidgetHeader() {
       />
       <Popover.Root>
         <Popover.Trigger>
-          <IconButton variant="soft" size="2" className="cursor-pointer">
+          <IconButton
+            variant="soft"
+            size="2"
+            className="cursor-pointer"
+            name="open-menu"
+          >
             <MenuIcon />
           </IconButton>
         </Popover.Trigger>
@@ -37,6 +42,7 @@ export function WidgetHeader() {
           <Text weight="medium">Wallet actions</Text>
           <Flex gap="2" direction="column">
             <Button
+              name="network-button"
               size="3"
               variant="soft"
               onClick={() => {
@@ -49,6 +55,7 @@ export function WidgetHeader() {
               <ReplaceIcon className="ml-auto h-4 w-4" />
             </Button>
             <Button
+              name="disconnect-button"
               size="3"
               variant="soft"
               onClick={() => {
