@@ -7,8 +7,15 @@ import { useState } from 'react';
 import { useAppDispatch, useAppSelector, useMediaQuery } from '../../lib/hooks';
 import { reverseAssets, setFromAsset, setToAsset } from './slice';
 import { twMerge } from 'tailwind-merge';
-import { AssetDialog } from '../../components/asset-dialog';
 import type { ExodusAsset } from '../../lib/exodus/asset';
+import dynamic from 'next/dynamic';
+
+const DynamicAssetDialog = dynamic(
+  () => import('../../components/asset-dialog').then((mod) => mod.AssetDialog),
+  {
+    ssr: false,
+  },
+);
 
 export function SwapInput() {
   const { status, currentRate } = useAppSelector((state) => state.rates);
@@ -95,13 +102,13 @@ export function SwapInput() {
         </motion.div>
       )}
       <AssetControl side="to" setOpen={handleDialogOpen} />
-      <AssetDialog
+      <DynamicAssetDialog
         open={isDialogOpen}
         setOpen={handleDialogOpen}
         onAssetSelect={handleAssetSelect}
       >
         <div></div>
-      </AssetDialog>
+      </DynamicAssetDialog>
     </Flex>
   );
 }
