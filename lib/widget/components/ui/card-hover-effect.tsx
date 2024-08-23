@@ -7,6 +7,7 @@ const networkToDisplayName = {
   ETH: 'Ethereum',
   solana: 'Solana',
   base: 'Base',
+  matic: 'Polygon',
   'arbitrum-one': 'Arbitrum',
 };
 

@@ -25,6 +25,7 @@ const networkToColor: Record<
   ETH: 'blue',
   'arbitrum-one': 'cyan',
   base: 'iris',
+  matic: 'violet',
   bitcoin: 'yellow',
   monero: 'orange',
   solana: 'teal',

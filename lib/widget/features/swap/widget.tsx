@@ -44,7 +44,13 @@ export default function SwapWidgetHome() {
     if (!assets || assets.length === 0) {
       dispatch(
         fetchAssets({
-          networks: ['solana', 'ethereumarbone', 'basemainnet', 'ethereum'],
+          networks: [
+            'solana',
+            'ethereumarbone',
+            'basemainnet',
+            'ethereum',
+            'matic',
+          ],
           page: 1,
         }),
       );

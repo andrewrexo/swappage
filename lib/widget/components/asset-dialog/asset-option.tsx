@@ -23,6 +23,7 @@ export const networkToIcon = {
   ethereum: 'ethereum',
   ethereumarbone: 'arbitrum-one',
   basemainnet: 'base',
+  matic: 'matic',
   solana: 'solana',
 };
 
@@ -56,6 +57,8 @@ export function AssetOption({
                 'from-[var(--cyan-3)] to-[var(--cyan-2)]',
               asset.network === 'basemainnet' &&
                 'from-[var(--indigo-3)] to-[var(--indigo-2)]',
+              asset.network === 'matic' &&
+                'from-[var(--violet-3)] to-[var(--violet-2)]',
               asset.network === 'solana' &&
                 'from-[var(--teal-3)] to-[var(--teal-2)]',
             )}

@@ -3,6 +3,7 @@ import { authenticatedExodusRequest } from './fetch';
 export const SUPPORTED_NETWORKS = [
   'solana',
   'ethereum',
+  'matic',
   'ethereumarbone',
   'basemainnet',
 ] as const;
