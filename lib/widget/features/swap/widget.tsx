@@ -12,10 +12,9 @@ import { createOrderInternal } from './api';
 import { motion } from 'framer-motion';
 import { SwapInput } from './input';
 import { toastConfig } from '@/lib/util';
-import { setActiveNetwork } from './slice';
 import { ExodusAsset, SUPPORTED_NETWORKS } from '../../lib/exodus/asset';
 import { PairRate } from '../../lib/exodus/rate';
-import { setCurrentRate } from '../rates/slice';
+import { fetchPairRate, setCurrentRate } from '../rates/slice';
 
 const MotionFlex = motion(Flex);
 
@@ -58,22 +57,24 @@ export default function SwapWidgetHome({
   };
 
   useEffect(() => {
-    if (solanaAddress) {
-      dispatch(setActiveNetwork('solana'));
-    }
-  }, [solanaAddress, dispatch]);
-
-  useEffect(() => {
-    if (ethereumAddress) {
-      dispatch(setActiveNetwork('ethereum'));
-    }
-  }, [ethereumAddress, dispatch]);
-
-  useEffect(() => {
     if (freshRate && !rate) {
       dispatch(setCurrentRate(freshRate));
     }
   }, [freshRate, dispatch]);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      dispatch(fetchPairRate(pair));
+    }, 15000); // 15 seconds
+
+    return () => clearInterval(intervalId);
+  }, [dispatch, pair]);
+
+  useEffect(() => {
+    if (pair) {
+      dispatch(fetchPairRate(pair));
+    }
+  }, [dispatch, pair]);
 
   const onComplete = ({ orderId }: { orderId: string }) => {
     router.push(`/swap/${orderId}`);

@@ -1,12 +1,12 @@
 'use server';
 import { SwapWidget } from '../lib/widget/swap-widget';
 import SwapWidgetHome from '../lib/widget/features/swap/widget';
-import type { SwapWidgetProps } from '../lib/widget/swap-widget';
 import getAvailableAssets, {
   SUPPORTED_NETWORKS,
   type SupportedNetwork,
 } from '@/lib/widget/lib/exodus/asset';
 import { getRateByPairIdSwappage } from '@/lib/widget/lib/rates';
+import widgetOpts from '@/lib/widget/config';
 
 export default async function Home() {
   const [assets, rate] = await Promise.all([
@@ -18,20 +18,8 @@ export default async function Home() {
     getRateByPairIdSwappage('SOL_ETH', ''),
   ]);
 
-  const widgetOpts: SwapWidgetProps = {
-    width: '440px',
-    height: '420px',
-    theme: 'light',
-    backgroundColor: 'white',
-    textColor: 'black',
-    assetMode: 'input',
-    ratesMode: 'fixed',
-    assetDiscovery: 'enabled',
-    className: '',
-  };
-
   return (
-    <SwapWidget {...widgetOpts} freshRate={rate}>
+    <SwapWidget {...widgetOpts}>
       <SwapWidgetHome assets={assets} freshRate={rate} />
     </SwapWidget>
   );
