@@ -7,6 +7,7 @@ import { twMerge } from 'tailwind-merge';
 import Web3Provider from '@/lib/context';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
+import '@radix-ui/themes/styles.css';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
