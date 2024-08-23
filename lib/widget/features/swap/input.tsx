@@ -4,11 +4,18 @@ import { AssetControl } from '../../components/asset-control';
 import { MotionIconButton } from '../../components/ui/radix-motion';
 import { motion, useAnimationControls } from 'framer-motion';
 import { useState } from 'react';
-import { useAppDispatch, useAppSelector, useMediaQuery } from '../../lib/hooks';
+import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { reverseAssets, setFromAsset, setToAsset } from './slice';
 import { twMerge } from 'tailwind-merge';
-import { AssetDialog } from '../../components/asset-dialog';
 import type { ExodusAsset } from '../../lib/exodus/asset';
+import dynamic from 'next/dynamic';
+
+const DynamicAssetDialog = dynamic(
+  () => import('../../components/asset-dialog').then((mod) => mod.AssetDialog),
+  {
+    ssr: false,
+  },
+);
 
 export function SwapInput() {
   const { status, currentRate } = useAppSelector((state) => state.rates);
@@ -65,14 +72,8 @@ export function SwapInput() {
     setIsDialogOpen(open);
   };
 
-  const isMobile = useMediaQuery('(max-width: 768px)');
-
   return (
-    <Flex
-      direction="column"
-      align="center"
-      gap={currentRate ? (isMobile ? '4' : '2') : '4'}
-    >
+    <Flex direction="column" align="center" className="gap-4 sm:gap-2">
       <AssetControl side="from" setOpen={handleDialogOpen} />
       {currentRate && (
         <motion.div
@@ -95,13 +96,13 @@ export function SwapInput() {
         </motion.div>
       )}
       <AssetControl side="to" setOpen={handleDialogOpen} />
-      <AssetDialog
+      <DynamicAssetDialog
         open={isDialogOpen}
         setOpen={handleDialogOpen}
         onAssetSelect={handleAssetSelect}
       >
         <div></div>
-      </AssetDialog>
+      </DynamicAssetDialog>
     </Flex>
   );
 }

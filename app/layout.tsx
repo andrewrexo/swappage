@@ -5,8 +5,8 @@ import type { ReactNode } from 'react';
 import StoreProvider from './StoreProvider';
 import { twMerge } from 'tailwind-merge';
 import Web3Provider from '@/lib/context';
+import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import '@rainbow-me/rainbowkit/styles.css';
 import '@radix-ui/themes/styles.css';
 import './globals.css';
 
@@ -46,6 +46,7 @@ export default function RootLayout({
             </StoreProvider>
           </Web3Provider>
         </Theme>
+        <SpeedInsights />
       </body>
     </html>
   );

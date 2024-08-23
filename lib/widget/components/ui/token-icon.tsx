@@ -1,6 +1,7 @@
-import { useState, useEffect, FC, ReactNode } from 'react';
+import { useState, useEffect, FC } from 'react';
 import Image from 'next/image';
 import { twMerge } from 'tailwind-merge';
+import { Box } from '@radix-ui/themes';
 
 interface TokenIconProps {
   identifier: string;
@@ -22,11 +23,9 @@ export const TokenIcon: FC<TokenIconProps> = ({
       try {
         // Dynamically import the SVG
         const iconModule = await import(`/public/icons/${identifier}.svg`);
-
         setIconSrc(iconModule.default);
       } catch (error) {
         const iconModule = await import(`/public/icons/${fallback}.svg`);
-
         setIconSrc(iconModule.default);
       }
     };
@@ -35,7 +34,13 @@ export const TokenIcon: FC<TokenIconProps> = ({
   }, [identifier]);
 
   if (!iconSrc) {
-    return <div style={{ width: size, height: size }}></div>;
+    return (
+      <Box
+        width={`${size}px`}
+        height={`${size}px`}
+        className={twMerge(`rounded-full`, className)}
+      />
+    );
   }
 
   return (

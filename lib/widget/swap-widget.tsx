@@ -5,7 +5,6 @@ import { twMerge } from 'tailwind-merge';
 import { useAppDispatch, useAppSelector } from './lib/hooks';
 import { AnimatePresence } from 'framer-motion';
 import { type ReactNode, useEffect } from 'react';
-import { fetchPairRate, setCurrentRate } from './features/rates/slice';
 import { useMediaQuery } from './lib/hooks';
 import toast, { Toaster } from 'react-hot-toast';
 import { DoubleArrowLeftIcon } from '@radix-ui/react-icons';
@@ -18,13 +17,13 @@ import { toastConfig } from '../util';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { TokenIcon } from './components/ui/token-icon';
 import { PairRate } from './lib/exodus/rate';
+import { displayAddress } from './lib/display-utils';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
-type AssetDiscovery = 'enabled' | 'disabled' | (string & {});
+//todo pass in supported networks
 
 export interface SwapWidgetProps {
-  // todo: add props
   width: string;
   height: string;
   theme: 'light' | 'dark';
@@ -32,7 +31,6 @@ export interface SwapWidgetProps {
   textColor: string;
   assetMode: SwapMode;
   ratesMode: RatesMode;
-  assetDiscovery: AssetDiscovery;
   className: string;
 }
 
@@ -41,59 +39,40 @@ export function SwapWidget({
   children,
   ...swapWidgetProps
 }: SwapWidgetProps & { children: ReactNode; freshRate?: PairRate }) {
+  const { width, className } = swapWidgetProps;
+
   const dispatch = useAppDispatch();
   const router = useRouter();
   const pathname = usePathname();
-  const { width, className } = swapWidgetProps;
-  const { status, currentRate } = useAppSelector((state) => state.rates);
-  const { pair } = useAppSelector((state) => state.swap);
   const isSmall = useMediaQuery('(max-width: 640px)');
+
   const account = useAccount();
   const { publicKey } = useWallet();
+  const { status } = useAppSelector((state) => state.rates);
 
   useEffect(() => {
     if (account.address) {
       dispatch(setEthereumAddress(account.address));
 
-      toast.success(
-        `Connected to wallet ${account.address.slice(0, 6)}...${account.address.slice(-4)}`,
-        {
-          ...toastConfig,
-          icon: <TokenIcon identifier="ETH" size={24} />,
-        },
-      );
+      toast.success(`Connected to wallet ${displayAddress(account.address)}`, {
+        ...toastConfig,
+        icon: <TokenIcon identifier="ETH" size={24} />,
+      });
     }
   }, [account.address, dispatch]);
 
+  // detects pairing of Solana wallet and stores in redux
   useEffect(() => {
     if (publicKey) {
       const account = publicKey?.toBase58()!;
       dispatch(setSolanaAddress(account));
 
-      toast.success(
-        `Connected to wallet: ${account.slice(0, 6)}...${account.slice(-4)}`,
-        { ...toastConfig, icon: <TokenIcon identifier="SOL" size={24} /> },
-      );
+      toast.success(`Connected to wallet: ${displayAddress(account)}`, {
+        ...toastConfig,
+        icon: <TokenIcon identifier="SOL" size={24} />,
+      });
     }
-  }, [publicKey]);
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      dispatch(fetchPairRate(pair));
-    }, 15000); // 15 seconds
-
-    return () => clearInterval(intervalId);
-  }, [dispatch, pair]);
-
-  useEffect(() => {
-    if (freshRate && !currentRate) {
-      dispatch(setCurrentRate(freshRate));
-    }
-
-    dispatch(fetchPairRate(pair));
-  }, [pair, freshRate, dispatch]);
-
-  useEffect(() => {}, [dispatch, pair]);
+  }, [publicKey, dispatch]);
 
   return (
     <AnimatePresence>

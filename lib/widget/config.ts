@@ -8,7 +8,6 @@ const widgetOpts: SwapWidgetProps = {
   textColor: 'black',
   assetMode: 'input',
   ratesMode: 'fixed',
-  assetDiscovery: 'enabled  ',
   className: '',
 };
 

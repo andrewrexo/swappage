@@ -2,10 +2,7 @@ import { Box, Flex, Text } from '@radix-ui/themes';
 import { ArrowTopRightIcon, Link1Icon } from '@radix-ui/react-icons';
 import type { SupportedNetwork } from '../../features/assets/network';
 import networks from '../../features/assets/network';
-
-const getDisplayLabelAddress = (address: string, length: number = 4) => {
-  return `${address.slice(0, length)}...${address.slice(-length)}`;
-};
+import { displayAddress } from '../../lib/display-utils';
 
 export function WalletPreview({
   isPayment,
@@ -34,7 +31,7 @@ export function WalletPreview({
     return (
       <Flex align="center" gap="2" justify="between" width="100%">
         {networks[network].icon(16)}
-        {getDisplayLabelAddress(address, 4)}
+        {displayAddress(address, 4)}
       </Flex>
     );
   }
@@ -47,7 +44,7 @@ export function WalletPreview({
           Pay with
         </Text>
       )}
-      {getDisplayLabelAddress(address, 4)}
+      {displayAddress(address, 4)}
       <div className="ml-auto">
         <ArrowTopRightIcon className={`ml-auto h-6 w-6`} />
       </div>
