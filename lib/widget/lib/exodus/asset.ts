@@ -68,7 +68,12 @@ const getAvailableAssets = async (
     throw new Error('Invalid response from Exodus Exchange rates API');
   }
 
-  return assets;
+  return assets.map((asset) => ({
+    network: asset.network.toLowerCase(),
+    id: asset.id,
+    symbol: asset.symbol,
+    name: asset.name,
+  }));
 };
 
 export const demoAssets: ExodusAsset[] = [

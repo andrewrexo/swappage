@@ -85,6 +85,11 @@ const assetSlice = createSlice({
     paginateAssets: (state) => {
       state.page = state.page + 1;
     },
+    setAssets: (state, action) => {
+      state.assets = action.payload;
+      state.loaded = true;
+      state.status = 'succeeded';
+    },
     setSearchAssets: (state, action) => {
       state.searchAssets = action.payload;
     },
@@ -113,7 +118,7 @@ const assetSlice = createSlice({
   },
 });
 
-export const { setSearchAssets, paginateAssets, setSearchQuery } =
+export const { setAssets, setSearchAssets, paginateAssets, setSearchQuery } =
   assetSlice.actions;
 
 export default assetSlice.reducer;

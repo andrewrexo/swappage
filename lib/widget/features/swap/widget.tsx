@@ -5,7 +5,7 @@ import { ParameterList } from '../../components/parameter-list';
 import { SwapButton } from '../../components/swap-button';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { useRouter } from 'next/navigation';
-import { fetchAssets } from '../assets/slice';
+import { fetchAssets, setAssets } from '../assets/slice';
 import { LazyOrder } from '../../lib/order';
 import toast from 'react-hot-toast';
 import { createOrderInternal } from './api';
@@ -13,10 +13,19 @@ import { motion } from 'framer-motion';
 import { SwapInput } from './input';
 import { toastConfig } from '@/lib/util';
 import { setActiveNetwork } from './slice';
+import { ExodusAsset, SUPPORTED_NETWORKS } from '../../lib/exodus/asset';
+import { PairRate } from '../../lib/exodus/rate';
+import { setCurrentRate } from '../rates/slice';
 
 const MotionFlex = motion(Flex);
 
-export default function SwapWidgetHome() {
+export default function SwapWidgetHome({
+  assets,
+  freshRate,
+}: {
+  assets: ExodusAsset[];
+  freshRate?: PairRate;
+}) {
   const dispatch = useAppDispatch();
   const router = useRouter();
 
@@ -30,32 +39,23 @@ export default function SwapWidgetHome() {
     toAsset,
   } = useAppSelector((state) => state.swap);
 
+  const { assets: assetsState } = useAppSelector((state) => state.assets);
   const { currentRate: rate, status } = useAppSelector((state) => state.rates);
   const { displayPair: pair } = useAppSelector((state) => state.swap);
-  const { assets } = useAppSelector((state) => state.assets);
   const [swapComplete, setSwapComplete] = useState(false);
+
+  useEffect(() => {
+    dispatch(setAssets(assets));
+
+    if (!assetsState) {
+      dispatch(fetchAssets({ networks: [...SUPPORTED_NETWORKS], page: 1 }));
+    }
+  }, [assets, dispatch]);
 
   const swapBaseParameters = {
     pair,
     provider: 'XOSwap', // TODO: get from rate
   };
-
-  useEffect(() => {
-    if (!assets || assets.length === 0) {
-      dispatch(
-        fetchAssets({
-          networks: [
-            'solana',
-            'ethereumarbone',
-            'basemainnet',
-            'ethereum',
-            'matic',
-          ],
-          page: 1,
-        }),
-      );
-    }
-  }, [dispatch, pair]);
 
   useEffect(() => {
     if (solanaAddress) {

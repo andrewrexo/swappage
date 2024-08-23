@@ -5,7 +5,7 @@ import { twMerge } from 'tailwind-merge';
 import { useAppDispatch, useAppSelector } from './lib/hooks';
 import { AnimatePresence } from 'framer-motion';
 import { type ReactNode, useEffect } from 'react';
-import { fetchPairRate } from './features/rates/slice';
+import { fetchPairRate, setCurrentRate } from './features/rates/slice';
 import { useMediaQuery } from './lib/hooks';
 import toast, { Toaster } from 'react-hot-toast';
 import { DoubleArrowLeftIcon } from '@radix-ui/react-icons';
@@ -17,6 +17,7 @@ import { setEthereumAddress, setSolanaAddress } from './features/swap/slice';
 import { toastConfig } from '../util';
 import { useWallet } from '@solana/wallet-adapter-react';
 import { TokenIcon } from './components/ui/token-icon';
+import { PairRate } from './lib/exodus/rate';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -36,14 +37,15 @@ export interface SwapWidgetProps {
 }
 
 export function SwapWidget({
+  freshRate,
   children,
   ...swapWidgetProps
-}: SwapWidgetProps & { children: ReactNode }) {
+}: SwapWidgetProps & { children: ReactNode; freshRate?: PairRate }) {
   const dispatch = useAppDispatch();
   const router = useRouter();
   const pathname = usePathname();
   const { width, className } = swapWidgetProps;
-  const { status } = useAppSelector((state) => state.rates);
+  const { status, currentRate } = useAppSelector((state) => state.rates);
   const { pair } = useAppSelector((state) => state.swap);
   const isSmall = useMediaQuery('(max-width: 640px)');
   const account = useAccount();
@@ -84,8 +86,14 @@ export function SwapWidget({
   }, [dispatch, pair]);
 
   useEffect(() => {
+    if (freshRate && !currentRate) {
+      dispatch(setCurrentRate(freshRate));
+    }
+
     dispatch(fetchPairRate(pair));
-  }, [dispatch, pair]);
+  }, [pair, freshRate, dispatch]);
+
+  useEffect(() => {}, [dispatch, pair]);
 
   return (
     <AnimatePresence>

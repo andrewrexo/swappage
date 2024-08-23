@@ -76,7 +76,11 @@ const fetchCMCPrice = async (pairId: string) => {
 const rateSlice = createSlice({
   name: 'rates',
   initialState,
-  reducers: {},
+  reducers: {
+    setCurrentRate: (state, action: PayloadAction<PairRate>) => {
+      state.currentRate = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder
       .addCase(fetchPairRate.pending, (state) => {
@@ -107,5 +111,7 @@ const rateSlice = createSlice({
       });
   },
 });
+
+export const { setCurrentRate } = rateSlice.actions;
 
 export default rateSlice.reducer;

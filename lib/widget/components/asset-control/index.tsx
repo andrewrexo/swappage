@@ -25,7 +25,7 @@ export function AssetControl({
   };
 
   const { currentRate } = useAppSelector((state) => state.rates);
-  const { loaded } = useAppSelector((state) => state.assets);
+  const { assets } = useAppSelector((state) => state.assets);
   const { fromAsset, toAsset, fromAmount, toAmount } = useAppSelector(
     (state) => state.swap,
   );
@@ -33,7 +33,7 @@ export function AssetControl({
   const selectedAsset = side === 'from' ? fromAsset : toAsset;
 
   useEffect(() => {
-    if (!loaded) {
+    if (!assets) {
       return;
     }
 
@@ -44,7 +44,7 @@ export function AssetControl({
   }, [currentRate, fromAmount, side, dispatch]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
-    if (!loaded) {
+    if (!assets) {
       return;
     }
 
@@ -57,7 +57,7 @@ export function AssetControl({
 
   return (
     <Flex direction="column" gap="2" className="w-full">
-      <Skeleton loading={!loaded} maxWidth="100px">
+      <Skeleton loading={!assets} maxWidth="100px">
         <Flex align="center" gap="2" justify="between">
           <AssetName
             assetName={selectedAsset.id}
@@ -66,7 +66,7 @@ export function AssetControl({
           />
         </Flex>
       </Skeleton>
-      <Skeleton loading={!loaded}>
+      <Skeleton loading={!assets}>
         <InputAmount
           asset={selectedAsset}
           side={side}
@@ -80,7 +80,7 @@ export function AssetControl({
           fromAmount={fromAmount}
           toAmount={toAmount}
           currentRate={currentRate}
-          loading={!loaded}
+          loading={!assets}
         />
       )}
     </Flex>
