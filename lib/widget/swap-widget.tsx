@@ -96,7 +96,16 @@ export function SwapWidget({
         >
           <Flex justify="between" gap="4">
             <Flex gap="2" align="center">
-              <Text size="6" weight="bold">
+              <Text
+                size="6"
+                weight="bold"
+                className={twMerge(
+                  'user-select-none pointer-events-none flex items-center gap-2',
+                  'bg-gradient-to-r from-[var(--accent-12)] via-[var(--accent-11)] to-[var(--accent-10)]',
+                  'bg-clip-text text-transparent',
+                  'animate-gradient-x',
+                )}
+              >
                 Swappage
               </Text>
               {status === 'loading' ? <Spinner /> : ''}
