@@ -1,5 +1,5 @@
 import { TokenIcon } from './token-icon';
-import { Text, Code, Flex, Badge } from '@radix-ui/themes';
+import { Text, Code, Flex, Badge, Box } from '@radix-ui/themes';
 import networkToColor from '../../features/assets/color';
 import type { MouseEvent } from 'react';
 
@@ -49,9 +49,10 @@ export const HoverEffect = ({
     <Flex
       gap="2"
       align="center"
+      as="div"
       className={`group relative ${className || ''}`}
     >
-      <Code
+      <Box
         className="absolute block h-[40px] w-[40px] rounded-xl opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100"
         style={{
           transform: 'translate(var(--hover-x, 0px), var(--hover-y, 0px))',
@@ -60,7 +61,7 @@ export const HoverEffect = ({
       />
       {networks.map((network) => (
         <Text
-          as="span"
+          as="div"
           key={network}
           onClick={() => onNetworkBadgeClick?.(network)}
           className="relative flex h-[40px] w-[40px] cursor-pointer items-center justify-center transition-all duration-300"

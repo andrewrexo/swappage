@@ -18,6 +18,7 @@ interface ResponsiveDialogDrawerProps {
   open?: boolean;
   triggerBlocked?: boolean;
   setOpen?: (open: boolean) => void;
+  description?: string;
 }
 
 export function ResponsiveDialogDrawer({
@@ -27,6 +28,7 @@ export function ResponsiveDialogDrawer({
   title,
   triggerBlocked,
   setOpen,
+  description,
 }: ResponsiveDialogDrawerProps) {
   const isMobile = useMediaQuery('(max-width: 768px)');
 
@@ -51,13 +53,14 @@ export function ResponsiveDialogDrawer({
   const drawerContent = (
     <>
       <Box className="mx-auto mt-6 min-h-2 min-w-16 rounded-full bg-[var(--accent-11)]"></Box>
-      <Dialog.Title className="px-2 pt-8">
-        <Text size="8" weight="bold" className="text-[var(--accent-11)]">
-          {title}
-        </Text>
-      </Dialog.Title>
+      <Flex as="div" className="px-2 pt-8 text-[var(--accent-11)]">
+        {title}
+      </Flex>
       <VisuallyHidden>
-        {<Dialog.Description>{title}</Dialog.Description>}
+        <Dialog.Title>
+          {typeof title === 'string' ? title : 'Drawer'}
+        </Dialog.Title>
+        <Dialog.Description>{description ?? 'Description'}</Dialog.Description>
       </VisuallyHidden>
       <Flex
         direction="column"
