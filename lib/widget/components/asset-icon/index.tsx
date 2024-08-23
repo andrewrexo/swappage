@@ -1,10 +1,17 @@
 import { getIconId, networkToIcon } from '../asset-dialog/asset-option';
 import { ExodusAsset } from '../../lib/exodus/asset';
-import { TokenIcon } from '../ui/token-icon';
+import dynamic from 'next/dynamic';
+
+const DynamicTokenIcon = dynamic(
+  () => import('../ui/token-icon').then((mod) => mod.TokenIcon),
+  {
+    ssr: false,
+  },
+);
 
 export const AssetIcon = ({ asset }: { asset: Partial<ExodusAsset> }) => {
   return (
-    <TokenIcon
+    <DynamicTokenIcon
       identifier={getIconId(asset.symbol ?? '')}
       size={24}
       className="max-h-6 max-w-6"
