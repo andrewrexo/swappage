@@ -138,34 +138,35 @@ export function SwapButton({
   };
 
   return (
-    <Button
-      size="4"
-      className={twMerge(
-        'cursor-pointer overflow-hidden',
-        fullWidth ? 'w-full' : 'w-auto',
-      )}
-      name="execute-swap"
-      variant="surface"
-      mt="1"
-      asChild
-      disabled={!connected}
-    >
-      <motion.div
-        initial="initial"
-        animate={controls}
-        onHoverStart={onHoverStart}
-        onHoverEnd={onHoverEnd}
-        onTap={onClick}
-        whileTap={{ scale: 0.95 }}
-        className="animate-gradient-x"
-        style={{
-          boxShadow: '0 0 0 1px var(--accent-a7)',
-          backgroundImage:
-            'linear-gradient(to right, var(--accent-2), var(--accent-3), var(--accent-1))',
-        }}
+    <div className="fancy-wrapper mt-1">
+      <Button
+        size="4"
+        className={twMerge(
+          'cursor-pointer overflow-hidden',
+          fullWidth ? 'w-full' : 'w-auto',
+        )}
+        name="execute-swap"
+        variant="surface"
+        asChild
+        disabled={!connected}
       >
-        {renderButtonText()}
-      </motion.div>
-    </Button>
+        <motion.div
+          initial="initial"
+          animate={controls}
+          onHoverStart={onHoverStart}
+          onHoverEnd={onHoverEnd}
+          onTap={onClick}
+          whileTap={{ scale: 0.95 }}
+          className="animate-gradient-x"
+          style={{
+            boxShadow: '0 0 0 1px var(--accent-a7)',
+            backgroundImage:
+              'linear-gradient(to right, var(--accent-2), var(--accent-3), var(--accent-1))',
+          }}
+        >
+          {renderButtonText()}
+        </motion.div>
+      </Button>
+    </div>
   );
 }

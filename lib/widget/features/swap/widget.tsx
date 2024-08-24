@@ -143,7 +143,6 @@ export default function SwapWidgetHome({
       transition={{ duration: 0.3 }}
     >
       <SwapInput />
-      <Separator size="4" />
       {(freshRate || rate) && (
         <ParameterList
           {...swapBaseParameters}

@@ -74,7 +74,7 @@ export function SwapWidget({
     <AnimatePresence>
       <MotionFlex
         justify="center"
-        className={twMerge(className, `h-full border-[1px] border-accent`)}
+        className={twMerge(className, `h-full animate-gradient-x`)}
         width={isSmall ? '100%' : width}
         initial={{
           height: '100%',
@@ -82,9 +82,10 @@ export function SwapWidget({
           scale: 1,
         }}
         style={{
-          border: '1px solid var(--accent-11)',
           borderRadius: '1rem',
           padding: '1rem',
+          backgroundColor: 'var(--color-background)',
+          boxShadow: '0 0 0 2px var(--accent-a9)',
         }}
         variants={animVariants}
         animate="animate"
