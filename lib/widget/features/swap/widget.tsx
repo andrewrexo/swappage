@@ -40,7 +40,9 @@ export default function SwapWidgetHome({
 
   const { assets: assetsState } = useAppSelector((state) => state.assets);
   const { currentRate: rate, status } = useAppSelector((state) => state.rates);
-  const { displayPair: pair } = useAppSelector((state) => state.swap);
+  const { displayPair: pair, pair: pairState } = useAppSelector(
+    (state) => state.swap,
+  );
   const [swapComplete, setSwapComplete] = useState(false);
 
   useEffect(() => {
@@ -64,17 +66,17 @@ export default function SwapWidgetHome({
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      dispatch(fetchPairRate(pair));
+      dispatch(fetchPairRate(pairState));
     }, 15000); // 15 seconds
 
     return () => clearInterval(intervalId);
-  }, [dispatch, pair]);
+  }, [dispatch, pairState]);
 
   useEffect(() => {
-    if (pair) {
-      dispatch(fetchPairRate(pair));
+    if (pairState) {
+      dispatch(fetchPairRate(pairState));
     }
-  }, [dispatch, pair]);
+  }, [dispatch, pairState]);
 
   const onComplete = ({ orderId }: { orderId: string }) => {
     router.push(`/swap/${orderId}`);
