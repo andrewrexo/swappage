@@ -1,5 +1,11 @@
-import { useCallback } from 'react';
-import { Flex, IconButton, Progress, TextField } from '@radix-ui/themes';
+import { useCallback, useEffect, useState } from 'react';
+import {
+  Flex,
+  Heading,
+  IconButton,
+  Progress,
+  TextField,
+} from '@radix-ui/themes';
 import type { ChangeEvent, ReactNode } from 'react';
 import { AssetList } from './asset-list';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
@@ -38,9 +44,9 @@ const AssetSearchHeader = ({
   handleNetworkBadgeClick: (network?: string) => void;
 }) => {
   return (
-    <Flex direction="column" gap="2" className="h-full pt-4" width="100%">
+    <Flex direction="column" gap="2" className="h-full pt-2" width="100%">
       <Flex className="w-full" justify="between" align="center">
-        Assets
+        <Heading size="8">Assets</Heading>
         <Flex gap="3" align="center">
           <HoverEffect
             networks={supportedNetworks}
@@ -48,7 +54,7 @@ const AssetSearchHeader = ({
           />
         </Flex>
       </Flex>
-      <Flex gap="2" align="center" width="100%">
+      <Flex gap="2" align="center" width="100%" pb="2">
         <TextField.Root
           className="h-18 px-2 sm:h-12 sm:bg-inherit"
           onChange={handleSearch}
@@ -112,9 +118,20 @@ export function AssetDialog({
   const { assets, searchAssets, status, error, page, networks, searchQuery } =
     useAppSelector((state) => state.assets);
 
+  const [scrollToTop, setScrollToTop] = useState(false);
+
+  useEffect(() => {
+    if (scrollToTop) {
+      // Reset the flag after a short delay
+      const timer = setTimeout(() => setScrollToTop(false), 100);
+      return () => clearTimeout(timer);
+    }
+  }, [scrollToTop]);
+
   const handleLoadMore = () => {
     dispatch(paginateAssets());
     dispatch(fetchAssets({ networks, page: page + 1, search: true }));
+    setScrollToTop(true);
   };
 
   const debouncedSearch = useCallback(
@@ -176,6 +193,7 @@ export function AssetDialog({
         {(status === 'succeeded' ||
           (status === 'loading' && assets.length > 0)) && (
           <AssetList
+            scrollToTop={true}
             assets={searchAssets.length > 0 ? searchAssets : assets}
             onAssetSelect={onAssetSelect}
             onLoadMore={handleLoadMore}
