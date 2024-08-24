@@ -17,7 +17,6 @@ export const DefaultButton = forwardRef<HTMLButtonElement, DefaultButtonProps>(
   ({ children, onClick, accountOnly = false, ...props }, ref) => {
     return (
       <MotionButton
-        highContrast
         className="flex cursor-pointer"
         variant="soft"
         id="connect-wallet"
