@@ -23,7 +23,7 @@ export default function SwapWidgetHome({
   freshRate,
 }: {
   assets: ExodusAsset[];
-  freshRate?: PairRate;
+  freshRate: PairRate;
 }) {
   const dispatch = useAppDispatch();
   const router = useRouter();
@@ -144,8 +144,12 @@ export default function SwapWidgetHome({
     >
       <SwapInput />
       <Separator size="4" />
-      {rate && (
-        <ParameterList {...swapBaseParameters} rate={rate} status={status} />
+      {(freshRate || rate) && (
+        <ParameterList
+          {...swapBaseParameters}
+          rate={rate ?? freshRate}
+          status={status}
+        />
       )}
       <SwapButton
         connected={true}
