@@ -31,9 +31,7 @@ export function WalletPreview({
     return (
       <Flex align="center" gap="2" justify="between" width="100%">
         {networks[network].icon(16)}
-        <Text size="2" weight="bold">
-          {displayAddress(address, 4)}
-        </Text>
+        <Text size="2">{displayAddress(address, 4)}</Text>
       </Flex>
     );
   }

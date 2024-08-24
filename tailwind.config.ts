@@ -28,6 +28,8 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic':
           'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+        'gradient-accent':
+          'linear-gradient(to right, var(--accent-12), var(--accent-11), var(--accent-10))',
       },
       backgroundColor: {
         accent: 'var(--accent-11)',

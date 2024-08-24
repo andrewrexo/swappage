@@ -1,12 +1,14 @@
 'use client';
 
-import { Button, Spinner } from '@radix-ui/themes';
+import { Button, Spinner, Text } from '@radix-ui/themes';
 import { motion, useAnimationControls } from 'framer-motion';
 import { Loader2Icon, LucideLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { ArrowTopRightIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons';
 import { twMerge } from 'tailwind-merge';
 import { variants } from './variants';
+
+const MotionText = motion(Text);
 
 export function SwapButton({
   connected,
@@ -64,6 +66,11 @@ export function SwapButton({
       return (
         <>
           <motion.span
+            className={twMerge(
+              'bg-gradient-accent bg-clip-text text-transparent',
+              'animate-gradient-x',
+              'animate-gradient-x',
+            )}
             variants={variants.text}
             initial="initial"
             animate={controls}
@@ -150,6 +157,12 @@ export function SwapButton({
         onHoverEnd={onHoverEnd}
         onTap={onClick}
         whileTap={{ scale: 0.95 }}
+        className="animate-gradient-x"
+        style={{
+          boxShadow: '0 0 0 1px var(--accent-a7)',
+          backgroundImage:
+            'linear-gradient(to right, var(--accent-2), var(--accent-3), var(--accent-1))',
+        }}
       >
         {renderButtonText()}
       </motion.div>
