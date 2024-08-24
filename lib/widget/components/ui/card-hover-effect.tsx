@@ -61,10 +61,9 @@ export const HoverEffect = ({
       />
       {networks.map((network) => (
         <Text
-          as="div"
           key={network}
           onClick={() => onNetworkBadgeClick?.(network)}
-          className="relative flex h-[40px] w-[40px] cursor-pointer items-center justify-center transition-all duration-300"
+          className="relative mt-1 flex h-[40px] w-[40px] cursor-pointer items-center justify-center transition-all duration-300"
           onMouseEnter={(e) => handleMouseEnter(e, network)}
           onMouseLeave={handleMouseLeave}
         >

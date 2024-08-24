@@ -38,22 +38,28 @@ export function ResponsiveDialogDrawer({
 
   const dialogContent = (
     <>
-      <Dialog.Title className="text-[var(--accent-11)]" size="7">
+      <Flex as="div" className="flex-shrink-0 pt-4 text-[var(--accent-11)]">
         {title}
-      </Dialog.Title>
+      </Flex>
       <VisuallyHidden>
-        {<Dialog.Description>{title}</Dialog.Description>}
+        <Dialog.Title>
+          {typeof title === 'string' ? title : 'Drawer'}
+        </Dialog.Title>
       </VisuallyHidden>
-      <Flex direction="column" className="h-full flex-grow overflow-auto">
-        {children}
+      <VisuallyHidden>
+        <Dialog.Description>{description ?? 'Description'}</Dialog.Description>
+      </VisuallyHidden>
+      <Flex direction="column" className="relative h-full flex-grow">
+        <div className="overflow-auto">{children}</div>
+        <div className="pointer-events-none absolute left-0 right-0 top-0 h-8 bg-gradient-to-b from-[var(--color-panel-solid)] to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[var(--color-panel-solid)] to-transparent" />
       </Flex>
     </>
   );
 
   const drawerContent = (
     <>
-      <Box className="mx-auto mt-6 min-h-2 min-w-16 rounded-full bg-[var(--accent-11)]"></Box>
-      <Flex as="div" className="px-2 pt-8 text-[var(--accent-11)]">
+      <Flex as="div" className="flex-shrink-0 pt-4 text-[var(--accent-11)]">
         {title}
       </Flex>
       <VisuallyHidden>
@@ -62,11 +68,10 @@ export function ResponsiveDialogDrawer({
         </Dialog.Title>
         <Dialog.Description>{description ?? 'Description'}</Dialog.Description>
       </VisuallyHidden>
-      <Flex
-        direction="column"
-        className="h-full flex-grow overflow-auto transition-all duration-300"
-      >
-        {children}
+      <Flex direction="column" className="relative flex-grow overflow-hidden">
+        <div className="h-full overflow-auto">{children}</div>
+        <div className="pointer-events-none absolute left-0 right-0 top-0 h-8 bg-gradient-to-b from-[var(--color-panel-solid)] to-transparent" />
+        <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-8 bg-gradient-to-t from-[var(--color-panel-solid)] to-transparent" />
       </Flex>
     </>
   );
@@ -90,6 +95,7 @@ export function ResponsiveDialogDrawer({
           style={{
             maxHeight: '80dvh',
           }}
+          className="flex flex-col"
         >
           {dialogContent}
         </Dialog.Content>
@@ -129,9 +135,9 @@ const DialogDrawer = ({
           <Drawer.Content
             className={twMerge(
               `focus:outline-none`,
-              `fixed inset-x-0 bottom-0 top-2`,
-              `px-6 py-2`,
-              `flex h-[100dvh] max-h-[100dvh] flex-col`,
+              `fixed inset-x-0 bottom-0`,
+              `flex flex-col`,
+              `h-[85vh] max-h-[85vh]`,
               `transition-all duration-300`,
             )}
             style={{
@@ -140,7 +146,12 @@ const DialogDrawer = ({
               borderTopRightRadius: '2rem',
             }}
           >
-            {content}
+            <div className="flex-shrink-0 px-6 py-2">
+              <Box className="mx-auto mt-6 h-2 w-16 rounded-full bg-[var(--accent-11)]"></Box>
+            </div>
+            <div className="flex flex-grow flex-col overflow-hidden px-6">
+              {content}
+            </div>
           </Drawer.Content>
         </Theme>
       </Drawer.Portal>
