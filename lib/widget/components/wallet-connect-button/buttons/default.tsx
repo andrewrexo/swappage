@@ -32,11 +32,15 @@ export const DefaultButton = forwardRef<HTMLButtonElement, DefaultButtonProps>(
       >
         <div
           className="animate-gradient-x"
-          style={{
-            boxShadow: '0 0 0 1px var(--accent-a7)',
-            backgroundImage:
-              'linear-gradient(to right, var(--accent-2), var(--accent-3), var(--accent-2))',
-          }}
+          {...(!accountOnly
+            ? {
+                style: {
+                  boxShadow: '0 0 0 1px var(--accent-a7)',
+                  backgroundImage:
+                    'linear-gradient(to right, var(--accent-2), var(--accent-3), var(--accent-2))',
+                },
+              }
+            : {})}
         >
           {children}
         </div>
