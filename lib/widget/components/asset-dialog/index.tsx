@@ -12,6 +12,7 @@ import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import {
   fetchAssets,
   paginateAssets,
+  setPage,
   setSearchQuery,
 } from '../../features/assets/slice';
 import { debounce } from 'lodash';
@@ -141,7 +142,14 @@ export function AssetDialog({
       }
 
       dispatch(setSearchQuery(value));
-      dispatch(fetchAssets({ networks, page: 1, query: value, search: true }));
+      dispatch(
+        fetchAssets({
+          networks,
+          page: 1,
+          query: value,
+          search: true,
+        }),
+      );
     }, 300),
 
     [dispatch, assets, networks, searchQuery],
@@ -153,11 +161,16 @@ export function AssetDialog({
   };
 
   const handleNetworkBadgeClick = (network?: string) => {
+    if (networks.length > 1 && !network && page == 1) {
+      return;
+    }
+
     if (!network) {
       dispatch(
         fetchAssets({
           networks: [...SUPPORTED_NETWORKS] as SupportedNetwork[],
           page: 1,
+          force: true,
         }),
       );
       return;
@@ -173,6 +186,7 @@ export function AssetDialog({
         networks: [standardNetwork],
         page: 1,
         ...(searchQuery && { query: searchQuery }),
+        force: true,
       }),
     );
   };

@@ -28,18 +28,19 @@ const initialState: AssetState = {
 };
 
 export const fetchAssets = createAsyncThunk<
-  { assets: ExodusAsset[]; networks: SupportedNetwork[] },
+  { assets: ExodusAsset[]; networks: SupportedNetwork[]; force: boolean },
   {
     networks: SupportedNetwork[];
     page: number;
     query?: string;
     search?: boolean;
+    force?: boolean;
   },
   { rejectValue: string }
 >(
   'assets/fetchAssets',
   async (
-    { networks, page = 1, query = '', search = false },
+    { networks, page = 1, query = '', search = false, force = false },
     { rejectWithValue },
   ) => {
     if (networks.length === 0) {
@@ -49,11 +50,11 @@ export const fetchAssets = createAsyncThunk<
     try {
       let url = `/api/assets?networks=${networks.join(',')}`;
 
-      if (query) {
+      if (query && !force) {
         url += `&query=${query}`;
       }
 
-      if (page > 1) {
+      if (page > 1 && !force) {
         url += `&page=${page}`;
       }
 
@@ -68,7 +69,7 @@ export const fetchAssets = createAsyncThunk<
         throw new Error('Received an invalid list of assets');
       }
 
-      return { assets, networks, search: search ?? false };
+      return { assets, networks, search: search ?? false, force };
     } catch (error) {
       if (error instanceof Error) {
         return rejectWithValue(error.message);
@@ -84,6 +85,9 @@ const assetSlice = createSlice({
   reducers: {
     paginateAssets: (state) => {
       state.page = state.page + 1;
+    },
+    setPage: (state, action) => {
+      state.page = action.payload;
     },
     setAssets: (state, action) => {
       state.assets = action.payload;
@@ -107,6 +111,10 @@ const assetSlice = createSlice({
           state.loaded = true;
         }
 
+        if (action.payload.force) {
+          state.page = 1;
+        }
+
         state.status = 'succeeded';
         state.assets = action.payload.assets;
         state.networks = action.payload.networks;
@@ -118,7 +126,12 @@ const assetSlice = createSlice({
   },
 });
 
-export const { setAssets, setSearchAssets, paginateAssets, setSearchQuery } =
-  assetSlice.actions;
+export const {
+  setPage,
+  setAssets,
+  setSearchAssets,
+  paginateAssets,
+  setSearchQuery,
+} = assetSlice.actions;
 
 export default assetSlice.reducer;
