@@ -54,7 +54,7 @@ export const swapSlice = createSlice({
 
       if (state.toAsset) {
         state.pair = `${action.payload.id}_${state.toAsset.id}`;
-        state.displayPair = `${action.payload.symbol}/${state.toAsset.symbol}`;
+        state.displayPair = `${action.payload.symbol}_${state.toAsset.symbol}`;
       }
     },
     setToAsset: (state, action: PayloadAction<ExodusAsset>) => {
@@ -62,7 +62,7 @@ export const swapSlice = createSlice({
 
       if (state.fromAsset) {
         state.pair = `${state.fromAsset.id}_${action.payload.id}`;
-        state.displayPair = `${state.fromAsset.symbol}/${action.payload.symbol}`;
+        state.displayPair = `${state.fromAsset.symbol}_${action.payload.symbol}`;
       }
     },
     setFromAmount: (state, action: PayloadAction<string>) => {
