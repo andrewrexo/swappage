@@ -2,9 +2,14 @@
 
 import { Button, Spinner, Text } from '@radix-ui/themes';
 import { motion, useAnimationControls } from 'framer-motion';
-import { Loader2Icon, LucideLink } from 'lucide-react';
+import { Loader2Icon, LucideLink, StopCircleIcon } from 'lucide-react';
 import { useEffect, useState } from 'react';
-import { ArrowTopRightIcon, DoubleArrowRightIcon } from '@radix-ui/react-icons';
+import {
+  ArrowTopRightIcon,
+  Cross2Icon,
+  DoubleArrowRightIcon,
+  StopIcon,
+} from '@radix-ui/react-icons';
 import { twMerge } from 'tailwind-merge';
 import { variants } from './variants';
 
@@ -16,12 +21,14 @@ export function SwapButton({
   onExecute,
   isComplete,
   isResponding = false,
+  disabled = false,
 }: {
   connected: boolean;
   fullWidth?: boolean;
   onExecute: () => void;
   isComplete: boolean;
   isResponding?: boolean;
+  disabled?: boolean;
 }) {
   const [isHovered, setIsHovered] = useState(false);
   const [isExecuting, setIsExecuting] = useState(false);
@@ -51,6 +58,10 @@ export function SwapButton({
   };
 
   const onClick = () => {
+    if (disabled) {
+      return;
+    }
+
     setIsExecuting(true);
 
     controls.stop();
@@ -67,15 +78,14 @@ export function SwapButton({
         <>
           <motion.span
             className={twMerge(
-              'bg-gradient-accent bg-clip-text text-transparent',
-              'animate-gradient-x',
+              !disabled && 'bg-gradient-accent bg-clip-text text-transparent',
               'animate-gradient-x',
             )}
             variants={variants.text}
             initial="initial"
             animate={controls}
           >
-            Swap now
+            {disabled ? `Unavailable` : `Swap now`}
           </motion.span>
           {isExecuting ? (
             <motion.div
@@ -87,6 +97,10 @@ export function SwapButton({
             >
               <Spinner className="" />
             </motion.div>
+          ) : disabled ? (
+            <div className="relative ml-auto h-6 w-6">
+              <Cross2Icon width="24" height="24" />
+            </div>
           ) : (
             <motion.div
               variants={variants.icon}
@@ -147,7 +161,7 @@ export function SwapButton({
       name="execute-swap"
       variant="surface"
       asChild
-      disabled={!connected}
+      disabled={disabled || !connected}
     >
       <motion.div
         initial="initial"

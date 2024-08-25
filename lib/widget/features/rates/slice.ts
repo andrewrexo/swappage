@@ -29,6 +29,10 @@ export const fetchPairRate = createAsyncThunk(
         fetchCMCPrice(pairId),
       ]);
 
+      if (!rate) {
+        return rejectWithValue('No rate available for this pair');
+      }
+
       const fromAssetAmount = prices.find(
         (price: any) => price.symbol === fromAsset,
       );
@@ -108,6 +112,7 @@ const rateSlice = createSlice({
       .addCase(fetchPairRate.rejected, (state, action) => {
         state.status = 'failed';
         state.error = (action.payload as string) || 'Unknown error occurred';
+        state.currentRate = null; // Clear the current rate when fetching fails
       });
   },
 });

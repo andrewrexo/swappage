@@ -1,14 +1,16 @@
-import { Flex } from '@radix-ui/themes';
+import { Flex, Text } from '@radix-ui/themes';
 import { ArrowDownIcon } from 'lucide-react';
 import { AssetControl } from '../../components/asset-control';
 import { MotionIconButton } from '../../components/ui/radix-motion';
 import { motion, useAnimationControls } from 'framer-motion';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { reverseAssets, setFromAsset, setToAsset } from './slice';
 import { twMerge } from 'tailwind-merge';
 import type { ExodusAsset } from '../../lib/exodus/asset';
 import dynamic from 'next/dynamic';
+import toast from 'react-hot-toast';
+import { toastConfig } from '@/lib/util';
 
 const DynamicAssetDialog = dynamic(
   () => import('../../components/asset-dialog').then((mod) => mod.AssetDialog),
@@ -18,7 +20,7 @@ const DynamicAssetDialog = dynamic(
 );
 
 export function SwapInput() {
-  const { status, currentRate } = useAppSelector((state) => state.rates);
+  const { status, currentRate, error } = useAppSelector((state) => state.rates);
   const { activeDirection } = useAppSelector((state) => state.swap);
 
   const dispatch = useAppDispatch();
@@ -72,6 +74,12 @@ export function SwapInput() {
     setIsDialogOpen(open);
   };
 
+  useEffect(() => {
+    if (status === 'failed' && error) {
+      toast.error(`${error}`, { ...toastConfig });
+    }
+  }, [status, error]);
+
   return (
     <Flex direction="column" align="center" className="gap-4 sm:gap-2">
       <AssetControl side="from" setOpen={handleDialogOpen} />
@@ -94,6 +102,11 @@ export function SwapInput() {
             <ArrowDownIcon width={24} height={24} />
           </MotionIconButton>
         </motion.div>
+      )}
+      {status === 'failed' && (
+        <Text color="red" size="2">
+          Rate unavailable for this pair
+        </Text>
       )}
       <AssetControl side="to" setOpen={handleDialogOpen} />
       <DynamicAssetDialog

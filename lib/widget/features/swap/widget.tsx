@@ -39,7 +39,11 @@ export default function SwapWidgetHome({
   } = useAppSelector((state) => state.swap);
 
   const { assets: assetsState } = useAppSelector((state) => state.assets);
-  const { currentRate: rate, status } = useAppSelector((state) => state.rates);
+  const {
+    currentRate: rate,
+    status,
+    error,
+  } = useAppSelector((state) => state.rates);
   const { displayPair: pair, pair: pairState } = useAppSelector(
     (state) => state.swap,
   );
@@ -151,6 +155,7 @@ export default function SwapWidgetHome({
         />
       )}
       <SwapButton
+        disabled={status === 'failed'}
         connected={true}
         onExecute={onExecute}
         isComplete={swapComplete}

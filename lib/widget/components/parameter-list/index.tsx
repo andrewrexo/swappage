@@ -57,7 +57,7 @@ export function ParameterList({
   const etaText = etaAsReadableText(eta);
 
   const reloadRate = () => {
-    if (status === 'loading') {
+    if (status === 'loading' || status === 'failed') {
       return;
     }
 
@@ -77,6 +77,9 @@ export function ParameterList({
               variant="ghost"
               onClick={reloadRate}
               name="refresh-rate"
+              color={
+                ['loading', 'failed'].includes(status) ? 'gray' : undefined
+              }
             >
               <UpdateIcon
                 className={twMerge(
@@ -96,7 +99,7 @@ export function ParameterList({
           className="text-right"
         >
           <Skeleton
-            loading={status === 'loading'}
+            loading={['failed', 'loading'].includes(status)}
             className="transition-all duration-200"
           >
             {amount.value && rateToWidgetDisplayText(amount.value, pair)}
@@ -114,30 +117,34 @@ export function ParameterList({
           transition={{ duration: 0.5 }}
           className="text-right"
         >
-          <Text size="2" className="text-accent">
-            {provider}
-          </Text>
+          <Skeleton loading={['failed', 'loading'].includes(status)}>
+            <Text size="2" className="text-accent">
+              {provider}
+            </Text>
+          </Skeleton>
         </motion.div>
       </Flex>
-      <Flex align="center" justify="between" gap="2">
-        <Text size="2" color="gray" className="opacity-1">
-          Rate valid until
-        </Text>
-        <MotionText
-          key={`provider-${provider}`}
-          initial={{ opacity: 0.5 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
-          className="text-right"
-          size="2"
-        >
-          {new Date(expiry).toLocaleString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-          })}
-        </MotionText>
-      </Flex>
+      {status !== 'failed' && (
+        <Flex align="center" justify="between" gap="2">
+          <Text size="2" color="gray" className="opacity-1">
+            Rate valid until
+          </Text>
+          <MotionText
+            key={`provider-${provider}`}
+            initial={{ opacity: 0.5 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.5 }}
+            className="text-right"
+            size="2"
+          >
+            {new Date(expiry).toLocaleString('en-US', {
+              hour: '2-digit',
+              minute: '2-digit',
+              second: '2-digit',
+            })}
+          </MotionText>
+        </Flex>
+      )}
     </Flex>
   );
 }
