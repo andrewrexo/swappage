@@ -41,7 +41,7 @@ export function AssetControl({
       const calculatedValue = parseFloat(fromAmount) * currentRate.amount.value;
       dispatch(setToAmount(calculatedValue.toString()));
     }
-  }, [currentRate, fromAmount, side, dispatch]);
+  }, [currentRate, fromAmount, side, dispatch, assets]);
 
   const handleInputChange = (e: ChangeEvent<HTMLInputElement>) => {
     if (!assets) {
@@ -60,6 +60,7 @@ export function AssetControl({
       <Skeleton loading={!assets} maxWidth="100px">
         <Flex align="center" gap="2" justify="between">
           <AssetName
+            key={`${side}-asset-name`}
             assetName={selectedAsset.id}
             assetSymbol={selectedAsset.symbol}
             assetNetwork={selectedAsset.network}
@@ -68,6 +69,7 @@ export function AssetControl({
       </Skeleton>
       <Skeleton loading={!assets}>
         <InputAmount
+          key={`${side}-input-amount`}
           asset={selectedAsset}
           side={side}
           onDialogOpen={onDialogOpen}
@@ -76,6 +78,7 @@ export function AssetControl({
       </Skeleton>
       {currentRate && (
         <InputActions
+          key={`${side}-input-actions`}
           side={side}
           fromAmount={fromAmount}
           toAmount={toAmount}

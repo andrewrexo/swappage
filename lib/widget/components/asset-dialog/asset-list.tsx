@@ -8,11 +8,13 @@ export function AssetList({
   onAssetSelect,
   onLoadMore,
   scrollToTop,
+  greyedOutAsset,
 }: {
   assets: ExodusAsset[];
   onAssetSelect: (asset: ExodusAsset) => void;
   onLoadMore: () => void;
   scrollToTop: boolean;
+  greyedOutAsset: ExodusAsset | null;
 }) {
   const scrollAreaRef = useRef<HTMLDivElement>(null);
 
@@ -53,6 +55,7 @@ export function AssetList({
               key={asset.id}
               asset={asset}
               onAssetSelect={onAssetSelect}
+              isGreyedOut={greyedOutAsset?.id === asset.id}
             />
           ))}
         </Grid>

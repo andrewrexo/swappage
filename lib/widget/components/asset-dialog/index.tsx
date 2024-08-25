@@ -118,6 +118,9 @@ export function AssetDialog({
   const dispatch = useAppDispatch();
   const { assets, searchAssets, status, error, page, networks, searchQuery } =
     useAppSelector((state) => state.assets);
+  const { fromAsset, toAsset, activeDirection } = useAppSelector(
+    (state) => state.swap,
+  );
 
   const [scrollToTop, setScrollToTop] = useState(false);
 
@@ -211,6 +214,7 @@ export function AssetDialog({
             assets={searchAssets.length > 0 ? searchAssets : assets}
             onAssetSelect={onAssetSelect}
             onLoadMore={handleLoadMore}
+            greyedOutAsset={activeDirection === 'from' ? toAsset : fromAsset}
           />
         )}
         {status === 'loading' && (

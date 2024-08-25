@@ -30,9 +30,11 @@ export const networkToIcon = {
 export function AssetOption({
   asset,
   onAssetSelect,
+  isGreyedOut,
 }: {
   asset: ExodusAsset;
   onAssetSelect: (asset: ExodusAsset) => void;
+  isGreyedOut: boolean;
 }) {
   return (
     <Flex
@@ -41,6 +43,7 @@ export function AssetOption({
         'px-2 py-4 sm:px-2',
         'bg-gradient-to-r from-[var(--gray-2)] to-[var(--gray-4)]',
         'transition-all duration-300',
+        isGreyedOut ? 'pointer-events-none opacity-50' : '',
       )}
       onClick={() => onAssetSelect(asset)}
       data-vaul-no-drag
