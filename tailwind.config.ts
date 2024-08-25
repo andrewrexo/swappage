@@ -10,7 +10,8 @@ const config: Config = {
   theme: {
     extend: {
       animation: {
-        'gradient-x': 'gradient-x 5s ease infinite',
+        'gradient-x': 'gradient-x 20s ease infinite',
+        'slow-ease': 'gradient-x 10s ease infinite',
       },
       keyframes: {
         'gradient-x': {
