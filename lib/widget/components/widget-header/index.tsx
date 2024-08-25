@@ -8,7 +8,7 @@ const DynamicWalletConnectButton = dynamic(
   () =>
     import('../wallet-connect-button').then((mod) => mod.WalletConnectButton),
   {
-    ssr: true,
+    ssr: false,
   },
 );
 
