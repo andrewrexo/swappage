@@ -1,7 +1,7 @@
 import { ArrowTopRightIcon } from '@radix-ui/react-icons';
 import { Button, Flex, Separator, Text } from '@radix-ui/themes';
 import { motion } from 'framer-motion';
-import { WalletConnectButton } from '../../components/wallet-connect-button';
+import { DynamicWalletConnectButton } from '../../components/widget-header';
 
 export function PaymentButtons({
   handleShowQR,
@@ -12,7 +12,7 @@ export function PaymentButtons({
 }) {
   return (
     <>
-      <WalletConnectButton
+      <DynamicWalletConnectButton
         walletChain={network}
         fromNetwork={network}
         accountOnly={false}
