@@ -12,7 +12,7 @@ export default async function SwapPage() {
       page: '1',
       query: '',
     }),
-    getRateByPairIdSwappage('SOL_ETH', ''),
+    getRateByPairIdSwappage('SOL_ETH'),
   ]);
 
   return <SwapWidgetHome assets={assets} freshRate={rate} />;

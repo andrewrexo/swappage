@@ -15,7 +15,7 @@ export default async function Home() {
       page: '1',
       query: '',
     }),
-    getRateByPairIdSwappage('SOL_ETH', ''),
+    getRateByPairIdSwappage('SOL_ETH'),
   ]);
 
   return (

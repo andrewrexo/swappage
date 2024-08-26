@@ -25,7 +25,7 @@ export const fetchPairRate = createAsyncThunk(
     try {
       const [fromAsset, toAsset] = pairId.split('_');
       const [rate, prices] = await Promise.all([
-        getRateByPairIdSwappage(pairId, ''),
+        getRateByPairIdSwappage(pairId),
         fetchCMCPrice(pairId),
       ]);
 
