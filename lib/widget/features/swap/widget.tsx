@@ -46,10 +46,7 @@ export default function SwapWidgetHome({
   const [swapComplete, setSwapComplete] = useState(false);
 
   useEffect(() => {
-    if (assets) {
-      dispatch(setAssets(assets));
-      return;
-    }
+    dispatch(setAssets(assets));
 
     if (!assetsState) {
       dispatch(fetchAssets({ networks: [...SUPPORTED_NETWORKS], page: 1 }));
