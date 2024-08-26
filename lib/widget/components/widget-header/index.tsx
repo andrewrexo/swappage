@@ -35,7 +35,7 @@ export function WidgetHeader() {
             variant="soft"
             size="2"
             className="cursor-pointer"
-            name="open-menu"
+            aria-label="open-menu"
           >
             <MenuIcon />
           </IconButton>
@@ -44,7 +44,7 @@ export function WidgetHeader() {
           <Text weight="medium">Wallet actions</Text>
           <Flex gap="2" direction="column">
             <Button
-              name="network-button"
+              aria-label="network-button"
               size="3"
               variant="soft"
               onClick={() => {
@@ -57,7 +57,7 @@ export function WidgetHeader() {
               <ReplaceIcon className="ml-auto h-4 w-4" />
             </Button>
             <Button
-              name="disconnect-button"
+              aria-label="disconnect-button"
               size="3"
               variant="soft"
               onClick={() => {

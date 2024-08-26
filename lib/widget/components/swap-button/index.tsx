@@ -151,6 +151,7 @@ export function SwapButton({
         fullWidth ? 'w-full' : 'w-auto',
       )}
       name="execute-swap"
+      aria-label="execute-swap"
       variant="surface"
       asChild
       disabled={disabled || !connected}

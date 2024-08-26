@@ -76,7 +76,7 @@ export function ParameterList({
               size="1"
               variant="ghost"
               onClick={reloadRate}
-              name="refresh-rate"
+              aria-label="refresh-rate"
               color={
                 ['loading', 'failed'].includes(status) ? 'gray' : undefined
               }

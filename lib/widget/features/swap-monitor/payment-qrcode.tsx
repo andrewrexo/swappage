@@ -18,7 +18,7 @@ export function PaymentQRCode({ address }: { address: string }) {
         size="4"
         asChild
         className="mt-2 cursor-pointer"
-        name="mark-as-paid-button"
+        aria-label="mark-as-paid-button"
       >
         <motion.div whileHover={{ scale: 1.02 }}>
           <Text>Mark as paid</Text>

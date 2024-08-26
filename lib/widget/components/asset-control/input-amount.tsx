@@ -72,7 +72,7 @@ export function InputAmount({
       <TextField.Slot className="">
         <IconButton
           size="1"
-          name="select-asset"
+          aria-label="select-asset"
           variant="soft"
           className="cursor-pointer"
           loading={rateStatus === 'loading'}

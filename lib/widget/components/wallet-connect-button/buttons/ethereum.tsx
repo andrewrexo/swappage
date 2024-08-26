@@ -52,7 +52,7 @@ export const ButtonEthereum = ({
                 return (
                   <DefaultButton
                     onClick={openConnectModal}
-                    name="connect-ethereum-wallet"
+                    aria-label="connect-ethereum-wallet"
                     size={accountOnly ? '2' : size}
                     accountOnly={accountOnly}
                     style={{ width: '100%' }}
@@ -71,7 +71,7 @@ export const ButtonEthereum = ({
                 return (
                   <DefaultButton
                     onClick={openChainModal}
-                    name="wrong-network"
+                    aria-label="wrong-network"
                     size={size}
                     accountOnly={accountOnly}
                   >
@@ -87,7 +87,7 @@ export const ButtonEthereum = ({
                 <DefaultButton
                   onClick={accountOnly ? disconnect : undefined}
                   size={size}
-                  name="disconnect-ethereum-wallet"
+                  aria-label="disconnect-ethereum-wallet"
                   className="flex w-full justify-between"
                   accountOnly={accountOnly}
                 >

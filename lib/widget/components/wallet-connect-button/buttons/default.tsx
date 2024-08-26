@@ -19,7 +19,7 @@ export const DefaultButton = forwardRef<HTMLButtonElement, DefaultButtonProps>(
       <MotionButton
         id="connect-wallet"
         onClick={onClick}
-        name="connect-wallet"
+        aria-label="connect-wallet"
         variant="surface"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
