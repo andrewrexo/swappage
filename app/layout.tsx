@@ -6,6 +6,7 @@ import StoreProvider from './StoreProvider';
 import { twMerge } from 'tailwind-merge';
 import Web3Provider from '@/lib/context';
 import { SpeedInsights } from '@vercel/speed-insights/next';
+import { ThemeProvider } from 'next-themes';
 
 import '@radix-ui/themes/styles.css';
 import './globals.css';
@@ -23,29 +24,30 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={inter.className}>
-        <Theme
-          appearance="dark"
-          accentColor="jade"
-          grayColor="sage"
-          radius="large"
-          scaling="105%"
-        >
-          <Web3Provider>
-            <StoreProvider>
-              <main
-                className={twMerge(
-                  'flex min-h-screen flex-col items-center justify-between',
-                  `sm:p-8`,
-                  `p-4`,
-                )}
-              >
-                {children}
-              </main>
-            </StoreProvider>
-          </Web3Provider>
-        </Theme>
+        <ThemeProvider attribute="class">
+          <Theme
+            accentColor="jade"
+            grayColor="sage"
+            radius="large"
+            scaling="105%"
+          >
+            <Web3Provider>
+              <StoreProvider>
+                <main
+                  className={twMerge(
+                    'flex min-h-screen flex-col items-center justify-between',
+                    `sm:p-8`,
+                    `p-4`,
+                  )}
+                >
+                  {children}
+                </main>
+              </StoreProvider>
+            </Web3Provider>
+          </Theme>
+        </ThemeProvider>
         <SpeedInsights />
       </body>
     </html>
