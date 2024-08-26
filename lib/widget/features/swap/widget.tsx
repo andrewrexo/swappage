@@ -14,7 +14,7 @@ import { SwapInput } from './input';
 import { toastConfig } from '@/lib/util';
 import { ExodusAsset, SUPPORTED_NETWORKS } from '../../lib/exodus/asset';
 import { PairRate } from '../../lib/exodus/rate';
-import { fetchPairRate, fetchSlugPrice, setCurrentRate } from '../rates/slice';
+import { fetchPairRate, setCurrentRate } from '../rates/slice';
 
 const MotionFlex = motion(Flex);
 
@@ -61,9 +61,8 @@ export default function SwapWidgetHome({
   useEffect(() => {
     if (freshRate && !rate) {
       dispatch(setCurrentRate(freshRate));
-      dispatch(fetchSlugPrice([fromAsset.symbol, toAsset.symbol]));
     }
-  }, []);
+  }, [freshRate, dispatch]);
 
   useEffect(() => {
     if (['failed', 'loading'].includes(status)) {
@@ -79,11 +78,9 @@ export default function SwapWidgetHome({
 
   useEffect(() => {
     if (pairState) {
-      if (!rate || rate?.pairId !== pairState) {
-        dispatch(fetchPairRate(pairState));
-      }
+      dispatch(fetchPairRate(pairState));
     }
-  }, [dispatch, pairState, rate]);
+  }, [dispatch, pairState]);
 
   const onComplete = ({ orderId }: { orderId: string }) => {
     router.push(`/swap/${orderId}`);

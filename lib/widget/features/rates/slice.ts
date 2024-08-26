@@ -19,6 +19,43 @@ const initialState: RateState = {
   lastFetched: null,
 };
 
+export const fetchSlugPrice = createAsyncThunk(
+  'rates/fetchSlugPrice',
+  async (slugs: string[], { rejectWithValue }) => {
+    try {
+      const response = await fetch(
+        `${swapApiUrl}/assets/price?slugs=${slugs.join(',')}`,
+      );
+
+      if (!response.ok) {
+        throw new Error('Failed to fetch pricing data');
+      }
+
+      const data = await response.json();
+
+      const fromAssetAmount = data.find(
+        (price: any) => price.symbol === slugs[0],
+      );
+
+      const toAssetAmount = data.find(
+        (price: any) => price.symbol === slugs[1],
+      );
+
+      if (!fromAssetAmount || !toAssetAmount) {
+        // todo: handle this better
+        console.warn('Failed to fetch pricing data for pair.');
+      }
+
+      return {
+        fromAssetFiat: fromAssetAmount ? fromAssetAmount.price : 0,
+        toAssetFiat: toAssetAmount ? toAssetAmount.price : 0,
+      };
+    } catch (error) {
+      return rejectWithValue('Failed to fetch slug prices');
+    }
+  },
+);
+
 export const fetchPairRate = createAsyncThunk(
   'rates/fetchPairRate',
   async (pairId: string, { rejectWithValue }) => {
@@ -75,42 +112,6 @@ const fetchCMCPrice = async (pairId: string) => {
 
   return data;
 };
-export const fetchSlugPrice = createAsyncThunk(
-  'rates/fetchSlugPrice',
-  async (slugs: string[], { rejectWithValue }) => {
-    try {
-      const response = await fetch(
-        `${swapApiUrl}/assets/price?slugs=${slugs.join(',')}`,
-      );
-
-      if (!response.ok) {
-        throw new Error('Failed to fetch pricing data');
-      }
-
-      const data = await response.json();
-
-      const fromAssetAmount = data.find(
-        (price: any) => price.symbol === slugs[0],
-      );
-
-      const toAssetAmount = data.find(
-        (price: any) => price.symbol === slugs[1],
-      );
-
-      if (!fromAssetAmount || !toAssetAmount) {
-        // todo: handle this better
-        console.warn('Failed to fetch pricing data for pair.');
-      }
-
-      return {
-        fromAssetFiat: fromAssetAmount ? fromAssetAmount.price : 0,
-        toAssetFiat: toAssetAmount ? toAssetAmount.price : 0,
-      };
-    } catch (error) {
-      return rejectWithValue('Failed to fetch slug prices');
-    }
-  },
-);
 
 // Update the slice to handle the new async thunk
 const rateSlice = createSlice({
