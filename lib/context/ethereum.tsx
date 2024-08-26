@@ -8,7 +8,6 @@ import {
   metaMaskWallet,
   trustWallet,
   coinbaseWallet,
-  walletConnectWallet,
   injectedWallet,
   phantomWallet,
   rainbowWallet,
