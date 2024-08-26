@@ -13,9 +13,9 @@ import { animVariants } from './config';
 import { setEthereumAddress, setSolanaAddress } from './features/swap/slice';
 import { toastConfig } from '../util';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { TokenIcon } from './components/ui/token-icon';
 import { PairRate } from './lib/exodus/rate';
 import { displayAddress } from './lib/display-utils';
+import { AssetIcon } from './components/asset-icon';
 
 type SwapMode = 'input' | 'output' | 'flexible';
 type RatesMode = 'fixed' | 'float';
@@ -52,7 +52,7 @@ export function SwapWidget({
 
       toast.success(`Connected to wallet ${displayAddress(account.address)}`, {
         ...toastConfig,
-        icon: <TokenIcon identifier="ETH" size={24} />,
+        icon: <AssetIcon asset={{ symbol: 'ETH' }} />,
       });
     }
   }, [account.address, dispatch]);
@@ -65,7 +65,7 @@ export function SwapWidget({
 
       toast.success(`Connected to wallet: ${displayAddress(account)}`, {
         ...toastConfig,
-        icon: <TokenIcon identifier="SOL" size={24} />,
+        icon: <AssetIcon asset={{ symbol: 'SOL' }} />,
       });
     }
   }, [publicKey, dispatch]);

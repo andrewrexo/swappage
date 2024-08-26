@@ -2,6 +2,7 @@ import { TokenIcon } from './token-icon';
 import { Text, Code, Flex, Badge, Box } from '@radix-ui/themes';
 import networkToColor from '../../features/assets/color';
 import type { MouseEvent } from 'react';
+import { AssetIcon } from '../asset-icon';
 
 const networkToDisplayName = {
   ETH: 'Ethereum',
@@ -67,8 +68,8 @@ export const HoverEffect = ({
           onMouseEnter={(e) => handleMouseEnter(e, network)}
           onMouseLeave={handleMouseLeave}
         >
-          <TokenIcon
-            identifier={network}
+          <AssetIcon
+            asset={{ network }}
             size={32}
             className="cursor-pointer rounded-full transition-all duration-300"
           />

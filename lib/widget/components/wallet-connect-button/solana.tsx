@@ -15,7 +15,7 @@ import toast from 'react-hot-toast';
 import { toastConfig } from '@/lib/util';
 import networks from '../../features/assets/network';
 import { twMerge } from 'tailwind-merge';
-import { TokenIcon } from '../ui/token-icon';
+import { AssetIcon } from '../asset-icon';
 
 export function WalletConnectSolana({
   children,
@@ -102,7 +102,7 @@ export function WalletConnectSolana({
             weight="bold"
             className="text-[var(--accent-12) inline-flex items-center pb-2 pt-2 text-4xl sm:pb-0 sm:text-3xl"
           >
-            <TokenIcon identifier="SOL" size={32} className="mr-4" />
+            <AssetIcon asset={{ symbol: 'SOL' }} size={32} className="mr-4" />
             Connect
           </Text>
         </>

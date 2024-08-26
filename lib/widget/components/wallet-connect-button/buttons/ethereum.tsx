@@ -5,9 +5,9 @@ import toast from 'react-hot-toast';
 import { useDisconnect } from 'wagmi';
 import { WalletPreview } from '../wallet-preview';
 import { DefaultButton } from './default';
-import { TokenIcon } from '../../ui/token-icon';
-import '@rainbow-me/rainbowkit/styles.css';
 import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { AssetIcon } from '../../asset-icon';
+import '@rainbow-me/rainbowkit/styles.css';
 
 export const ButtonEthereum = ({
   accountOnly,
@@ -24,7 +24,7 @@ export const ButtonEthereum = ({
         const disconnect = () => {
           disconnectAsync().then(() => {
             toast.success('Ethereum wallet disconnected', {
-              icon: <TokenIcon identifier="ETH" size={16} />,
+              icon: <AssetIcon asset={{ symbol: 'ETH' }} size={16} />,
               ...toastConfig,
             });
           });
