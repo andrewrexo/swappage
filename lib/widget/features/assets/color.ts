@@ -30,7 +30,7 @@ const networkToColor: Record<
   monero: 'orange',
   solana: 'teal',
   avalanche: 'ruby',
-  polygon: 'purple',
+  polygon: 'violet',
   optimism: 'red',
   ethereumarbone: 'cyan',
   basemainnet: 'iris',
