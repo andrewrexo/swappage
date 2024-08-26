@@ -1,11 +1,7 @@
 import { getIconId, networkToIcon } from '../asset-dialog/asset-option';
 import { ExodusAsset } from '../../lib/exodus/asset';
-import dynamic from 'next/dynamic';
 import { twMerge } from 'tailwind-merge';
-
-const DynamicTokenIcon = dynamic(() =>
-  import('../ui/token-icon').then((mod) => mod.TokenIcon),
-);
+import { TokenIcon } from '../ui/token-icon';
 
 export const AssetIcon = ({
   asset,
@@ -17,7 +13,7 @@ export const AssetIcon = ({
   className?: string;
 }) => {
   return (
-    <DynamicTokenIcon
+    <TokenIcon
       key={`asset-icon-${asset.id}`}
       identifier={getIconId(asset.symbol ?? '')}
       size={size}

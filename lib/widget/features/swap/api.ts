@@ -71,3 +71,18 @@ export const generateRandomAddress = (prefix: string) => {
   }
   return result;
 };
+
+export const removeNonUppercase = (str: string): string => {
+  const firstLowercaseIndex = str.split('').findIndex((char, index) => {
+    return (
+      (char === char.toLowerCase() && char !== char.toUpperCase()) ||
+      /\d/.test(char)
+    );
+  });
+
+  if (firstLowercaseIndex === -1) {
+    return str;
+  }
+
+  return str.slice(0, firstLowercaseIndex);
+};
