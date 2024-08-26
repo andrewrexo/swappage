@@ -1,6 +1,7 @@
 import { Flex, Button, Text, Badge } from '@radix-ui/themes';
 import { ButtonGroup } from '../ui/button-group';
 import { PairRate } from '../../lib/exodus/rate';
+import { removeNonUppercase } from '../../features/swap/api';
 
 interface ActionButtonsProps {
   side: 'from' | 'to';
@@ -43,7 +44,7 @@ export function ActionButtons({
       >
         <Text>
           Network cost: ~{currentRate.minerFee.value.toFixed(5)}{' '}
-          {currentRate.minerFee.assetId}
+          {removeNonUppercase(currentRate.minerFee.assetId)}
         </Text>
       </Badge>
     </Flex>
