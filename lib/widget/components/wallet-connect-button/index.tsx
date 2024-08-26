@@ -10,7 +10,6 @@ export function WalletConnectButton({
   size = '4',
   walletChain = 'solana',
   fromNetwork = 'solana',
-  ...props
 }: {
   accountOnly?: boolean;
   walletChain?: 'ethereum' | 'solana';

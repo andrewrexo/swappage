@@ -1,5 +1,5 @@
 'use client';
-import { Flex, Separator } from '@radix-ui/themes';
+import { Flex } from '@radix-ui/themes';
 import { useEffect, useState } from 'react';
 import { ParameterList } from '../../components/parameter-list';
 import { SwapButton } from '../../components/swap-button';

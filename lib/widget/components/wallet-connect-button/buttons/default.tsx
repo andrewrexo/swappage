@@ -2,7 +2,6 @@ import React, { forwardRef } from 'react';
 import { motion } from 'framer-motion';
 import type { ReactNode, ComponentProps } from 'react';
 import { Button } from '@radix-ui/themes';
-import { twMerge } from 'tailwind-merge';
 
 const MotionButton = motion(Button);
 

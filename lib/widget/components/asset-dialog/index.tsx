@@ -12,7 +12,6 @@ import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import {
   fetchAssets,
   paginateAssets,
-  setPage,
   setSearchQuery,
 } from '../../features/assets/slice';
 import { debounce } from 'lodash';
@@ -140,10 +139,9 @@ export function AssetDialog({
 
   const debouncedSearch = useCallback(
     debounce((value: string) => {
-      if (value === '' && searchQuery == '') {
+      if (value === '' && searchQuery === '') {
         return;
       }
-
       dispatch(setSearchQuery(value));
       dispatch(
         fetchAssets({
@@ -154,8 +152,7 @@ export function AssetDialog({
         }),
       );
     }, 300),
-
-    [dispatch, assets, networks, searchQuery],
+    [dispatch, networks, searchQuery],
   );
 
   const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {

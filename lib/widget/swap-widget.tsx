@@ -13,7 +13,6 @@ import { animVariants } from './config';
 import { setEthereumAddress, setSolanaAddress } from './features/swap/slice';
 import { toastConfig } from '../util';
 import { useWallet } from '@solana/wallet-adapter-react';
-import { PairRate } from './lib/exodus/rate';
 import { displayAddress } from './lib/display-utils';
 import { AssetIcon } from './components/asset-icon';
 
@@ -33,10 +32,9 @@ export interface SwapWidgetProps {
 }
 
 export function SwapWidget({
-  freshRate,
   children,
   ...swapWidgetProps
-}: SwapWidgetProps & { children: ReactNode; freshRate?: PairRate }) {
+}: SwapWidgetProps & { children: ReactNode }) {
   const { width, className } = swapWidgetProps;
 
   const dispatch = useAppDispatch();

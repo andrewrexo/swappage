@@ -1,5 +1,4 @@
-import { TokenIcon } from './token-icon';
-import { Text, Code, Flex, Badge, Box } from '@radix-ui/themes';
+import { Text, Flex, Badge, Box } from '@radix-ui/themes';
 import networkToColor from '../../features/assets/color';
 import type { MouseEvent } from 'react';
 import { AssetIcon } from '../asset-icon';

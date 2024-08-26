@@ -31,7 +31,7 @@ export const TokenIcon: FC<TokenIconProps> = ({
     };
 
     loadIcon();
-  }, [identifier]);
+  }, [identifier, fallback]);
 
   if (!iconSrc) {
     return (

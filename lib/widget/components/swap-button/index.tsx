@@ -1,25 +1,21 @@
 'use client';
 
-import { Button, Spinner, Text } from '@radix-ui/themes';
+import { Button, Spinner } from '@radix-ui/themes';
 import { motion, useAnimationControls } from 'framer-motion';
-import { Loader2Icon, LucideLink, StopCircleIcon } from 'lucide-react';
+import { Loader2Icon, LucideLink } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import {
   ArrowTopRightIcon,
   Cross2Icon,
   DoubleArrowRightIcon,
-  StopIcon,
 } from '@radix-ui/react-icons';
 import { twMerge } from 'tailwind-merge';
 import { variants } from './variants';
-
-const MotionText = motion(Text);
 
 export function SwapButton({
   connected,
   fullWidth,
   onExecute,
-  isComplete,
   isResponding = false,
   disabled = false,
 }: {
@@ -45,7 +41,7 @@ export function SwapButton({
     }, 20000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [controls, isExecuting, isHovered, isResponding]);
 
   const onHoverStart = () => {
     setIsHovered(true);

@@ -1,4 +1,4 @@
-import { Box, Flex, Text } from '@radix-ui/themes';
+import { Flex, Text } from '@radix-ui/themes';
 import { ArrowTopRightIcon, Link1Icon } from '@radix-ui/react-icons';
 import type { SupportedNetwork } from '../../features/assets/network';
 import networks from '../../features/assets/network';

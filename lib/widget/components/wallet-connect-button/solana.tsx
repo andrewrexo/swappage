@@ -1,4 +1,4 @@
-import { Badge, Card, Text, Flex, Box, Link } from '@radix-ui/themes';
+import { Badge, Text, Flex } from '@radix-ui/themes';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 import {
   cloneElement,
@@ -16,6 +16,7 @@ import { toastConfig } from '@/lib/util';
 import networks from '../../features/assets/network';
 import { twMerge } from 'tailwind-merge';
 import { AssetIcon } from '../asset-icon';
+import Image from 'next/image';
 
 export function WalletConnectSolana({
   children,
@@ -125,7 +126,7 @@ export function WalletConnectSolana({
           >
             <Flex gap="2" justify="between" align="center" flexGrow="1">
               <Flex align="center" gap="2">
-                <img
+                <Image
                   src={wallet.adapter.icon}
                   alt={wallet.adapter.name}
                   height={32}

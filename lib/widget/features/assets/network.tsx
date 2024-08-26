@@ -1,5 +1,4 @@
 import { AssetIcon } from '../../components/asset-icon';
-import { TokenIcon } from '../../components/ui/token-icon';
 
 const networks = {
   solana: {

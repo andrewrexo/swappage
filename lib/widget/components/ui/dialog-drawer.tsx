@@ -1,12 +1,5 @@
 import { useMediaQuery } from '../../lib/hooks';
-import {
-  Box,
-  Dialog,
-  Flex,
-  Text,
-  Theme,
-  VisuallyHidden,
-} from '@radix-ui/themes';
+import { Box, Dialog, Flex, Theme, VisuallyHidden } from '@radix-ui/themes';
 import { Drawer } from 'vaul';
 import { ReactNode } from 'react';
 import { twMerge } from 'tailwind-merge';
