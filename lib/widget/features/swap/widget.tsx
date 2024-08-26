@@ -79,7 +79,7 @@ export default function SwapWidgetHome({
 
   useEffect(() => {
     if (pairState) {
-      if ((!rate && !freshRate) || (rate && rate.pairId !== pairState)) {
+      if (!rate || rate?.pairId !== pairState) {
         dispatch(fetchPairRate(pairState));
       }
     }
