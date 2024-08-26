@@ -5,11 +5,16 @@
 		"prettier",
 		"next/core-web-vitals"
 	],
-	"plugins": ["prettier"],
+	"plugins": ["prettier", "unused-imports"],
 	"rules": {
 		"prefer-const": "warn",
 		"no-var": "warn",
-		"no-unused-vars": "warn",
+    "no-unused-vars": "off",
+    "unused-imports/no-unused-imports": "error",
+    "unused-imports/no-unused-vars": [
+      "warn",
+      { "vars": "all", "varsIgnorePattern": "^_", "args": "after-used", "argsIgnorePattern": "^_" }
+    ],
 		"object-shorthand": "warn",
 		"quote-props": ["warn", "as-needed"],
 		"react/jsx-fragments": ["warn", "syntax"],
