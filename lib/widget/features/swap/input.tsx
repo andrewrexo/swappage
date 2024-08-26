@@ -15,7 +15,7 @@ import { toastConfig } from '@/lib/util';
 const DynamicAssetDialog = dynamic(
   () => import('../../components/asset-dialog').then((mod) => mod.AssetDialog),
   {
-    ssr: false,
+    ssr: true,
   },
 );
 
