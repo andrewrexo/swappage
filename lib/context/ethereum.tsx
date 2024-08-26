@@ -8,7 +8,6 @@ import {
   metaMaskWallet,
   trustWallet,
   coinbaseWallet,
-  walletConnectWallet,
   injectedWallet,
   phantomWallet,
   rainbowWallet,
@@ -26,7 +25,6 @@ export const config = getDefaultConfig({
       groupName: 'Recommended',
       wallets: [
         rainbowWallet,
-        walletConnectWallet,
         metaMaskWallet,
         trustWallet,
         coinbaseWallet,

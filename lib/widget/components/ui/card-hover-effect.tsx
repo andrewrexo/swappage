@@ -69,7 +69,7 @@ export const HoverEffect = ({
           onMouseLeave={handleMouseLeave}
         >
           <AssetIcon
-            asset={{ network }}
+            asset={{ symbol: network, network }}
             size={32}
             className="cursor-pointer rounded-full transition-all duration-300"
           />
