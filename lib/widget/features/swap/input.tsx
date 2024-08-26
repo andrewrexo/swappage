@@ -92,6 +92,7 @@ export function SwapInput() {
           )}
         >
           <MotionIconButton
+            aria-label="reverse-pair"
             radius="full"
             variant="ghost"
             whileHover={{ scale: 1.05 }}
