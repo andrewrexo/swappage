@@ -9,19 +9,13 @@ export async function GET(req: NextRequest) {
     return Response.json({ error: 'No slugs provided' }, { status: 400 });
   }
 
-  const slugsArray = slugs.split(',');
-  const transformedSlugs = slugsArray.map(removeNonUppercase);
+  const transformedSlugs = slugs.split(',').map(removeNonUppercase);
 
   try {
-    const assets = await getPriceBySlugs(transformedSlugs);
+    const assets = await getPriceBySlugs(slugs.split(','));
 
     if (assets) {
-      return Response.json(
-        assets.map((asset, index) => ({
-          symbol: slugsArray[index],
-          price: asset.price,
-        })),
-      );
+      return Response.json(assets);
     }
   } catch (error) {
     return Response.json(
