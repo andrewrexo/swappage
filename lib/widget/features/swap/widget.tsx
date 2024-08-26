@@ -39,11 +39,7 @@ export default function SwapWidgetHome({
   } = useAppSelector((state) => state.swap);
 
   const { assets: assetsState } = useAppSelector((state) => state.assets);
-  const {
-    currentRate: rate,
-    status,
-    error,
-  } = useAppSelector((state) => state.rates);
+  const { currentRate: rate, status } = useAppSelector((state) => state.rates);
   const { displayPair: pair, pair: pairState } = useAppSelector(
     (state) => state.swap,
   );
@@ -69,12 +65,16 @@ export default function SwapWidgetHome({
   }, [freshRate, dispatch]);
 
   useEffect(() => {
+    if (['failed', 'loading'].includes(status)) {
+      return;
+    }
+
     const intervalId = setInterval(() => {
       dispatch(fetchPairRate(pairState));
     }, 15000); // 15 seconds
 
     return () => clearInterval(intervalId);
-  }, [dispatch, pairState]);
+  }, [dispatch, pairState, status]);
 
   useEffect(() => {
     if (pairState) {
@@ -86,6 +86,7 @@ export default function SwapWidgetHome({
     router.push(`/swap/${orderId}`);
   };
 
+  // todo: handle w/ redux thunk by dispatching
   const onExecute = () => {
     const createSwap = async () => {
       const solAddress =
@@ -147,12 +148,8 @@ export default function SwapWidgetHome({
       transition={{ duration: 0.3 }}
     >
       <SwapInput />
-      {(freshRate || rate) && (
-        <ParameterList
-          {...swapBaseParameters}
-          rate={rate ?? freshRate}
-          status={status}
-        />
+      {rate && (
+        <ParameterList {...swapBaseParameters} rate={rate} status={status} />
       )}
       <SwapButton
         disabled={status === 'failed'}

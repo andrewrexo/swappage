@@ -77,10 +77,6 @@ export function SwapButton({
       return (
         <>
           <motion.span
-            className={twMerge(
-              !disabled && 'bg-gradient-accent bg-clip-text text-transparent',
-              'animate-gradient-x',
-            )}
             variants={variants.text}
             initial="initial"
             animate={controls}
@@ -170,7 +166,7 @@ export function SwapButton({
         onHoverEnd={onHoverEnd}
         onTap={onClick}
         whileTap={{ scale: 0.95 }}
-        className="animate-gradient-x"
+        className={twMerge(isHovered && 'animate-gradient-x')}
         style={{
           boxShadow: '0 0 0 1px var(--accent-a7)',
           backgroundImage:

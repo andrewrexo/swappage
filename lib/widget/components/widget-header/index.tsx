@@ -2,15 +2,7 @@ import { Button, Flex, IconButton, Text, Popover } from '@radix-ui/themes';
 import { MenuIcon, ReplaceIcon, XIcon } from 'lucide-react';
 import { useAppDispatch, useAppSelector } from '../../lib/hooks';
 import { setActiveNetwork } from '../../features/swap/slice';
-import dynamic from 'next/dynamic';
-
-const DynamicWalletConnectButton = dynamic(
-  () =>
-    import('../wallet-connect-button').then((mod) => mod.WalletConnectButton),
-  {
-    ssr: false,
-  },
-);
+import { WalletConnectButton } from '../wallet-connect-button';
 
 export function WidgetHeader() {
   const dispatch = useAppDispatch();
@@ -22,7 +14,7 @@ export function WidgetHeader() {
 
   return (
     <Flex justify="between" align="center" gap="2">
-      <DynamicWalletConnectButton
+      <WalletConnectButton
         size="2"
         walletChain={activeNetwork ?? fromNetwork}
         accountOnly
