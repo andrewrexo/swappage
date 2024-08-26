@@ -1,9 +1,9 @@
-import { TextField, IconButton, Text, Box, Flex } from '@radix-ui/themes';
+import { TextField, IconButton, Text } from '@radix-ui/themes';
 import { ChevronDown } from 'lucide-react';
 import { useAppSelector } from '../../lib/hooks';
 import { ExodusAsset } from '../../lib/exodus/asset';
 import { ChangeEvent } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { twMerge } from 'tailwind-merge';
 import networkToColor from '../../features/assets/color';
 import { AssetIcon } from '../asset-icon';
@@ -28,6 +28,7 @@ export function InputAmount({
   return (
     <TextField.Root
       aria-label={`${side}-amount-input`}
+      name={`${side}-amount-input`}
       key={`${side}-amount-input-root`}
       size="3"
       variant="surface"
