@@ -26,7 +26,6 @@ export const config = getDefaultConfig({
       groupName: 'Recommended',
       wallets: [
         rainbowWallet,
-        walletConnectWallet,
         metaMaskWallet,
         trustWallet,
         coinbaseWallet,
