@@ -1,22 +1,13 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import { Theme } from '@radix-ui/themes';
+import { Theme, ThemePanel } from '@radix-ui/themes';
 import type { ReactNode } from 'react';
 import StoreProvider from './StoreProvider';
 import { twMerge } from 'tailwind-merge';
 import Web3Provider from '@/lib/context';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
-import '@radix-ui/themes/tokens/base.css';
-import '@radix-ui/themes/tokens/colors/jade.css';
-import '@radix-ui/themes/tokens/colors/sage.css';
-import '@radix-ui/themes/tokens/colors/blue.css';
-import '@radix-ui/themes/tokens/colors/cyan.css';
-import '@radix-ui/themes/tokens/colors/teal.css';
-import '@radix-ui/themes/tokens/colors/iris.css';
-import '@radix-ui/themes/tokens/colors/violet.css';
-import '@radix-ui/themes/components.css';
-import '@radix-ui/themes/utilities.css';
+import '@radix-ui/themes/styles.css';
 
 import './globals.css';
 
@@ -55,6 +46,7 @@ export default function RootLayout({
               </main>
             </StoreProvider>
           </Web3Provider>
+          <ThemePanel />
         </Theme>
         <SpeedInsights />
       </body>
