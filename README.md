@@ -2,20 +2,23 @@
 
 Swappage is an exploratory project focused on crypto cross-chain swaps. The app and API is built with [Next.js](https://nextjs.org/) - everything has been designed to stand out as an intuitive user experience in a sea of complicated crypto app UIs. It supports simultaneous wallet connections from both EVM-compatible networks and Solana, making it versatile for a wide range of users. My goal is to expand offerings to include more routes for swapping, bridging, and P2P offerings.
 
-
 ## Features
 
 - **Cross-Chain Swapping**: Allows swaps between Solana and Ethereum assets, connecting the best of both ecosystems.
 - **Wallet Integration**: Supports multiple wallet providers for EVM and Solana, giving users flexibility in how they connect.
-- **Modern Tech Stack**: Built using **Next.js** for the front-end, **Supabase** for managing swap order data, and **Radix UI** for accessible UI components.
 - **Dynamic Rates**: Real-time rate fetching and updates for optimal trading decisions.
 
 ## Tech Stack
 
 - **Next.js**: The core framework used to deliver a responsive and fast front-end.
 - **Radix UI**: Used as the foundation for accessible and highly customizable components.
+- **Redux**: Robust solution for state management and async thunks.
 - **Supabase**: For storing and persisting swap orders, ensuring seamless and consistent transaction records.
 - **Web3 Wallet Connections**: Support for wallets across both **EVM** and **Solana** ecosystems, enabling broader compatibility.
+
+## Screenshots
+
+<img width="800" alt="image" src="https://github.com/user-attachments/assets/057b5fb2-0bf9-4c63-990b-ebc750774e4d">
 
 ## Getting Started
 
